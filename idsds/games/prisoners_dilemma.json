@@ -1,0 +1,9 @@
+{
+  "name": "Prisoner's Dilemma",
+  "player1": { "label": "Player 1", "strategies": ["C", "D"] },
+  "player2": { "label": "Player 2", "strategies": ["C", "D"] },
+  "payoffs": [
+    [[5, 5], [0, 6]],
+    [[6, 0], [1, 1]]
+  ]
+}

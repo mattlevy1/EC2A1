@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<!-- Serve from repo root: python3 -m http.server  (then open /idsds/) -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDSDS stepper — EC2A1</title>
+<script>
+MathJax = {
+  tex: { inlineMath: [['$','$'], ['\\(','\\)']] },
+  startup: { typeset: false }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MK64M26S1R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MK64M26S1R');
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f6f5f1;
+    --surface: #ffffff;
+    --text: #1d1d1f;
+    --text-muted: #6e7a87;
+    --accent: #4a6fa5;
+    --accent-light: #e4ecf5;
+    --border: #ddd9d1;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
+    --radius: 16px;
+    --flag: #c4880b;
+    --flag-light: #fdf4e3;
+    --correct: #3a7d5c;
+    --correct-light: #e6f3ed;
+  }
+
+  .dark {
+    --bg: #1a1a1e;
+    --surface: #26262b;
+    --text: #e2e2e6;
+    --text-muted: #8a8f98;
+    --accent: #6b9fd4;
+    --accent-light: #2a3545;
+    --border: #3a3a40;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);
+    --flag: #d4a94e;
+    --flag-light: #33291a;
+    --correct: #5ab882;
+    --correct-light: #1e3328;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 3rem;
+  }
+
+  .page { width: 100%; max-width: 720px; }
+
+  .course-code {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.35rem;
+    text-align: center;
+  }
+
+  .intro {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    text-align: center;
+    margin: 0 auto 0.85rem;
+    max-width: 560px;
+  }
+
+  .how-to {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin: 0 auto 1.25rem;
+    max-width: 560px;
+    padding-left: 1.15rem;
+  }
+
+  .how-to li { margin-bottom: 0.3rem; }
+
+  .nav-links {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.82rem;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-underline-offset: 2px;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links span { color: var(--border); margin: 0 0.55rem; }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.15rem 1.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    margin-bottom: 1rem;
+  }
+
+  .controls, .random-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem 0.75rem;
+    align-items: center;
+  }
+
+  .random-block {
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .random-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 0.45rem;
+  }
+
+  label.field {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  select, .btn, input[type="text"] {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.4rem 0.7rem;
+    color: var(--text);
+  }
+
+  select { cursor: pointer; max-width: 22rem; }
+
+  .btn { cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+  .btn:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-light); }
+  .btn:disabled { opacity: 0.4; cursor: default; }
+  .btn.primary {
+    background: var(--accent-light);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .seed-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    align-items: center;
+    margin-top: 0.75rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  #seed-input {
+    width: 9.5rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.55rem;
+    display: none;
+  }
+
+  .note.visible { display: block; }
+
+  .stepper-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .round-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .round-label span { font-weight: 500; color: var(--text-muted); }
+
+  .step-btns { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .matrix-wrap { overflow-x: auto; margin: 0.25rem 0 0.75rem; }
+
+  table.matrix {
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-variant-numeric: tabular-nums;
+    min-width: 240px;
+  }
+
+  table.matrix th, table.matrix td {
+    border: 1px solid var(--border);
+    padding: 0.7rem 0.9rem;
+    text-align: center;
+    font-size: 0.92rem;
+  }
+
+  table.matrix th {
+    font-weight: 600;
+    background: var(--accent-light);
+    color: var(--text);
+  }
+
+  table.matrix td { background: var(--surface); }
+
+  table.matrix .gone {
+    opacity: 0.38;
+    text-decoration: line-through;
+    text-decoration-color: var(--text-muted);
+    background: var(--bg);
+  }
+
+  table.matrix .just {
+    background: var(--flag-light);
+    box-shadow: inset 0 0 0 2px var(--flag);
+    color: var(--text);
+  }
+
+  table.matrix th.just { color: var(--flag); }
+
+  table.matrix .unique {
+    background: var(--correct-light);
+    box-shadow: inset 0 0 0 2px var(--correct);
+    font-weight: 600;
+  }
+
+  .legend {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .game-name {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 0.65rem;
+  }
+
+  h2 {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin: 1rem 0 0.45rem;
+  }
+
+  .elim-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+
+  .elim-list li {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .elim-list details { margin-top: 0.35rem; }
+  .elim-list summary {
+    cursor: pointer;
+    font-size: 0.78rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .checks {
+    margin: 0.4rem 0 0 0.2rem;
+    padding-left: 1rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .muted { color: var(--text-muted); font-size: 0.88rem; }
+
+  .survivors {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-top: 0.25rem;
+  }
+
+  .final-note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-top: 0.65rem;
+    padding: 0.7rem 0.85rem;
+    background: var(--accent-light);
+    border-radius: 10px;
+  }
+
+  .footer {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.4rem 0.55rem;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    transition: background 0.15s, border-color 0.15s;
+    z-index: 100;
+  }
+
+  .theme-toggle:hover { border-color: var(--accent); }
+
+  .error { color: #a04040; font-size: 0.85rem; }
+  .dark .error { color: #d46a6a; }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" id="theme-toggle" title="Toggle dark mode">☀️</button>
+
+<main class="page">
+  <p class="course-code">LSE EC2A1</p>
+  <h1>IDSDS stepper</h1>
+  <p class="intro">
+    A walk-through of <strong>iterated deletion of strictly dominated strategies</strong> (IDSDS)
+    for two-player normal-form games. Player&nbsp;1 chooses the row, Player&nbsp;2 the column;
+    each cell is a payoff pair (u<sub>1</sub>,&nbsp;u<sub>2</sub>). Each round deletes every strictly dominated
+    strategy for both players at once (a mixture may be the dominator). The survivors are
+    the rationalizable strategies.
+  </p>
+  <ol class="how-to">
+    <li>Pick a <strong>preset</strong> (start with Lecture&nbsp;1) or <strong>generate</strong> a random game. To reproduce one, enter its seed (same size and filter) and click Load.</li>
+    <li>Click <strong>Step</strong> to run one IDSDS round. Use Back, Reset, or Jump to end to move along the path.</li>
+    <li>Highlighted rows/columns were deleted <em>this</em> round; muted ones went earlier. Expand a deletion to see the payoff comparisons.</li>
+  </ol>
+  <p class="nav-links">
+    <a href="../">Course home</a><span>·</span><a href="../quiz/">Lecture 1 flashcards</a>
+  </p>
+
+  <div class="panel">
+    <div class="controls">
+      <label class="field">Preset
+        <select id="preset" aria-label="Preset game">
+          <option value="lecture1">Lecture 1 IDSDS example</option>
+          <option value="prisoners_dilemma">Prisoner's Dilemma</option>
+          <option value="multiple_survivors">Multiple rationalizable profiles</option>
+        </select>
+      </label>
+    </div>
+    <div class="random-block">
+      <div class="random-label">Random game (not used for presets)</div>
+      <div class="random-row">
+        <label class="field">Size
+          <select id="size" aria-label="Random game size">
+            <option value="2x2">2×2</option>
+            <option value="2x3">2×3</option>
+            <option value="3x3" selected>3×3</option>
+          </select>
+        </label>
+        <label class="field">Keep games with
+          <select id="mode" aria-label="Random game filter">
+            <option value="any">at least one deletion</option>
+            <option value="unique">a unique rationalizable profile</option>
+            <option value="multiple">several rationalizable profiles</option>
+            <option value="easy">Easy: 2×2, one deletion round</option>
+            <option value="medium">Medium: 3×3, two or more rounds</option>
+          </select>
+        </label>
+        <button type="button" class="btn primary" id="btn-random">Random seed ⚄</button>
+      </div>
+      <div class="seed-row" id="seed-row">
+        <label class="field">Seed
+          <input type="text" id="seed-input" inputmode="numeric" pattern="[0-9]*" placeholder="e.g. 48291" autocomplete="off" aria-label="Random game seed">
+        </label>
+        <button type="button" class="btn" id="btn-load-seed">Load seed</button>
+        <button type="button" class="btn" id="btn-copy-seed">Copy seed</button>
+      </div>
+    </div>
+    <p class="note" id="relax-note">Could not meet every outcome filter within 500 draws; showing a game that still has at least one deletion.</p>
+  </div>
+
+  <div class="panel">
+    <div class="stepper-bar">
+      <div class="round-label" id="round-label">Round 0</div>
+      <div class="step-btns">
+        <button type="button" class="btn" id="btn-back">← Back</button>
+        <button type="button" class="btn primary" id="btn-step">Step →</button>
+        <button type="button" class="btn" id="btn-end">Jump to end</button>
+        <button type="button" class="btn" id="btn-reset">Reset</button>
+      </div>
+    </div>
+    <p class="game-name" id="game-name"></p>
+    <div class="matrix-wrap" id="matrix"></div>
+    <p class="legend" id="legend"></p>
+
+    <h2>Eliminated this round</h2>
+    <div id="elims"></div>
+
+    <h2>Survivors</h2>
+    <div class="survivors" id="survivors"></div>
+    <div id="final"></div>
+  </div>
+
+  <p class="footer">LSE EC2A1 · Matthew Levy</p>
+</main>
+
+<script src="idsds.js"></script>
+<script>
+(function () {
+  const PRESET_FILES = {
+    lecture1: 'lecture1.json',
+    prisoners_dilemma: 'prisoners_dilemma.json',
+    multiple_survivors: 'multiple_survivors.json'
+  };
+
+  const FALLBACK = {
+    lecture1: {
+      name: 'Lecture 1 IDSDS example',
+      player1: { label: 'Player 1', strategies: ['T', 'M', 'B'] },
+      player2: { label: 'Player 2', strategies: ['L', 'C', 'R'] },
+      payoffs: [[[1,0],[2,1],[3,0]],[[2,3],[3,2],[2,1]],[[0,2],[1,2],[2,5]]]
+    },
+    prisoners_dilemma: {
+      name: "Prisoner's Dilemma",
+      player1: { label: 'Player 1', strategies: ['C', 'D'] },
+      player2: { label: 'Player 2', strategies: ['C', 'D'] },
+      payoffs: [[[5,5],[0,6]],[[6,0],[1,1]]]
+    },
+    multiple_survivors: {
+      name: 'Multiple rationalizable profiles',
+      player1: { label: 'Player 1', strategies: ['T', 'M', 'B'] },
+      player2: { label: 'Player 2', strategies: ['L', 'C', 'R'] },
+      payoffs: [[[3,2],[0,0],[1,-1]],[[0,0],[2,3],[1,-1]],[[0,1],[0,1],[0,5]]]
+    }
+  };
+
+  let game = null;
+  let path = [];
+  let step = 0;
+  let source = 'preset';
+  let currentSeed = null;
+  let currentKey = 'lecture1';
+
+  const $ = (id) => document.getElementById(id);
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, (c) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+  }
+
+  function typeset(el) {
+    const attempt = (n) => {
+      if (window.MathJax?.typesetPromise) MathJax.typesetPromise([el]);
+      else if (n < 25) setTimeout(() => attempt(n + 1), 100);
+    };
+    attempt(0);
+  }
+
+  function texName(s) { return '\\(' + esc(s) + '\\)'; }
+
+  function sigmaTex(elim) {
+    const names = Object.keys(elim.dominator);
+    const parts = names.map((n) => IDSDS.formatNumber(elim.dominator[n]));
+    return '\\sigma_{' + elim.player + '}=(' + parts.join(',') + ')';
+  }
+
+  function setThemeIcon() {
+    $('theme-toggle').textContent = document.body.classList.contains('dark') ? '🌙' : '☀️';
+  }
+
+  (function initTheme() {
+    if (localStorage.getItem('ec2a1-theme') === 'dark') document.body.classList.add('dark');
+    setThemeIcon();
+    $('theme-toggle').addEventListener('click', function () {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      localStorage.setItem('ec2a1-theme', isDark ? 'dark' : 'light');
+      setThemeIcon();
+    });
+  })();
+
+  function parseSize(val) {
+    const m = /^(\d+)x(\d+)$/.exec(val);
+    return m ? { nRows: +m[1], nCols: +m[2] } : { nRows: 3, nCols: 3 };
+  }
+
+  function syncSizeLock() {
+    const mode = $('mode').value;
+    const size = $('size');
+    if (mode === 'easy') { size.value = '2x2'; size.disabled = true; }
+    else if (mode === 'medium') { size.value = '3x3'; size.disabled = true; }
+    else size.disabled = false;
+  }
+
+  function updateURL() {
+    const params = new URLSearchParams();
+    if (source === 'random' && currentSeed != null) {
+      params.set('seed', String(currentSeed));
+      params.set('size', $('size').value);
+      params.set('mode', $('mode').value);
+    } else if (currentKey) {
+      params.set('preset', currentKey);
+    }
+    const q = params.toString();
+    history.replaceState(null, '', q ? ('?' + q) : location.pathname);
+  }
+
+  async function fetchPreset(key) {
+    try {
+      const res = await fetch('games/' + PRESET_FILES[key]);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return await res.json();
+    } catch (err) {
+      console.warn('Preset fetch failed; using embedded copy.', err);
+      return FALLBACK[key];
+    }
+  }
+
+  function loadGame(g, opts) {
+    opts = opts || {};
+    game = IDSDS.cloneGame(g);
+    path = IDSDS.solve(game);
+    step = 0;
+    source = opts.source || 'preset';
+    currentSeed = opts.seed != null ? opts.seed : null;
+    currentKey = opts.key || currentKey;
+    if (currentSeed != null) $('seed-input').value = String(currentSeed);
+    $('relax-note').classList.toggle('visible', !!opts.relaxed);
+    $('game-name').textContent = game.name || '';
+    if (source === 'preset') $('preset').value = currentKey;
+    updateURL();
+    render();
+  }
+
+  function generate(seed) {
+    const mode = $('mode').value;
+    const { nRows, nCols } = parseSize($('size').value);
+    const result = IDSDS.generateRandom(seed, { mode, nRows, nCols });
+    currentKey = '';
+    $('size').value = result.nRows + 'x' + result.nCols;
+    loadGame(result.game, { source: 'random', seed: result.seed, relaxed: result.relaxed });
+  }
+
+  function renderMatrix() {
+    const st = path[step];
+    const rows = game.player1.strategies;
+    const cols = game.player2.strategies;
+    const liveR = new Set(st.liveRows);
+    const liveC = new Set(st.liveCols);
+    const justR = new Set(st.eliminations.filter((e) => e.player === 1).map((e) => e.removedIndex));
+    const justC = new Set(st.eliminations.filter((e) => e.player === 2).map((e) => e.removedIndex));
+    const atEnd = step === path.length - 1;
+    const unique = atEnd && st.survivors.p1.length === 1 && st.survivors.p2.length === 1;
+
+    let html = '<table class="matrix"><thead><tr><th></th>';
+    cols.forEach((c, j) => {
+      const gone = !liveC.has(j) && !justC.has(j);
+      const just = justC.has(j);
+      html += '<th class="' + (gone ? 'gone' : just ? 'just' : '') + '">' + esc(c) + '</th>';
+    });
+    html += '</tr></thead><tbody>';
+    rows.forEach((r, i) => {
+      const rowGone = !liveR.has(i) && !justR.has(i);
+      const rowJust = justR.has(i);
+      html += '<tr><th class="' + (rowGone ? 'gone' : rowJust ? 'just' : '') + '">' + esc(r) + '</th>';
+      cols.forEach((c, j) => {
+        const colGone = !liveC.has(j) && !justC.has(j);
+        const colJust = justC.has(j);
+        const gone = rowGone || colGone;
+        const just = !gone && (rowJust || colJust);
+        const uniq = unique && liveR.has(i) && liveC.has(j);
+        const cls = gone ? 'gone' : just ? 'just' : uniq ? 'unique' : '';
+        const cell = game.payoffs[i][j];
+        html += '<td class="' + cls + '">(' + cell[0] + ', ' + cell[1] + ')</td>';
+      });
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    $('matrix').innerHTML = html;
+
+    const bits = [];
+    if (st.eliminations.length) bits.push('highlighted strategies were deleted this round');
+    const anyGone = rows.some((_, i) => !liveR.has(i) && !justR.has(i)) ||
+      cols.some((_, j) => !liveC.has(j) && !justC.has(j));
+    if (anyGone) bits.push('muted strategies were deleted earlier');
+    $('legend').textContent = bits.length ? bits.join(' · ') : '';
+  }
+
+  function elimHeadline(e) {
+    if (e.type === 'pure') {
+      const d = Object.keys(e.dominator).find((k) => e.dominator[k] === 1);
+      return 'Player ' + e.player + ': ' + texName(e.removed) + ' — ' +
+        texName(d) + ' strictly dominates ' + texName(e.removed);
+    }
+    return 'Player ' + e.player + ': ' + texName(e.removed) +
+      ' — strictly dominated by \\(' + sigmaTex(e) + '\\)';
+  }
+
+  function renderElims() {
+    const st = path[step];
+    const box = $('elims');
+    if (!st.eliminations.length) {
+      box.innerHTML = '<p class="muted">' +
+        (step === 0
+          ? 'Nothing deleted yet. Step forward to run the first round of IDSDS.'
+          : 'No strictly dominated strategies remain.') +
+        '</p>';
+      return;
+    }
+    const ul = document.createElement('ul');
+    ul.className = 'elim-list';
+    st.eliminations.forEach((e) => {
+      const li = document.createElement('li');
+      const checks = e.checks.map((c) =>
+        'against ' + texName(c.opponent) + ': \\(' +
+        IDSDS.formatNumber(c.dominatorPayoff) + ' > ' +
+        IDSDS.formatNumber(c.removedPayoff) + '\\)'
+      ).join('; ');
+      li.innerHTML = '<div>' + elimHeadline(e) + '</div>' +
+        '<details><summary>Payoff comparisons</summary>' +
+        '<ul class="checks"><li>' + checks.replace(/; /g, '</li><li>') + '</li></ul>' +
+        '</details>';
+      ul.appendChild(li);
+    });
+    box.innerHTML = '';
+    box.appendChild(ul);
+    typeset(box);
+  }
+
+  function setList(arr) {
+    return '\\(\\{' + arr.map(esc).join(', ') + '\\}\\)';
+  }
+
+  function renderSurvivors() {
+    const st = path[step];
+    const atEnd = step === path.length - 1;
+    const profs = IDSDS.profiles(st.survivors);
+    const n = profs.length;
+    let html = 'Player 1: ' + setList(st.survivors.p1) +
+      ' · Player 2: ' + setList(st.survivors.p2);
+    if (atEnd) {
+      if (n === 1) {
+        html += ' · unique rationalizable profile \\((' +
+          esc(profs[0][0]) + ', ' + esc(profs[0][1]) + ')\\)';
+      } else {
+        const list = profs.map((p) => '\\((' + esc(p[0]) + ', ' + esc(p[1]) + ')\\)').join(', ');
+        html += ' · ' + n + ' rationalizable profiles: ' + list;
+      }
+    }
+    $('survivors').innerHTML = html;
+    typeset($('survivors'));
+
+    const fin = $('final');
+    if (!atEnd) { fin.innerHTML = ''; return; }
+    let note = 'These surviving strategies are the <em>rationalizable</em> strategies (pure) under common knowledge of rationality.';
+    if (n > 1) {
+      note += ' IDSDS does not select among these; Nash equilibrium may refine further.';
+    }
+    fin.innerHTML = '<p class="final-note">' + note + '</p>';
+  }
+
+  function render() {
+    if (!path.length) return;
+    const nRounds = path.length - 1;
+    if (step === 0) {
+      $('round-label').innerHTML = nRounds
+        ? 'Start <span>(0 of ' + nRounds + ' rounds)</span>'
+        : 'Start <span>(IDSDS deletes nothing)</span>';
+    } else {
+      $('round-label').innerHTML = 'Round ' + step + ' of ' + nRounds;
+    }
+    $('btn-back').disabled = step === 0;
+    $('btn-step').disabled = step >= nRounds;
+    $('btn-end').disabled = step >= nRounds;
+    $('btn-reset').disabled = step === 0;
+    renderMatrix();
+    renderElims();
+    renderSurvivors();
+  }
+
+  $('btn-back').addEventListener('click', () => { if (step > 0) { step--; render(); } });
+  $('btn-step').addEventListener('click', () => { if (step < path.length - 1) { step++; render(); } });
+  $('btn-end').addEventListener('click', () => { step = path.length - 1; render(); });
+  $('btn-reset').addEventListener('click', () => { step = 0; render(); });
+
+  $('preset').addEventListener('change', async function () {
+    currentKey = this.value;
+    loadGame(await fetchPreset(currentKey), { source: 'preset', key: currentKey });
+  });
+
+  $('mode').addEventListener('change', syncSizeLock);
+
+  $('btn-random').addEventListener('click', () => {
+    generate((Math.random() * 0xFFFFFFFF) >>> 0);
+  });
+
+  function loadFromSeedField() {
+    const raw = $('seed-input').value.trim();
+    if (raw === '' || !/^\d+$/.test(raw)) {
+      $('seed-input').focus();
+      return;
+    }
+    generate(IDSDS.parseSeed(raw));
+  }
+
+  $('btn-load-seed').addEventListener('click', loadFromSeedField);
+  $('seed-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      loadFromSeedField();
+    }
+  });
+  $('btn-copy-seed').addEventListener('click', async function () {
+    const val = $('seed-input').value.trim() || (currentSeed != null ? String(currentSeed) : '');
+    if (!val) return;
+    try {
+      await navigator.clipboard.writeText(val);
+      this.textContent = 'Copied';
+      setTimeout(() => { this.textContent = 'Copy seed'; }, 1200);
+    } catch (e) {
+      this.textContent = 'Copy failed';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.matches('select, input, textarea, summary')) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); $('btn-step').click(); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); $('btn-back').click(); }
+  });
+
+  async function boot() {
+    syncSizeLock();
+    const params = new URLSearchParams(location.search);
+    const seed = params.get('seed');
+    const preset = params.get('preset');
+    if (seed != null && seed !== '') {
+      if (params.get('size')) $('size').value = params.get('size');
+      if (params.get('mode')) $('mode').value = params.get('mode');
+      syncSizeLock();
+      generate(IDSDS.parseSeed(seed));
+      return;
+    }
+    const key = PRESET_FILES[preset] ? preset : 'lecture1';
+    currentKey = key;
+    $('preset').value = key;
+    loadGame(await fetchPreset(key), { source: 'preset', key: key });
+  }
+
+  boot();
+})();
+</script>
+</body>
+</html>
