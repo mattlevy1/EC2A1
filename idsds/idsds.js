@@ -272,6 +272,11 @@
     if (mode === 'unique') return last.survivors.p1.length === 1 && last.survivors.p2.length === 1;
     if (mode === 'easy') return rounds >= 1;
     if (mode === 'medium') return rounds >= 2;
+    if (mode === 'mixed') {
+      return path.some(function (step) {
+        return step.eliminations.some(function (e) { return e.type === 'mixed'; });
+      });
+    }
     return true;
   }
 
@@ -281,7 +286,7 @@
     var nRows = opts.nRows || 3;
     var nCols = opts.nCols || 3;
     if (mode === 'easy') { nRows = 2; nCols = 2; }
-    if (mode === 'medium') { nRows = 3; nCols = 3; }
+    if (mode === 'medium' || mode === 'mixed') { nRows = 3; nCols = 3; }
     var lo = opts.lo != null ? opts.lo : 0;
     var hi = opts.hi != null ? opts.hi : 9;
     var rng = mulberry32(parseSeed(seed));

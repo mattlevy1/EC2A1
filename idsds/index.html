@@ -416,6 +416,7 @@ MathJax = {
             <option value="multiple">several rationalizable profiles</option>
             <option value="easy">Easy: 2×2, one deletion round</option>
             <option value="medium">Medium: 3×3, two or more rounds</option>
+            <option value="mixed">a mixed-strategy deletion (3×3)</option>
           </select>
         </label>
         <button type="button" class="btn primary" id="btn-random">Random seed ⚄</button>
@@ -541,7 +542,7 @@ MathJax = {
     const mode = $('mode').value;
     const size = $('size');
     if (mode === 'easy') { size.value = '2x2'; size.disabled = true; }
-    else if (mode === 'medium') { size.value = '3x3'; size.disabled = true; }
+    else if (mode === 'medium' || mode === 'mixed') { size.value = '3x3'; size.disabled = true; }
     else size.disabled = false;
   }
 
