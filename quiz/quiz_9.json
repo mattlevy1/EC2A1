@@ -1,1 +1,280 @@
-{"quiz": []}
+{
+  "quiz": [
+    {
+      "question": "In insurance screening the uninformed insurer moves first with a menu of contracts. In the gift game the informed sender moves first. Why does sequential belief updating become central only in the latter?",
+      "answerOptions": [
+        {
+          "text": "Nature is a player only in signalling games, so only then do information sets span type nodes.",
+          "isCorrect": false,
+          "rationale": "Nature generates types in both Bayesian settings. What changes is the order: the informed party moving first can reveal type through the observed action."
+        },
+        {
+          "text": "Adverse selection has no private information; insurance payoffs are common knowledge, so beliefs never need updating.",
+          "isCorrect": false,
+          "rationale": "Insurance is the lecture's leading example of private risk types. The strategic difference is who moves first, not whether types exist."
+        },
+        {
+          "text": "If different types take different actions, the second-mover should update beliefs, which changes the informed party's incentives to choose those actions.",
+          "isCorrect": true,
+          "rationale": "When the informed party moves first, actions can convey information. Updating by the receiver feeds back into the sender's payoffs, so sequential rationality at the receiver's information set matters."
+        },
+        {
+          "text": "Subgame perfection already solves screening games, whereas gift games are simultaneous-move, so only then is Bayes' rule needed.",
+          "isCorrect": false,
+          "rationale": "The gift game is sequential, not simultaneous. Screening is \"straightforward\" because the uninformed party moves first, not because SPE is a complete substitute for PBE."
+        }
+      ],
+      "hint": "Ask who observes the first action, and whether that action can reveal type."
+    },
+    {
+      "question": "In the gift game, P2's information set links the Friend-gives and Enemy-gives nodes. Why does subgame perfection fail to rule out $(N_F, N_E, R)$?",
+      "answerOptions": [
+        {
+          "text": "There is only one subgame — the entire game — so every BNE is automatically SPE. $R$ is never tested by backward induction at a proper subgame.",
+          "isCorrect": true,
+          "rationale": "P2's information set is not a singleton and does not begin a proper subgame. SPE therefore adds nothing beyond BNE, and $R$ can be specified even though the gift is never seen."
+        },
+        {
+          "text": "$R$ is a best response in the proper subgame that starts at P2's information set, so SPE confirms the profile.",
+          "isCorrect": false,
+          "rationale": "That information set is not a subgame: it contains nodes from both of Nature's branches. There is no proper subgame in which to check $R$."
+        },
+        {
+          "text": "Bayes' rule forces $q = 0$ when the gift is unreached, so Reject is the unique sequentially rational action.",
+          "isCorrect": false,
+          "rationale": "An unreached information set makes Bayes undefined ($0/0$), not $q = 0$. SPE does not pin down off-path beliefs."
+        },
+        {
+          "text": "Enemy strictly prefers that P2 Reject, so SPE selects $R$ by backward induction on Enemy's payoff.",
+          "isCorrect": false,
+          "rationale": "Enemy is P1, not the player moving at that information set. Sequential rationality concerns P2's expected payoff given P2's beliefs, not Enemy's preference over $R$."
+        }
+      ],
+      "hint": "Ask whether P2's information set is itself a subgame."
+    },
+    {
+      "question": "Suppose Friend never gives a gift and Enemy always does. P2 observes a gift. Which conclusion is correct?",
+      "answerOptions": [
+        {
+          "text": "The gift information set is unexpected for a Friend, so Bayes does not apply and any $q$ is allowed.",
+          "isCorrect": false,
+          "rationale": "Enemy gives with probability one, so the information set is reached with probability $1-p > 0$. Bayes applies and pins down $q$."
+        },
+        {
+          "text": "P2 cannot distinguish types, so $q$ equals the prior $p$ and P2 Accepts whenever $p$ is large.",
+          "isCorrect": false,
+          "rationale": "That is pooling on $G$. Here only Enemy gives, so the posterior on Friend is not the prior."
+        },
+        {
+          "text": "$q = 0$ and P2 Rejects, but the profile is still a PBE because Enemy is happy to give once rejection is anticipated.",
+          "isCorrect": false,
+          "rationale": "With $R$, Enemy's payoff from $G$ is $-1$, while $N$ pays $0$. Enemy would deviate, so there is no PBE with this sender profile."
+        },
+        {
+          "text": "Bayes yields $q = 0$, so P2 Rejects. Enemy then gets $-1$ from giving versus $0$ from $N$, and therefore deviates. There is no PBE with this sender profile.",
+          "isCorrect": true,
+          "rationale": "On-path Bayes gives $\\Pr(F \\mid G) = 0$. Sequential rationality then requires $R$, which makes $G$ strictly worse for Enemy than $N$."
+        }
+      ],
+      "hint": "First form the posterior given which type actually gives; then check that type's payoff from giving."
+    },
+    {
+      "question": "Friend always gives a gift and Enemy never does, so a gift reveals Friend and P2 Accepts. Which statement about Enemy is correct?",
+      "answerOptions": [
+        {
+          "text": "Enemy gets $-1$ from an accepted gift, so $N$ is the unique best response and the profile cannot involve indifference.",
+          "isCorrect": false,
+          "rationale": "An accepted Enemy gift pays $(0,-1)$ for (P1, P2). Enemy's own payoff is $0$, not $-1$."
+        },
+        {
+          "text": "Enemy is indifferent: $N$ pays $0$, and $G$ followed by $A$ also pays $0$, so choosing $N$ is a best response.",
+          "isCorrect": true,
+          "rationale": "Friend strictly prefers $G$ (payoff $1 > 0$). Enemy's payoffs tie at $0$, so $N_E$ is sequentially rational. Bayes pins down $q = 1$ because only Friend gives."
+        },
+        {
+          "text": "Enemy strictly prefers $N$ because only Friend benefits from gifts, so a receiver who Accepts would immediately unravel the separating profile.",
+          "isCorrect": false,
+          "rationale": "Enemy does not strictly prefer $N$ when P2 Accepts: both $N$ and $G$ then pay $0$. Unravelling would require a profitable deviation."
+        },
+        {
+          "text": "The profile cannot be a PBE, because a PBE forbids indifference: every type must have a unique best action.",
+          "isCorrect": false,
+          "rationale": "Sequential rationality allows any best response, including an action that ties. Indifference is exactly why $N_E$ is consistent with P2 Accepting."
+        }
+      ],
+      "hint": "Compare Enemy's payoff from $N$ with the payoff from $G$ followed by $A$."
+    },
+    {
+      "question": "Both types give a gift, so P2's information set is on-path. For which priors can P2's Accepting, together with these sender strategies, be a PBE?",
+      "answerOptions": [
+        {
+          "text": "When $p \\geq 1/2$: Accept is a best response to $q = p$, and neither type then strictly prefers $N$.",
+          "isCorrect": true,
+          "rationale": "Pooling on $G$ yields posterior $q = p$. P2 Accepts if $q \\geq 1/2$. Given Accept, Friend strictly prefers $G$ and Enemy is willing to give."
+        },
+        {
+          "text": "Only if $p = 1$. Otherwise Bayes cannot assign a posterior, because P2 still cannot see the type.",
+          "isCorrect": false,
+          "rationale": "Not seeing the type is why P2 has an information set, not why Bayes fails. Both types give, so the posterior is well-defined and equals $p$."
+        },
+        {
+          "text": "For every $p$, because the gift is on-path and off-path beliefs can be chosen freely to support Accept.",
+          "isCorrect": false,
+          "rationale": "There is no off-path information set when both types give. Beliefs are pinned down at $q = p$, so Accept is sequentially rational only for large enough $p$."
+        },
+        {
+          "text": "When $p \\leq 1/2$, so P2 is pessimistic enough that Accepting is safe against an Enemy.",
+          "isCorrect": false,
+          "rationale": "Pessimism about Friend makes Reject, not Accept, sequentially rational. The lecture's pooling-on-$G$ PBE requires $p \\geq 1/2$."
+        }
+      ],
+      "hint": "After pooling, the posterior equals the prior. Check P2's best reply, then whether either type wants to switch to $N$."
+    },
+    {
+      "question": "Both types choose $N$, so P2 never sees a gift. Which specification can be a PBE?",
+      "answerOptions": [
+        {
+          "text": "Any belief $q$ after $G$, with P2 Accepting: Bayes does not apply, and Accept is always sequentially rational once beliefs are free.",
+          "isCorrect": false,
+          "rationale": "Free beliefs still have to make P2's action a best response, and that action must deter giving. If P2 Accepts, Friend gets $1 > 0$ and would deviate to $G$."
+        },
+        {
+          "text": "$q \\leq 1/2$ after $G$ and P2 Rejects. Both types then prefer $N$ (payoff $0$) to a rejected gift (payoff $-1$). This works for any prior $p$.",
+          "isCorrect": true,
+          "rationale": "Off-path, any $q$ is allowed, but Reject requires $q \\leq 1/2$. Given $R$, neither type wants to give, so pooling on $N$ is a PBE."
+        },
+        {
+          "text": "$q = p$ after $G$ by Bayes' rule, even though $G$ is unreached, and P2 Rejects for every $p$.",
+          "isCorrect": false,
+          "rationale": "Bayes does not apply off-path. Also, if one imposed $q = p$, Reject would not be sequentially rational when $p > 1/2$."
+        },
+        {
+          "text": "$q = 1$ after $G$ and P2 Rejects, because an unexpected gift must have come from a Friend.",
+          "isCorrect": false,
+          "rationale": "If $q = 1$, sequential rationality requires Accept, not Reject. And $q = 1$ is the intuitive-criterion restriction, which then destroys this pooling profile."
+        }
+      ],
+      "hint": "Unreached information sets leave beliefs free, but those beliefs must make P2's action optimal and must actually deter giving."
+    },
+    {
+      "question": "In the pooling PBE where both types choose $N$ and P2 would Reject a gift, consider an unexpected gift. Under the most favourable response, which types could strictly gain, and what does the intuitive criterion then require?",
+      "answerOptions": [
+        {
+          "text": "Only Enemy could gain, because P2's off-path belief already treats an unexpected gift as coming from Enemy. IC therefore sets $q = 0$.",
+          "isCorrect": false,
+          "rationale": "The equilibrium's suspicious belief is what IC challenges. Under the most favourable reply, Enemy still cannot strictly gain."
+        },
+        {
+          "text": "Both types could gain equally from Accept, so IC does not restrict $q$ and the pooling PBE survives.",
+          "isCorrect": false,
+          "rationale": "Enemy's best payoff from $G$ is $0$, the same as equilibrium. IC restricts beliefs only when some types could never benefit."
+        },
+        {
+          "text": "Only Friend could strictly gain (Enemy gets at most $0$, matching the equilibrium payoff). IC therefore puts $q = 1$; P2 Accepts, and Friend wants to deviate.",
+          "isCorrect": true,
+          "rationale": "Friend could get $+1$ if accepted; Enemy cannot beat $0$ even under Accept. Excluding Enemy forces Accept, which unravels pooling on $N$."
+        },
+        {
+          "text": "IC does not apply, because the gift information set is off-path and PBE already allows any beliefs there.",
+          "isCorrect": false,
+          "rationale": "PBE leaves off-path beliefs free; the intuitive criterion is a refinement that restricts those beliefs. That is precisely when it applies."
+        }
+      ],
+      "hint": "Compare each type's equilibrium payoff with the best payoff $G$ could yield if P2 responded favourably."
+    },
+    {
+      "question": "Suppose education cost $4$ for both types, with the same jobs and wages as in the lecture ($M$ pays $10$, $C$ pays $4$). Why would the separating profile — $H$ chooses $E$, $L$ chooses $N$; firm offers $M$ after $E$ and $C$ after $N$ — then fail?",
+      "answerOptions": [
+        {
+          "text": "$H$ would no longer want $E$, because $10 - 4 = 6$ is worse than $4$ from a clerical job without education.",
+          "isCorrect": false,
+          "rationale": "$6 > 4$, so $H$ would still prefer $E$. The problem is $L$'s incentive to mimic, not $H$'s incentive to separate."
+        },
+        {
+          "text": "Bayes would no longer give $\\Pr(H \\mid E) = 1$ even if the strategies were unchanged, because education does not affect productivity.",
+          "isCorrect": false,
+          "rationale": "On-path beliefs follow strategies, not productivity. If only $H$ chose $E$, Bayes would still yield $\\Pr(H \\mid E) = 1$."
+        },
+        {
+          "text": "The firm would offer $C$ after $E$, because in Spence education is worthless as human capital and so cannot be rewarded.",
+          "isCorrect": false,
+          "rationale": "The firm rewards inferred type, not skills acquired. If $E$ revealed $H$, $M$ would still beat $C$ for the firm ($10 > 4$)."
+        },
+        {
+          "text": "$L$ would get $10 - 4 = 6$ from mimicking $H$, which beats $4$ from $N$, so $L$ would deviate to $E$. Single-crossing is what had prevented this.",
+          "isCorrect": true,
+          "rationale": "With identical costs, $L$ values the managerial job after $E$ just as $H$ does. Differential costs were essential for $L$ to prefer $N$ while $H$ prefers $E$."
+        }
+      ],
+      "hint": "Hold the firm's replies fixed and check whether the low type still prefers not to take the high type's action."
+    },
+    {
+      "question": "In pooling where both types choose $N$ and the firm offers $C$ after $N$, education is off-path. The firm's payoff is $10$ from $M$ if the worker is $H$ and $0$ if $L$, versus $4$ from $C$ either way. For which off-path beliefs $q_E = \\Pr(H \\mid E)$ is offering $C$ after $E$ sequentially rational?",
+      "answerOptions": [
+        {
+          "text": "Any $q_E$, because Bayes is undefined off-path, so sequential rationality does not constrain the firm's action after $E$.",
+          "isCorrect": false,
+          "rationale": "PBE still requires sequential rationality at every information set. Off-path freedom is about beliefs, not about playing a suboptimal action given those beliefs."
+        },
+        {
+          "text": "Only $q_E = 1/3$, the prior, because even off-path the firm should not abandon the prior.",
+          "isCorrect": false,
+          "rationale": "The prior is the on-path posterior after $N$, where both types pool. After unexpected $E$, Bayes does not pin beliefs to $1/3$."
+        },
+        {
+          "text": "$q_E \\leq 2/5$, so the expected payoff from $M$ is at most $4$ and $C$ is a best response.",
+          "isCorrect": true,
+          "rationale": "$E[u_F \\mid M] = 10q_E$ and $E[u_F \\mid C] = 4$. Then $C$ is optimal iff $q_E \\leq 2/5$. Those beliefs support $(NN, CC)$ as a PBE."
+        },
+        {
+          "text": "$q_E \\geq 2/5$, so the firm is optimistic enough about $H$ that offering $C$ is safe.",
+          "isCorrect": false,
+          "rationale": "Optimism about $H$ makes $M$ more attractive, not $C$. The inequality runs the other way."
+        }
+      ],
+      "hint": "Compare the firm's expected payoff from $M$ with the sure payoff from $C$. Bayes does not pin down the off-path posterior."
+    },
+    {
+      "question": "In pooling $(NN, CC)$ both types get payoff $4$. Education's best possible payoff is $6$ for $H$ (if offered $M$) and $3$ for $L$. What does the intuitive criterion conclude?",
+      "answerOptions": [
+        {
+          "text": "Put $\\Pr(L \\mid E) = 1$, because $L$ has higher education costs and so is more likely to have chosen the unexpected action.",
+          "isCorrect": false,
+          "rationale": "That is the \"suspicious\" off-path belief the lecture criticises. IC excludes types who could never benefit, which is $L$, not $H$."
+        },
+        {
+          "text": "Put $\\Pr(H \\mid E) = 1$. The firm then offers $M$, type $H$ wants to deviate, and pooling fails IC.",
+          "isCorrect": true,
+          "rationale": "$H$ could gain ($6 > 4$) and $L$ could not ($3 < 4$). IC therefore attributes $E$ to $H$, which makes $M$ sequentially rational and unravels pooling."
+        },
+        {
+          "text": "IC does not apply, because $(NN, CC)$ is already a pure-strategy BNE of the Bayesian normal form.",
+          "isCorrect": false,
+          "rationale": "Being a BNE/PBE is what makes the profile a candidate. IC is a refinement used to drop PBE that rely on implausible off-path beliefs."
+        },
+        {
+          "text": "Both types could benefit from $E$, so off-path beliefs remain unrestricted and pooling survives IC.",
+          "isCorrect": false,
+          "rationale": "$L$'s best payoff from $E$ is $3 < 4$. $L$ cannot benefit, so IC does restrict beliefs."
+        }
+      ],
+      "hint": "Under the most favourable job after education, compare each type's best deviation payoff with the pooling payoff."
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Dynamic Incomplete Information and Sequential Rationality",
+      "Perfect Bayesian Equilibrium",
+      "Bayes' Rule and Off-Path Beliefs",
+      "Pooling and Separating Equilibria",
+      "The Gift Game",
+      "Intuitive Criterion",
+      "Spence Signalling Model",
+      "Education as a Signal"
+    ],
+    "followUp": [
+      "Costless signalling",
+      "Whether the receiver's response alone can discipline the sender"
+    ]
+  }
+}

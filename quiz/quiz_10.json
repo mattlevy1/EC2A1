@@ -1,1 +1,280 @@
-{"quiz": []}
+{
+  "quiz": [
+    {
+      "question": "Anyone can write anything on a CV at no cost, and every applicant prefers a higher salary. Why might a candidate who cannot fly still refuse to claim to be a pilot?",
+      "answerOptions": [
+        {
+          "text": "A false CV is a costly signal, like education in Spence: only true pilots can afford to write the word 'pilot'.",
+          "isCorrect": false,
+          "rationale": "The lecture's point is that the CV itself is costless. Credibility does not come from a differential writing cost."
+        },
+        {
+          "text": "Cheap talk can never convey information, so the airline ignores the CV and assigns jobs at random; claiming 'pilot' therefore cannot help.",
+          "isCorrect": false,
+          "rationale": "Costless messages can convey information when types disagree about which action they want. Babbling is not the only possibility."
+        },
+        {
+          "text": "The airline will assign the claimed job. Being put in the cockpit is worse for a non-pilot than the lower-paid job they can actually do.",
+          "isCorrect": true,
+          "rationale": "Talk is cheap, but the receiver's action is not. A type that cannot perform the high action will not mimic if that action is worse for them than the low action."
+        },
+        {
+          "text": "The airline pays the claimed salary regardless of assignment, so a non-pilot is indifferent among all CV statements.",
+          "isCorrect": false,
+          "rationale": "Payoffs come from the job the airline assigns, not from the words on the CV. That assignment is what disciplines cheap claims."
+        }
+      ],
+      "hint": "The CV itself does not enter payoffs. Ask what the airline does after reading it."
+    },
+    {
+      "question": "The receiver's payoff is $-(a-\\theta)^2$ and the sender's is $-(a-\\theta-b)^2$ with $b=2/3$. If the receiver already knew $\\theta=1$, which statement is correct?",
+      "answerOptions": [
+        {
+          "text": "Both want $a=1$, so there is no conflict and full revelation would be automatic even with costless messages.",
+          "isCorrect": false,
+          "rationale": "The receiver's ideal is the state, but the sender's ideal is the state plus $2/3$. Conflict remains even under complete information about $\\theta$."
+        },
+        {
+          "text": "The receiver wants $a=1$ while the sender wants $a=5/3$, so the sender is tempted to talk the receiver into a higher action than the true state warrants.",
+          "isCorrect": true,
+          "rationale": "Sender type $\\theta$ wants $a=\\theta+2/3$. For $\\theta=1$ that is $5/3$, strictly above the receiver's target of $1$. That upward bias is why exaggeration is tempting."
+        },
+        {
+          "text": "The receiver wants $a=5/3$ while the sender wants $a=1$: the bias term is a penalty the receiver applies to inflated actions.",
+          "isCorrect": false,
+          "rationale": "The bias is in the sender's payoff, not the receiver's. The receiver always wants to match $\\theta$."
+        },
+        {
+          "text": "Both want $a=5/3$, because the bias $b$ shifts the state that quadratic loss is measured against for every player.",
+          "isCorrect": false,
+          "rationale": "Only the sender's loss function is shifted by $b$. The receiver's target remains $a=\\theta$."
+        }
+      ],
+      "hint": "Write down each player's ideal action when $\\theta$ is known, then compare them."
+    },
+    {
+      "question": "After a message $m$, the receiver's beliefs are $q(\\theta=0 \\mid m)=1/2$ and $q(\\theta=2 \\mid m)=1/2$. Which action does the receiver choose?",
+      "answerOptions": [
+        {
+          "text": "$a=0$, because unused or ambiguous messages are always treated as coming from the lowest type.",
+          "isCorrect": false,
+          "rationale": "Putting probability 1 on $\\theta=0$ is an off-path convention used in some PBEs. Here the posterior is not concentrated on type 0."
+        },
+        {
+          "text": "$a=2$, matching the highest type in the support so as to satisfy the upward-biased sender.",
+          "isCorrect": false,
+          "rationale": "The receiver maximises own expected payoff, not the sender's. There is no reason to choose the highest state in the support."
+        },
+        {
+          "text": "$a=2/3$, undoing the sender's bias so that the sender will not want to exaggerate in the first place.",
+          "isCorrect": false,
+          "rationale": "The receiver cannot commit to a bias-adjusted rule. Sequential rationality uses the receiver's quadratic loss, which does not include $b$."
+        },
+        {
+          "text": "$a=1$, matching the posterior expected state under quadratic loss.",
+          "isCorrect": true,
+          "rationale": "Expected squared error is minimised at the posterior mean: $E[\\theta \\mid m] = (1/2)\\cdot 0 + (1/2)\\cdot 2 = 1$."
+        }
+      ],
+      "hint": "Use the receiver's own payoff. The sender's bias does not enter this choice."
+    },
+    {
+      "question": "All types send the same message $\\bar{m}$, so the receiver chooses $a(\\bar{m})=1$. Unused messages are treated as coming from $\\theta=0$ and therefore yield $a=0$. Which statement about this candidate is correct?",
+      "answerOptions": [
+        {
+          "text": "Each type's ideal action is closer to $1$ than to $0$, so nobody gains by triggering the unused-message action.",
+          "isCorrect": true,
+          "rationale": "Ideals are $2/3$, $5/3$, and $8/3$. Distances to $1$ are smaller than distances to $0$ for every type, so babbling is sequentially rational given these off-path beliefs."
+        },
+        {
+          "text": "It is not a PBE: type 2's ideal is $8/3$, so type 2 strictly prefers to send an unused message and obtain $a=0$.",
+          "isCorrect": false,
+          "rationale": "$8/3$ is even farther from $0$ than from $1$. Type 2 dislikes the unused-message action more than the other types do."
+        },
+        {
+          "text": "Babbling is a PBE only if unused messages yield $a=2$, which type 0 would never mimic.",
+          "isCorrect": false,
+          "rationale": "If unused messages yielded $a=2$, type 1 (ideal $5/3$) would prefer to deviate. The lecture supports babbling with a low off-path action, not a high one."
+        },
+        {
+          "text": "Costless messages cannot affect beliefs, so every cheap-talk game has only this equilibrium.",
+          "isCorrect": false,
+          "rationale": "Babbling is always available, but it is not the only PBE here. A more informative partition can also be supported."
+        }
+      ],
+      "hint": "Compare each type's ideal to the two actions the receiver actually plays, on and off the path."
+    },
+    {
+      "question": "Suppose each type $\\theta \\in \\{0,1,2\\}$ sends a distinct message and the receiver, after $m_k$, is sure the state is $k$ and therefore chooses $a=k$. Why does this fail as a PBE?",
+      "answerOptions": [
+        {
+          "text": "Type 2's ideal is $8/3$, which is closer to $0$ than to $2$, so type 2 mimics type 0.",
+          "isCorrect": false,
+          "rationale": "$8/3$ is closest to $2$ among $\\{0,1,2\\}$. The high type is not the one who wants to mimic downward."
+        },
+        {
+          "text": "Type 0's ideal is $2/3$, which is closer to $1$ than to $0$, so type 0 strictly prefers to send type 1's message.",
+          "isCorrect": true,
+          "rationale": "Truth-telling yields $a=0$ and payoff $-4/9$; mimicking type 1 yields $a=1$ and payoff $-1/9$. Full separation unravels from the bottom."
+        },
+        {
+          "text": "The receiver would choose $a=k+2/3$ after $m_k$, so the induced actions cannot equal the states.",
+          "isCorrect": false,
+          "rationale": "The receiver's ideal is the state, not the state plus $b$. After a fully revealing message the receiver plays $a=k$."
+        },
+        {
+          "text": "Type 0 prefers $a=0$ to $a=1$, but type 1 prefers to mimic type 0, so the lowest two types swap messages.",
+          "isCorrect": false,
+          "rationale": "Type 0 prefers $a=1$ to $a=0$. The profitable deviation is mimicking upward, not downward."
+        }
+      ],
+      "hint": "Start with the lowest type and compare the action from truth-telling with the action from sending the neighbouring type's message."
+    },
+    {
+      "question": "Types 0 and 1 send $m_{01}$ and type 2 sends $m_2$, so the receiver chooses $a(m_{01})=1/2$ and $a(m_2)=2$. Which type has a profitable deviation?",
+      "answerOptions": [
+        {
+          "text": "Type 0, because $2/3$ is closer to $2$ than to $1/2$, so type 0 mimics type 2.",
+          "isCorrect": false,
+          "rationale": "Type 0's ideal $2/3$ is much closer to $1/2$ than to $2$. The lowest type is not the one tempted to claim to be the highest."
+        },
+        {
+          "text": "Type 2, because upward bias means high types prefer to 'move down' into the pool at $a=1/2$.",
+          "isCorrect": false,
+          "rationale": "The bias is upward: high types want higher actions, not lower ones. Type 2's ideal $8/3$ is closer to $2$ than to $1/2$."
+        },
+        {
+          "text": "Type 1, because $5/3$ is much closer to $2$ than to $1/2$, so type 1 mimics type 2.",
+          "isCorrect": true,
+          "rationale": "Pooling yields payoff $-49/36$; mimicking type 2 yields $-4/36$. The middle type wants to 'move up' into the high action."
+        },
+        {
+          "text": "No type: this partition is the most informative PBE, because it reveals whether $\\theta=2$.",
+          "isCorrect": false,
+          "rationale": "Revealing the top type is not incentive-compatible for the middle type. The lecture's PBE pools the high types, not the low types."
+        }
+      ],
+      "hint": "The geometric picture compares each type's ideal with the two actions this partition would induce."
+    },
+    {
+      "question": "Type 0 sends $m_0$ and types 1 and 2 send $m_{12}$, so the receiver chooses $a(m_0)=0$ and $a(m_{12})=3/2$. Unused messages also yield $a=0$. Does type 0 want to join the pool?",
+      "answerOptions": [
+        {
+          "text": "Yes: $2/3$ is closer to $3/2$ than to $0$, so type 0 mimics the high types.",
+          "isCorrect": false,
+          "rationale": "$|2/3-0|=2/3 < |2/3-3/2|=5/6$. Type 0's ideal is closer to the low action."
+        },
+        {
+          "text": "Yes, but only because unused messages yield $a=2$, which type 0 likes even more than $3/2$.",
+          "isCorrect": false,
+          "rationale": "Unused messages are specified to yield $a=0$, not $a=2$. Type 0's comparison is between $0$ and $3/2$."
+        },
+        {
+          "text": "No: type 0's payoff at $a=0$ is $-4/9$, which is worse than the payoff at $a=3/2$.",
+          "isCorrect": false,
+          "rationale": "$-4/9=-16/36$ is better than $-25/36$. Mixing up which fraction is larger would reverse type 0's incentive."
+        },
+        {
+          "text": "No: $2/3$ is closer to $0$ than to $3/2$, so type 0 strictly prefers to separate.",
+          "isCorrect": true,
+          "rationale": "Separating yields $-4/9$; pooling yields $-25/36$. The lowest type is willing to accept the low action that others will not mimic."
+        }
+      ],
+      "hint": "Compare type 0's ideal with the two on-path actions; quadratic loss ranks them by distance."
+    },
+    {
+      "question": "In the PBE where type 0 separates at $a=0$ and types 1 and 2 pool at $a=3/2$, why does type 2 not send a third, unused message?",
+      "answerOptions": [
+        {
+          "text": "Unused messages are believed to come from type 0 and therefore yield $a=0$, which type 2 does not want.",
+          "isCorrect": true,
+          "rationale": "The lecture specifies $q(\\theta=0 \\mid m')=1$ for unused $m'$, so $a(m')=0$. Type 2 prefers $3/2$ to $0$, so the spare message is not a profitable deviation."
+        },
+        {
+          "text": "Type 2 is indifferent between $a=3/2$ and $a=2$, so there is no strict gain from being believed as the high type.",
+          "isCorrect": false,
+          "rationale": "Type 2's ideal is $8/3$, which is closer to $2$ than to $3/2$. Indifference is not what stops the deviation; off-path beliefs are."
+        },
+        {
+          "text": "Type 2's ideal is $3/2$, so type 2 does not want the receiver to choose $a=2$ even if that message were believed.",
+          "isCorrect": false,
+          "rationale": "Type 2's ideal is $8/3$, not $3/2$. The pooling action is a compromise, not type 2's favourite."
+        },
+        {
+          "text": "Messages are costless, so adding a third message cannot change the receiver's action: $a$ is pinned down by $\\theta$ alone.",
+          "isCorrect": false,
+          "rationale": "The receiver's action depends on beliefs about $\\theta$, which can depend on the message. Costless does not mean irrelevant."
+        }
+      ],
+      "hint": "Look at how the lecture specifies beliefs after a message that nobody is supposed to send."
+    },
+    {
+      "question": "Why can the lowest type separate while types 1 and 2 cannot credibly tell themselves apart?",
+      "answerOptions": [
+        {
+          "text": "The lowest type has the largest bias, so exaggerating is most costly for type 0.",
+          "isCorrect": false,
+          "rationale": "Bias $b=2/3$ is the same for every type. What differs is how far each ideal sits from the actions a partition would induce."
+        },
+        {
+          "text": "High types have a downward bias, so they prefer pooling at a low action while type 0 prefers to claim to be high.",
+          "isCorrect": false,
+          "rationale": "The bias is upward for all types. High types want to 'move up'; they are not the ones volunteering for the low action."
+        },
+        {
+          "text": "Upward bias makes a claim to be a higher type tempting for the type just below. The lowest type can be believed because it will accept a low action that others will not mimic.",
+          "isCorrect": true,
+          "rationale": "That is why full separation and the $\\{0,1\\}$ pool fail, while separating type 0 and pooling $\\{1,2\\}$ is a PBE — the most informative one."
+        },
+        {
+          "text": "Quadratic loss forces $a=E[\\theta \\mid m]$ to equal the true state whenever any type separates, so only babbling can be a PBE.",
+          "isCorrect": false,
+          "rationale": "The receiver matches the expected state given the message, which equals the true state only if that message fully reveals. Partial pooling is consistent with quadratic loss."
+        }
+      ],
+      "hint": "Ask which types would want to mimic a neighbour if that neighbour's message produced a higher action."
+    },
+    {
+      "question": "In Spence, every type prefers the managerial job to the clerical job. In this cheap-talk game, type 0 prefers $a=0$ to actions above $4/3$. What does that difference mean for credibility?",
+      "answerOptions": [
+        {
+          "text": "Cheap talk is credible because messages are costless, whereas Spence needs costs; the $4/3$ cutoff is therefore irrelevant.",
+          "isCorrect": false,
+          "rationale": "Costlessness is what makes cheap talk harder, not easier. Credibility requires some types to prefer the low action."
+        },
+        {
+          "text": "If education were equally costly in Spence, a separating PBE would still exist, because jobs differ in salary just as actions differ here.",
+          "isCorrect": false,
+          "rationale": "The lecture's point is the opposite: without a differential cost, every type would take the high job, and separation could not exist."
+        },
+        {
+          "text": "Both models rely on differential costs. The $4/3$ threshold is type 0's education cost, relabelled as an action.",
+          "isCorrect": false,
+          "rationale": "Cheap talk has no message cost. The $4/3$ figure is the action at which type 0 is indifferent with $a=0$, a differential-response condition."
+        },
+        {
+          "text": "Cheap talk needs partially aligned incentives: some types must prefer the low action. Equal-cost education in Spence would be like cheap talk in which nobody refuses the high outcome, so separation would fail.",
+          "isCorrect": true,
+          "rationale": "Signalling gets credibility from differential cost; cheap talk from differential response. Type 0's preference for $a=0$ over $a>4/3$ is what makes a low-action claim believable."
+        }
+      ],
+      "hint": "Ask whether every type wants the same high outcome. If they do, a costless claim to be high cannot be informative."
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Cheap Talk versus Costly Signalling",
+      "Airline CV Motivation",
+      "Sender–Receiver Setup and Bias",
+      "Perfect Bayesian Equilibrium with Messages",
+      "Receiver's Quadratic-Loss Best Response",
+      "Babbling Equilibrium",
+      "Failure of Full Separation",
+      "Partial Pooling Equilibria",
+      "Credibility by Differential Response"
+    ],
+    "followUp": [
+      "In-class review of earlier course material"
+    ]
+  }
+}

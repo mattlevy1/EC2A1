@@ -1,1 +1,281 @@
-{"quiz": []}
+{
+  "quiz": [
+    {
+      "question": "A proposed extensive form groups two of Player 2's decision nodes in one information set. From the left node the available actions are $X$ and $Y$; from the right node they are $X$, $Y$, and $Z$. Which diagnosis is correct?",
+      "answerOptions": [
+        {
+          "text": "The tree is invalid because an information set may contain at most one node.",
+          "isCorrect": false,
+          "rationale": "That is the definition of perfect information, not a requirement on every extensive form. Multi-node information sets are how imperfect information is modelled."
+        },
+        {
+          "text": "The tree is invalid because each node except the root must have a unique immediate predecessor.",
+          "isCorrect": false,
+          "rationale": "Unique predecessors are a separate tree rule. Nothing in the stem says a node has two parents."
+        },
+        {
+          "text": "The tree is invalid: every node in an information set must have the same number of branches and the same action labels.",
+          "isCorrect": true,
+          "rationale": "Rule 5 requires identical action menus at every node in the set. The extra action $Z$ on the right means Player 2 could distinguish the nodes by which actions are available."
+        },
+        {
+          "text": "The tree is valid so long as both nodes are assigned to Player 2 and payoffs are written at every terminal.",
+          "isCorrect": false,
+          "rationale": "Same player is necessary (Rule 4) but not sufficient. Unequal action labels still violate the information-set rules."
+        }
+      ],
+      "hint": "Ask what Player 2 would infer if one node offered an action the other did not."
+    },
+    {
+      "question": "Player 1 chooses IN or OUT at the root. OUT ends the game. After IN, Player 2 chooses $L$ or $H$, and Player 1 then chooses $L$ or $H$ at a separate node in each of those two histories (perfect information). Which statement about Player 1's pure strategies is correct?",
+      "answerOptions": [
+        {
+          "text": "Player 1 has $2\\times 2\\times 2=8$ pure strategies, because a strategy must name an action at every information set — including the two later nodes after OUT.",
+          "isCorrect": true,
+          "rationale": "Three information sets with two actions each give eight complete contingent plans. Unreached nodes are still part of the strategy."
+        },
+        {
+          "text": "Player 1 has only three pure strategies — OUT, (IN then $L$), and (IN then $H$) — because later nodes are irrelevant once OUT is chosen.",
+          "isCorrect": false,
+          "rationale": "That counts plans only along paths that can be reached given the plan itself. A strategy must still specify behaviour at information sets that the plan leaves unreached."
+        },
+        {
+          "text": "Player 1 has four pure strategies, because the two later nodes can be treated as one information set once OUT is available.",
+          "isCorrect": false,
+          "rationale": "Under perfect information those later nodes remain distinct singleton information sets. Bundling them would be a different (imperfect-information) game."
+        },
+        {
+          "text": "Player 1 has infinitely many pure strategies, because any mixture over $L$ and $H$ at a later node counts as a distinct pure strategy.",
+          "isCorrect": false,
+          "rationale": "Mixtures are behavioural (or mixed) strategies. A pure strategy puts probability 1 on one action at each information set."
+        }
+      ],
+      "hint": "Count information sets first, then ask whether unreached sets still need an action specified."
+    },
+    {
+      "question": "Player 1 chooses $H$ or $T$. Player 2 observes that choice and then chooses $H$ or $T$. Player 1's payoff is 1 if the coins match and 0 if they differ; Player 2's payoff is 1 if they differ and 0 if they match. Which statement is correct?",
+      "answerOptions": [
+        {
+          "text": "The game is strategically the same as simultaneous matching pennies, so the only Nash equilibrium is both players mixing 50-50.",
+          "isCorrect": false,
+          "rationale": "Observation gives Player 2 two information sets and four pure strategies. The normal form is larger, and pure-strategy equilibria exist."
+        },
+        {
+          "text": "Player 2 has a second-mover disadvantage: the unique pure NE has Player 1 matching and earning 1.",
+          "isCorrect": false,
+          "rationale": "Player 2 wants to mismatch. Observing Player 1 lets Player 2 guarantee a win, which is a second-mover advantage."
+        },
+        {
+          "text": "Sequentially rational play requires Player 2 to match at both nodes, so $(H,HH)$ and $(T,TT)$ are the pure-strategy Nash equilibria.",
+          "isCorrect": false,
+          "rationale": "Matching would give Player 2 a payoff of 0. Sequential rationality requires mismatching at whichever node is reached."
+        },
+        {
+          "text": "Player 2's plan that mismatches after both $H$ and $T$ is a best response to either of Player 1's pure actions, so there are pure-strategy Nash equilibria in which Player 1 earns 0 from both $H$ and $T$.",
+          "isCorrect": true,
+          "rationale": "That plan is TH. Against it, Player 1 gets 0 from $H$ and from $T$, so both $(H,\\text{TH})$ and $(T,\\text{TH})$ are pure NE. Player 2 is always mismatching on the path."
+        }
+      ],
+      "hint": "List Player 2's four contingent plans and evaluate each against Player 1 playing $H$ and against Player 1 playing $T$."
+    },
+    {
+      "question": "In the lecture's $D$/$U$ game, $(DB,Y)$ is a Nash equilibrium. Suppose Player 1 actually opens $U$ and then plays $B$. What goes wrong with Player 2's plan $Y$?",
+      "answerOptions": [
+        {
+          "text": "Nothing: Nash equilibrium already requires a best response at every information set, so $Y$ must still be optimal after $B$.",
+          "isCorrect": false,
+          "rationale": "Nash equilibrium only requires optimality on the path. After $D$, Player 2's information set is unreached, so $Y$ was never tested."
+        },
+        {
+          "text": "After $B$, Player 2's payoff is 0 from $Y$ and 1 from $X$, so once that information set is reached Player 2 would choose $X$ rather than carry out $Y$.",
+          "isCorrect": true,
+          "rationale": "$Y$ is only weakly optimal while the subgame is unreached (both $X$ and $Y$ pay 6 after $D$). Ex-interim, Player 2 would deviate to $X$."
+        },
+        {
+          "text": "Player 1's opening $U$ is already a profitable deviation against $Y$, so $(DB,Y)$ was never a Nash equilibrium.",
+          "isCorrect": false,
+          "rationale": "Against $Y$, $UB$ pays 2, the same as $D$, and $UA$ pays only 1. The deviation is not strictly profitable, which is why the profile is a NE."
+        },
+        {
+          "text": "Because $DA$ and $DB$ give identical payoffs, specifying $B$ is not part of a well-defined strategy.",
+          "isCorrect": false,
+          "rationale": "Identical on-path payoffs do not remove the later information set. $B$ versus $A$ is exactly the contingent plan that must be specified."
+        }
+      ],
+      "hint": "Compare Player 2's two actions in the subgame that $U$ actually opens, not at the unreached root outcome."
+    },
+    {
+      "question": "In the lecture's backward-induction tree, Player 2 at node 2.2 chooses between $c$ (then Player 1 faces a choice between continuations paying $(3,3)$ and $(2,0)$) and $d$ (payoffs $(6,2)$). Which statement is correct?",
+      "answerOptions": [
+        {
+          "text": "Player 2 should pick $d$, because 6 exceeds the 3 that Player 1 would get after $E$.",
+          "isCorrect": false,
+          "rationale": "The 6 is Player 1's payoff, not Player 2's. Favourite-cell thinking also skips what Player 1 will actually do after $c$."
+        },
+        {
+          "text": "Player 2 is indifferent, because node 2.2 lies off the equilibrium path once Player 1 has chosen $U$.",
+          "isCorrect": false,
+          "rationale": "Node 2.2 follows $D$, not $U$. Backward induction selects $D$ at the root, so 2.2 is on the path; Player 2's comparison there is still $3>2$."
+        },
+        {
+          "text": "After $c$, Player 1 chooses $E$ rather than $F$. That continuation gives Player 2 a payoff of 3, which beats 2 from $d$.",
+          "isCorrect": true,
+          "rationale": "Work from the end: $3>2$ for Player 1 at 1.2, so $E$ follows $c$. Player 2 then compares 3 with the payoff 2 from $d$."
+        },
+        {
+          "text": "The algorithm starts at the root, so Player 2 copies Player 1's planned choice of $D$ and is therefore willing to pick either branch.",
+          "isCorrect": false,
+          "rationale": "Backward induction starts at nodes that lead only to terminals and works toward the root. Player 2's choice at 2.2 is solved before the root, not copied from it."
+        }
+      ],
+      "hint": "Replace each continuation by the later player's choice before comparing payoffs at 2.2."
+    },
+    {
+      "question": "In the $D$/$U$ game, Player 2's nodes after $A$ and after $B$ form a single information set. Why is there no proper subgame that begins at either of those nodes?",
+      "answerOptions": [
+        {
+          "text": "A subgame cannot begin at a node that might be off the equilibrium path.",
+          "isCorrect": false,
+          "rationale": "Subgames are a property of the tree, not of a particular equilibrium. Off-path nodes can still root a subgame if the other conditions hold."
+        },
+        {
+          "text": "A subgame must start at a single decision node and must not split an information set; including one of Player 2's nodes would omit the other node in the same set.",
+          "isCorrect": true,
+          "rationale": "Starting after $A$ (or after $B$) would take one node from Player 2's information set and leave the other out. The only subgames are the whole game and the game that starts after $U$, before $A$/$B$."
+        },
+        {
+          "text": "Only the root can begin a subgame whenever some player has more than one information set.",
+          "isCorrect": false,
+          "rationale": "The subgame after $U$ is a proper subgame even though Player 2 has a multi-node information set inside it. The issue is splitting that set, not having multiple sets."
+        },
+        {
+          "text": "Each of Player 2's nodes has a unique predecessor, so each already begins a subgame by the tree rules.",
+          "isCorrect": false,
+          "rationale": "Unique predecessors make the graph a tree. They do not stop an information set from being split, which is the extra requirement for a subgame."
+        }
+      ],
+      "hint": "Check the three subgame conditions, especially whether every node of an information set would be included."
+    },
+    {
+      "question": "After $U$ in the lecture's example, the simultaneous-move subgame is $A$/$B$ versus $X$/$Y$ with payoffs $(A,X)=(3,4)$, $(A,Y)=(1,4)$, $(B,X)=(2,1)$, $(B,Y)=(2,0)$. At the root, $D$ pays $(2,6)$. Which profile is an SPNE of the whole game?",
+      "answerOptions": [
+        {
+          "text": "$(DB,Y)$, because it is a Nash equilibrium of the whole game and $Y$ holds Player 1 to a payoff of 2.",
+          "isCorrect": false,
+          "rationale": "It is a NE of the whole game, but $Y$ is not a Nash equilibrium action in the subgame after $U$. SPNE requires equilibrium in every subgame."
+        },
+        {
+          "text": "$(DA,Y)$, because Player 2 is indifferent between $X$ and $Y$ whenever Player 1 plays $A$.",
+          "isCorrect": false,
+          "rationale": "Indifference after $A$ does not make $(A,Y)$ an equilibrium of the subgame: against $Y$, Player 1 prefers $B$ ($2>1$)."
+        },
+        {
+          "text": "$(UB,X)$, because $X$ is better than $Y$ against $B$ and a strategy profile that uses $X$ is therefore subgame perfect.",
+          "isCorrect": false,
+          "rationale": "Against $X$, Player 1 prefers $A$ ($3>2$), so $(B,X)$ is not a NE of the subgame. Player 1's plan $B$ is not a best response there."
+        },
+        {
+          "text": "$(UA,X)$: the subgame after $U$ is solved by $(A,X)$, and $3>2$ so Player 1 opens $U$.",
+          "isCorrect": true,
+          "rationale": "$(A,X)$ is the unique NE of the simultaneous-move subgame. Player 1 then compares 3 from that continuation with 2 from $D$."
+        }
+      ],
+      "hint": "Find the Nash equilibrium of the simultaneous-move subgame first, then compare Player 1's payoff from opening $U$ with the payoff from $D$."
+    },
+    {
+      "question": "In a three-player tree, Player 3 cannot distinguish two nodes, so there is no proper subgame. A Nash equilibrium has Player 1 opening $R$ (so Player 2's node is unreached) and Player 2 planning $L$. If Player 2's node were reached, $R$ would pay 4 and $L$ would pay 1. Which statement is correct?",
+      "answerOptions": [
+        {
+          "text": "The profile is an SPNE — the whole game is the only subgame — but Player 2's plan is not sequentially rational.",
+          "isCorrect": true,
+          "rationale": "Trivial SPNE does not discipline off-path information sets that do not root a subgame. If Player 2 moved, they would want $R$, not $L$."
+        },
+        {
+          "text": "The profile cannot be an SPNE, because SPNE requires a best response at every information set.",
+          "isCorrect": false,
+          "rationale": "That would be sequential rationality. With no proper subgame, SPNE coincides with Nash equilibrium of the whole game and does not reach Player 2's node."
+        },
+        {
+          "text": "Backward induction still deletes $L$ for Player 2, so the profile is not an equilibrium of any kind.",
+          "isCorrect": false,
+          "rationale": "Backward induction is not defined for imperfect-information games. The profile can remain a Nash equilibrium of the whole game."
+        },
+        {
+          "text": "If there are no proper subgames, the game has no Nash equilibrium and therefore no SPNE.",
+          "isCorrect": false,
+          "rationale": "The whole game is always a subgame. Nash equilibria of that game are automatically SPNE when they are the only subgame."
+        }
+      ],
+      "hint": "Ask which subgames exist, and whether optimality is required at an unreached information set that does not begin one."
+    },
+    {
+      "question": "You want to check that a strategy profile of a finite extensive-form game with perfect recall is an SPNE. Which deviations are the ones that matter?",
+      "answerOptions": [
+        {
+          "text": "Every combination of changes at several information sets must be checked, because two separately unprofitable changes might be profitable together.",
+          "isCorrect": false,
+          "rationale": "In a finite game with perfect recall, a profitable multi-set deviation would imply a profitable change at a single information set. Checking all combinations is unnecessary."
+        },
+        {
+          "text": "Only deviations on the equilibrium path matter; off-path information sets can specify anything.",
+          "isCorrect": false,
+          "rationale": "That is the gap in Nash equilibrium. SPNE requires optimality in every subgame, including those reached only after a deviation."
+        },
+        {
+          "text": "It is necessary and sufficient that no player can gain by changing action at exactly one information set, in any subgame.",
+          "isCorrect": true,
+          "rationale": "That is the one-shot deviation principle for finite games with perfect recall: SPNE if and only if there is no profitable one-shot deviation in any subgame."
+        },
+        {
+          "text": "Only the player who moves at the root needs to be checked, because later players are sequentially rational by construction of the tree.",
+          "isCorrect": false,
+          "rationale": "Every player can have a profitable one-shot deviation in some subgame. The tree structure does not automatically impose sequential rationality."
+        }
+      ],
+      "hint": "Ask whether a gain from changing several information sets at once can exist if no single-set change is profitable."
+    },
+    {
+      "question": "Firm 1 chooses $q_1$; Firm 2 observes it and then chooses $q_2$. Demand and costs are those of the Cournot example, whose simultaneous NE is $(24,24)$ with profits 288 each. In the SPNE, quantities are $(36,18)$. Which explanation matches the lecture?",
+      "answerOptions": [
+        {
+          "text": "Firm 1's larger output is a credible commitment because Firm 2 best-responds in every quantity subgame. If Firm 1 could revise after seeing $q_2$, sequential rationality would unravel that leadership.",
+          "isCorrect": true,
+          "rationale": "SPNE requires $q_2(q_1)=BR_2(q_1)$ after every $q_1$. First-mover advantage comes from an irreversible, observable choice; without commitment the leadership strategy is not sequentially rational."
+        },
+        {
+          "text": "The SPNE must replicate Cournot $(24,24)$, because the payoff functions have not changed — only the order of writing the moves has.",
+          "isCorrect": false,
+          "rationale": "Observability changes strategy sets: Firm 2's strategy is a function $q_2(q_1)$, and Firm 1 exploits that. The simultaneous NE is not the Stackelberg SPNE."
+        },
+        {
+          "text": "Firm 2 has a second-mover advantage, so the follower's profit exceeds 288 while the leader is held to less than Cournot.",
+          "isCorrect": false,
+          "rationale": "Here the first mover gains: profits are 324 for Firm 1 and 162 for Firm 2. Second-mover advantage is a question the lecture poses for other games, not this quantity game."
+        },
+        {
+          "text": "Any Nash equilibrium of the Stackelberg game must be subgame perfect, so $(24,24)$ cannot arise even as a non-SPNE Nash equilibrium.",
+          "isCorrect": false,
+          "rationale": "Firm 2 could threaten a non-best-response quantity if $q_1\\neq 24$, supporting $(24,24)$ as a NE. That threat is not a NE of the off-path subgames, so it is not SPNE."
+        }
+      ],
+      "hint": "Ask what Firm 2's strategy must specify after every observed $q_1$, and what would change if Firm 1 could secretly revise."
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Extensive Form Game Trees",
+      "Perfect versus Imperfect Information",
+      "Strategies as Contingent Plans",
+      "Nash Equilibrium in Extensive Form",
+      "Sequential Rationality and Credible Threats",
+      "Backward Induction",
+      "Subgames and SPNE",
+      "One-Shot Deviation Principle",
+      "Stackelberg Duopoly and First-Mover Advantage"
+    ],
+    "followUp": [
+      "Bargaining",
+      "Sources of Strategic Advantage"
+    ]
+  }
+}

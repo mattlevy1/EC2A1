@@ -154,7 +154,7 @@
           "rationale": "The mixture yields $1.5$, $1.5$, and $1$ against $L$, $C$, and $R$, all strictly above $B$'s payoffs of $1$, $1$, and $0$."
         }
       ],
-      "hint": "Check $T$ vs $B$ and $M$ vs $B$ column by column, then compute the fifty-fifty mix of $T$ and $M$."
+      "hint": "Dominance is column by column, and the dominating strategy need not be pure."
     },
     {
       "question": "Strategy $s_i$ does strictly worse than some $\\sigma_i$ against certain opponent profiles and equally well against the rest. Why does the lecture still refuse to delete $s_i$ in its dominance procedure?",
@@ -232,7 +232,7 @@
           "rationale": "If no one chooses above $67$, the average is at most $67$, so $2/3$ of the average is at most about $44.67$. Numbers above $45$ are then dominated."
         }
       ],
-      "hint": "If the maximum guess is $67$, what is $2/3$ of the maximum possible average?"
+      "hint": "Round 2 uses that rational opponents will not play dominated numbers from Round 1. Bound the average, then the target."
     },
     {
       "question": "Beauty-contest experiments show clustered choices around $33$ and $22$, with very few zeros. What is the best interpretation in terms of the lecture's solution concepts?",

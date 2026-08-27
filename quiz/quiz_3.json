@@ -24,7 +24,7 @@
           "rationale": "Expected payoffs are $u_1(H,\\sigma_2)=2q-1=0.2$ and $u_1(T,\\sigma_2)=1-2q=-0.2$. The best-response correspondence therefore puts $p^*=1$ for all $q>1/2$."
         }
       ],
-      "hint": "Player 1 wins when the coins match. Which pure action is more likely to match a $q$ above one-half?"
+      "hint": "Write $u_1(H)$ and $u_1(T)$ at this $q$, and recall when mixing is a best response."
     },
     {
       "question": "In Matching Pennies, the unique mixed-strategy Nash equilibrium has Player 1 play $H$ with probability $p^*=1/2$. That probability is chosen so that…",

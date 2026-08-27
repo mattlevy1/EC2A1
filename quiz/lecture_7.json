@@ -1,1 +1,211 @@
-{"flashcards": []}
+{
+  "flashcards": [
+    {
+      "f": "What does the extensive form represent?",
+      "b": "Timing and information explicitly as a game tree: nodes, branches, and terminal nodes with payoffs; each decision node assigned to a player; information sets grouping nodes a player cannot distinguish.",
+      "c": 3
+    },
+    {
+      "f": "What is a strategy in an extensive-form game?",
+      "b": "A complete contingent plan: one action at every information set, including those that will not be reached on the path of play.",
+      "c": 3
+    },
+    {
+      "f": "How are Nash equilibria of an extensive-form game related to its normal form?",
+      "b": "Every extensive form has a normal-form representation obtained by enumerating pure strategies and computing payoffs for each profile. The Nash equilibria of the extensive form are the Nash equilibria of that normal form.",
+      "c": 3
+    },
+    {
+      "f": "Why can a Nash equilibrium involve non-credible off-path behaviour?",
+      "b": "NE only requires optimality on the equilibrium path. Off-path actions are never tested, so threats need not be rational at the information sets they prescribe.",
+      "c": 2
+    },
+    {
+      "f": "What is sequential rationality?",
+      "b": "Optimality at every information set, even those off the equilibrium path.",
+      "c": 3
+    },
+    {
+      "f": "How does backward induction implement sequential rationality in perfect-information games?",
+      "b": "Solve from terminal nodes back to the root, choosing an optimal action at each decision node given continuation play.",
+      "c": 1
+    },
+    {
+      "f": "Why does backward induction not apply node by node under imperfect information, and what replaces it?",
+      "b": "Players may not know which node in an information set they are at, so you cannot optimise node by node. Identify subgames — the smallest chunks of the tree that can be isolated — and require Nash equilibrium in each.",
+      "c": 2
+    },
+    {
+      "f": "What is a Subgame Perfect Nash Equilibrium (SPNE)?",
+      "b": "A strategy profile that is a Nash equilibrium in every subgame.",
+      "c": 3
+    },
+    {
+      "f": "Why is a threat of high output after entry not enough to deter, and how can capacity help?",
+      "b": "Once the rival has entered, flooding the market may not be the incumbent's best response, so the threat is not credible. Building capacity commits the firm to the possibility of high output. Empirical evidence finds firms holding costly unused capacity.",
+      "c": 1
+    },
+    {
+      "f": "What plant options do firms have in the sequential-entry example?",
+      "b": "Small: fixed cost $50{,}000$ and capacity $100$. Large: fixed cost $175{,}000$ and unlimited capacity. Firms may also choose not to enter ($N$).",
+      "c": 4
+    },
+    {
+      "f": "What is the timing of the sequential-entry game?",
+      "b": "Firm 1 chooses a plant (or no entry) first. Firm 2 observes that choice and then decides. If both are active, subsequent Cournot competition is simultaneous, with zero marginal cost.",
+      "c": 2
+    },
+    {
+      "f": "What must each firm's strategy specify in the entry-and-capacity game?",
+      "b": "Firm 1: a plant choice in $\\{L,S,N\\}$ plus a quantity $q_1 \\geq 0$ in every Cournot subgame in which Firm 1 is active. Firm 2: a plant choice in $\\{L,S,N\\}$ after each of Firm 1's three choices, plus a quantity $q_2 \\geq 0$ in every Cournot subgame in which Firm 2 is active.",
+      "c": 4
+    },
+    {
+      "f": "Why not solve the entry game by listing all Nash equilibria, and what method is used instead?",
+      "b": "The strategy spaces are huge, so listing all NE is impractical. Use SPNE: solve each subgame, replace it with continuation values, and work backwards.",
+      "c": 2
+    },
+    {
+      "f": "If firm $i$ is the only entrant, what is the unconstrained monopoly quantity given $P(q)=900-q$?",
+      "b": "Maximise $(900-q_i)q_i$ minus the plant's fixed cost. The first-order condition $900-2q_i^*=0$ yields $q_i^*=450$. A small plant cannot produce this: capacity is only $100$.",
+      "c": 4
+    },
+    {
+      "f": "What are monopoly profits with a large versus a small plant?",
+      "b": "Large: $q=450$, $P=450$, profit $202{,}500-175{,}000=27{,}500$. Small: $q=100$, $P=800$, profit $80{,}000-50{,}000=30{,}000$. As a monopolist, the small plant is more profitable.",
+      "c": 4
+    },
+    {
+      "f": "What is firm 1's unconstrained Cournot best response when both firms enter?",
+      "b": "Profit is $(900-q_1-q_2)q_1$ minus fixed cost. The unconstrained best response is $BR_1(q_2)=450-q_2/2$.",
+      "c": 4
+    },
+    {
+      "f": "How does a small plant (capacity $100$) change the Cournot best response?",
+      "b": "$BR_1(q_2)=100$ if $q_2 \\leq 700$ (the unconstrained reply would exceed capacity), and $BR_1(q_2)=450-q_2/2$ if $q_2>700$.",
+      "c": 4
+    },
+    {
+      "f": "What are the Cournot equilibria in each two-firm plant configuration?",
+      "b": "$(L,L)$: $(q_1^*,q_2^*)=(300,300)$, $P=300$. $(S,S)$: $(100,100)$, $P=700$. $(L,S)$: $(400,100)$, $P=400$. $(S,L)$: $(100,400)$, $P=400$.",
+      "c": 4
+    },
+    {
+      "f": "What are the two firms' profits when both enter, for each plant pair?",
+      "b": "$(L,L)$: both lose $85{,}000$. $(L,S)$: Firm 1 loses $15{,}000$, Firm 2 loses $10{,}000$. $(S,L)$: the reverse. $(S,S)$: both earn $20{,}000$. Only both-small is profitable for both.",
+      "c": 4
+    },
+    {
+      "f": "After replacing each Cournot subgame with its unique NE payoffs, what game remains?",
+      "b": "A finite perfect-information game of plant choices only, which can be solved by backward induction. Payoffs are written in thousands: e.g. small monopoly $(30,0)$ or $(0,30)$; large monopoly $(27.5,0)$ or $(0,27.5)$.",
+      "c": 2
+    },
+    {
+      "f": "In the reduced entry game, what does sequentially rational Firm 2 choose after each of Firm 1's actions?",
+      "b": "After $L$: $N$ (payoff $0$ beats $-10$ or $-85$). After $S$: $S$ ($20$ beats $0$ or $-15$). After $N$: $S$ ($30$ beats $27.5$ or $0$).",
+      "c": 2
+    },
+    {
+      "f": "What is the SPNE of the sequential-entry game?",
+      "b": "Firm 1 chooses $L$. Firm 2 chooses $N$ after $L$, $S$ after $S$, and $S$ after $N$. Cournot or monopoly quantities in each subsequent subgame are as computed. On path, Firm 1 is a large monopolist and Firm 2 stays out.",
+      "c": 2
+    },
+    {
+      "f": "How many pure Nash equilibria does the reduced entry game have, and how many are subgame perfect?",
+      "b": "Firm 2 has $3^3=27$ strategies $(a_L,a_S,a_N)$. There are $14$ pure NE, but only one is subgame perfect.",
+      "c": 1
+    },
+    {
+      "f": "Why is the profile $(S,(L,S,L))$ a Nash equilibrium but not an SPNE?",
+      "b": "On path both build small and earn $(20,20)$; neither wants to deviate given the prescribed replies. If Firm 1 did play $L$, Firm 2 is supposed to play $L$ and both lose $85{,}000$, but Firm 2's best response after $L$ is $N$. The threat is not sequentially rational; NE does not rule it out because $L$ is off the equilibrium path.",
+      "c": 2
+    },
+    {
+      "f": "Why does Firm 1 overinvest in capacity in the SPNE?",
+      "b": "Without an entry threat a small plant earns $30{,}000$; with the threat a large plant earns $27{,}500$. Firm 1 sacrifices $2{,}500$ for market dominance. Once the large plant is built, high output is Firm 1's best response, which makes entry unprofitable for Firm 2.",
+      "c": 2
+    },
+    {
+      "f": "Why is $(L,(N,S,S))$ a credible deterrent while announcing 'I will flood the market' is not?",
+      "b": "The large-plant investment is sunk (cannot be reversed after Firm 2 enters), observable (Firm 2 sees it), and changes incentives (producing $450$ is then Firm 1's best response in the subgame). An announcement without the plant is cheap talk: it does not change Firm 1's best response in any subgame, so Firm 2 ignores it.",
+      "c": 1
+    },
+    {
+      "f": "How does the threat of entry affect consumers, even if entry does not occur?",
+      "b": "No-threat small monopoly: $P=800$, low consumer surplus. Entry-threat large monopoly: $P=450$, high CS. Duopoly $(S,S)$ is in between ($P=700$); $(L,L)$ would be $P=300$ but is not an equilibrium because both firms lose money. A monopoly market does not mean competition has no effect.",
+      "c": 2
+    },
+    {
+      "f": "How does entry deterrence use the same logic as Stackelberg leadership?",
+      "b": "The Stackelberg leader commits to quantity before the follower; if the leader could later revise $q_1$, they would. Here the incumbent commits to capacity before the entrant. Large capacity makes aggressive output credible, so the entrant stays out. After entry the incumbent might wish they could change plant, but it is too late.",
+      "c": 1
+    },
+    {
+      "f": "Describe the ultimatum game.",
+      "b": "Two players divide a pie of size $1$. Player 1 proposes a share $m \\in [0,1]$ for Player 2. Player 2 accepts or rejects. If accept: payoffs $(1-m,m)$; if reject: both get $0$. The proposer has the commitment.",
+      "c": 3
+    },
+    {
+      "f": "What is the SPNE of the ultimatum game when payoffs equal money, and what issue arises at $m=0$?",
+      "b": "Player 2 accepts any $m \\geq 0$ (anything beats zero). Player 1 offers the smallest acceptable amount, $m=0$, and takes the entire pie. Player 2 is indifferent at $m=0$; if they rejected, Player 1's best response would not be well-defined. One can assume a discrete grid (e.g. $\\pounds 0.01$) or that Player 2 accepts when indifferent.",
+      "c": 2
+    },
+    {
+      "f": "How does two-period alternating-offer bargaining differ from the ultimatum game?",
+      "b": "The ultimatum game gives all bargaining power to the proposer. In the two-period game, if Player 2 rejects Player 1's period-1 offer $m_1$, Player 2 proposes $m_2$ to Player 1 in period 2. If that is rejected, both get $0$. Period-2 payoffs are discounted.",
+      "c": 3
+    },
+    {
+      "f": "What is a discount factor $\\delta_i$, and how does it affect the value of delayed shares?",
+      "b": "$\\delta_i \\in (0,1]$. A share $x$ in period 1 is worth $x$; in period 2, $\\delta_i x$; in period 3, $\\delta_i^2 x$. The closer $\\delta_i$ is to $1$, the more patient player $i$ is. If $\\delta_i<1$, the player prefers receiving sooner.",
+      "c": 3
+    },
+    {
+      "f": "In two-period bargaining, what is the SPNE of the period-2 subgame, and what does Player 1 then offer?",
+      "b": "Period 2 is an ultimatum with Player 2 as proposer: $m_2=0$ and Player 1 accepts any $m_2 \\geq 0$. Continuation values are $0$ for Player 1 and $\\delta_2$ for Player 2. Player 2 therefore accepts in period 1 iff $m_1 \\geq \\delta_2$. Player 1 offers $m_1^*=\\delta_2$, keeps $1-\\delta_2$, and agreement is in period 1.",
+      "c": 4
+    },
+    {
+      "f": "Why does Player 2 get $\\delta_2$ in two-period bargaining even though Player 1 moves first?",
+      "b": "In period 2 Player 2 has all the bargaining power (last-mover advantage) but would receive the pie only one period later. First-mover advantage is getting agreement sooner. Impatience (smaller $\\delta_2$) shifts power toward the first mover.",
+      "c": 1
+    },
+    {
+      "f": "With $T$ periods and common discount factor $\\delta$, what share does the period-1 proposer keep, and what happens as $T \\to \\infty$?",
+      "b": "Working backwards from period $T$ (proposer keeps $1$), the period-1 proposer's share is $\\sum_{k=0}^{T-1}(-\\delta)^k = [1-(-\\delta)^T]/(1+\\delta)$. Agreement is in period 1. As $T \\to \\infty$, the proposer keeps $1/(1+\\delta)$ and the responder gets $\\delta/(1+\\delta)$.",
+      "c": 4
+    },
+    {
+      "f": "In infinite-horizon alternating offers with common $\\delta$, why is the proposer's SPNE payoff $v=1/(1+\\delta)$?",
+      "b": "Every subgame starting at a proposer's turn is identical, so the proposer's payoff $v$ is stationary. The responder's rejection continuation is $\\delta v$; the proposer offers exactly $\\delta v$ and keeps $1-\\delta v$. Then $v=1-\\delta v$, hence $v=1/(1+\\delta)$. As $\\delta \\to 1$, the split is equal and who proposes first no longer matters.",
+      "c": 4
+    },
+    {
+      "f": "What do ultimatum-game experiments find, relative to the money-payoff SPNE?",
+      "b": "Offers are far from zero (mean offers often around $40\\%$ of the pie) and offers below $20\\%$ are rejected about half the time. The pattern is robust across stakes, anonymity, and procedures. The stark SPNE ($m=0$, accept) is not a good description of play.",
+      "c": 1
+    },
+    {
+      "f": "How can inequality aversion change the ultimatum SPNE?",
+      "b": "Payoff difference is $1-2m$. Utilities $u_1=(1-m)-\\beta_1(1-2m)^2$ and $u_2=m-\\beta_2(1-2m)^2$ with $\\beta_i \\geq 0$. Player 2 rejects if $u_2<0$. With $\\beta_1=\\beta_2=3/8$, Player 1 offers $m=1/6$ and Player 2 accepts any $m \\geq 1/6$. Fairness preferences make rejection of too-unequal outcomes sequentially rational and raise the receiver's bargaining power.",
+      "c": 4
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Recap: Extensive Form, Sequential Rationality, and SPNE",
+      "Sequential Entry with Capacity Choice",
+      "Monopoly and Cournot Subgames",
+      "Backward Induction and the SPNE of Entry Deterrence",
+      "Non-Credible Threats versus Capacity as Commitment",
+      "Welfare and the Stackelberg Analogy",
+      "Ultimatum Game",
+      "Alternating-Offer Bargaining and Discounting",
+      "Bargaining Power and Infinite Horizon",
+      "Fairness Preferences in Bargaining"
+    ],
+    "followUp": [
+      "Psychological Nash Equilibrium and intention-based models (EC310)"
+    ]
+  }
+}

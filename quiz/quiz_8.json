@@ -1,1 +1,280 @@
-{"quiz": []}
+{
+  "quiz": [
+    {
+      "question": "The Prisoner's Dilemma is repeated a known finite number of times $T$. A proposed strategy profile has both players choosing $C$ in some periods on the equilibrium path. Why can this not be a Nash equilibrium?",
+      "answerOptions": [
+        {
+          "text": "Players cannot condition on past play when $T$ is finite, so intertemporal incentives are undefined.",
+          "isCorrect": false,
+          "rationale": "Finite repetition still has observed histories. The problem is not missing information; it is that a last cooperative period cannot be deterred by future play."
+        },
+        {
+          "text": "Finite games have no Nash equilibrium, so the profile is not even a candidate.",
+          "isCorrect": false,
+          "rationale": "Finite games do have Nash equilibria. Here the unique implication of NE is that cooperation never occurs on path."
+        },
+        {
+          "text": "Let $T^*$ be the last on-path cooperative period. From $T^*+1$ there is no remaining cooperation to lose, so a player can switch to $D$ at $T^*$ and raise their payoff.",
+          "isCorrect": true,
+          "rationale": "Any on-path cooperation has a last instance. After $T^*$ the continuation has no cooperation, so the usual PD incentive to defect is unpunished at $T^*$."
+        },
+        {
+          "text": "$D$ strictly dominates $C$ in the stage game, so cooperation cannot be an equilibrium under any horizon, finite or infinite.",
+          "isCorrect": false,
+          "rationale": "Stage-game dominance rules out cooperation as a one-shot NE, but infinite-horizon punishments can still support $C$ on path when $\\delta$ is high enough."
+        }
+      ],
+      "hint": "Find the last period in which cooperation is supposed to occur, then ask what future play can still threaten."
+    },
+    {
+      "question": "A player earns $w$ in period 1 and then the constant payoff $v$ in every later period. Using the lecture's $(1-\\delta)$ normalisation, what is the value of this stream?",
+      "answerOptions": [
+        {
+          "text": "$\\delta w + (1-\\delta)v$, because later payoffs receive the larger geometric weight.",
+          "isCorrect": false,
+          "rationale": "The first period is weighted by $(1-\\delta)$ and the continuation from period 2 onward, discounted, is worth $\\delta v$. The weights are the other way around."
+        },
+        {
+          "text": "$(1-\\delta)w + \\delta v$, which equals $v$ if $w=v$ and otherwise mixes the opening payoff with the continuation.",
+          "isCorrect": true,
+          "rationale": "The normalisation makes a constant stream worth that constant. Splitting off period 1 leaves continuation value $v$ weighted by $\\delta$."
+        },
+        {
+          "text": "$w+\\delta v$, the un-normalised present value used when comparing finite and infinite horizons.",
+          "isCorrect": false,
+          "rationale": "Without $(1-\\delta)$, a constant stream $v$ would be worth $v/(1-\\delta)$, not $v$. The lecture always uses the normalised value."
+        },
+        {
+          "text": "$(w+v)/2$, because $\\delta$ drops out once payoffs are expressed in per-period units.",
+          "isCorrect": false,
+          "rationale": "$\\delta$ does not cancel unless $w=v$. Patience still determines how much the continuation $v$ counts relative to the opening $w$."
+        }
+      ],
+      "hint": "A constant stream should equal that constant; separate period 1 from everything that follows."
+    },
+    {
+      "question": "Both players have been cooperating. Player 2 then plays $D$ for one period and returns to $C$ in every period after that. What do Tit-for-Tat and grim trigger prescribe for Player 1 in the period after the defection, and in the following period (once Player 2 has already returned to $C$)?",
+      "answerOptions": [
+        {
+          "text": "Both strategies play $D$ forever: any defection is unforgivable once histories define information sets.",
+          "isCorrect": false,
+          "rationale": "That describes grim trigger only. TFT copies the opponent's last action, so it returns to $C$ after Player 2 does."
+        },
+        {
+          "text": "TFT ignores a single slip and stays at $C$; grim trigger plays $D$ then returns to $C$ to restore $(C,C)$.",
+          "isCorrect": false,
+          "rationale": "The properties are swapped. TFT retaliates once (copying $D$) and then copies the return to $C$; grim trigger never leaves $D$."
+        },
+        {
+          "text": "Grim trigger copies the opponent (so $D$ then $C$); TFT's $D$ state is absorbing, so it stays at $D$.",
+          "isCorrect": false,
+          "rationale": "The automata are reversed. TFT is the forgiving two-state machine; under grim trigger, $D$ is absorbing."
+        },
+        {
+          "text": "TFT plays $D$ then $C$; grim trigger plays $D$ then $D$.",
+          "isCorrect": true,
+          "rationale": "TFT copies last period, so it answers $D$ with $D$ and the subsequent $C$ with $C$. Grim trigger switches to $D$ after any deviation and stays there."
+        }
+      ],
+      "hint": "Track each strategy's state after a one-period defection, then after the opponent returns to $C$."
+    },
+    {
+      "question": "In the lecture's PD, the cell $(C,D)$ pays $(0,6)$. Which statement about this payoff profile is correct?",
+      "answerOptions": [
+        {
+          "text": "It is not feasible, because it lies off the Pareto frontier joining $(D,D)$ to $(C,C)$.",
+          "isCorrect": false,
+          "rationale": "Feasibility is the convex hull of all four pure-profile payoffs, including $(0,6)$ and $(6,0)$. Pareto efficiency is a different restriction."
+        },
+        {
+          "text": "It is feasible but not individually rational for player 1, so it cannot be an SPNE payoff for any $\\delta$.",
+          "isCorrect": true,
+          "rationale": "$(0,6)$ is a pure-profile payoff, hence feasible. Player 1's minmax is 1, and part (1) of the Folk Theorem says SPNE payoffs cannot undercut minmax."
+        },
+        {
+          "text": "It is individually rational because player 2 receives 6, which exceeds minmax.",
+          "isCorrect": false,
+          "rationale": "Individual rationality requires $w_i \\geq \\underline{u}_i$ for every player. Player 1's 0 is below minmax 1."
+        },
+        {
+          "text": "The Folk Theorem says it is an SPNE payoff whenever $\\delta$ is close to 1, because every feasible profile can be supported.",
+          "isCorrect": false,
+          "rationale": "Part (2) of the Folk Theorem requires feasibility and individual rationality. Profiles below someone's minmax are excluded for every $\\delta$."
+        }
+      ],
+      "hint": "Check the convex hull first, then whether each player gets at least what they can guarantee against hostile opponents."
+    },
+    {
+      "question": "In a Hi-Lo (Pareto-ranked coordination) game with payoffs $(w,w)=(3,3)$, $(w,s)=(1,0)$, $(s,w)=(0,1)$, $(s,s)=(2,2)$, player 1's best-response payoff is 3 against pure $w$ and 2 against pure $s$. Why is player 1's minmax strictly below 2?",
+      "answerOptions": [
+        {
+          "text": "Minmax equals the lowest payoff in the matrix, which is 0 when player 1 plays $s$ against $w$.",
+          "isCorrect": false,
+          "rationale": "Minmax is the worst best-response payoff, not the worst cell. Playing $s$ against $w$ is not a best response."
+        },
+        {
+          "text": "The worst stage-game Nash payoff is 2 at $(s,s)$, and minmax always coincides with the lowest Nash payoff.",
+          "isCorrect": false,
+          "rationale": "Minmax is the worst best-response payoff, not 'lowest Nash'. In this game the mixed NE happens to pay $3/2$ as well, but looking only at pure NE and taking $(s,s)$ would miss both the definition and the mixture that actually minmaxes."
+        },
+        {
+          "text": "Player 2 can mix so that player 1 is indifferent between $w$ and $s$; that mixture holds player 1 to $3/2$, below either pure-strategy best-response payoff.",
+          "isCorrect": true,
+          "rationale": "With $\\sigma_2(w)=1/4$, player 1 earns $3/2$ from either action. Opponents choose the mixture that minimises this BR value, so $\\underline{u}_1=3/2$."
+        },
+        {
+          "text": "Player 1 mixes first; minmax is defined as a maxmin and therefore uses player 1's own mixture, which yields less than 2.",
+          "isCorrect": false,
+          "rationale": "Minmax is $\\min_{\\sigma_{-i}}\\max_{\\sigma_i}$, not maxmin: opponents mix first to hurt $i$, then $i$ best-responds."
+        }
+      ],
+      "hint": "Ask whether opponents can do worse to player 1 by mixing than by playing any pure action."
+    },
+    {
+      "question": "Both players use grim trigger in the lecture's PD (stage payoffs 5 from $(C,C)$, 6 from exploiting $C$, then 1 from $(D,D)$). At $\\delta=1/6$, is a one-shot deviation from the cooperative path profitable?",
+      "answerOptions": [
+        {
+          "text": "No: $(C,C)$ Pareto-dominates $(D,D)$, so leaving the cooperative path cannot raise a player's own payoff.",
+          "isCorrect": false,
+          "rationale": "Pareto dominance is not an incentive constraint. The player compares their own normalised payoff from exploiting $C$ with 5 forever."
+        },
+        {
+          "text": "No: $\\delta=1/6$ equals the ratio of the punishment payoff to the exploitation payoff, which is the relevant cutoff.",
+          "isCorrect": false,
+          "rationale": "The relevant comparison is 5 forever versus 6 this period and 1 thereafter, not a raw ratio of 1 to 6. The cutoff is $1/5$, and $1/6$ lies below it."
+        },
+        {
+          "text": "Yes: one period of 6 followed by 1 forever outvalues 5 forever at this $\\delta$.",
+          "isCorrect": true,
+          "rationale": "Deviation is worth $(1-1/6)\\cdot 6 + (1/6)\\cdot 1 = 5+1/6 > 5$. Cooperation requires $\\delta \\geq 1/5$, so $1/6$ is too impatient."
+        },
+        {
+          "text": "No: the Folk Theorem requires $\\delta$ close to 1 to support cooperation, so at $1/6$ grim trigger is not even a candidate strategy.",
+          "isCorrect": false,
+          "rationale": "The Folk Theorem's 'close to 1' is a sufficient condition for *all* feasible IR payoffs. This particular profile can be supported at a much lower cutoff — just not as low as $1/6$."
+        }
+      ],
+      "hint": "Compare the normalised value of 5 forever with one period of the exploitation payoff followed by the punishment stream."
+    },
+    {
+      "question": "After some past defection, grim trigger prescribes $(D,D)$ in every subsequent period. Why is a one-shot deviation to $C$ at such a history unprofitable for every $\\delta$?",
+      "answerOptions": [
+        {
+          "text": "The one-shot deviation principle applies only on the equilibrium path, so off-path incentives need not be checked.",
+          "isCorrect": false,
+          "rationale": "SPNE requires the OSDP at every history, including punishment-phase information sets. Off-path play must itself be sequentially rational."
+        },
+        {
+          "text": "$(D,D)$ is a stage-game Nash equilibrium, so $C$ pays strictly less now while the continuation remains $(D,D)$ either way.",
+          "isCorrect": true,
+          "rationale": "Playing $C$ yields 0 this period against $D$, versus 1 from $D$, and grim trigger stays at $D$ regardless. The comparison does not depend on $\\delta$."
+        },
+        {
+          "text": "Grim trigger returns to $C$ after one period of punishment, so playing $C$ now merely speeds the return to cooperation.",
+          "isCorrect": false,
+          "rationale": "That is TFT-style forgiveness. Under grim trigger, $D$ is absorbing: a unilateral $C$ does not restart cooperation."
+        },
+        {
+          "text": "$C$ is unprofitable only when $\\delta$ is high enough that the future gain from restoring cooperation outweighs the current loss.",
+          "isCorrect": false,
+          "rationale": "There is no future gain: opponents keep playing $D$. The current payoff from $C$ is worse, for any $\\delta$."
+        }
+      ],
+      "hint": "Compare this period's PD payoffs given that the opponent is playing $D$, then ask whether the continuation depends on your current choice."
+    },
+    {
+      "question": "In the infinitely repeated PD, grim trigger can support $(C,C)$ when players are sufficiently patient. Which statement about the equilibrium set is correct?",
+      "answerOptions": [
+        {
+          "text": "Patience can support $(5,5)$ and many other feasible IR payoffs, but repeating $(D,D)$ forever remains an SPNE at every $\\delta$, so the outcome is not unique.",
+          "isCorrect": true,
+          "rationale": "The Folk Theorem expands the set (cooperation becomes possible) and still includes every stage-game NE as an SPNE. It therefore does not select which equilibrium will be played."
+        },
+        {
+          "text": "Once $\\delta$ is high enough for grim trigger, $(C,C)$ is the unique SPNE outcome because it strictly Pareto-dominates every alternative.",
+          "isCorrect": false,
+          "rationale": "The lecture stresses that the Folk Theorem is problematic precisely because it does not predict which of the many SPNE will be played. Always defecting is still an SPNE."
+        },
+        {
+          "text": "SPNE payoffs cannot include anything other than stage-game Nash payoffs; grim trigger merely implements $(D,D)$ off path.",
+          "isCorrect": false,
+          "rationale": "On path grim trigger implements $(C,C)$, which is not a stage NE. Expanding beyond stage Nash is the point of repetition."
+        },
+        {
+          "text": "Payoffs below minmax can be supported when $\\delta$ is close to 1, because patience makes even severe punishments incentive-compatible.",
+          "isCorrect": false,
+          "rationale": "Part (1) of the Folk Theorem: for any $\\delta$, SPNE payoffs are at least minmax. Patience does not let you hold a player below what they can guarantee."
+        }
+      ],
+      "hint": "Ask what repetition adds to the stage-game Nash set, and what it still cannot reach."
+    },
+    {
+      "question": "In the lecture's Cournot grim-trigger collusion, per-period profits are 324 if both produce 18, 364.5 from the static best response to 18, and 288 under Nash reversion. At $\\delta=0.4$, should a firm take the one-shot deviation from the collusive path?",
+      "answerOptions": [
+        {
+          "text": "Yes: the normalised value of 364.5 this period and 288 thereafter exceeds 324.",
+          "isCorrect": true,
+          "rationale": "Deviation is worth $(1-0.4)\\cdot 364.5 + 0.4\\cdot 288 = 333.9 > 324$. At this $\\delta$ the future loss does not offset the one-shot gain of 40.5."
+        },
+        {
+          "text": "No: any $\\delta>0$ already puts weight on Nash reversion, which is enough because collusion maximises joint profit.",
+          "isCorrect": false,
+          "rationale": "Joint-profit maximisation is not a best response. Some discounting is not the same as enough discounting; here $0.4$ is still too impatient."
+        },
+        {
+          "text": "No: $\\delta=0.4$ exceeds the PD grim-trigger threshold $1/5$, and that same cutoff governs every grim-trigger game.",
+          "isCorrect": false,
+          "rationale": "The cutoff is game-specific. It depends on the size of the one-shot gain relative to the per-period profit loss under punishment, which is larger here than in the PD."
+        },
+        {
+          "text": "Yes, and it would deviate at every $\\delta$, because 27 is the unique static best response to 18.",
+          "isCorrect": false,
+          "rationale": "The static BR is the temptation that trigger strategies offset with Nash reversion. For sufficiently patient firms the future loss would deter the deviation."
+        }
+      ],
+      "hint": "Compare collusion forever with one period of the static best response and then permanent Nash reversion, using this $\\delta$."
+    },
+    {
+      "question": "A competition authority starts publishing firm-specific transaction prices in a repeated oligopoly, hoping to intensify competition. In the lecture's monitoring model, what is the predicted effect on collusion?",
+      "answerOptions": [
+        {
+          "text": "Higher detection probability raises the critical discount factor, so collusion becomes harder and prices should fall.",
+          "isCorrect": false,
+          "rationale": "The comparative static goes the other way: $\\delta^*(\\mu)=1/(1+\\mu)$ falls as $\\mu$ rises. Better monitoring makes collusion easier, not harder."
+        },
+        {
+          "text": "Imperfect monitoring means grim trigger cannot be used, so publishing prices has no effect on repeated-game incentives.",
+          "isCorrect": false,
+          "rationale": "The optional model still uses grim trigger; detection is merely probabilistic. Raising $\\mu$ tightens the link between undercutting and punishment."
+        },
+        {
+          "text": "Publishing prices converts the interaction into a finite-horizon game, which unravels collusion by backward induction.",
+          "isCorrect": false,
+          "rationale": "Transparency changes monitoring, not the horizon. The Danish episode is about detection, not a known last period."
+        },
+        {
+          "text": "Higher detection probability lowers the patience needed to sustain collusion, so prices may rise even though the policy aimed to intensify competition.",
+          "isCorrect": true,
+          "rationale": "Publishing raises $\\mu$ and therefore lowers $\\delta^*$. Secret discounts that were safe can become detectable, which is the Danish concrete mechanism."
+        }
+      ],
+      "hint": "Ask how the chance that a secret undercutting is publicly detected enters the incentive constraint, not how list prices are advertised to buyers."
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Prisoner's Dilemma and Finite vs Infinite Repetition",
+      "Stage Games, Discounting, Histories and Strategies",
+      "Tit-for-Tat and Grim Trigger",
+      "Feasible and Minmax Payoffs",
+      "Individually Rational Payoffs",
+      "One-Shot Deviation Principle",
+      "Folk Theorem",
+      "Cournot Collusion",
+      "Imperfect Monitoring and Price Transparency"
+    ],
+    "followUp": [
+      "Incentivising punishers when minmax is not a stage-game Nash equilibrium"
+    ]
+  }
+}

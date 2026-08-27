@@ -1,1 +1,281 @@
-{"quiz": []}
+{
+  "quiz": [
+    {
+      "question": "Nash equilibria of an extensive-form game coincide with those of its normal-form representation. A profile can still prescribe a costly 'flood the market' reply at an information set that is never reached. Why is that compatible with NE, and what extra requirement removes it?",
+      "answerOptions": [
+        {
+          "text": "A strategy need only specify actions at information sets reached with positive probability, so unused threats are not part of the strategy and cannot be sequentially irrational.",
+          "isCorrect": false,
+          "rationale": "A strategy is a complete contingent plan: it specifies an action at every information set, including those off the path. The problem is that NE does not test those unused actions."
+        },
+        {
+          "text": "Sequential rationality is already implied by NE, because any off-path action can be treated as a unilateral deviation in the normal form.",
+          "isCorrect": false,
+          "rationale": "A normal-form deviation changes the player's entire contingent plan and is evaluated only against the equilibrium path. It does not require optimality at unreached nodes."
+        },
+        {
+          "text": "NE only requires optimality on the path that is actually played, so off-path threats are never tested. SPNE additionally requires a Nash equilibrium in every subgame, including those off the path.",
+          "isCorrect": true,
+          "rationale": "Off-path actions are not 'tested' by NE, so incredible threats can survive. Sequential rationality — implemented by backward induction in perfect information, or by NE in every subgame more generally — rules them out."
+        },
+        {
+          "text": "The extensive form drops payoffs at unreached terminals, so any action specified there is payoff-irrelevant and therefore sequentially rational.",
+          "isCorrect": false,
+          "rationale": "Terminal payoffs are part of the game whether or not equilibrium play reaches them. Sequential rationality asks what would be optimal if those nodes were reached."
+        }
+      ],
+      "hint": "Ask which parts of the tree a Nash check actually evaluates, and whether unused information sets are tested."
+    },
+    {
+      "question": "Both firms have entered. Firm 1 has a large plant and Firm 2 a small plant (capacity $100$). Unconstrained Cournot best responses are $BR_i(q_j)=450-q_j/2$. Which statement about this subgame is correct?",
+      "answerOptions": [
+        {
+          "text": "Quantities are strategic complements, so the large firm cuts output when the rival is capacity-constrained, and $300$ is no longer a best response to $100$.",
+          "isCorrect": false,
+          "rationale": "Cournot quantities are strategic substitutes: the unconstrained best response slopes down. Facing $q_2=100$, Firm 1 wants $400$, not a cut below $300$."
+        },
+        {
+          "text": "Firm 2's unconstrained reply to $300$ would itself be $300$, but capacity binds at $100$. Firm 1's best response to $100$ is $400$, and $100$ remains Firm 2's constrained best response to $400$.",
+          "isCorrect": true,
+          "rationale": "The small plant truncates the best-response curve at $100$ whenever the unconstrained reply would exceed capacity ($q_1 \\leq 700$). Mutual best responses are then $(400,100)$, with $P=400$."
+        },
+        {
+          "text": "The large firm produces the unconstrained monopoly quantity $450$ and the small firm produces at capacity; Cournot best responses are irrelevant once plants differ.",
+          "isCorrect": false,
+          "rationale": "Firm 1 still best-responds to Firm 2's output. Against $q_2=100$ that reply is $400$, not the monopoly $450$ (which would require $q_2=0$)."
+        },
+        {
+          "text": "Capacity does not affect Cournot play: fixed costs are sunk, so both firms still produce $300$ as in the unconstrained $(L,L)$ subgame.",
+          "isCorrect": false,
+          "rationale": "Sunk fixed costs do not affect the best-response slope, but the capacity ceiling does. Firm 2 cannot produce $300$."
+        }
+      ],
+      "hint": "Start from the capacity-constrained firm's feasible best response, then check the unconstrained rival's reply to that quantity."
+    },
+    {
+      "question": "As a monopolist, Firm 1 earns more with a small plant than with a large plant. In the SPNE of the sequential-entry game, which plant does Firm 1 choose, and why?",
+      "answerOptions": [
+        {
+          "text": "The small plant: it maximises monopoly profit, and Firm 2 stays out after any plant Firm 1 has already built.",
+          "isCorrect": false,
+          "rationale": "Firm 2 does not stay out after $S$: entering small earns $20{,}000>0$. SPNE is sequential best responses, not 'any sunk plant deters'."
+        },
+        {
+          "text": "The large plant, because it maximises monopoly profit and is therefore a dominant strategy regardless of Firm 2's reply.",
+          "isCorrect": false,
+          "rationale": "The small plant is the more profitable monopoly ($30{,}000$ versus $27{,}500$). $L$ is chosen because of its effect on Firm 2, not because it is dominant as a monopolist."
+        },
+        {
+          "text": "The large plant, because SPNE selects the industry profit maximum, and a large monopolist plus no entry maximises the sum of profits.",
+          "isCorrect": false,
+          "rationale": "A small monopolist earns $30{,}000$, more industry profit than $27{,}500$. Joint-profit maximisation is not the SPNE criterion."
+        },
+        {
+          "text": "The large plant: Firm 2 stays out after $L$ (entry loses money) but enters small after $S$, so $L$ yields $27{,}500$ while $S$ yields only the both-small duopoly $20{,}000$.",
+          "isCorrect": true,
+          "rationale": "Sequentially rational Firm 2 chooses $N$ after $L$ and $S$ after $S$. Firm 1 compares $27{,}500$ with $20{,}000$ (and $0$ from staying out) and overinvests: a $2{,}500$ sacrifice buys deterrence."
+        }
+      ],
+      "hint": "Replace each Cournot subgame with its continuation value, then compare what Firm 2 will do after $L$ versus after $S$."
+    },
+    {
+      "question": "The reduced entry game has $14$ pure Nash equilibria. One is $(S,(L,S,L))$: Firm 2 builds large unless Firm 1 builds small. On the resulting path both build small and earn $(20,20)$. Why does SPNE reject this profile?",
+      "answerOptions": [
+        {
+          "text": "If Firm 1 did build large, Firm 2's prescribed $L$ would lose $85{,}000$ whereas staying out pays $0$, so that prescribed action is not a Nash equilibrium of the subgame after $L$.",
+          "isCorrect": true,
+          "rationale": "The threat deters Firm 1 on the path, so the profile can be a NE: $L$ is off path and never tested. SPNE requires NE in the subgame after $L$, where $N$ (not $L$) is Firm 2's best response."
+        },
+        {
+          "text": "Joint payoffs $(20,20)$ are Pareto-dominated by Firm 1's small monopoly $(30,0)$, so the profile cannot be a Nash equilibrium.",
+          "isCorrect": false,
+          "rationale": "Pareto dominance is not the NE test. Given Firm 2's threat, Firm 1 does not want to deviate to $N$ (which pays $0$) or to $L$ (which, under the threat, pays $-85$). The profile is a NE; it fails subgame perfection."
+        },
+        {
+          "text": "SPNE requires a dominant-strategy equilibrium of the reduced game, and $S$ is not dominant for Firm 1.",
+          "isCorrect": false,
+          "rationale": "SPNE requires a Nash equilibrium in every subgame, not dominance. Firm 1's SPNE choice is $L$, which is itself not a dominant strategy in the original game."
+        },
+        {
+          "text": "Firm 1 would deviate to $L$ because a large monopolist earns $27{,}500>20{,}000$, so the profile is not even a Nash equilibrium.",
+          "isCorrect": false,
+          "rationale": "That deviation payoff of $27{,}500$ assumes Firm 2 would stay out. Under this profile Firm 2 is prescribed to play $L$ after $L$, which would give Firm 1 $-85{,}000$. The deviation is unprofitable given the (non-credible) threat, which is why the profile is a NE."
+        }
+      ],
+      "hint": "Hold the path fixed and inspect Firm 2's incentive in the subgame this profile never reaches."
+    },
+    {
+      "question": "Compare two plans for keeping Firm 2 out: (i) Firm 1 builds a large plant; (ii) Firm 1 builds a small plant and announces that it will produce $450$ if Firm 2 enters. Why is only one sequentially rational?",
+      "answerOptions": [
+        {
+          "text": "Only (ii) is credible, because the small plant is the more profitable monopoly, so Firm 1 would actually fight after entry.",
+          "isCorrect": false,
+          "rationale": "After entry with a small plant, Firm 1's best response is the constrained Cournot quantity (at most $100$), not $450$. Higher monopoly profit as a sole entrant does not make a fight-with-$450$ threat sequentially rational."
+        },
+        {
+          "text": "Both are sequentially rational, because each is a complete contingent plan and therefore a well-defined strategy.",
+          "isCorrect": false,
+          "rationale": "Being a complete contingent plan makes something a strategy, not an SPNE strategy. Sequential rationality still requires that the prescribed actions be best responses in every subgame."
+        },
+        {
+          "text": "The large plant is sunk, observable, and makes producing a high quantity Firm 1's best response in the subsequent subgame. The announcement does not change any subgame best response, so Firm 2 ignores it as cheap talk.",
+          "isCorrect": true,
+          "rationale": "Credibility requires that the commitment change incentives after Firm 2 has moved. Capacity does; talk does not. This is the same logic as Stackelberg: if the leader could later revise the committed action, they would."
+        },
+        {
+          "text": "(i) is credible only because unused capacity is costless; if the extra fixed cost were positive, Firm 1 would prefer the small plant and the announcement.",
+          "isCorrect": false,
+          "rationale": "The extra fixed cost is positive ($175{,}000$ versus $50{,}000$), and Firm 1 still builds large. Credibility comes from changing the later best response, not from the investment being free."
+        }
+      ],
+      "hint": "Ask whether the plan changes what Firm 1 would actually find it profitable to do after Firm 2 has entered."
+    },
+    {
+      "question": "On the SPNE path the market remains a monopoly: Firm 2 stays out. Why does the lecture still say consumers benefit from the threat of entry?",
+      "answerOptions": [
+        {
+          "text": "Consumer surplus is highest when the incumbent stays small, because the small-plant price $800$ maximises expenditure and therefore surplus.",
+          "isCorrect": false,
+          "rationale": "A higher price lowers consumer surplus. The no-threat small monopoly at $P=800$ is the worst of the lecture's scenarios for consumers."
+        },
+        {
+          "text": "To deter entry the incumbent builds large, so price is $450$ rather than the no-threat small-plant price of $800$. Potential competition changes the monopoly outcome even though entry does not occur.",
+          "isCorrect": true,
+          "rationale": "A monopoly market does not mean competition has no effect. $(L,L)$ would cut price further to $300$, but both firms lose money, so that configuration is not an equilibrium."
+        },
+        {
+          "text": "The SPNE actually has both firms enter with large plants, so the market is Cournot and price equals $300$.",
+          "isCorrect": false,
+          "rationale": "$(L,L)$ is not an equilibrium: each would lose $85{,}000$. The SPNE path is large monopoly with no entry, at $P=450$."
+        },
+        {
+          "text": "Competition affects welfare only if entry occurs, so consumer surplus equals that of an unthreatened small-plant monopolist.",
+          "isCorrect": false,
+          "rationale": "That is the claim the lecture rejects. The unused large plant still expands output and cuts price relative to the small monopoly."
+        }
+      ],
+      "hint": "Compare the price a monopolist charges when entry is impossible with the price charged when entry must be deterred."
+    },
+    {
+      "question": "Player 1 proposes $m \\in [0,1]$ as Player 2's share of a pie of size $1$; Player 2 accepts or both get $0$. If payoffs equal money, which description of the SPNE is correct?",
+      "answerOptions": [
+        {
+          "text": "Player 2's unique best response is to reject $m=0$, so Player 1 must offer a strictly positive amount and the proposer does not take the whole pie.",
+          "isCorrect": false,
+          "rationale": "At $m=0$ Player 2 is indifferent between accepting and rejecting. The lecture treats acceptance when indifferent (or a discrete penny grid) so that Player 1's problem remains well-defined; the prediction is still that Player 1 takes the pie."
+        },
+        {
+          "text": "Player 1 offers $m=1/2$, the unique split that is a mutual best response when the pie must be shared.",
+          "isCorrect": false,
+          "rationale": "Mutual gains from a 50-50 split do not make it sequentially rational. Player 2 accepts any $m \\geq 0$, so Player 1 has no incentive to offer half."
+        },
+        {
+          "text": "There is no SPNE, because the continuous action space makes Player 1's best response undefined at every candidate offer.",
+          "isCorrect": false,
+          "rationale": "The only awkward point is indifference at $m=0$. The lecture still gives an SPNE prediction: offer $m=0$ and accept, possibly via a discrete grid such as $\\pounds 0.01$."
+        },
+        {
+          "text": "Player 1 offers $m=0$ and Player 2 accepts, so Player 1 takes the entire pie. Acceptance when indifferent (or a one-penny grid) is used so that Player 1's best response is well-defined.",
+          "isCorrect": true,
+          "rationale": "Anything beats zero for Player 2 except at $m=0$, where they are indifferent. Player 1 anticipates acceptance of any $m \\geq 0$ and offers the smallest acceptable amount. The proposer has the commitment."
+        }
+      ],
+      "hint": "Work backwards from Player 2's accept/reject decision, including the knife-edge offer that ties with rejection."
+    },
+    {
+      "question": "In two-period alternating-offer bargaining, delay is costly (discount factors $\\delta_i$). If period 2 is reached, Player 2 proposes. What does Player 1 offer in period 1 in the SPNE, and why is it accepted immediately?",
+      "answerOptions": [
+        {
+          "text": "Player 1 offers $m_1=\\delta_2$: Player 2's payoff from rejecting equals the discounted value of taking the whole pie as last proposer, so the smallest accepted offer matches that continuation.",
+          "isCorrect": true,
+          "rationale": "The period-2 subgame is an ultimatum with Player 2 as proposer, so continuation values are $(0,\\delta_2)$. Player 2 accepts iff $m_1 \\geq \\delta_2$. Player 1 offers exactly that threshold and keeps $1-\\delta_2$."
+        },
+        {
+          "text": "Player 1 offers $m_1=0$, as in the one-period ultimatum, because the first mover still has all of the bargaining power.",
+          "isCorrect": false,
+          "rationale": "The first mover no longer has all the power: Player 2 can credibly reject and become the last proposer. Offering $0$ would be rejected whenever $\\delta_2>0$."
+        },
+        {
+          "text": "Player 1 offers $m_1=1-\\delta_1$, so that Player 1 is compensated for being more impatient than Player 2.",
+          "isCorrect": false,
+          "rationale": "The period-1 acceptance threshold is Player 2's rejection continuation $\\delta_2$, not $1-\\delta_1$. Player 1's own discount factor does not bind, because agreement is in period 1."
+        },
+        {
+          "text": "Player 1 offers nothing in period 1, forcing the game into period 2 so that the last mover can take the undiscounted pie — that is the last-mover's sequentially rational plan.",
+          "isCorrect": false,
+          "rationale": "Delay is costly. Player 1 prefers to settle now by matching Player 2's discounted continuation rather than handing Player 2 the whole pie later and getting $0$."
+        }
+      ],
+      "hint": "Replace the period-2 subgame with its continuation values, then find Player 2's period-1 acceptance threshold."
+    },
+    {
+      "question": "With a common discount factor $\\delta$, finite-horizon alternating offers are solved backwards from the last period, where the proposer keeps the whole pie. As the horizon $T$ becomes large, which description of the period-1 split is correct?",
+      "answerOptions": [
+        {
+          "text": "The last mover's claim is undiminished no matter how far away period $T$ is, so the first proposer gets almost nothing once $T$ is large.",
+          "isCorrect": false,
+          "rationale": "The last period is discounted by $\\delta^{T-1}$. As $T$ grows that claim shrinks; it does not leave the first proposer with almost nothing."
+        },
+        {
+          "text": "As $T \\to \\infty$ there is no last mover, so backward induction cannot start and there is no SPNE.",
+          "isCorrect": false,
+          "rationale": "The infinite-horizon game is stationary: every proposer subgame looks the same, which is how an SPNE is constructed. Finite $T$ remains well-defined throughout."
+        },
+        {
+          "text": "Last-mover advantage is postponed and discounted. Period-1 shares approach the stationary split in which the proposer keeps $1/(1+\\delta)$ and the responder $\\delta/(1+\\delta)$; as $\\delta \\to 1$, who proposes first no longer matters.",
+          "isCorrect": true,
+          "rationale": "The period-1 proposer's share is $\\sum_{k=0}^{T-1}(-\\delta)^k=[1-(-\\delta)^T]/(1+\\delta)$. As $T \\to \\infty$ this tends to $1/(1+\\delta)$. Patience then equalises the split, so the initial proposer no longer matters."
+        },
+        {
+          "text": "Backward induction in period 1 is another ultimatum, so the first proposer keeps the whole pie for every $T$.",
+          "isCorrect": false,
+          "rationale": "Period 1 is not an ultimatum: the responder has a valuable continuation. Only $T=1$ gives the proposer the whole pie."
+        }
+      ],
+      "hint": "See how the last period's split is discounted as it recedes, and what remains of the advantage of proposing today."
+    },
+    {
+      "question": "Suppose Player 2's utility from accepting is $u_2=m-\\beta_2(1-2m)^2$ with $\\beta_2=3/8$, rejection yields $0$, and Player 1 has the analogous inequality-averse utility. Relative to money-maximising ultimatum play, what happens in the SPNE?",
+      "answerOptions": [
+        {
+          "text": "Player 2 still accepts every $m \\geq 0$, because a positive money share always beats $(0,0)$, so Player 1 still offers $m=0$.",
+          "isCorrect": false,
+          "rationale": "Payoffs must represent utilities, not just money. With $\\beta_2=3/8$, $u_2<0$ for $m<1/6$, so rejecting a very unequal split is sequentially rational."
+        },
+        {
+          "text": "Rejection of sufficiently unequal splits is sequentially rational ($u_2<0$ for $m<1/6$), so Player 1 offers $m=1/6$ and Player 2 accepts.",
+          "isCorrect": true,
+          "rationale": "Player 1 maximises $u_1$ subject to Player 2's acceptance constraint. With $\\beta_1=\\beta_2=3/8$ the constraint binds at $m=1/6$. Inequality aversion makes rejection credible and raises the receiver's bargaining power."
+        },
+        {
+          "text": "Player 1 offers $m=1/2$ to drive the inequality term $(1-2m)^2$ to zero; any other split yields negative utility for both players.",
+          "isCorrect": false,
+          "rationale": "At $m=1/2$ the penalty is zero, but Player 1 still values the money share $1-m$. With $\\beta=3/8$ the constrained optimum is $m=1/6$, not a forced 50-50 split."
+        },
+        {
+          "text": "Fairness changes the prediction only through $\\beta_1$. Player 2's $\\beta_2$ cannot affect a sequentially rational rejection, because rejection is off the equilibrium path.",
+          "isCorrect": false,
+          "rationale": "It is $\\beta_2$ that makes $u_2<0$ for low $m$ and so determines the acceptance constraint. Player 1 must satisfy that constraint on the path; $\\beta_1$ affects how Player 1 ranks acceptable offers."
+        }
+      ],
+      "hint": "Find when Player 2's acceptance payoff beats rejection, then impose that constraint on Player 1's choice of $m$."
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Recap: Extensive Form, Sequential Rationality, and SPNE",
+      "Sequential Entry with Capacity Choice",
+      "Monopoly and Cournot Subgames",
+      "Backward Induction and the SPNE of Entry Deterrence",
+      "Non-Credible Threats versus Capacity as Commitment",
+      "Welfare and the Stackelberg Analogy",
+      "Ultimatum Game",
+      "Alternating-Offer Bargaining and Discounting",
+      "Bargaining Power and Infinite Horizon",
+      "Fairness Preferences in Bargaining"
+    ],
+    "followUp": [
+      "Psychological Nash Equilibrium and intention-based models (EC310)"
+    ]
+  }
+}

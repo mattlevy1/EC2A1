@@ -1,1 +1,210 @@
-{"flashcards": []}
+{
+  "flashcards": [
+    {
+      "f": "In the lecture's Prisoner's Dilemma, why is $(D,D)$ the unique Nash equilibrium even though $(C,C)$ is better for both?",
+      "b": "$D$ strictly dominates $C$ for each player, so $(D,D)$ is the unique NE. $(C,C)$ is a strict Pareto improvement, but each player has a unilateral incentive to defect against $C$.",
+      "c": 2
+    },
+    {
+      "f": "How can repeating a stage game create intertemporal incentives?",
+      "b": "Players observe the history of past play, so current actions can be conditioned on the past. What I do today can affect what you do tomorrow, which can deter short-run opportunistic deviations.",
+      "c": 1
+    },
+    {
+      "f": "Why are finite repetitions of the Prisoner's Dilemma insufficient to support cooperation in Nash equilibrium?",
+      "b": "Take any profile that cooperates on path and let $T^*$ be the last cooperative period. From $T^*+1$ onward there is no remaining cooperation to lose, so defecting at $T^*$ is profitable. Hence no on-path cooperation can be supported.",
+      "c": 2
+    },
+    {
+      "f": "What is a stage game?",
+      "b": "A normal-form game $G = \\{N, \\{S_i, u_i\\}_{i \\in N}\\}$ that is played in a single period. The infinitely repeated game consists of this same $G$ played in every period $t = 1, 2, 3, \\ldots$",
+      "c": 3
+    },
+    {
+      "f": "Why treat the horizon as infinite rather than a known finite $T$?",
+      "b": "Infinite horizon is a modelling choice: there is no known end date that players can use for backward induction. A known last period would unravel cooperation, as in the finite PD.",
+      "c": 1
+    },
+    {
+      "f": "How is player $i$'s payoff from a stream $\\{u_i(1), u_i(2), \\ldots\\}$ defined?",
+      "b": "Future payoffs are discounted by a common $\\delta \\in (0,1)$. Normalised utility is $(1-\\delta)\\sum_{t=1}^{\\infty} \\delta^{t-1} u_i(t)$.",
+      "c": 4
+    },
+    {
+      "f": "Why multiply the discounted sum by $(1-\\delta)$?",
+      "b": "The factor $(1-\\delta)$ normalises a constant stream $\\{v,v,v,\\ldots\\}$ to have value $v$, so repeated-game payoffs are comparable to stage-game payoffs.",
+      "c": 4
+    },
+    {
+      "f": "What is the normalised value of the stream $\\{w, v, v, v, \\ldots\\}$?",
+      "b": "$(1-\\delta)w + \\delta v$: the first period is weighted by $(1-\\delta)$ and the constant continuation $v$ is weighted by $\\delta$.",
+      "c": 4
+    },
+    {
+      "f": "What is a history $h(t)$ in a repeated game?",
+      "b": "The sequence of past action profiles $h(t) = \\{a(1), \\ldots, a(t-1)\\}$, where $a(\\tau) = (a_1(\\tau), \\ldots, a_n(\\tau))$. The empty history begins period 1.",
+      "c": 3
+    },
+    {
+      "f": "In a $2 \\times 2$ stage game, how many histories are there at period $t$?",
+      "b": "There are $4^{t-1}$ histories at $t$ (4 at $t=2$, 16 at $t=3$, and so on), because each period has 4 possible action profiles.",
+      "c": 4
+    },
+    {
+      "f": "What is a strategy in an infinitely repeated game?",
+      "b": "A mapping $\\sigma_i : H \\to \\Delta A_i$ from the set of all possible histories to mixed actions. Because the past is observed, histories define information sets, so a strategy specifies an action after every history.",
+      "c": 4
+    },
+    {
+      "f": "What is Tit-for-Tat (TFT)?",
+      "b": "Play $C$ in period 1; thereafter copy the opponent's previous action. TFT is forgiving: it returns to $C$ if the opponent does.",
+      "c": 3
+    },
+    {
+      "f": "What is grim trigger in the Prisoner's Dilemma?",
+      "b": "Play $C$ in period 1 and continue to play $C$ as long as $(C,C)$ occurred in every previous period; after any deviation, play $D$ forever (more generally, the worst stage-game Nash equilibrium).",
+      "c": 3
+    },
+    {
+      "f": "How does grim trigger differ from Tit-for-Tat in the automaton representation?",
+      "b": "TFT can return from $D$ to $C$ if the opponent plays $C$. Under grim trigger, $D$ is absorbing: once anyone has defected, the automaton stays at $D$ forever.",
+      "c": 2
+    },
+    {
+      "f": "When is a payoff profile $(w_1, \\ldots, w_n)$ feasible?",
+      "b": "When it is a weighted average of stage payoffs: $w_i = \\sum_{a \\in A} \\pi(a) u_i(a)$ for some distribution $\\pi$ over action profiles. Equivalently, the feasible set is the convex hull of pure-profile payoffs.",
+      "c": 4
+    },
+    {
+      "f": "Can payoffs inside the feasible set arise immediately?",
+      "b": "Yes if correlation over action profiles is allowed. Otherwise they can still be approached over time by switching among pure profiles.",
+      "c": 2
+    },
+    {
+      "f": "What is player $i$'s minmax payoff $\\underline{u}_i$?",
+      "b": "$\\underline{u}_i = \\min_{\\sigma_{-i} \\in \\Delta A_{-i}} \\max_{\\sigma_i \\in \\Delta A_i} u_i(\\sigma_i, \\sigma_{-i})$. It is the worst payoff $i$ can be held to when opponents minimise $i$'s best-response payoff — $i$'s worst best-response.",
+      "c": 4
+    },
+    {
+      "f": "What is the minmax payoff in the lecture's Prisoner's Dilemma?",
+      "b": "$\\underline{u}_1 = \\min\\{6,1\\} = 1$ (and $\\underline{u}_2 = 1$ by symmetry): against $C$ the best response yields 6, against $D$ it yields 1, so opponents hold $i$ to 1 by playing $D$.",
+      "c": 4
+    },
+    {
+      "f": "When is a payoff profile individually rational?",
+      "b": "When each player receives at least their minmax: $w_i \\geq \\underline{u}_i$ for all $i$. In equilibrium no player can be held below minmax, because they could deviate to guarantee at least $\\underline{u}_i$.",
+      "c": 3
+    },
+    {
+      "f": "In the lecture's Hi-Lo (Pareto-ranked coordination) game, why is player 1's minmax $3/2$ rather than 2?",
+      "b": "Against pure $w$ or $s$, player 1's best responses yield 3 and 2. Mixing $\\sigma_2(w)=1/4$, $\\sigma_2(s)=3/4$ makes player 1 indifferent and earns $3/2$, which is strictly worse. So $\\underline{u}_1 = \\min\\{3,2,3/2\\} = 3/2$.",
+      "c": 4
+    },
+    {
+      "f": "If both players use grim trigger in the PD, what is the on-path outcome and payoff?",
+      "b": "Both play $C$ in every period, generating the stream $\\{5,5,5,\\ldots\\}$ with normalised value 5.",
+      "c": 2
+    },
+    {
+      "f": "What does the one-shot deviation principle (OSDP) say?",
+      "b": "A strategy profile in an infinitely repeated game is a subgame-perfect equilibrium if and only if no player can raise their payoff by changing their action at a single history, given others' strategies and the rest of their own strategy.",
+      "c": 3
+    },
+    {
+      "f": "Which histories must be checked to verify that grim trigger is a subgame-perfect equilibrium?",
+      "b": "Two types: (i) histories on which both have always cooperated, and (ii) histories on which at least one player has defected. Infinite horizon precludes ordinary backward induction, so OSDP reduces the check to one-shot deviations at these information sets.",
+      "c": 2
+    },
+    {
+      "f": "When is a one-shot deviation from on-path grim-trigger cooperation unprofitable in the lecture's PD?",
+      "b": "Deviation yields 6 then 1 forever, worth $(1-\\delta)\\cdot 6 + \\delta\\cdot 1 = 6-5\\delta$. Cooperation is worth 5. So $5 \\geq 6-5\\delta$ if and only if $\\delta \\geq 1/5$.",
+      "c": 4
+    },
+    {
+      "f": "After a defection, why is playing $D$ forever under grim trigger credible for every $\\delta$?",
+      "b": "Grim trigger then prescribes $(D,D)$ forever, which is a Nash equilibrium of the stage game. A one-shot switch to $C$ pays 0 now and still 1 later, so it is worse for any $\\delta$.",
+      "c": 2
+    },
+    {
+      "f": "State the Folk Theorem for infinitely repeated games with perfect monitoring.",
+      "b": "(1) For any $\\delta$, each player's SPNE payoff is at least their minmax. (2) Any feasible payoff profile giving all players at least minmax is an SPNE payoff when $\\delta$ is sufficiently close to 1. (3) For any $\\delta$ and any stage-game Nash equilibrium, there is an SPNE with those stage payoffs.",
+      "c": 3
+    },
+    {
+      "f": "Why is the Folk Theorem both powerful and problematic?",
+      "b": "Repetition dramatically expands the equilibrium set: cooperation, collusion, and other non-stage-game outcomes become possible. But many other outcomes are also equilibria, so the theorem does not predict which equilibrium will be played.",
+      "c": 1
+    },
+    {
+      "f": "Why is 'always play $D$, regardless of history' always an SPNE of the repeated PD?",
+      "b": "Current play is a stage-game Nash equilibrium and future play does not depend on current actions, so no one-shot deviation is profitable. More generally, repeating any fixed stage-game NE forever is an SPNE for every $\\delta$.",
+      "c": 2
+    },
+    {
+      "f": "When is 'minmax forever' not subgame-perfect?",
+      "b": "If the minmax profile is not a stage-game Nash equilibrium, permanent punishment is not credible: punishers would themselves want to deviate. (In the PD, minmax coincides with stage Nash, so grim trigger is fine.)",
+      "c": 2
+    },
+    {
+      "f": "In the lecture's Cournot duopoly, what are Nash quantities, price, and profit?",
+      "b": "Inverse demand $P(Q)=50-Q/2$ and cost $14q_i$ yield $BR_i(q_j)=36-q_j/2$. Nash is $q_i^N=24$, $P^N=26$, and $\\pi_i^N=288$.",
+      "c": 4
+    },
+    {
+      "f": "What is the symmetric collusive outcome in the lecture's Cournot duopoly?",
+      "b": "Joint-profit maximisation gives $Q^*=36$, so $q_i^*=18$, $P^*=32$, and $\\pi_i^*=324$ — higher profit than the Nash $288$, but not a stage-game best response.",
+      "c": 4
+    },
+    {
+      "f": "If the rival produces the collusive $q_2=18$, what is firm 1's static best deviation and gain?",
+      "b": "$BR_1(18)=27$, earning $\\pi_1^{\\mathrm{dev}}=364.5$. The one-shot gain relative to collusion is $364.5-324=40.5$.",
+      "c": 4
+    },
+    {
+      "f": "Under Cournot grim trigger (18 if always $(18,18)$, else Nash 24), when is collusion an SPNE?",
+      "b": "A one-shot deviation is unprofitable when $324 \\geq (1-\\delta)\\cdot 364.5 + \\delta\\cdot 288$, i.e. $\\delta \\geq 40.5/76.5 \\approx 0.53$. Off-path Nash reversion is credible for every $\\delta$.",
+      "c": 4
+    },
+    {
+      "f": "In the optional imperfect-monitoring Bertrand model, what is the critical discount factor $\\delta^*(\\mu)$?",
+      "b": "If a deviation is detected with probability $\\mu$, collusion requires $\\delta \\geq 1/(1+\\mu)$. Perfect monitoring ($\\mu=1$) gives $\\delta^*=1/2$; as $\\mu \\to 0$, $\\delta^* \\to 1$ (perfect patience is needed).",
+      "c": 4
+    },
+    {
+      "f": "Why might publishing transaction prices make collusion easier?",
+      "b": "Publishing raises the detection probability $\\mu$, which lowers $\\delta^*(\\mu)=1/(1+\\mu)$. Patient enough firms can then sustain collusion that was not incentive-compatible when prices were secret.",
+      "c": 2
+    },
+    {
+      "f": "What did the Danish ready-mixed concrete transparency reform illustrate?",
+      "b": "After firm-specific transaction prices were published, prices rose about 15–20% and dispersion fell, while inflation, demand, and costs cannot explain the jump. The competition authority later stopped publication: transparency facilitated monitoring.",
+      "c": 2
+    },
+    {
+      "f": "For a scheme that publishes petrol prices to both consumers and firms, which two effects compete?",
+      "b": "Search: consumers compare more easily, which can raise demand elasticity and push prices down. Monitoring: firms detect undercutting in real time (higher $\\mu$), which can make collusion easier and push prices up. Which effect dominates is empirical.",
+      "c": 2
+    },
+    {
+      "f": "What competition-policy lesson does the lecture draw from monitoring and collusion?",
+      "b": "Transparency can be anticompetitive when it facilitates monitoring — 'government-assisted oligopoly coordination'. Information policy is competition policy: $\\delta^*$ depends on monitoring quality, punishment severity, and market structure.",
+      "c": 1
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Prisoner's Dilemma and Finite vs Infinite Repetition",
+      "Stage Games, Discounting, Histories and Strategies",
+      "Tit-for-Tat and Grim Trigger",
+      "Feasible and Minmax Payoffs",
+      "Individually Rational Payoffs",
+      "One-Shot Deviation Principle",
+      "Folk Theorem",
+      "Cournot Collusion",
+      "Imperfect Monitoring and Price Transparency"
+    ],
+    "followUp": [
+      "Incentivising punishers when minmax is not a stage-game Nash equilibrium"
+    ]
+  }
+}

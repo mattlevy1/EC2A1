@@ -11,11 +11,13 @@ Read the lecture PDF and produce:
 1. **`quiz/lecture_N.json`** — ~30–40 flashcards  
 2. **`quiz/quiz_N.json`** — ~10 multiple-choice quiz questions  
 
-Replace `N` with the lecture number (e.g. `1` for Lecture 1). Repeat for **lectures 1–10** (Lecture 1 is already done).
+Replace `N` with the lecture number (e.g. `6` for Lecture 6).
+
+**Status:** Lectures **1–10** are complete (content + quiz review).
 
 | | |
 |---|---|
-| **Input** | `Lectures/LectureN.pdf` (e.g. `Lectures/Lecture1.pdf`) |
+| **Input** | `Lectures/LectureN.pdf` (e.g. `Lectures/Lecture6.pdf`) |
 | **Outputs** | `quiz/lecture_N.json`, `quiz/quiz_N.json` |
 | **Optional** | Update the `topic` field for Lecture N in the `LECTURES` array in `quiz/index.html` if the slides have a clear subtitle |
 
@@ -42,7 +44,7 @@ python3 -c "import json; json.load(open('quiz/lecture_N.json')); json.load(open(
 - **Course:** LSE EC2A1 — Intermediate Microeconomics - Game Theory  
 - **Level:** Rigorous intermediate game theory. Students have seen some material before but need precise definitions, notation, and reasoning.  
 - **Register:** British spelling (`behaviour`, `randomisation`, etc.).  
-- **Slide fidelity:** Stay faithful to the lecture. Do not invent topics absent from the slides. You may state standard definitions clearly when slides abbreviate them (e.g. a one-line formal definition alongside slide notation).
+- **Slide fidelity:** Stay faithful to the lecture. Do not invent topics absent from the slides. Use **slide phrasing** for theorems and results — do not invent labels (e.g. “monopoly-style trade-off” if the slide says something else). You may state standard definitions clearly when slides abbreviate them.
 
 ---
 
@@ -90,33 +92,75 @@ Test **underlying economic or game-theoretic mechanisms**, not surface facts.
 
 ## Quiz (~10)
 
-**Purpose:** One step above flashcards — application, comparison, or short reasoning. Not exam-level proofs.
+**Purpose:** One step above flashcards — application, comparison, or short reasoning. Not exam-level proofs. Prefer **computation and “why”** over pure definition recall.
 
 **Good question types:**
-- Choose the correct definition or characterization among close alternatives  
-- Given a payoff matrix fragment or belief, determine a best response or dominance relation  
+- Given a payoff matrix fragment or belief, determine a best response, dominance relation, or equilibrium property  
 - Explain why an outcome or policy fails using strategic reasoning  
-- Distinguish two related concepts from the lecture  
-- Predict one step of a procedure (e.g. one elimination round, one round of iterated reasoning)  
+- Distinguish two related concepts from the lecture (as applied in a scenario, not as bare definitions)  
+- Predict **one step** of a procedure (e.g. why a strategy becomes dominated in the **reduced** game after one elimination)  
 - Interpret what an experiment implies for a modelling assumption  
+- Check **mutual** best responses when testing equilibrium claims  
+
+**Weaker (use sparingly):** “Which is the correct definition of …?” without an applied setting.
 
 **Do not** reuse flashcard wording verbatim; quiz questions should require combining or applying ideas.
 
+**One question, one skill:** Do not combine equilibrium computation and comparative statics, or two unrelated concepts, in a single item.
+
 **Order:** Follow the lecture flow (definitions → examples → solution concepts → applications).
+
+**Coverage:** Each major slide block in the lecture should have at least one quiz question.
 
 | Field | Required | Notes |
 |-------|----------|-------|
-| `question` | yes | LaTeX allowed |
+| `question` | yes | LaTeX allowed; see stem rules below |
 | `answerOptions` | yes | Exactly 4 options; each needs `text`, `isCorrect`, `rationale` |
-| `hint` | yes | Nudge without giving away the answer |
+| `hint` | yes | See hint rules below |
 
-**Rules:**
+### Stem rules
+- **Do not embed the answer in the stem** — the question must not state the conclusion students are meant to derive (e.g. do not name the IDSDS round sequence; ask *why* a strategy is eliminated in the reduced game).
+- Set up a scenario or payoff fragment; let the options carry the competing claims.
+
+### Hint rules
+- Nudge toward the **method**, not the result.
+- **Do not** quote key equations, first-order conditions, or indifference conditions from the slides.
+- **Do not** name the correct concept or option in the hint.
+
+### Distractor rules
+- Every wrong option should reflect a **plausible lecture-specific misunderstanding**, not filler.
+- Good distractors mirror confusions the slides warn about, e.g.:
+  - DSE vs Nash equilibrium; IIA vs strategic interaction  
+  - mixing vs incomplete information; independence vs private values  
+  - treating types as separate players; averaging complete-information equilibria  
+  - “preferred joint payoffs ⇒ equilibrium”; favourite-cell thinking as dominance  
+  - swapped properties of auction formats; one-bidder vs two-bidder sale probability  
+- **Avoid** generic falsehoods (“mixed strategies are impossible when sets are finite”) unless the lecture actually discusses that error.
+
+### Option and rationale rules
+- **Do not dump full worked solutions in the options** — students should not pick the answer by recognising a memorised derivation.
+- Rationales: 1–2 sentences each; say **why** the option is right or wrong using slide logic or a minimal calculation reference.
 - Exactly one correct option per question  
-- Distractors should reflect plausible misunderstandings from the lecture  
-- Rationales required for all four options (1–2 sentences each)  
 - Avoid trick questions and double negatives  
-- **Randomize `answerOptions` order in the JSON** so the correct answer is not always first; vary positions across questions. (The app also shuffles options at quiz launch, but JSON order should still vary for authoring consistency.)  
+- **Randomize `answerOptions` order in the JSON** — vary correct-answer positions across questions (not always first). The app also shuffles at quiz launch; JSON order is for authoring consistency.  
 - **No extra fields** — only `question`, `answerOptions`, and `hint` per question (no stray `text`, `id`, etc.)
+
+---
+
+## Review pass (required after first draft)
+
+After writing `quiz_N.json`, re-read the PDF, `lecture_N.json`, and the quiz file. Edit the quiz (not the flashcards, unless a factual error affects an answer):
+
+1. Remove stems that give away the answer  
+2. Replace weak or generic distractors with lecture-specific mix-ups  
+3. Tighten hints so they do not quote equations or name the answer  
+4. Replace recall-only items with application where possible  
+5. Confirm each major slide block is covered  
+6. Re-randomize correct-answer positions if needed  
+7. Confirm `topics` in `quiz_N.json` **identical** to `lecture_N.json`  
+8. Re-run `json.load` validation  
+
+Do **not** rewrite `lecture_N.json` unless a factual error affects a quiz answer.
 
 ---
 
@@ -159,14 +203,14 @@ Both files share a top-level **`topics`** object. Use **identical** `topics` in 
 {
   "quiz": [
     {
-      "question": "Strategy $s_i$ is strictly dominated if and only if …",
+      "question": "In the reduced game after $B$ is eliminated, why can $R$ now be removed for Player 2?",
       "answerOptions": [
         { "text": "…", "isCorrect": true, "rationale": "…" },
         { "text": "…", "isCorrect": false, "rationale": "…" },
         { "text": "…", "isCorrect": false, "rationale": "…" },
         { "text": "…", "isCorrect": false, "rationale": "…" }
       ],
-      "hint": "Think about best responses to beliefs."
+      "hint": "Compare payoffs against the remaining strategies only."
     }
   ],
   "topics": {
@@ -184,7 +228,7 @@ The minisite renders math via MathJax. Use `$…$` for inline math in JSON strin
 
 - **JSON escaping:** double backslashes (`\\sum`, `\\Delta`, `\\geq`, `\\frac`, etc.)  
 - **Supported text markup** (via app sanitizer): `\textbf{}`, `\textit{}`, `\emph{}`, `\pounds`, `\ldots`, `\dots`  
-- **Match lecture notation** — e.g. if slides use Player 1 = rows, $(u_1, u_2)$ in cells, $s_{-i}$, $\sigma_i$, $\theta_{-i}$, follow that convention  
+- **Match lecture notation** — follow conventions on the slides (e.g. Player 1 = rows, $(u_1, u_2)$ in cells, $s_{-i}$, $\sigma_i$, $\theta_{-i}$)
 
 ---
 
@@ -192,13 +236,15 @@ The minisite renders math via MathJax. Use `$…$` for inline math in JSON strin
 
 - [ ] ~30–40 flashcards spanning the whole lecture  
 - [ ] ~10 quiz questions with 4 options, hints, and rationales for every option  
-- [ ] Correct answers varied in position across questions (not always first)  
+- [ ] Each major slide block has at least one quiz question  
+- [ ] Stems do not embed the answer; hints do not quote key equations  
+- [ ] Distractors are lecture-specific mix-ups, not generic filler  
+- [ ] Options do not dump full worked solutions  
+- [ ] Correct answers varied in position across questions  
+- [ ] Review pass completed on `quiz_N.json`  
 - [ ] Valid JSON in both files (run `json.load` check)  
 - [ ] Identical `topics` in flashcard and quiz files  
-- [ ] No course-admin content  
-- [ ] Application items test mechanisms, not trivia  
-- [ ] Notation matches the lecture slides  
-- [ ] Quiz questions apply material, not duplicate flashcards verbatim  
+- [ ] No course-admin content; mechanisms not trivia; slide phrasing for theorems  
 - [ ] Lecture topic updated in `index.html` if applicable  
 - [ ] No undocumented extra JSON fields  
 
@@ -206,24 +252,23 @@ The minisite renders math via MathJax. Use `$…$` for inline math in JSON strin
 
 ## Example invocation (for parent agent)
 
-Launch a subagent with model **`cursor-grok-4.6-high-fast`** for each lecture. Lecture 1 is complete; run 2–10:
-
-```
-For Lecture N (N = 2..10): launch a subagent with model cursor-grok-4.6-high-fast.
-Read Lectures/LectureN.pdf and follow quiz/prompts/generate-lecture-content.md
-to produce quiz/lecture_N.json and quiz/quiz_N.json.
-Update the Lecture N topic in quiz/index.html to match the slide subtitle.
-Validate both JSON files before finishing.
-```
-
-Single-lecture example (Lecture 2):
+**Generate** (new or replacement lecture):
 
 ```
 Launch subagent with model cursor-grok-4.6-high-fast.
-Read Lectures/Lecture2.pdf and follow quiz/prompts/generate-lecture-content.md
-to produce quiz/lecture_2.json and quiz/quiz_2.json.
-Update the Lecture 2 topic in quiz/index.html to match the slide subtitle.
-Validate both JSON files before finishing.
+Read Lectures/LectureN.pdf and follow quiz/prompts/generate-lecture-content.md
+to produce quiz/lecture_N.json and quiz/quiz_N.json.
+Update the Lecture N topic in quiz/index.html to match the slide subtitle.
+Run the review pass on quiz_N.json. Validate both JSON files before finishing.
+```
+
+**Review only** (e.g. after manual edits):
+
+```
+Launch subagent with model cursor-grok-4.6-high-fast.
+Read Lectures/LectureN.pdf, quiz/lecture_N.json, and quiz/quiz_N.json.
+Follow the review pass in quiz/prompts/generate-lecture-content.md.
+Edit quiz/quiz_N.json only. Validate JSON before finishing.
 ```
 
 ---

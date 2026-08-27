@@ -1,1 +1,206 @@
-{"flashcards": []}
+{
+  "flashcards": [
+    {
+      "f": "What does the extensive form add relative to a static (normal form) game?",
+      "b": "It models sequential decisions, observation of past actions, and contingent plans. Timing of moves and the information available when a player chooses are represented explicitly.",
+      "c": 1
+    },
+    {
+      "f": "In a game tree, what are nodes, branches, the root, decision nodes, and terminal nodes?",
+      "b": "Nodes represent histories of actions; branches represent actions. The root is the unique initial node with no predecessor. Decision nodes are non-terminal; terminal nodes are endpoints where the game ends and payoffs are assigned.",
+      "c": 3
+    },
+    {
+      "f": "What three structural rules must a game tree satisfy?",
+      "b": "There is a unique initial node, and every other node is a successor of it (no cycles, no two roots). Each node except the root has a unique immediate predecessor. Each decision node is assigned to exactly one player.",
+      "c": 3
+    },
+    {
+      "f": "What is an information set?",
+      "b": "A set of decision nodes that a player cannot distinguish between. All nodes in an information set belong to the same player.",
+      "c": 3
+    },
+    {
+      "f": "What must be true of action labels within an information set?",
+      "b": "If the set has $k$ nodes, each action is represented by $k$ branches (one per node). Every node in the set must have the same number of branches and the same action labels.",
+      "c": 3
+    },
+    {
+      "f": "Give the lecture's formal definition of an extensive form game.",
+      "b": "A rooted tree with labelling functions: non-terminal nodes labelled by a player $i$ or chance $C$; chance probabilities summing to 1; information-set labels $i.s$; action labels on branches (identical within an information set); payoff vectors $(u_1,\\ldots,u_n)$ at terminals; and perfect recall.",
+      "c": 4
+    },
+    {
+      "f": "What is perfect recall?",
+      "b": "Players remember their own past actions. They may or may not observe others' actions.",
+      "c": 3
+    },
+    {
+      "f": "When does an extensive form game have perfect information?",
+      "b": "When every information set contains exactly one node. Players then know the complete history when they move, and no other player's choice is still pending (no simultaneous moves).",
+      "c": 3
+    },
+    {
+      "f": "What is imperfect information?",
+      "b": "A player does not know which node in their information set they are at — typically because some other player's choice is unobserved, so moves are (partly) simultaneous.",
+      "c": 3
+    },
+    {
+      "f": "What is a (behavioural) strategy in the extensive form?",
+      "b": "A complete contingent plan $\\sigma_i = \\{\\sigma_{i.s}\\}_{s \\in S_i}$, where $S_i$ is player $i$'s information sets and $\\sigma_{i.s} \\in \\Delta A_{i.s}$ is a distribution over actions at information set $s$. It specifies behaviour at every information set, including those that may not be reached.",
+      "c": 4
+    },
+    {
+      "f": "What is a pure strategy, and how does it relate to a behavioural strategy?",
+      "b": "A pure strategy assigns probability 1 to one action at each information set. Behavioural strategies assign an independent probability at each information set. Under perfect recall, behavioural strategies are equivalent to ex-ante randomisation over pure strategies (Kuhn).",
+      "c": 3
+    },
+    {
+      "f": "In the lecture's perfect-information tree, why does Player 1 have eight pure strategies even though OUT ends the game immediately?",
+      "b": "Player 1 has three information sets (the root and two later nodes), each with two actions, so $2 \\times 2 \\times 2 = 8$ pure strategies. A strategy must still specify L or H at the later nodes after OUT, because a strategy is a complete contingent plan.",
+      "c": 2
+    },
+    {
+      "f": "How does connecting Player 1's two later nodes into one information set change the strategy count?",
+      "b": "Player 1 then has only two information sets, so four pure strategies: $(\\text{OUT},L)$, $(\\text{OUT},H)$, $(\\text{IN},L)$, $(\\text{IN},H)$. Player 2 still has $\\{L,H\\}$.",
+      "c": 2
+    },
+    {
+      "f": "How is the probability $P(z\\mid\\sigma)$ of a terminal node obtained, and what is expected utility?",
+      "b": "$P(z\\mid\\sigma)$ is the product of the behavioural probabilities along the path from the root to $z$. Expected utility is $U_i(\\sigma) = \\sum_{z \\in Z} P(z\\mid\\sigma)\\, u_i(z)$.",
+      "c": 4
+    },
+    {
+      "f": "What is the equilibrium path when play is pure?",
+      "b": "With pure strategies, only one terminal node is reached with positive probability. The equilibrium path is the path from the root to that terminal node.",
+      "c": 3
+    },
+    {
+      "f": "State the definition of Nash equilibrium in an extensive form game.",
+      "b": "A profile $\\sigma^*$ is a Nash equilibrium if $U_i(\\sigma_i^*,\\sigma_{-i}^*) \\geq U_i(\\sigma_i,\\sigma_{-i}^*)$ for all $\\sigma_i$ and every player $i$. The definition is the same as in static games, but each strategy must specify choices at every information set, including those off the equilibrium path.",
+      "c": 4
+    },
+    {
+      "f": "In matching pennies with perfect information (Player 2 observes Player 1), why are there pure-strategy Nash equilibria?",
+      "b": "Player 2 has four pure strategies HH, HT, TH, TT. The plan TH mismatches at both nodes, so Player 1 earns 0 from either H or T. Both $(H,\\text{TH})$ and $(T,\\text{TH})$ are pure NE (and there are also mixed NE).",
+      "c": 2
+    },
+    {
+      "f": "In matching pennies with imperfect information, what is the unique NE, and does it matter who 'moves first'?",
+      "b": "Player 2 has a single information set, so only two strategies, H or T. The unique NE is both players randomising 50-50. The same normal form arises whether Player 1 or Player 2 is drawn as moving first, provided the first move is unobserved.",
+      "c": 2
+    },
+    {
+      "f": "The profile $(DB,Y)$ is a Nash equilibrium of the lecture's $D$/$U$ game. Why is Player 2's plan to play $Y$ not credible?",
+      "b": "If Player 1 opens $U$ and then plays $B$, Player 2's payoff is $0$ from $Y$ and $1$ from $X$. $Y$ is only (weakly) optimal while the subgame is unreached. Ex-ante Player 2 may plan $Y$; ex-interim they would switch to $X$.",
+      "c": 2
+    },
+    {
+      "f": "What is sequential rationality?",
+      "b": "A strategy is sequentially rational if, at each information set, it specifies a best response to the others' strategies for the remainder of the game, regardless of whether the player believes that information set will be reached. It requires ex-interim optimality at every information set.",
+      "c": 3
+    },
+    {
+      "f": "How does sequential rationality differ from Nash equilibrium?",
+      "b": "Nash equilibrium only requires optimality on the equilibrium path. Sequential rationality requires optimality at every information set, including those off the path.",
+      "c": 1
+    },
+    {
+      "f": "In the classroom Continue/Stop game, what does backward induction predict?",
+      "b": "At the last node Player 2 stops (90 rather than 0). Each preceding player then prefers to stop rather than continue into a stop by the opponent, so play unravels to Player 1 stopping at the first node for payoffs $(15,0)$.",
+      "c": 2
+    },
+    {
+      "f": "Describe the backward induction algorithm.",
+      "b": "Start at nodes that lead only to terminals; the player chooses the payoff-maximising action. Move one step toward the root, choosing optimally given how successors behave. Repeat until the root. In perfect-information games this always produces sequentially rational strategies.",
+      "c": 1
+    },
+    {
+      "f": "In the lecture's backward-induction example, what is the pure SPNE and the outcome?",
+      "b": "Player 2 chooses $a$ at 2.1 and $c$ at 2.2; Player 1 chooses $E$ at 1.2 and therefore $D$ at the root. The PSNE is $(DE, ac)$; the path is $(D,c,E)$ with payoffs $(3,3)$.",
+      "c": 2
+    },
+    {
+      "f": "Why can backward induction not be applied in the $D$/$U$ game?",
+      "b": "Player 2 has a nontrivial information set: the best response at 2.1 depends on whether Player 1 chose $A$ or $B$. The same game can even be drawn with Player 2 moving 'first' after $U$. Credibility must be imposed at the level of subgames, not node-by-node.",
+      "c": 2
+    },
+    {
+      "f": "What is a subgame?",
+      "b": "A subset of an extensive form that (1) begins at a single decision node, (2) contains all successors of that node, and (3) does not split any information set: if a set has several nodes, either all are in the subgame or none are.",
+      "c": 3
+    },
+    {
+      "f": "What is a proper subgame, and why may imperfect-information games have few of them?",
+      "b": "The entire game is always a subgame. A proper subgame is any strictly smaller one. If information sets span several branches, starting after an unobserved move would split a set, so there may be few or no proper subgames.",
+      "c": 1
+    },
+    {
+      "f": "What is a subgame perfect Nash equilibrium (SPNE)?",
+      "b": "A strategy profile whose restriction to every subgame is a Nash equilibrium of that subgame. Every SPNE is a Nash equilibrium (the whole game is a subgame). SPNE eliminates non-credible threats in proper subgames; in perfect-information games, backward induction yields SPNE.",
+      "c": 3
+    },
+    {
+      "f": "In the $D$/$U$ example, what is the unique NE of the subgame after $U$, and what is the SPNE of the whole game?",
+      "b": "After $U$ the simultaneous-move NE is $(A,X)$. Player 1 then prefers $U$ (payoff 3) to $D$ (payoff 2). The SPNE is $(UA, X)$ with payoffs $(3,4)$. Profiles such as $(DB,Y)$ and $(DA,Y)$ are NE but not SPNE.",
+      "c": 2
+    },
+    {
+      "f": "What restriction does Nash equilibrium place on off-path play, and how does SPNE repair it?",
+      "b": "NE requires sequential rationality on the path but places no restriction on off-path behaviour. If an off-path subgame is reached and play there is not optimal, players deviate further and the equilibrium unravels. SPNE requires Nash equilibrium in every subgame.",
+      "c": 1
+    },
+    {
+      "f": "When does SPNE fail to imply sequential rationality?",
+      "b": "With imperfect information, SPNE enforces sequential rationality only where proper subgames exist. If the only subgame is the whole game, a Nash equilibrium is automatically SPNE even if some off-path information set specifies a non-best response. Backward induction is not defined for imperfect-information games.",
+      "c": 2
+    },
+    {
+      "f": "What is a one-shot deviation, and what does the one-shot deviation principle say?",
+      "b": "A one-shot deviation $\\sigma_i'$ agrees with $\\sigma_i$ at every information set except one. In a finite game with perfect recall, $\\sigma$ is an SPNE if and only if no player has a profitable one-shot deviation in any subgame.",
+      "c": 3
+    },
+    {
+      "f": "In the Stackelberg duopoly, what are the strategy spaces?",
+      "b": "Firm 1 chooses $q_1 \\in [0,\\infty)$. Firm 2 observes $q_1$ and chooses a function $q_2(q_1)$. Each $q_1$ starts a subgame in which Firm 2 is the only player; Firm 2 has infinitely many information sets, one per observed $q_1$.",
+      "c": 3
+    },
+    {
+      "f": "With $P(q)=50-q/2$ and $c=14$, what is Firm 2's Stackelberg best response?",
+      "b": "Given $q_1$, Firm 2 maximises $\\bigl(50-(q_1+q_2)/2\\bigr)q_2-14q_2$. The best response is $BR_2(q_1)=(72-q_1)/2=36-q_1/2$.",
+      "c": 4
+    },
+    {
+      "f": "What is the Stackelberg SPNE outcome in the lecture's example?",
+      "b": "$q_1^*=36$ and $q_2^*(q_1)=36-q_1/2$, so equilibrium quantities are $(36,18)$, $Q=54$, and $P=23$. Profits are $324$ for Firm 1 and $162$ for Firm 2.",
+      "c": 4
+    },
+    {
+      "f": "How does the Stackelberg SPNE compare with Cournot in the same market?",
+      "b": "Cournot is $q_1=q_2=24$ and profits $288$ each. Stackelberg has a first-mover advantage: Firm 1 produces more ($36$), earns more ($324$), and Firm 2 produces less ($18$) and earns less ($162$).",
+      "c": 2
+    },
+    {
+      "f": "Why does first-mover advantage in Stackelberg require commitment?",
+      "b": "Timing lets Firm 1 make an irreversible, observable choice. If Firm 1 could revise after seeing $q_2$, Firm 2 would anticipate that revision and sequential rationality would unravel Firm 1's leadership strategy.",
+      "c": 1
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Extensive Form Game Trees",
+      "Perfect versus Imperfect Information",
+      "Strategies as Contingent Plans",
+      "Nash Equilibrium in Extensive Form",
+      "Sequential Rationality and Credible Threats",
+      "Backward Induction",
+      "Subgames and SPNE",
+      "One-Shot Deviation Principle",
+      "Stackelberg Duopoly and First-Mover Advantage"
+    ],
+    "followUp": [
+      "Bargaining",
+      "Sources of Strategic Advantage"
+    ]
+  }
+}

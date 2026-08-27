@@ -1,1 +1,220 @@
-{"flashcards": []}
+{
+  "flashcards": [
+    {
+      "f": "Why are Bayesian Nash equilibrium and subgame perfection not enough for dynamic games of incomplete information?",
+      "b": "BNE requires optimality given beliefs about types, and SPE uses backward induction under complete information. With private information, Nature's moves typically leave no proper subgames, so BNE need not be optimal at unreached information sets.",
+      "c": 2
+    },
+    {
+      "f": "How is private information introduced in a dynamic incomplete-information game?",
+      "b": "Nature is modelled as a player who chooses types. Information sets that span Nature's moves then prevent proper subgames from starting after the initial node.",
+      "c": 3
+    },
+    {
+      "f": "How does today's signalling setting differ from adverse-selection screening (e.g. insurance menus)?",
+      "b": "In screening, the uninformed party moves first. Here the informed party moves first: if types take different actions, the second-mover should update beliefs, which changes the informed party's incentives.",
+      "c": 2
+    },
+    {
+      "f": "Who are the players in the gift game, and what does Nature choose?",
+      "b": "A Sender (P1) and a Receiver (P2). Nature chooses P1's type: Friend (F) with probability $p$, Enemy (E) with probability $1-p$.",
+      "c": 3
+    },
+    {
+      "f": "What is the sequence of moves in the gift game?",
+      "b": "P1 observes their type and chooses Give (G) or Not (N). If N, the game ends at payoffs $(0,0)$. If G, P2 observes the gift but not the type and chooses Accept (A) or Reject (R).",
+      "c": 3
+    },
+    {
+      "f": "What are the gift-game payoffs when a gift is given?",
+      "b": "Friend: $(1,1)$ if accepted and $(-1,0)$ if rejected. Enemy: $(0,-1)$ if accepted and $(-1,0)$ if rejected.",
+      "c": 4
+    },
+    {
+      "f": "What does each player want in the gift game?",
+      "b": "P2 wants to accept friends' gifts and reject enemies' gifts. P1 prefers accept over reject; only Friend strictly prefers accept over no gift.",
+      "c": 2
+    },
+    {
+      "f": "How many subgames does the gift game have, and why?",
+      "b": "Only one: the entire game. P2's information set contains nodes from both of Nature's branches, so no singleton information set begins a proper subgame after the initial node.",
+      "c": 3
+    },
+    {
+      "f": "Why is every BNE of the gift game automatically subgame perfect?",
+      "b": "Because the only subgame is the whole game. SPE adds no extra sequential conditions beyond Nash/BNE.",
+      "c": 2
+    },
+    {
+      "f": "Why is $(N_F, N_E, R)$ a BNE of the gift game?",
+      "b": "Both types choose $N$, so P2's information set is never reached. Given $R$, a gift pays $-1 < 0$, so neither type wants to give. P2's choice does not affect equilibrium payoffs.",
+      "c": 2
+    },
+    {
+      "f": "Why can BNE fail sequential rationality in the gift game?",
+      "b": "In $(N_F, N_E, R)$, P2 is never reached, so $R$ can be specified independently of $u_2(A)$ and $u_2(R)$. BNE does not require beliefs at unreached information sets, nor optimality given those beliefs.",
+      "c": 2
+    },
+    {
+      "f": "If P2 actually receives a gift, what does sequential rationality require?",
+      "b": "If P2 believes the gift likely came from a Friend, P2 should Accept; if likely from an Enemy, P2 should Reject. The action must maximise expected payoff given beliefs.",
+      "c": 2
+    },
+    {
+      "f": "What does the belief $q(x \\mid h)$ denote?",
+      "b": "Player 2's belief that she is at node $x$, given that information set $h$ has been reached. Interim beliefs can depend on private signals and on others' strategies.",
+      "c": 4
+    },
+    {
+      "f": "How are on-path beliefs formed by Bayes' rule?",
+      "b": "If $h$ is reached with positive probability under $\\sigma$, then $q(x \\mid h) = \\Pr(\\text{reaching } x \\text{ under } \\sigma) / \\Pr(\\text{reaching } h \\text{ under } \\sigma)$.",
+      "c": 4
+    },
+    {
+      "f": "What happens to beliefs if information set $h$ is reached with probability zero?",
+      "b": "Bayes' rule gives $0/0$ — undefined. Off-path beliefs are unrestricted: \"anything goes.\"",
+      "c": 3
+    },
+    {
+      "f": "What is a Perfect Bayesian Equilibrium?",
+      "b": "A strategy profile $\\sigma$ and a belief system $q$ (a distribution over nodes at each information set) satisfying sequential rationality (SR) and belief consistency (BC).",
+      "c": 3
+    },
+    {
+      "f": "What is sequential rationality (SR) in a PBE?",
+      "b": "At every information set, the player's strategy maximises expected payoff given beliefs $q$ and others' strategies $\\sigma_{-i}$.",
+      "c": 3
+    },
+    {
+      "f": "What is belief consistency (BC) in a PBE?",
+      "b": "Beliefs are derived from Bayes' rule wherever possible — that is, at information sets reached with positive probability under $\\sigma$.",
+      "c": 3
+    },
+    {
+      "f": "How do separating and pooling equilibria differ in a signalling game?",
+      "b": "Separating: different types choose different actions, so the uninformed player infers type and on-path beliefs are pinned down by Bayes. Pooling: all types choose the same action, so the uninformed player learns nothing; off-path beliefs are unrestricted.",
+      "c": 3
+    },
+    {
+      "f": "Given $q = \\Pr(F \\mid G)$, when does P2 Accept or Reject in the gift game?",
+      "b": "$E[u_2 \\mid A] = 2q - 1$ and $E[u_2 \\mid R] = 0$. P2 chooses $A$ if $q > 1/2$, $R$ if $q < 1/2$, and either if $q = 1/2$.",
+      "c": 4
+    },
+    {
+      "f": "Why can $(N_F, G_E)$ not be part of a PBE?",
+      "b": "The gift is on-path, so Bayes gives $q = 0$. P2's best response is $R$. Enemy then gets $-1$ from $G$ versus $0$ from $N$, so Enemy deviates to $N$.",
+      "c": 2
+    },
+    {
+      "f": "Why is $(G_F, N_E, A)$ with $q = 1$ a PBE of the gift game?",
+      "b": "Only Friend gives, so Bayes yields $q = 1$ and P2 Accepts. Friend gets $1 > 0$ from giving. Enemy is indifferent: $N$ pays $0$, and $G$ followed by $A$ also pays $0$. This is a separating equilibrium.",
+      "c": 2
+    },
+    {
+      "f": "When is pooling on $G$ a PBE of the gift game?",
+      "b": "If both types give, Bayes yields $q = p$. Then $(G_F, G_E, A)$ with $q = p$ is a PBE when $p \\geq 1/2$: P2 Accepts, Friend gets $1 > 0$, and Enemy gets $0$, so neither type strictly prefers $N$.",
+      "c": 2
+    },
+    {
+      "f": "How can pooling on $N$ be a PBE of the gift game?",
+      "b": "P2's information set is unreached, so any $q \\in [0,1]$ is allowed. For P2 to play $R$ (which deters giving) we need $q \\leq 1/2$. Then both types get $0$ from $N$ versus $-1$ from a rejected gift. This pooling PBE exists for any $p$.",
+      "c": 2
+    },
+    {
+      "f": "What off-path beliefs sustain $(N_F, N_E, R)$, and why might they seem unreasonable?",
+      "b": "Any $q \\leq 1/2$: P2 believes an unexpected gift is (weakly) more likely from an Enemy. The lecture asks whether that is reasonable, since only Friend could benefit from giving.",
+      "c": 2
+    },
+    {
+      "f": "State the intuitive criterion (Cho and Kreps 1987).",
+      "b": "If an off-path action could only benefit some types (under the most favourable response), exclude types who could never benefit from the belief following that action.",
+      "c": 3
+    },
+    {
+      "f": "Why does $(N_F, N_E, R)$ fail the intuitive criterion?",
+      "b": "Enemy's equilibrium payoff is $0$, and the best $G$ can yield is $0$ if accepted, so Enemy cannot benefit. Friend could get $+1$ if P2 accepts. IC sets $q = 1$; P2 then Accepts, and Friend wants to deviate.",
+      "c": 2
+    },
+    {
+      "f": "What is Spence's alternative explanation of education?",
+      "b": "Education need not raise productivity. If a programme is differentially harder for low-ability students, choosing it can signal high ability (Spence, 1973).",
+      "c": 1
+    },
+    {
+      "f": "What are the key assumptions of the Spence signalling model?",
+      "b": "Workers differ in productivity (known to the worker, not the firm); education is costly and costs differ by type; education does not affect productivity; firms offer jobs/wages based on observed education; and single-crossing holds.",
+      "c": 3
+    },
+    {
+      "f": "What is the single-crossing condition in this lecture?",
+      "b": "Education is more costly for low-productivity workers — in general, a positive cross-partial derivative of utility with respect to type and signal. If costs were identical, high types could not distinguish themselves.",
+      "c": 3
+    },
+    {
+      "f": "What are the primitives of the lecture's Spence example?",
+      "b": "Types $t \\in \\{H,L\\}$ with $\\Pr(H) = 1/3$. The worker chooses $E$ or $N$ (costs $4$ for $H$, $7$ for $L$). The firm offers $M$ or $C$. Worker payoffs are wage minus cost ($M$ pays $10$, $C$ pays $4$). Firm: $10$ from $(H,M)$, $4$ from $C$ either type, $0$ from $(L,M)$.",
+      "c": 4
+    },
+    {
+      "f": "How are strategies labelled in the Spence example?",
+      "b": "Worker: $EE$, $EN$, $NE$, $NN$ (first letter type $H$, second type $L$). Firm: $MM$, $CM$, $MC$, $CC$ (first letter after $E$, second after $N$).",
+      "c": 4
+    },
+    {
+      "f": "What are the two pure-strategy BNE of the Spence example?",
+      "b": "Pooling: $(NN, CC)$ — both types choose no education, firm always offers clerical. Separating: $(EN, MC)$ — $H$ gets education, $L$ does not; the firm screens ($M$ after $E$, $C$ after $N$).",
+      "c": 2
+    },
+    {
+      "f": "Why does each worker type prefer their action under separating $(EN, MC)$?",
+      "b": "Type $H$: $E$ then $M$ pays $6$, while $N$ then $C$ pays $4$. Type $L$: $E$ then $M$ pays $3$, while $N$ then $C$ pays $4$. So $H$ chooses $E$ and $L$ chooses $N$.",
+      "c": 2
+    },
+    {
+      "f": "What are the firm's on-path beliefs and best replies in separating $(EN, MC)$?",
+      "b": "Both information sets are on-path. Bayes gives $\\Pr(H \\mid E) = 1$, so $M$ ($10 > 4$), and $\\Pr(H \\mid N) = 0$, so $C$ ($4 > 0$). Thus $(EN, MC)$ is a PBE.",
+      "c": 4
+    },
+    {
+      "f": "Why does the firm offer $C$ after $N$ in pooling $(NN, CC)$?",
+      "b": "$F.N$ is on-path, so Bayes gives $\\Pr(H \\mid N) = 1/3$. Then $E[u_F \\mid M] = 10/3 < 4 = E[u_F \\mid C]$, so $C$ is sequentially rational.",
+      "c": 4
+    },
+    {
+      "f": "Which off-path beliefs make $(NN, CC)$ a PBE?",
+      "b": "After unexpected $E$, Bayes is undefined. $E[u_F \\mid M] = 10q_E$ and $E[u_F \\mid C] = 4$, so $C$ is optimal iff $q_E \\leq 2/5$. Thus $(NN, CC)$ is a PBE with $q_E \\leq 2/5$.",
+      "c": 4
+    },
+    {
+      "f": "Why does pooling $(NN, CC)$ fail the intuitive criterion, while separating survives?",
+      "b": "Equilibrium payoffs are $4$. The best $E$ can yield is $6$ for $H$ (could benefit) and $3$ for $L$ (cannot). IC sets $\\Pr(H \\mid E) = 1$; the firm offers $M$; $H$ deviates. Separating has all information sets on-path, so IC does not restrict it.",
+      "c": 2
+    },
+    {
+      "f": "How can education have value even if it teaches nothing?",
+      "b": "It sorts workers by revealing pre-existing productivity. Improved sorting can raise payoffs for both firms and workers, even net of education costs — but only if single-crossing lets high types distinguish themselves.",
+      "c": 1
+    },
+    {
+      "f": "When does Spence's signalling logic apply outside education?",
+      "b": "When a characteristic is private, a signal is costly, and the cost is lower for \"high\" types — e.g. a warranty that is cheap only for high-quality producers, or a luxury good that is costly to fake without wealth.",
+      "c": 1
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Dynamic Incomplete Information and Sequential Rationality",
+      "Perfect Bayesian Equilibrium",
+      "Bayes' Rule and Off-Path Beliefs",
+      "Pooling and Separating Equilibria",
+      "The Gift Game",
+      "Intuitive Criterion",
+      "Spence Signalling Model",
+      "Education as a Signal"
+    ],
+    "followUp": [
+      "Costless signalling",
+      "Whether the receiver's response alone can discipline the sender"
+    ]
+  }
+}

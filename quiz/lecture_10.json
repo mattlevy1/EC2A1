@@ -1,1 +1,205 @@
-{"flashcards": []}
+{
+  "flashcards": [
+    {
+      "f": "How does today's cheap-talk problem differ from last lecture's Spence signalling model?",
+      "b": "In Spence, high types separate by paying a cost that low types will not pay; that cost is essential for credibility. Today, messages are costless: they do not enter payoffs directly, yet the sender still has private information and the receiver still takes an action.",
+      "c": 1
+    },
+    {
+      "f": "What is a cheap-talk message?",
+      "b": "A message that the sender can choose freely after observing the state and that does not enter either player's payoff directly. Any effect on payoffs comes only through the receiver's updated beliefs and subsequent action.",
+      "c": 3
+    },
+    {
+      "f": "In the cheap-talk protocol, what does the sender do and what does the receiver do?",
+      "b": "The sender privately observes $\\theta$ and sends a message $m \\in M$. The receiver sees $m$ but not $\\theta$, updates beliefs, and chooses an action $a$.",
+      "c": 3
+    },
+    {
+      "f": "Can costless messages still convey information?",
+      "b": "Yes, if incentives are partially aligned. Credibility then comes from how different types want the receiver to respond, not from a differential cost of talking.",
+      "c": 1
+    },
+    {
+      "f": "In the Spence Airways example, candidates can say anything on a CV and everyone prefers a higher salary. Why don't all candidates claim to be pilots?",
+      "b": "Because the airline will put you in the cockpit. A false claim is not punished by the cost of writing the CV, but by the job assignment that follows if the claim is believed.",
+      "c": 2
+    },
+    {
+      "f": "What economic mechanism does the airline CV example illustrate?",
+      "b": "Talk is cheap, but the receiver's action is not. Types that cannot perform the high action will not mimic if that action is worse for them than the low action they can actually do.",
+      "c": 2
+    },
+    {
+      "f": "What is the cheap-talk game's information structure?",
+      "b": "A sender $S$ privately observes $\\theta \\in \\{0,1,2\\}$, each equally likely. $S$ sends $m \\in M$ with $|M| \\geq 3$. The receiver $R$ sees $m$ but not $\\theta$ and chooses $a \\in \\mathbb{R}$.",
+      "c": 4
+    },
+    {
+      "f": "Why can we assume $|M| = 3$ without loss of generality?",
+      "b": "There are only three types, so any equilibrium uses at most three messages on the path of play. Extra messages are unused and matter only through off-path beliefs.",
+      "c": 2
+    },
+    {
+      "f": "What are the payoff functions in the lecture's cheap-talk game?",
+      "b": "$u_R(a,\\theta) = -(a-\\theta)^2$ and $u_S(a,\\theta) = -(a-\\theta-b)^2$ with bias $b = 2/3$. Receiver wants to match the state; sender wants the action to exceed the state by $2/3$.",
+      "c": 4
+    },
+    {
+      "f": "What is each type's ideal action?",
+      "b": "Sender type $\\theta$ wants $a = \\theta + 2/3$. So type 0's ideal is $2/3$, type 1's is $5/3$, and type 2's is $8/3$. The receiver's ideal is always $a = \\theta$.",
+      "c": 4
+    },
+    {
+      "f": "What is the sender's bias, and in which direction does it point?",
+      "b": "Bias $b = 2/3$ means the sender always wants a strictly higher action than the receiver. That upward bias is what makes exaggeration tempting and full revelation hard.",
+      "c": 1
+    },
+    {
+      "f": "What three objects make up a Perfect Bayesian Equilibrium of the cheap-talk game?",
+      "b": "The sender's messaging strategy $m(\\theta)$, the receiver's action strategy $a(m)$, and the receiver's beliefs $q(\\theta \\mid m)$.",
+      "c": 3
+    },
+    {
+      "f": "What two requirements must a cheap-talk PBE satisfy?",
+      "b": "Sequential rationality: each player's strategy is optimal given beliefs. Belief consistency: on-path beliefs are derived from Bayes' rule. Off-path beliefs for unused messages must also be specified.",
+      "c": 3
+    },
+    {
+      "f": "Given beliefs $q(\\cdot \\mid m)$, what action does the receiver choose?",
+      "b": "The receiver maximises $E[-(a-\\theta)^2 \\mid m]$. With quadratic loss, the unique optimum is to match the expected state: $a(m) = E[\\theta \\mid m] = \\sum_{\\theta} \\theta \\, q(\\theta \\mid m)$.",
+      "c": 4
+    },
+    {
+      "f": "Why does quadratic loss make the receiver match $E[\\theta \\mid m]$ rather than, say, the most likely state?",
+      "b": "Expected squared error is minimised at the posterior mean. The first-order condition $E[a-\\theta \\mid m] = 0$ rearranges to $a = E[\\theta \\mid m]$, not the mode or a bias-adjusted target.",
+      "c": 2
+    },
+    {
+      "f": "What is a babbling equilibrium?",
+      "b": "All types pool on the same message $\\bar{m}$. The receiver learns nothing, so $q(\\theta \\mid \\bar{m}) = 1/3$ for each $\\theta$ and $a(\\bar{m}) = (0+1+2)/3 = 1$. The message is uninformative but self-reinforcing.",
+      "c": 3
+    },
+    {
+      "f": "In the lecture's babbling PBE, how are unused messages interpreted?",
+      "b": "For $m \\neq \\bar{m}$, beliefs are $q(\\theta=0 \\mid m) = 1$, so $a(m) = 0$. Deviating from babbling therefore yields the lowest action rather than a higher one.",
+      "c": 4
+    },
+    {
+      "f": "Why is babbling a PBE in this game?",
+      "b": "On path the receiver plays $a=1$; a deviation yields $a=0$. Every type's ideal ($2/3$, $5/3$, $8/3$) is closer to $1$ than to $0$, so all types prefer to stay at $a=1$.",
+      "c": 2
+    },
+    {
+      "f": "In babbling, what are type 0's payoffs at $a=1$ versus $a=0$?",
+      "b": "Type 0's ideal is $2/3$, so $u_S(1,0) = -(1-2/3)^2 = -1/9$ and $u_S(0,0) = -(0-2/3)^2 = -4/9$. Type 0 strictly prefers the babbling action.",
+      "c": 4
+    },
+    {
+      "f": "What would full separation look like, and what actions would it induce?",
+      "b": "Each type sends a distinct message $m_k$. Then $q(\\theta=k \\mid m_k) = 1$, so the receiver chooses $a(m_k) = k$. Types would be fully revealed.",
+      "c": 3
+    },
+    {
+      "f": "Why is full separation not a PBE?",
+      "b": "Type 0's ideal is $2/3$. Telling the truth yields $a=0$ and payoff $-4/9$; mimicking type 1 yields $a=1$ and payoff $-1/9$. Type 0 strictly prefers to mimic type 1.",
+      "c": 2
+    },
+    {
+      "f": "If types 0 and 1 pool on $m_{01}$ and type 2 sends $m_2$, what are the receiver's actions?",
+      "b": "$q(\\theta \\in \\{0,1\\} \\mid m_{01}) = 1/2$ each, so $a(m_{01}) = 1/2$. And $q(\\theta=2 \\mid m_2) = 1$, so $a(m_2) = 2$.",
+      "c": 4
+    },
+    {
+      "f": "Why is the partition $\\{0,1\\}$ versus $\\{2\\}$ not a PBE?",
+      "b": "Type 1's ideal is $5/3$. Pooling yields $a=1/2$ and payoff $-49/36$; mimicking type 2 yields $a=2$ and payoff $-4/36$. Type 1 strictly prefers to mimic type 2.",
+      "c": 2
+    },
+    {
+      "f": "In the failed $\\{0,1\\}$ pool, why does the lecture say high types always want to 'move up'?",
+      "b": "The sender's bias is upward, so a middle type is tempted by the higher action that a successful claim to be the top type would induce. Type 1's ideal $5/3$ is much closer to $a=2$ than to $a=1/2$.",
+      "c": 1
+    },
+    {
+      "f": "If type 0 sends $m_0$ and types 1 and 2 send $m_{12}$, what are the receiver's on-path actions?",
+      "b": "$q(\\theta=0 \\mid m_0) = 1$, so $a(m_0) = 0$. And $q(\\theta \\in \\{1,2\\} \\mid m_{12}) = 1/2$ each, so $a(m_{12}) = 3/2$. Unused messages are treated as type 0, so they also yield $a=0$.",
+      "c": 4
+    },
+    {
+      "f": "In the $\\{1,2\\}$ pooling candidate, why does type 0 prefer to separate?",
+      "b": "Type 0's ideal is $2/3$. Separating yields $a=0$ and payoff $-4/9 = -16/36$; joining the pool yields $a=3/2$ and payoff $-25/36$. Type 0 strictly prefers the low action.",
+      "c": 2
+    },
+    {
+      "f": "In the $\\{1,2\\}$ pooling candidate, why do types 1 and 2 prefer to pool rather than mimic type 0?",
+      "b": "Pooling yields $a=3/2$. Type 1's payoff is $-1/36$ versus $-25/9$ at $a=0$. Type 2's payoff is $-49/36$ versus $-64/9$ at $a=0$. Both strictly prefer to pool.",
+      "c": 2
+    },
+    {
+      "f": "Which cheap-talk candidates are Perfect Bayesian Equilibria?",
+      "b": "Babbling (all types pool) is a PBE: uninformative but self-reinforcing. Pooling $\\{1,2\\}$ with type 0 separating is a PBE, and it is the most informative. Full separation and pooling $\\{0,1\\}$ are not PBEs.",
+      "c": 3
+    },
+    {
+      "f": "What is the lecture's intuition for why the most informative equilibrium has high types pooling?",
+      "b": "The sender's upward bias makes it impossible for high types to separate credibly. The lowest type can separate by accepting a low action that others will not mimic.",
+      "c": 1
+    },
+    {
+      "f": "Geometrically, why does type 0 prefer $a=0$ while types 1 and 2 prefer $a=3/2$?",
+      "b": "Type 0's ideal $2/3$ is closer to $0$ than to $3/2$. Types 1 and 2's ideals $5/3$ and $8/3$ are closer to $3/2$. Quadratic loss ranks actions by distance from the type's ideal.",
+      "c": 2
+    },
+    {
+      "f": "In the $\\{1,2\\}$ pooling PBE, why does type 2 not peel off with a third message?",
+      "b": "Unused messages are believed to come from type 0, so they induce $a=0$. Type 2 prefers $a=3/2$ to $a=0$. Credibility of a 'I am type 2' claim is not free just because a spare message exists.",
+      "c": 2
+    },
+    {
+      "f": "How do signalling and cheap talk differ in the source of credibility?",
+      "b": "Both use PBE and both have an informed player moving after the state. Signalling gets credibility from a differential cost of the action. Cheap talk gets credibility from a differential response: types disagree about which receiver action they want.",
+      "c": 3
+    },
+    {
+      "f": "How does timing differ between signalling and cheap talk in the lecture's comparison table?",
+      "b": "In signalling, player 1 takes a payoff-relevant action after observing the state. In cheap talk, player 1 sends a message after observing the state; the message itself does not enter payoffs.",
+      "c": 1
+    },
+    {
+      "f": "Why does cheap talk require partially aligned incentives?",
+      "b": "If every type wanted the same high action, a cheap claim to be a high type would always be mimicked. Some types must prefer the low action, or costless messages cannot separate anyone.",
+      "c": 2
+    },
+    {
+      "f": "In this cheap-talk game, to which actions does type 0 prefer $a=0$?",
+      "b": "Type 0's ideal is $2/3$, so $a=0$ and $a=4/3$ are equally far from the ideal. Type 0 therefore prefers $a=0$ to any action above $4/3$. That is why type 0 can credibly accept the low action $a=0$ rather than pool at $a=3/2$.",
+      "c": 4
+    },
+    {
+      "f": "If education were equally costly for both types in Spence, could a separating equilibrium exist?",
+      "b": "No. All types prefer the managerial job to the clerical job, so without a differential cost there is nothing to stop the low type from mimicking. Costless education would be like cheap talk with fully aligned desire for the high action.",
+      "c": 2
+    },
+    {
+      "f": "How does the lecture's three-type game relate to Crawford and Sobel (1982)?",
+      "b": "It is a discrete version of Crawford and Sobel (1982), who allow continuous states. The lecture uses three equally likely states rather than a continuum.",
+      "c": 1
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Cheap Talk versus Costly Signalling",
+      "Airline CV Motivation",
+      "Sender–Receiver Setup and Bias",
+      "Perfect Bayesian Equilibrium with Messages",
+      "Receiver's Quadratic-Loss Best Response",
+      "Babbling Equilibrium",
+      "Failure of Full Separation",
+      "Partial Pooling Equilibria",
+      "Credibility by Differential Response"
+    ],
+    "followUp": [
+      "In-class review of earlier course material"
+    ]
+  }
+}

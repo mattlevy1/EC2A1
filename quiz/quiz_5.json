@@ -154,7 +154,7 @@
           "rationale": "A reserve violates the RET hypothesis that the highest valuation always gets the object. RET does not pin down revenue once the auction is inefficient."
         }
       ],
-      "hint": "Lower-bound expected revenue by (probability of a sale)$\\times 450$, and be careful whose valuations must clear the reserve."
+      "hint": "Compare the probability of a sale with the payment conditional on a sale — both matter for expected revenue."
     },
     {
       "question": "Myerson's theorem says the revenue-maximising IPV auction is a standard auction with an optimal reserve $r^*$, and that $r^*$ does not depend on the number of bidders. Which interpretation is correct?",
