@@ -1,74 +1,74 @@
 {
   "quiz": [
     {
-      "question": "In Matching Pennies, Player 2 plays $H$ with probability $q=0.6$. What is Player 1's unique best response?",
+      "question": "In Matching Pennies, Player 1 wins if pennies match and Player 2 plays $H$ with probability $q=0.6$. What is Player 1's unique best response?",
       "answerOptions": [
         {
           "text": "Play $T$ for sure ($p=0$), because Player 2 is more likely to play $H$ and Player 1 wants to mismatch.",
           "isCorrect": false,
-          "rationale": "Player 1 wins when pennies match, so a high $q$ makes $H$ more attractive, not $T$."
+          "rationale": "That confuses Player 1 with Player 2. Player 1 wins when pennies match, so a high $q$ makes $H$ more attractive, not $T$."
         },
         {
-          "text": "Mix fifty-fifty, because Matching Pennies has only a mixed best response.",
+          "text": "Mix fifty-fifty, because Matching Pennies admits only mixed best responses.",
           "isCorrect": false,
-          "rationale": "Mixing is a best response only at $q=1/2$. For $q\\neq 1/2$ there is a unique pure best response."
+          "rationale": "Mixing is a best response only at $q=1/2$. For any $q\\neq 1/2$ there is a unique pure best response."
         },
         {
-          "text": "Play $H$ for sure ($p=1$), because $u_1(H,\\sigma_2)=2q-1>1-2q=u_1(T,\\sigma_2)$ whenever $q>1/2$.",
+          "text": "Any mixture $p\\in[0,1]$, because $q$ is close enough to $1/2$ that approximate indifference is enough.",
+          "isCorrect": false,
+          "rationale": "Indifference holds only at exactly $q=1/2$. Nearby beliefs give a strict ranking of $H$ and $T$."
+        },
+        {
+          "text": "Play $H$ for sure ($p=1$).",
           "isCorrect": true,
-          "rationale": "At $q=0.6$, $u_1(H)=0.2>u_1(T)=-0.2$. Player 1's best-response correspondence puts $p^*=1$ for all $q>1/2$."
-        },
-        {
-          "text": "Any mixture $p\\in[0,1]$, because $q$ is close enough to $1/2$ for approximate indifference.",
-          "isCorrect": false,
-          "rationale": "Indifference holds only at exactly $q=1/2$. Nearby values give a strict ranking of $H$ and $T$."
+          "rationale": "Expected payoffs are $u_1(H,\\sigma_2)=2q-1=0.2$ and $u_1(T,\\sigma_2)=1-2q=-0.2$. The best-response correspondence therefore puts $p^*=1$ for all $q>1/2$."
         }
       ],
-      "hint": "Compare $2q-1$ with $1-2q$."
+      "hint": "Player 1 wins when the coins match. Which pure action is more likely to match a $q$ above one-half?"
     },
     {
-      "question": "In a mixed-strategy Nash equilibrium of Matching Pennies, Player 1's mixing probability $p^*$ is chosen so that…",
+      "question": "In Matching Pennies, the unique mixed-strategy Nash equilibrium has Player 1 play $H$ with probability $p^*=1/2$. That probability is chosen so that…",
       "answerOptions": [
         {
           "text": "Player 1 is indifferent between $H$ and $T$ given $p^*$ itself.",
           "isCorrect": false,
-          "rationale": "Player 1's indifference depends on $q$, not on $p$. Own mixing does not make oneself indifferent."
+          "rationale": "Player 1's ranking of $H$ and $T$ depends on $q$, not on $p$. Own mixing cannot make oneself indifferent."
+        },
+        {
+          "text": "The fifty-fifty mix strictly dominates both of Player 1's pure strategies.",
+          "isCorrect": false,
+          "rationale": "The mix is a best response only to $q=1/2$. Against any other $q$, one of the pure strategies does strictly better."
         },
         {
           "text": "Player 2 is indifferent between $H$ and $T$.",
           "isCorrect": true,
-          "rationale": "The indifference principle says each player's mix makes the opponent willing to mix. Setting $p^*=1/2$ equalises $u_2(H,\\sigma_1)$ and $u_2(T,\\sigma_1)$."
+          "rationale": "Each player's mix is chosen to make the opponent willing to mix. Setting $p^*=1/2$ equalises $u_2(H,\\sigma_1)$ and $u_2(T,\\sigma_1)$."
         },
         {
-          "text": "Player 1's mixed strategy strictly dominates both pure strategies.",
+          "text": "Player 1's expected payoff is maximised against every possible $q$, not just the equilibrium $q^*$.",
           "isCorrect": false,
-          "rationale": "The fifty-fifty mix is a best response to $q=1/2$, not a dominant strategy. Against other $q$, a pure strategy does strictly better."
-        },
-        {
-          "text": "Expected payoffs are maximised against every possible $q$, not just the equilibrium $q^*$.",
-          "isCorrect": false,
-          "rationale": "That would be a dominant strategy. MSNE requires a best response only to the opponent's equilibrium mix."
+          "rationale": "That would be a dominant strategy. An MSNE requires only a best response to the opponent's equilibrium mix."
         }
       ],
-      "hint": "Your mix is chosen for the opponent's indifference, not your own."
+      "hint": "Whose expected payoffs from $H$ versus $T$ actually depend on $p$?"
     },
     {
-      "question": "In Battle of the Sexes ($O,O$: $2,3$; $O,F$: $0,0$; $F,O$: $1,1$; $F,F$: $3,2$), the mixed Nash equilibrium has Player 1 play $O$ with probability $p^*$ and Player 2 play $O$ with probability $q^*$. Which pair is correct?",
+      "question": "In Battle of the Sexes ($O,O$: $2,3$; $O,F$: $0,0$; $F,O$: $1,1$; $F,F$: $3,2$), let $p=\\Pr_1(O)$ and $q=\\Pr_2(O)$. Which pair is the mixed Nash equilibrium?",
       "answerOptions": [
         {
           "text": "$p^*=1/4$, $q^*=3/4$",
           "isCorrect": true,
-          "rationale": "Player 2 is indifferent when $1+2p=2-2p$, so $p^*=1/4$. Player 1 is indifferent when $2q=3-2q$, so $q^*=3/4$."
+          "rationale": "Player 2 is indifferent when $1+2p=2-2p$, so $p^*=1/4$. Player 1 is indifferent when $2q=3-2q$, so $q^*=3/4$. Each mix equalises the opponent's two pure-strategy payoffs."
         },
         {
           "text": "$p^*=3/4$, $q^*=1/4$",
           "isCorrect": false,
-          "rationale": "These probabilities are swapped. Each player's mix is set to make the opponent indifferent, not themselves."
+          "rationale": "These probabilities are swapped. A common error is to set each player's mix from their own indifference condition rather than their opponent's."
         },
         {
           "text": "$p^*=1/2$, $q^*=1/2$",
           "isCorrect": false,
-          "rationale": "Equal mixing is the Matching Pennies equilibrium, not Battle of the Sexes, because payoffs are asymmetric."
+          "rationale": "Equal mixing is the Matching Pennies equilibrium. Battle of the Sexes payoffs are asymmetric, so indifference does not occur at fifty-fifty."
         },
         {
           "text": "There is no mixed equilibrium, because two pure equilibria already exist.",
@@ -76,39 +76,39 @@
           "rationale": "A game can have both PSNE and MSNE. The best-response diagram has a third intersection at $(1/4,3/4)$."
         }
       ],
-      "hint": "Set $2q=3-2q$ for Player 1 and $1+2p=2-2p$ for Player 2."
+      "hint": "Each player's mix is chosen to equalise the other player's two pure-strategy payoffs."
     },
     {
-      "question": "The Battle of the Sexes best-response diagram has three intersections. Which statement is correct?",
+      "question": "The Battle of the Sexes best-response diagram has three intersections: $(p,q)=(0,0)$, $(1,1)$, and $(1/4,3/4)$. Which statement is correct?",
       "answerOptions": [
         {
-          "text": "Only the two pure intersections are equilibria; the interior crossing is not a mutual best response.",
+          "text": "Only the two pure intersections are equilibria; at the interior crossing someone has a profitable deviation from mixing.",
           "isCorrect": false,
-          "rationale": "At $(p,q)=(1/4,3/4)$ each player is willing to mix, so the interior point is also a Nash equilibrium."
+          "rationale": "At $(1/4,3/4)$ each player is indifferent between $O$ and $F$, so every mix — including the equilibrium mix — is a best response."
         },
         {
-          "text": "The mixed equilibrium Pareto-dominates both pure equilibria because randomisation hedges coordination risk.",
-          "isCorrect": false,
-          "rationale": "The mixed equilibrium typically yields lower expected payoffs than either coordinated pure equilibrium; mixing does not solve the coordination problem."
-        },
-        {
-          "text": "Generic finite games have an odd number of Nash equilibria, matching the three equilibria here.",
+          "text": "All three intersections are Nash equilibria; the mixed one yields lower expected payoffs than either coordinated pure equilibrium.",
           "isCorrect": true,
-          "rationale": "The slide states this general result. Battle of the Sexes has two PSNE and one MSNE, an odd total."
+          "rationale": "Mutual best responses hold at all three crossings. By indifference each player's mixed-equilibrium payoff is $1.5$, below the $2$ or $3$ from coordinating on $(O,O)$ or $(F,F)$."
         },
         {
-          "text": "Mixed equilibria exist only in games with no pure strategy Nash equilibrium.",
+          "text": "The mixed equilibrium Pareto-dominates both pure equilibria, because randomisation hedges the risk of miscoordination.",
           "isCorrect": false,
-          "rationale": "Matching Pennies has MSNE and no PSNE, but Battle of the Sexes has both."
+          "rationale": "Mixing does not solve the coordination problem. Expected payoffs in the mixed NE are lower than in either pure NE."
+        },
+        {
+          "text": "Mixed equilibria exist only in games with no pure-strategy Nash equilibrium, so the interior crossing cannot be an equilibrium here.",
+          "isCorrect": false,
+          "rationale": "Matching Pennies has an MSNE and no PSNE, but Battle of the Sexes has both. The interior crossing is an additional equilibrium, not a substitute for the pure ones."
         }
       ],
-      "hint": "Count the intersections, including the mixed one."
+      "hint": "Check mutual best responses at the interior point, then compare expected payoffs with $(O,O)$ and $(F,F)$."
     },
     {
-      "question": "Why does the existence argument for Nash equilibrium require mixed strategies rather than restricting attention to pure strategies?",
+      "question": "Why does the existence argument for Nash equilibrium require mixed strategies, rather than restricting attention to pure strategies?",
       "answerOptions": [
         {
-          "text": "Mixed strategies make each player's strategy set finite, which is required for Nash's theorem.",
+          "text": "Mixed strategies make each player's strategy set finite, which Nash's theorem requires.",
           "isCorrect": false,
           "rationale": "The reverse is true: mixing replaces a finite set of pure strategies with a continuum (the simplex)."
         },
@@ -120,44 +120,44 @@
         {
           "text": "Kakutani's theorem requires payoffs to be strictly concave in own mixed strategies.",
           "isCorrect": false,
-          "rationale": "Expected payoffs are linear in own mixtures, not strictly concave. Linearity is what makes convex combinations of best responses still best responses."
+          "rationale": "Expected payoffs are linear in own mixtures, not strictly concave. Linearity is what makes a convex combination of best responses itself a best response."
         },
         {
           "text": "Pure-strategy best-response sets are typically isolated points and need not be convex-valued, violating a Kakutani condition that mixing restores.",
           "isCorrect": true,
-          "rationale": "If two pure strategies are both best responses, the pure $BR$ set is two isolated points (not convex). Mixing includes all convex combinations, so $BR_i$ becomes convex-valued."
+          "rationale": "If two pure strategies are both best responses, the pure $BR$ set is two isolated points (not a convex set). Mixing includes all convex combinations, so $BR_i$ becomes convex-valued."
         }
       ],
-      "hint": "Kakutani needs a convex-valued correspondence."
+      "hint": "Kakutani needs more than a non-empty best-response set."
     },
     {
-      "question": "The keeper improves at blocking shots to the right (save rate $40\\%$ to $80\\%$). In the new mixed-strategy Nash equilibrium, the keeper…",
+      "question": "The keeper improves at blocking shots to the right (save rate $40\\%$ to $80\\%$). In the new mixed-strategy Nash equilibrium, which mixing pattern arises?",
       "answerOptions": [
         {
-          "text": "Dives right more often, because that action became more productive.",
+          "text": "The keeper dives right more often, because that action became more productive; the kicker's mix is unchanged.",
           "isCorrect": false,
-          "rationale": "That is the naive (non-strategic) comparative static. Equilibrium mixing is set to keep the kicker indifferent, not to use the improved action more."
+          "rationale": "That is the naive (non-strategic) comparative static. Equilibrium mixing is set by indifference, and both $p^*$ and $q^*$ change."
         },
         {
-          "text": "Dives right less often ($50\\%$ to $30\\%$), even though blocking right improved.",
+          "text": "Both continue to mix fifty-fifty and the scoring rate stays $0.75$, because a zero-sum game's minimax value cannot change.",
+          "isCorrect": false,
+          "rationale": "The game remains zero-sum, but the payoff matrix changed, so the minimax mix and value both change. The new expected scoring rate is $0.69$."
+        },
+        {
+          "text": "The keeper dives left more often ($q^*=0.7$, so dive-right falls to $30\\%$) and the kicker also goes left more often ($p^*=0.7$).",
           "isCorrect": true,
-          "rationale": "The new indifference conditions give $q^*=\\Pr(\\text{dive }L)=0.7$, so $\\Pr(\\text{dive }R)$ falls to $0.3$. The keeper compensates for being better at right by diving there less."
+          "rationale": "The new indifference conditions give $q^*=\\Pr(\\text{dive }L)=0.7$ and $p^*=\\Pr(\\text{kick }L)=0.7$. The keeper compensates for being better at right by diving there less."
         },
         {
-          "text": "Continues to dive fifty-fifty, because the game remains zero-sum.",
+          "text": "The keeper stops mixing and always dives right, the newly stronger action.",
           "isCorrect": false,
-          "rationale": "Zero-sum structure is unchanged, but the payoff matrix changed, so the minimax mix changes."
-        },
-        {
-          "text": "Stops mixing and always dives right, the newly stronger action.",
-          "isCorrect": false,
-          "rationale": "A pure strategy of always diving right would be exploited by a kicker who then always goes left. Mixing remains necessary."
+          "rationale": "Always diving right would be exploited by a kicker who then always goes left. Mixing remains necessary; only the mixing probabilities change."
         }
       ],
-      "hint": "Ask what mix keeps the kicker indifferent after payoffs change."
+      "hint": "Each player's new mix is whatever restores the opponent's indifference after the payoff change."
     },
     {
-      "question": "Why must the improved keeper dive right less often in equilibrium?",
+      "question": "Why must that improved keeper dive right less often in equilibrium?",
       "answerOptions": [
         {
           "text": "If they kept diving right as often as before, the kicker would strictly prefer going left, so the original mix would no longer make the kicker indifferent.",
@@ -180,7 +180,7 @@
           "rationale": "Minimax need not be fifty-fifty once payoffs are asymmetric. The new mix is $70$-$30$, not equal play."
         }
       ],
-      "hint": "Fix $q$ at $1/2$ after the payoff change and compare the kicker's two actions."
+      "hint": "Hold the old mix fixed after the payoff change and check whether the kicker is still willing to mix."
     },
     {
       "question": "In a finite zero-sum game, a player can announce their Nash mixed strategy without lowering their payoff. Why?",
@@ -191,14 +191,14 @@
           "rationale": "Equilibrium mixes are best responses, not dominated strategies."
         },
         {
+          "text": "Because Nash equilibrium coincides with minimax: an opponent who knows the equilibrium mix and best-responds cannot push you below the maxmin value.",
+          "isCorrect": true,
+          "rationale": "In zero-sum games, $u_1(\\sigma_1^*,\\sigma_2^*)=\\max\\min u_1=\\min\\max u_1$. The kicker's $50$-$50$ mix still guarantees a $75\\%$ scoring rate even if the keeper knows it; a $60$-$40$ mix would be exploitable."
+        },
+        {
           "text": "Because opponents cannot observe mixed strategies even after they are announced.",
           "isCorrect": false,
           "rationale": "The thought experiment is that the mix is announced and the opponent best-responds. The result is that this does not reduce the value."
-        },
-        {
-          "text": "Because Nash payoffs equal the minimax value: $\\max\\min u_1=\\min\\max u_1$, so revealing the minimax mix does not help the opponent exploit you.",
-          "isCorrect": true,
-          "rationale": "In zero-sum games NE coincides with minimax. The kicker's $50$-$50$ mix guarantees $75\\%$ scoring even if the keeper knows it; a $60$-$40$ mix would be exploitable."
         },
         {
           "text": "Because finite zero-sum games have no mixed equilibria, only pure ones.",
@@ -206,20 +206,20 @@
           "rationale": "Matching Pennies and penalty kicks are finite zero-sum games whose only equilibria are mixed."
         }
       ],
-      "hint": "Maxmin equals minmax in zero-sum games."
+      "hint": "What payoff is guaranteed if the opponent already knows your mix and best-responds?"
     },
     {
       "question": "In an asymmetric matching-pennies hide-and-seek game, MSNE predicts choosing Black about one-third of the time. Students centred near $48\\%$ and professional poker players near $50\\%$. What is the best interpretation?",
       "answerOptions": [
         {
-          "text": "Poker professionals were closer to theory, confirming that field expertise always transfers to abstract games.",
+          "text": "Poker professionals were closer to theory, confirming that field expertise transfers to abstract games.",
           "isCorrect": false,
-          "rationale": "Professionals centred near $50\\%$, no closer to the $33\\%$ prediction than students, so expertise did not transfer."
+          "rationale": "Professionals centred near $50\\%$, no closer to the $33\\%$ prediction than students. Expertise did not transfer."
         },
         {
-          "text": "The result rejects expected-utility maximisation, because mixing requires non-linear payoffs.",
+          "text": "The result rejects expected-utility maximisation, because mixing is possible only with non-linear payoffs.",
           "isCorrect": false,
-          "rationale": "The lecture does not drop expected utility. The gap is between MSNE play and observed frequencies in an unfamiliar task."
+          "rationale": "The lecture does not drop expected utility. The gap is between MSNE frequencies and observed play in an unfamiliar task."
         },
         {
           "text": "Students used minimax while professionals used Nash, which differ in zero-sum games.",
@@ -229,7 +229,7 @@
         {
           "text": "Both groups played Black too often; field expertise did not transfer to this unfamiliar setting.",
           "isCorrect": true,
-          "rationale": "Theory is centred near $33\\%$; both samples are near $50\\%$. The slide takeaway is that expertise in one domain need not produce equilibrium mixing in another."
+          "rationale": "Theory is centred near $33\\%$; both samples are near $50\\%$. Expertise in one domain need not produce equilibrium mixing in another."
         }
       ],
       "hint": "Compare both groups to the $33\\%$ theoretical benchmark, not to each other."
@@ -240,7 +240,12 @@
         {
           "text": "Because market demand is $10$ and each firm has capacity $8$, so residual demand of $2$ is the equilibrium quantity.",
           "isCorrect": false,
-          "rationale": "Residual demand of $2$ is what a firm sells when undercut; it is not why expected profit is constant across the support."
+          "rationale": "Residual demand of $2$ is what a firm sells when undercut. That is a quantity, not a reason expected profit is constant across the support."
+        },
+        {
+          "text": "Because undercutting always yields profit $8$, which averaged with zero profit gives $2$.",
+          "isCorrect": false,
+          "rationale": "Undercutting yields $8p$, not $8$. A firm that prices above the rival still sells the residual $2$ units, not zero."
         },
         {
           "text": "By the indifference principle: every price played with positive probability must yield the same expected profit, equal to the sure profit from pricing at $1$.",
@@ -248,17 +253,12 @@
           "rationale": "Pricing at $1$ yields profit $2$ for sure. Any $p$ in the support of a mixed best response must match that payoff, which pins down $F(p)=(4p-1)/(3p)$."
         },
         {
-          "text": "Because undercutting always yields profit $8$, which averaged with zero profit gives $2$.",
-          "isCorrect": false,
-          "rationale": "Undercutting yields $8p$, not $8$, and a firm that prices above the rival still sells $2$ units, not zero."
-        },
-        {
           "text": "Because Nash's theorem requires equilibrium payoffs of $2$ in every finite pricing game.",
           "isCorrect": false,
           "rationale": "Existence says nothing about the payoff level $2$; that number is the outside option of pricing at the choke price $1$."
         }
       ],
-      "hint": "What payoff must every strategy in the support of a mixed best response deliver?"
+      "hint": "What sure payoff can a firm lock in by pricing at the choke price $1$?"
     }
   ],
   "topics": {

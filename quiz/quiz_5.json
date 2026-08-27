@@ -1,53 +1,53 @@
 {
   "quiz": [
     {
-      "question": "Bidder $A$ is buying oil drilling rights whose profit depends on how much oil is in the field. Bidder $B$ is buying a painting they will keep, with a purely personal taste for the work. Which modelling choice is appropriate?",
+      "question": "A firm is bidding for oil drilling rights whose profit depends on how much oil is in the field. A collector is bidding for a painting they will keep, with a purely personal taste for the work. Which modelling choice is appropriate?",
       "answerOptions": [
         {
-          "text": "Both should be modelled as IPV, because each bidder submits a bid based only on their own information.",
+          "text": "Both should be modelled as independent private values, because each bidder submits a bid based only on their own information.",
           "isCorrect": false,
           "rationale": "Using own information does not make values private. Oil rights have a shared unknown $V$; rivals' surveys are informative about that common value."
         },
         {
-          "text": "Both should be modelled as common values, because in any auction the winner pays a price determined by others' bids.",
+          "text": "Both should be modelled as common values, because in any auction the winner's payment is determined by others' bids.",
           "isCorrect": false,
           "rationale": "The payment rule does not determine whether values are private or common. What matters is whether $u_i$ depends on a shared $V$ or only on own $v_i$."
         },
         {
-          "text": "Oil rights are a common-values setting; the painting is IPV. Rivals' signals affect $A$'s payoff-relevant estimate of $V$, but not $B$'s personal valuation.",
+          "text": "Oil rights are a common-values setting; the painting is independent private values. Rivals' signals would change the firm's estimate of $V$, but not the collector's personal valuation.",
           "isCorrect": true,
           "rationale": "Under common values, $u_i = V - p$ and $x_{-i}$ is informative about $V$. Under IPV, $u_i = v_i - p$ and $v_{-i}$ does not enter $i$'s payoff."
         },
         {
-          "text": "Oil rights are IPV because geological surveys are private; the painting is common values because resale prices are shared.",
+          "text": "Oil rights are independent private values because each geological survey is privately observed; the painting is common values because artistic quality is an objective shared attribute.",
           "isCorrect": false,
-          "rationale": "Privacy of a signal is not the same as private values. Surveys are private signals about a common $V$. The slides' IPV painting-style case is that own taste, not a shared $V$, determines payoff."
+          "rationale": "Privacy of a signal is not the same as private values. Surveys are private signals about a common $V$. Personal taste, not a shared unknown value, is the IPV case."
         }
       ],
-      "hint": "Ask whether others' information would change your estimate of what the object is worth to you."
+      "hint": "Ask whether observing others' information would change what the object is worth to you."
     },
     {
-      "question": "Three bidders submit $\\pounds 100$, $\\pounds 50$, and $\\pounds 25$. Which statement correctly links the payment rule to bidding incentives?",
+      "question": "Three bidders submit $\\pounds 100$, $\\pounds 50$, and $\\pounds 25$. Why does the payment rule change bidding incentives across the two sealed-bid formats?",
       "answerOptions": [
         {
-          "text": "In a first-price auction the winner pays $\\pounds 100$, so bidding your value yields zero surplus if you win; in a second-price auction the winner pays $\\pounds 50$, so your bid affects whether you win rather than the price you pay.",
+          "text": "In a first-price auction the winner pays $\\pounds 100$, so bidding your value yields zero surplus if you win. In a second-price auction the winner pays $\\pounds 50$, so your bid affects whether you win rather than the price you pay.",
           "isCorrect": true,
-          "rationale": "First-price: you pay your own bid, so $b_i = v_i$ gives $u_i = 0$ when you win and you shade in equilibrium. Second-price: you pay the rival's bid, and $b_i(v_i) = v_i$ is weakly dominant."
+          "rationale": "Paying your own bid makes $b_i = v_i$ a zero-surplus strategy, so first-price bidders shade. Paying the second-highest bid makes $b_i(v_i) = v_i$ weakly dominant."
         },
         {
-          "text": "Both formats charge $\\pounds 100$, so revenue equivalence says bidding incentives are identical before any equilibrium analysis.",
+          "text": "Both formats charge $\\pounds 100$ on this bid profile, so revenue equivalence already implies that bidding incentives are identical before any equilibrium analysis.",
           "isCorrect": false,
           "rationale": "The second-price winner pays $\\pounds 50$, not $\\pounds 100$. RET equates expected revenue in equilibrium, not the payment on a given bid profile or the bidding strategies themselves."
         },
         {
-          "text": "The second-price winner pays $\\pounds 25$, because Vickrey auctions charge the lowest bid to prevent overbidding.",
+          "text": "The second-price winner pays $\\pounds 25$, because a Vickrey auction charges the lowest bid in order to deter overbidding.",
           "isCorrect": false,
           "rationale": "A second-price (Vickrey) auction charges the second-highest bid, here $\\pounds 50$, not the lowest bid."
         },
         {
           "text": "First-price and second-price payments coincide on this bid profile, which is why truthful bidding is dominant in both formats.",
           "isCorrect": false,
-          "rationale": "Payments differ ($\\pounds 100$ vs $\\pounds 50$), and truthful bidding is weakly dominant only in the second-price auction, not the first-price auction."
+          "rationale": "Payments differ ($\\pounds 100$ versus $\\pounds 50$), and truthful bidding is weakly dominant only in the second-price auction."
         }
       ],
       "hint": "Who pays whose bid, and what does that do to the incentive to shade?"
@@ -56,19 +56,19 @@
       "question": "In a second-price auction, bidder 1 with value $v_1$ considers overbidding $w > v_1$. For which realisation of the rival bid $b_2$ is overbidding strictly worse than bidding $v_1$?",
       "answerOptions": [
         {
-          "text": "Whenever $b_2 < v_1$: overbidding changes the price paid, which is always $w$.",
+          "text": "Whenever $b_2 < v_1$: overbidding changes the price, which is the winner's own bid $w$.",
           "isCorrect": false,
-          "rationale": "If $b_2 < v_1$, both $w$ and $v_1$ win and both pay $b_2$. The bid does not set the price."
+          "rationale": "If $b_2 < v_1$, both $w$ and $v_1$ win and both pay $b_2$. In a second-price auction the bid does not set the price."
         },
         {
-          "text": "Whenever $b_2 > w$: overbidding wins an object you value at $v_1 - w < 0$.",
+          "text": "Whenever $b_2 > w$: overbidding wins and pays $w$, yielding $v_1 - w < 0$.",
           "isCorrect": false,
-          "rationale": "If $b_2 > w$, both bids lose, so payoffs are both $0$. Overbidding is not strictly worse in this region."
+          "rationale": "If $b_2 > w$, both bids lose, so both payoffs are $0$. Overbidding is not strictly worse in this region."
         },
         {
           "text": "For every $b_2$: bidding above value is strictly dominated, so it must hurt against every rival bid.",
           "isCorrect": false,
-          "rationale": "The strategy is weakly dominant. Overbidding is strictly worse only in the region $w > b_2 > v_1$; elsewhere payoffs match bidding $v_1$."
+          "rationale": "The strategy is weakly dominant. Overbidding is strictly worse only when $w > b_2 > v_1$; elsewhere the two bids yield the same payoff."
         },
         {
           "text": "When $w > b_2 > v_1$: bidding $w$ wins and pays $b_2$, so payoff $v_1 - b_2 < 0$, whereas bidding $v_1$ loses and gets $0$.",
@@ -76,59 +76,59 @@
           "rationale": "This is the only region where the two bids yield different outcomes, and overbidding produces a strict loss. That is why overbidding never helps and sometimes hurts."
         }
       ],
-      "hint": "Your bid decides whether you win; the rival's bid is the price."
+      "hint": "Find the rival bids for which the two choices produce different allocations."
     },
     {
-      "question": "In a first-price auction, bidder 2 uses $b_2(v_2) = a v_2$ with $v_2 \\sim U[0,900]$. Bidder 1 maximises $(v_1 - b_1)\\, b_1/(900a)$. What is the best-response bid, and what does it imply for a linear BNE?",
+      "question": "In a first-price auction, bidder 2 uses $b_2(v_2) = a v_2$ with $v_2 \\sim U[0,900]$. Bidder 1 maximises $(v_1 - b_1)\\, b_1/(900a)$. What is the best-response bid, and what does independence of $a$ imply for a linear BNE?",
       "answerOptions": [
         {
           "text": "$b_1^* = a v_1$. The best response copies the opponent's shading factor, so any $a < 1$ is an equilibrium.",
           "isCorrect": false,
-          "rationale": "The first-order condition does not yield $b_1^* = a v_1$. Copying $a$ is the conjecture to verify, not the automatic best response."
+          "rationale": "Copying $a$ is the conjecture to verify, not the automatic best response. The first-order condition does not yield $b_1^* = a v_1$."
         },
         {
-          "text": "$b_1^* = v_1/2$, independent of $a$. This has the conjectured linear form with $a = 1/2$, so $b_i(v_i) = v_i/2$ is a symmetric BNE.",
+          "text": "$b_1^* = v_1/2$, independent of $a$, because $1/(900a)$ scales expected payoff without changing the maximiser. That linear best response with slope $1/2$ is a symmetric BNE.",
           "isCorrect": true,
-          "rationale": "Differentiating gives $v_1 - 2b_1^* = 0$, hence $b_1^* = v_1/2$. Because this does not depend on $a$, the best response is linear with slope $1/2$, confirming the symmetric equilibrium."
+          "rationale": "The first-order condition is $v_1 - 2b_1^* = 0$, hence $b_1^* = v_1/2$. Facing $b_2 = a v_2$ is strategically equivalent to a random threshold, which confirms $b_i(v_i) = v_i/2$."
         },
         {
-          "text": "$b_1^* = v_1$. First-price and second-price best responses coincide once the opponent mixes linearly.",
+          "text": "$b_1^* = v_1$. Once the opponent bids linearly, first-price and second-price best responses coincide.",
           "isCorrect": false,
-          "rationale": "Bidding $v_1$ yields zero surplus if you win. The FOC sets $b_1^* = v_1/2$, not $v_1$."
+          "rationale": "Bidding $v_1$ yields zero surplus if you win. The first-order condition sets $b_1^* = v_1/2$, not $v_1$."
         },
         {
-          "text": "No interior best response exists, because expected payoff is linear in $a$ and therefore in $b_1$.",
+          "text": "$b_1^* = a v_1/2$. You shade by one half but must also match the opponent's slope, so the equilibrium $a$ remains unidentified.",
           "isCorrect": false,
-          "rationale": "Payoff is quadratic in $b_1$ (a product $(v_1-b_1)b_1$), so there is an interior FOC. The factor $1/(900a)$ does not destroy that trade-off."
+          "rationale": "The factor $a$ multiplies the whole expected payoff and therefore drops out of the maximisation. It does not enter the best-response slope."
         }
       ],
-      "hint": "The first-order condition is $v_1 - 2b_1 = 0$. Where did $a$ go?"
+      "hint": "A positive factor that multiplies the whole expected payoff does not change the optimal $b_1$."
     },
     {
-      "question": "With two $U[0,900]$ bidders, both the first-price BNE and truthful second-price bidding yield $E[\\mathrm{Rev}] = 300$. A student concludes that auction format can never affect revenue. What is the right response?",
+      "question": "With two $U[0,900]$ bidders, the first-price BNE and truthful second-price bidding both yield $E[\\mathrm{Rev}] = 300$. A student concludes that auction format can never affect revenue. What is the right response?",
       "answerOptions": [
         {
-          "text": "The student is correct: once expected payments match on one example, RET implies format is irrelevant in every auction environment.",
+          "text": "The student is correct: once expected payments match in one example, RET implies that format is irrelevant in every auction environment.",
           "isCorrect": false,
-          "rationale": "RET requires IPV, efficient allocation, and a zero type paying $0$ in expectation. It is a benchmark, not a claim that format never matters."
+          "rationale": "RET requires IPV, efficient allocation, and a zero type paying $0$ in expectation. It is a benchmark among such auctions, not a claim that format never matters."
         },
         {
           "text": "The $300$ figures must be a coincidence, because first-price bidders shade and therefore must generate strictly less revenue.",
           "isCorrect": false,
-          "rationale": "Shading lowers the bid but the winner pays their own bid; in second-price they bid value but pay the rival. RET explains why these offset under IPV."
-        },
-        {
-          "text": "RET explains the $300$ comparison for efficient IPV auctions with a zero type paying $0$. Format can still matter: a reserve can raise revenue, and with common values the ranking is ascending $>$ second-price $>$ first-price.",
-          "isCorrect": true,
-          "rationale": "The lecture treats RET as a benchmark among efficient IPV auctions. Reserves (inefficiency) and common values (information revelation) are exactly the settings where format and design matter."
+          "rationale": "Shading lowers the bid, but the winner pays their own bid; in a second-price auction they bid value but pay the rival. RET explains why these offset under IPV."
         },
         {
           "text": "Format never matters under IPV, but only because bidders use weakly dominant strategies in every standard auction.",
           "isCorrect": false,
-          "rationale": "Truthful bidding is weakly dominant in second-price, not first-price. Equivalence is about expected revenue in BNE, not about dominance in every format."
+          "rationale": "Truthful bidding is weakly dominant in a second-price auction, not a first-price auction. Equivalence is about expected revenue in BNE, not dominance in every format."
+        },
+        {
+          "text": "RET explains the $300$ comparison for efficient IPV auctions in which a zero type pays $0$ in expectation. Format can still matter: a reserve introduces inefficiency, and under common values the information revealed depends on the format.",
+          "isCorrect": true,
+          "rationale": "The lecture treats RET as a benchmark among efficient IPV auctions. Reserves (inefficiency) and common values (information revelation) are the settings where design and format matter."
         }
       ],
-      "hint": "RET is a benchmark among efficient IPV auctions — where does it stop applying?"
+      "hint": "RET compares efficient IPV auctions — which of those hypotheses can fail?"
     },
     {
       "question": "A seller who values the object at $0$ faces two $U[0,900]$ bidders. Without a reserve, $E[\\mathrm{Rev}] = 300$. They set a reserve $r = 450$. Why can expected revenue rise even though the object sometimes goes unsold?",
@@ -136,38 +136,33 @@
         {
           "text": "A reserve cannot raise revenue when the seller's value is $0$, because any unsold object is an efficiency loss that must reduce the seller's surplus.",
           "isCorrect": false,
-          "rationale": "Efficiency and revenue are distinct. Myerson's point is that committing not to sell can raise revenue even when a buyer values the object above the seller's value."
-        },
-        {
-          "text": "The reserve forces both bidders to bid $450$ whenever $v_i > 0$, so revenue is $450$ with probability $1$.",
-          "isCorrect": false,
-          "rationale": "If both valuations lie below $450$, there is no sale. The reserve is a floor, not a bid that everyone submits."
-        },
-        {
-          "text": "Revenue equivalence already includes reserve prices, so expected revenue must remain $300$.",
-          "isCorrect": false,
-          "rationale": "A reserve violates the RET hypothesis that the highest valuation always gets the object. RET does not pin down revenue once the auction is inefficient."
+          "rationale": "Efficiency and revenue are distinct. The lecture's point is that committing not to sell can raise revenue even when a buyer values the object above the seller's value."
         },
         {
           "text": "The probability of at least one $v_i > 450$ is $3/4$, and then payment is at least $450$, so $E[\\mathrm{Rev}] \\geq 337.5 > 300$. Higher payments when a sale occurs can outweigh the no-sale cases.",
           "isCorrect": true,
           "rationale": "$\\Pr(\\text{both } v_i \\leq 450) = (1/2)^2 = 1/4$, so $\\Pr(\\text{sale}) = 3/4$. The lower bound $(3/4)\\cdot 450 = 337.5$ already beats $300$. That is the reserve trade-off working in the seller's favour."
+        },
+        {
+          "text": "The probability of a sale is $1/2$, so expected revenue is at most $(1/2)\\cdot 450 = 225 < 300$, and a reserve at the mean must lower revenue.",
+          "isCorrect": false,
+          "rationale": "The chance that one given bidder exceeds $450$ is $1/2$, but a sale occurs unless both lie below $450$, which has probability $1/4$. The relevant probability is $3/4$, not $1/2$."
+        },
+        {
+          "text": "Revenue equivalence already includes reserve prices, so expected revenue must remain $300$ in any standard format.",
+          "isCorrect": false,
+          "rationale": "A reserve violates the RET hypothesis that the highest valuation always gets the object. RET does not pin down revenue once the auction is inefficient."
         }
       ],
-      "hint": "Lower-bound expected revenue by (probability of a sale)$\\times 450$."
+      "hint": "Lower-bound expected revenue by (probability of a sale)$\\times 450$, and be careful whose valuations must clear the reserve."
     },
     {
       "question": "Myerson's theorem says the revenue-maximising IPV auction is a standard auction with an optimal reserve $r^*$, and that $r^*$ does not depend on the number of bidders. Which interpretation is correct?",
       "answerOptions": [
         {
-          "text": "The reserve is set by the monopoly-style trade-off against a bidder's incentive to shade or hide a low value; extra bidders raise the chance of clearing $r^*$ but do not change that cutoff. Also $r^* > 0$ whenever $F(0) = 0$.",
-          "isCorrect": true,
-          "rationale": "The lecture states $r^*$ is independent of $n$ and $r^* > 0$ when $F(0) = 0$. The seller commits to sometimes not selling, even if a buyer values the object above the seller's own valuation."
-        },
-        {
           "text": "$r^*$ falls toward $0$ as $n$ grows, because competition already extracts surplus, so a reserve is needed only with few bidders.",
           "isCorrect": false,
-          "rationale": "Independence of $n$ is the surprising part of the theorem. Competition does not replace the optimal reserve in Myerson's result."
+          "rationale": "Independence of $n$ is the surprising part of the theorem. Extra competition does not replace the optimal reserve in Myerson's result."
         },
         {
           "text": "The optimum must use a first-price rule, because only first-price auctions have bid shading that a reserve can counteract.",
@@ -175,15 +170,20 @@
           "rationale": "Any standard format (first-price, second-price, ascending, or descending) with the same $r^*$ is optimal. RET among those formats still applies once the reserve is fixed."
         },
         {
+          "text": "A standard auction in any of the four formats, with a reserve $r^*$ that does not depend on $n$. Moreover $r^* > 0$ whenever $F(0) = 0$: the seller gains by committing not to sell at low prices, even if a buyer values the object above the seller's own valuation.",
+          "isCorrect": true,
+          "rationale": "The lecture states that $r^*$ is independent of $n$ and $r^* > 0$ when $F(0) = 0$. Commitment not to sell is part of revenue maximisation, not merely a quality filter."
+        },
+        {
           "text": "$r^* > 0$ only if the seller's own valuation is positive; with seller value $0$, the optimal reserve is $0$ by efficiency.",
           "isCorrect": false,
           "rationale": "The lecture emphasises the opposite: the seller benefits from committing not to sell even when a buyer values the object above the seller's valuation of $0$."
         }
       ],
-      "hint": "Optimal design is a standard auction plus a reserve — and that reserve is not a function of $n$."
+      "hint": "The surprising part is what does not change with $n$ — and whether $r^* = 0$ is optimal when the seller's value is $0$."
     },
     {
-      "question": "In a common-values auction you observe signal $x_i$ and, in equilibrium, higher signals lead to higher bids. You win. Which estimate should inform your bid, and why?",
+      "question": "In a common-values auction you observe signal $x_i$ and, in equilibrium, higher signals lead to higher bids. You win. Which estimate should have informed your bid, and why?",
       "answerOptions": [
         {
           "text": "$E[V \\mid x_i]$, because Bayesian updating uses only your own signal; rivals' information is already in the price.",
@@ -206,7 +206,7 @@
           "rationale": "Winning confirms that your signal was high relative to others, which is bad news about a common $V$, not confirmation that $V$ is high."
         }
       ],
-      "hint": "Winning tells you that the other signals were lower than yours."
+      "hint": "What additional information is contained in the event that you had the highest bid?"
     },
     {
       "question": "Under common values, why can an ascending auction yield higher expected revenue than a sealed-bid first-price auction?",
@@ -238,6 +238,11 @@
       "question": "A platform runs the auction and also bids via its own DSP. 'Last look' lets that DSP see sealed bids and win by paying one cent above the highest rival. Why is this advantage more valuable under first-price rules than under GSP?",
       "answerOptions": [
         {
+          "text": "Under GSP, bidding is approximately truthful, so last look adds little. Under first-price everyone shades, including the platform's DSP, so seeing rivals' bids is very valuable — a commitment problem.",
+          "isCorrect": true,
+          "rationale": "The value of peeking depends on format. First-price shading makes the information especially profitable, which is why removing last look while switching to first-price leaves a temptation to peek again."
+        },
+        {
           "text": "GSP has multiple slots, so last look cannot identify a unique highest rival bid; first-price always has a single winner.",
           "isCorrect": false,
           "rationale": "The lecture's comparison is about truthful versus shaded bidding, not about whether a highest rival bid exists."
@@ -248,14 +253,9 @@
           "rationale": "If rivals already bid (approximately) their values, paying one cent above them adds little. The gain is large when rivals are shading."
         },
         {
-          "text": "Under GSP, bidding is approximately truthful, so last look adds little. Under first-price everyone shades, including the platform's DSP, so seeing rivals' bids is very valuable — a commitment problem.",
-          "isCorrect": true,
-          "rationale": "The value of peeking depends on format. First-price shading makes the information especially profitable, which is why removing last look while switching to first-price leaves a temptation to peek again."
-        },
-        {
-          "text": "Under first-price the winner's curse disappears, so last look is used only to enforce the reserve; under GSP last look is needed to prevent overbidding.",
+          "text": "Under first-price, bidding is in dominant strategies, so seeing rivals' bids cannot change the platform's optimal bid; GSP requires shading, so last look is more valuable there.",
           "isCorrect": false,
-          "rationale": "Last look is about the platform exploiting bid information, not about eliminating the winner's curse or enforcing a reserve."
+          "rationale": "This swaps the two formats. Truthful (approximately) bidding is the GSP/second-price logic; first-price bidders shade."
         }
       ],
       "hint": "When does knowing the others' exact bids let you exploit shading?"

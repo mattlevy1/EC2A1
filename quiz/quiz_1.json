@@ -1,276 +1,277 @@
-
 {
   "quiz": [
     {
-      "question": "A city offers a per-unit bounty for reported pest infestations. Residents respond by breeding pests indoors and submitting false reports. Which game-theoretic lesson best explains the failure?",
+      "question": "A government pays a bounty per pest reported. Residents respond by breeding pests, submitting tails, and releasing the animals to reproduce. Which diagnosis best matches the lecture's lesson?",
       "answerOptions": [
         {
-          "text": "Residents were irrational because the bounty made them worse off in expected utility terms.",
+          "text": "Residents were irrational: a rational agent would never take an action that increases a pest problem they themselves face.",
           "isCorrect": false,
-          "rationale": "The example illustrates strategic response to incentives, not irrationality; residents may have been maximizing their own payoffs."
+          "rationale": "The lecture treats residents as responding to private incentives. Breeding pests can maximise bounty income even if it worsens the public problem."
         },
         {
-          "text": "The outcome shows that payoffs cannot represent utility in strategic settings.",
+          "text": "The policy failed because rationality was not common knowledge: residents did not know that the authorities were rational.",
           "isCorrect": false,
-          "rationale": "The course assumes payoffs represent utility; the problem is misaligned incentives and failure to predict responses."
+          "rationale": "The failure is one-sided. The authorities did not model residents' best responses; the example is not about infinite levels of mutual knowledge."
         },
         {
-          "text": "The policy failed because it was a simultaneous-move game rather than an extensive form game.",
-          "isCorrect": false,
-          "rationale": "The timing representation is not the central issue; the failure is incentive misalignment and lack of strategic thinking."
-        },
-        {
-          "text": "Policy was designed without anticipating how agents would strategically respond to incentives.",
+          "text": "The authorities optimised from their own perspective and did not ask how residents would strategically respond to the new incentives.",
           "isCorrect": true,
-          "rationale": "The core failure is not modelling the other side's best response: residents changed behaviour to maximize bounty income, worsening the underlying problem."
+          "rationale": "Strategic thinking requires considering the situation from the other side's point of view. The bounty changed residents' payoffs, and they best-responded in ways the policy did not anticipate."
+        },
+        {
+          "text": "If payoffs represent utility, the bounty cannot backfire, because residents would then internalise the social cost of pests.",
+          "isCorrect": false,
+          "rationale": "Payoffs describe each agent's own objectives, not social efficiency. Private incentives need not match the planner's goal."
         }
       ],
-      "hint": "Ask: what will they do in response?"
+      "hint": "The authorities asked what they wanted, not what residents would find it profitable to do."
     },
     {
-      "question": "In the EV charging coordination game on the slides, both Tesla and other automakers prefer coordination to fragmentation. Why might the industry still fail to coordinate on a single standard?",
+      "question": "In the EV charging game, Tesla and other automakers both prefer a common standard to fragmentation, but Tesla prefers NACS while others prefer CCS. Payoffs: (CCS, CCS) = $(2,3)$, (NACS, NACS) = $(3,2)$, mismatches $(0,0)$ and $(1,1)$. Which statement is correct?",
       "answerOptions": [
         {
-          "text": "Coordination is Pareto dominated by fragmentation in the payoff matrix.",
-          "isCorrect": false,
-          "rationale": "The slides state that both prefer coordination to fragmentation; fragmentation is not preferred by both."
-        },
-        {
-          "text": "They have conflicting preferences over which coordinated outcome occurs (NACS vs. CCS).",
+          "text": "Neither side has a strictly dominant strategy, so there is no dominant-strategy way to select a standard even though both coordinated outcomes beat fragmentation.",
           "isCorrect": true,
-          "rationale": "This is a coordination game with distributional conflict: both want coordination, but each prefers a different coordinated standard."
+          "rationale": "Against CCS, Tesla prefers CCS ($2>1$); against NACS, Tesla prefers NACS ($3>0$). Others likewise want to match. Both coordinated cells Pareto-dominate the mismatches, but the sides rank those cells differently."
         },
         {
-          "text": "Mixed strategies are impossible when strategy sets are finite.",
+          "text": "Tesla has a strictly dominant strategy of NACS, so the unique dominant strategy equilibrium is (NACS, NACS).",
           "isCorrect": false,
-          "rationale": "Finite strategy sets still allow mixed strategies; this does not explain coordination failure."
+          "rationale": "NACS is Tesla's best reply only if others play NACS. If others play CCS, Tesla does better with CCS. A favourite cell is not a dominant strategy."
         },
         {
-          "text": "Player 2 moves second and therefore always observes Player 1's choice.",
+          "text": "Fragmentation lies on the Pareto frontier, which is why each side is willing to accept a mismatch.",
           "isCorrect": false,
-          "rationale": "The normal form treats the interaction as simultaneous; unobserved moves would be modelled with information sets, not second-mover observability."
+          "rationale": "The mismatches are the worst cells. The Pareto frontier consists of the two coordinated outcomes, $(2,3)$ and $(3,2)$."
+        },
+        {
+          "text": "Because the game is simultaneous, the other automakers observe Tesla's choice and can force CCS.",
+          "isCorrect": false,
+          "rationale": "Simultaneous (or unobserved sequential) play means neither side sees the other's action before choosing. Observability would be an extensive-form information set, not a feature of this normal form."
         }
       ],
-      "hint": "Coordination vs. which standard wins."
+      "hint": "Check whether any strategy is best against both of the opponent's standards."
     },
     {
-      "question": "Player 1's belief is $\\theta_2(O) = q$. With $u_1(O,\\theta_2) = 2q$ and $u_1(F,\\theta_2) = 3 - 2q$, for which values of $q$ is $O$ a pure best response?",
+      "question": "In Battle of the Sexes, $u_1(O,O)=2$, $u_1(O,F)=0$, $u_1(F,O)=1$, $u_1(F,F)=3$. Player 1's belief is $\\theta_2(O)=q$. For which $q$ is $O$ a pure-strategy best response?",
       "answerOptions": [
         {
-          "text": "For all $q \\in [0,1]$",
+          "text": "For all $q \\geq 1/2$",
           "isCorrect": false,
-          "rationale": "$O$ and $F$ trade off as $q$ varies; neither dominates for all beliefs."
+          "rationale": "Equal probability is not the indifference threshold here. At $q=1/2$, $u_1(O)=1$ while $u_1(F)=2$, so $F$ is strictly better."
         },
         {
-          "text": "$q = 1/2$ only",
+          "text": "Only at $q=3/4$",
           "isCorrect": false,
-          "rationale": "At $q = 1/2$, $u_1(O) = 1$ and $u_1(F) = 2$, so $F$ is strictly better."
+          "rationale": "At $q=3/4$ the two pure strategies are tied, so $O$ is a best response — but $O$ remains a best response for all larger $q$ as well. Indifference is required for mixing, not for $O$ to be a best response."
         },
         {
-          "text": "$q \\geq 3/4$",
+          "text": "For all $q \\leq 3/4$",
+          "isCorrect": false,
+          "rationale": "This is the best-response region for $F$, not for $O$."
+        },
+        {
+          "text": "For all $q \\geq 3/4$",
           "isCorrect": true,
-          "rationale": "$O$ is a best response when $2q \\geq 3 - 2q$, which simplifies to $q \\geq 3/4$."
-        },
-        {
-          "text": "$q \\leq 3/4$",
-          "isCorrect": false,
-          "rationale": "$q \\leq 3/4$ is the condition for $F$ to be a best response, not $O$."
+          "rationale": "$u_1(O,\\theta_2)=2q$ and $u_1(F,\\theta_2)=3-2q$. Then $2q \\geq 3-2q$ iff $q \\geq 3/4$. At $q=3/4$ both actions are best responses; for $q>3/4$, $O$ is uniquely best."
         }
       ],
-      "hint": "Compare $2q$ and $3 - 2q$."
+      "hint": "Compute both expected payoffs, then use the weak inequality in the best-response definition."
     },
     {
-      "question": "Which statement correctly distinguishes a mixed strategy $\\sigma_i$ from a belief $\\theta_{-i}$?",
+      "question": "Player 1 wants a mixed strategy with positive probability on both $O$ and $F$. When is that mixture a best response to $\\theta_2$?",
       "answerOptions": [
         {
-          "text": "$\\sigma_i$ is player $i$'s randomization over own strategies; $\\theta_{-i}$ is player $i$'s probability distribution over opponents' strategy profiles.",
+          "text": "Whenever Player 1 believes Player 2 uses the same mixture, so that $\\sigma_1$ and $\\theta_2$ coincide.",
+          "isCorrect": false,
+          "rationale": "A mixed strategy is Player 1's own randomisation; a belief is uncertainty about Player 2. They need not be equal. Mixing is optimal only if Player 1 is indifferent given $\\theta_2$."
+        },
+        {
+          "text": "If and only if $u_1(O,\\theta_2)=u_1(F,\\theta_2)$, so both pure strategies are themselves best responses.",
           "isCorrect": true,
-          "rationale": "Both are probability distributions, but $\\sigma_i$ describes what $i$ does while $\\theta_{-i}$ describes $i$'s uncertainty about others."
+          "rationale": "Expected payoff is linear in own mixture, so a mixed strategy is a best response if and only if every pure strategy in its support is a best response. Here that requires indifference between $O$ and $F$."
         },
         {
-          "text": "$\\sigma_i$ can depend on the opponent's realized action after it is observed.",
+          "text": "If Player 1 plays Opera when Player 2 is expected to play Opera, and Football otherwise — that is what a mixed strategy encodes.",
           "isCorrect": false,
-          "rationale": "In the normal form, a mixed strategy is a distribution over own pure strategies chosen without observing opponents' moves."
+          "rationale": "That is a contingent plan, not a mixed strategy in the normal form. Mixing is a distribution over own actions, chosen without observing the opponent."
         },
         {
-          "text": "$\\theta_{-i}$ must put positive probability on every opponent strategy profile.",
+          "text": "It is enough that one of $O$ or $F$ is a best response; leftover probability may be placed on the inferior action.",
           "isCorrect": false,
-          "rationale": "Beliefs are distributions but need not assign positive probability to every profile."
-        },
-        {
-          "text": "$\\sigma_i$ applies only in extensive form games; $\\theta_{-i}$ applies only in normal form games.",
-          "isCorrect": false,
-          "rationale": "Both concepts are defined in the normal form setting covered in this lecture."
+          "rationale": "Any pure strategy played with positive probability must itself be a best response. Weight on a strictly inferior action would lower expected payoff."
         }
       ],
-      "hint": "Own randomization vs. uncertainty about others."
+      "hint": "Expected payoff is linear in own probabilities: mixing cannot repair a strictly worse pure strategy."
     },
     {
-      "question": "In the Prisoner's Dilemma on the slides ($C$: 5,5 / 0,6; $D$: 6,0 / 1,1 for Player 1's payoffs against $C$ and $D$), which statement is correct?",
+      "question": "In the Prisoner's Dilemma, payoffs are $(C,C)=(5,5)$, $(C,D)=(0,6)$, $(D,C)=(6,0)$, $(D,D)=(1,1)$. Which statement is correct?",
       "answerOptions": [
-        {
-          "text": "No strategy is strictly dominated because both players could mix.",
-          "isCorrect": false,
-          "rationale": "Domination is defined against all opponent strategy profiles, including pure ones; $D$ dominates $C$."
-        },
         {
           "text": "$(C,C)$ is a dominant strategy equilibrium because it is Pareto efficient.",
           "isCorrect": false,
-          "rationale": "Pareto efficiency does not imply dominance; $(C,C)$ is Pareto superior but $C$ is dominated by $D$."
+          "rationale": "Pareto efficiency does not imply dominance. $C$ is strictly worse than $D$ against both of the opponent's actions."
         },
         {
-          "text": "$C$ is a best response to some belief about Player 2.",
+          "text": "$C$ is a best response whenever a player believes the opponent is sufficiently likely to play $C$.",
           "isCorrect": false,
-          "rationale": "Strict dominance implies $C$ is never a best response to any belief."
+          "rationale": "Even if the opponent plays $C$ with probability $1$, $D$ still pays $6>5$. Strict dominance means $C$ is never a best response to any belief."
         },
         {
-          "text": "$D$ strictly dominates $C$ for each player, so $(D,D)$ is a dominant strategy equilibrium.",
+          "text": "$D$ strictly dominates $C$ for each player, so $(D,D)$ is a dominant strategy equilibrium even though it is Pareto-dominated by $(C,C)$.",
           "isCorrect": true,
-          "rationale": "$u_1(D,C)=6>5=u_1(C,C)$ and $u_1(D,D)=1>0=u_1(C,D)$; by symmetry the same holds for Player 2."
+          "rationale": "Against $C$, $6>5$; against $D$, $1>0$. Mutual dominance yields the DSE $(D,D)$, which is inefficient relative to $(5,5)$."
+        },
+        {
+          "text": "No strategy is strictly dominated, because a player who is indifferent can mix between $C$ and $D$.",
+          "isCorrect": false,
+          "rationale": "Players are not indifferent: $D$ is strictly better against every opponent action, so mixing with $C$ cannot be a best response."
         }
       ],
-      "hint": "Compare payoffs from $D$ vs. $C$ for each opponent action."
+      "hint": "Compare $D$ with $C$ against each of the opponent's actions, then ask whether efficiency selects the equilibrium."
     },
     {
-      "question": "Strategy $B$ in the 3$\\times$3 example is not dominated by any pure strategy but is strictly dominated by $\\sigma_1 = (1/2, 1/2, 0)$ on $\\{T,M,B\\}$. What does this illustrate?",
+      "question": "Player 1's payoffs against $L$, $C$, $R$ are $T$: $3,0,1$; $M$: $0,3,1$; $B$: $1,1,0$. Which statement is correct?",
       "answerOptions": [
         {
-          "text": "$B$ must be a best response to some belief because it is undominated by pure strategies.",
+          "text": "$B$ is not strictly dominated, because neither $T$ nor $M$ beats $B$ against every column.",
           "isCorrect": false,
-          "rationale": "Strict dominance (possibly by a mix) is equivalent to never being a best response."
+          "rationale": "That only rules out dominance by a pure strategy. The definition of strict dominance allows the dominating strategy $\\sigma_1$ to be mixed."
         },
         {
-          "text": "A strategy can be strictly dominated by a mixed strategy even when no pure strategy dominates it.",
+          "text": "$T$ strictly dominates $B$, because $T$'s average payoff across columns exceeds $B$'s.",
+          "isCorrect": false,
+          "rationale": "Dominance compares payoffs column by column, not averages across opponent actions. Against $C$, $T$ pays $0<1$."
+        },
+        {
+          "text": "$B$ is only weakly dominated by $\\sigma_1=(1/2,1/2,0)$, because the mixture ties $B$ against $R$.",
+          "isCorrect": false,
+          "rationale": "Against $R$ the mixture yields $1>0$. It strictly beats $B$ in every column, so the dominance is strict."
+        },
+        {
+          "text": "$B$ is strictly dominated by $\\sigma_1=(1/2,1/2,0)$ on $\\{T,M,B\\}$, even though no pure strategy dominates $B$.",
           "isCorrect": true,
-          "rationale": "Mixing $T$ and $M$ yields payoff 1.5 against every column, beating $B$'s payoffs of 1, 1, and 0."
-        },
-        {
-          "text": "Strict dominance requires comparison only against pure opponent strategies, so mixed dominance is impossible.",
-          "isCorrect": false,
-          "rationale": "The definition allows the dominating strategy $\\sigma_i$ to be mixed."
-        },
-        {
-          "text": "Weak dominance is needed to eliminate $B$ because $T$ and $M$ each beat $B$ in some columns only.",
-          "isCorrect": false,
-          "rationale": "The mixture strictly beats $B$ in every column, so strict dominance applies."
+          "rationale": "The mixture yields $1.5$, $1.5$, and $1$ against $L$, $C$, and $R$, all strictly above $B$'s payoffs of $1$, $1$, and $0$."
         }
       ],
-      "hint": "Average payoffs from mixing $T$ and $M$."
+      "hint": "Check $T$ vs $B$ and $M$ vs $B$ column by column, then compute the fifty-fifty mix of $T$ and $M$."
     },
     {
-      "question": "After Round 1 of IDSDS on the slide example, Player 1's strategy $B$ is eliminated because $T$ strictly dominates $B$. What happens in Round 2?",
+      "question": "Strategy $s_i$ does strictly worse than some $\\sigma_i$ against certain opponent profiles and equally well against the rest. Why does the lecture still refuse to delete $s_i$ in its dominance procedure?",
       "answerOptions": [
         {
-          "text": "Both players' strategies are eliminated simultaneously in every round.",
-          "isCorrect": false,
-          "rationale": "IDSDS eliminates all dominated strategies each round, but in this example Round 2 removes only $R$."
-        },
-        {
-          "text": "Player 1's $T$ is eliminated because $M$ strictly dominates $T$.",
-          "isCorrect": false,
-          "rationale": "$M$ dominates $T$ only after $R$ is removed and we re-evaluate in later rounds; in Round 2 only $R$ goes."
-        },
-        {
-          "text": "Player 2's $R$ is eliminated because $C$ strictly dominates $R$ in the reduced game.",
+          "text": "$s_i$ can still be a best response to beliefs that put probability zero on the profiles where it does worse, and that indifference can be needed for mixing.",
           "isCorrect": true,
-          "rationale": "Against remaining strategies $T$ and $M$, $u_2(C) > u_2(R)$ in both cases."
+          "rationale": "This is weak (not strict) dominance. The course focuses on strict dominance for IDSDS so that strategies which are sometimes tied — and may be used when mixing — remain available."
         },
         {
-          "text": "No further eliminations are possible because Player 2 had no dominated strategies initially.",
+          "text": "A weakly dominated strategy is never a best response, but IDSDS is defined only for two-player games.",
           "isCorrect": false,
-          "rationale": "Domination is re-checked in the reduced game after Player 1's elimination; $R$ becomes dominated."
+          "rationale": "Never being a best response is the equivalent characterisation of *strict* dominance. Weakly dominated strategies can still be best responses to some beliefs."
+        },
+        {
+          "text": "The lecture prefers weak dominance for IDSDS because it eliminates more strategies and always yields a unique prediction.",
+          "isCorrect": false,
+          "rationale": "The lecture does the opposite: it focuses on strict dominance. Weak elimination is avoided precisely because of the indifference that mixing may require."
+        },
+        {
+          "text": "If payoffs are equal against some $s_{-i}$, then $s_i$ actually strictly dominates $\\sigma_i$ on the remaining profiles.",
+          "isCorrect": false,
+          "rationale": "Equality against some profiles is what *prevents* strict dominance of $s_i$. It does not reverse the comparison or make $s_i$ the dominating strategy."
         }
       ],
-      "hint": "Re-check dominance after removing $B$."
+      "hint": "Ask whether $s_i$ can still maximise expected payoff for some belief, especially when mixing."
     },
     {
-      "question": "What is the IDSDS outcome of the slide example (after all rounds)?",
+      "question": "In the lecture's $3\\times 3$ IDSDS example, Player 2 initially has no strictly dominated strategy, yet $R$ is eliminated in Round 2 after $B$ is deleted. Why?",
       "answerOptions": [
         {
-          "text": "$(M, L)$ with payoffs $(2, 3)$",
+          "text": "The order of elimination is arbitrary, so $R$ could equally have been deleted in Round 1.",
+          "isCorrect": false,
+          "rationale": "Order independence means the *final surviving set* does not depend on the sequence. $R$ was not dominated in the original game (against $B$ it pays $5$), so it could not be deleted in Round 1."
+        },
+        {
+          "text": "After $B$ is gone, $C$ strictly beats $R$ against both remaining rows $T$ and $M$. Dominance is re-checked in each reduced game.",
           "isCorrect": true,
-          "rationale": "Elimination sequence: $B$, then $R$, then $T$, then $C$, leaving $(M,L)$."
+          "rationale": "Against $T$, $u_2(C)=1>0=u_2(R)$; against $M$, $2>1$. $R$ was a best response only to $B$. Once $B$ is eliminated, $R$ becomes strictly dominated."
         },
         {
-          "text": "$(T, R)$ because $T$ has the highest payoff in the original matrix",
+          "text": "IDSDS deletes one player's strategies per round, so Player 2 had to wait until Round 2.",
           "isCorrect": false,
-          "rationale": "IDSDS uses dominance, not myopic payoff maximization; $T$ is eventually eliminated."
+          "rationale": "Each round eliminates all currently dominated strategies for all players. Round 1 removed only $B$ because that was the only dominated strategy at that stage."
         },
         {
-          "text": "$(M, C)$ because $M$ and $C$ are never dominated",
+          "text": "$R$ was weakly dominated from the start, and the procedure switches to weak dominance after Round 1.",
           "isCorrect": false,
-          "rationale": "$C$ is eliminated in the final round when only $M$ remains for Player 1."
-        },
-        {
-          "text": "All strategies survive because there is no dominant strategy equilibrium",
-          "isCorrect": false,
-          "rationale": "Absence of a DSE does not imply IDSDS eliminates nothing; iterated elimination can still pin down a unique profile."
+          "rationale": "IDSDS uses strict dominance throughout. $R$ becomes *strictly* dominated only after the game is reduced by removing $B$."
         }
       ],
-      "hint": "Follow the four elimination rounds on the slides."
+      "hint": "Against which of Player 1's original strategies was $R$ Player 2's best reply?"
     },
     {
-      "question": "In the $2/3$-average beauty contest, if all players are rational and know the average cannot exceed 67, what is the next upper bound after one round of reasoning?",
+      "question": "In the $2/3$-average beauty contest (numbers from $0$ to $100$), Round 1 of IDSDS eliminates choices above $67$. If all players are rational, what is the next upper bound?",
       "answerOptions": [
         {
-          "text": "67 again, because beliefs do not affect dominated strategies",
+          "text": "$67$ still, because strict dominance does not depend on beliefs about others' rationality.",
           "isCorrect": false,
-          "rationale": "The second round conditions on others being rational and not choosing above 67, tightening the bound."
+          "rationale": "Round 1 uses only that the average cannot exceed $100$. Round 2 uses that rational opponents will not choose above $67$, which tightens the bound."
         },
         {
-          "text": "About 45 (since $2/3 \\times 67 \\approx 44.67$)",
+          "text": "$33$, the typical experimental peak, which equals $2/3$ of $50$.",
+          "isCorrect": false,
+          "rationale": "$33$ is an empirical regularity associated with one or two levels of reasoning, not the theoretical second-round bound under full rationality."
+        },
+        {
+          "text": "$0$, because common knowledge of rationality collapses the game in a single step.",
+          "isCorrect": false,
+          "rationale": "Common knowledge of rationality licenses *iterated* deletion. Everyone choosing $0$ is the infinite-round limit, not the second-round bound."
+        },
+        {
+          "text": "About $45$, since $\\frac{2}{3}\\times 67 \\approx 44.67$, so any choice above $45$ is dominated once opponents are known to be rational.",
           "isCorrect": true,
-          "rationale": "If no one chooses above 67, the average is at most 67, so $2/3$ of the average is at most about 44.67; numbers above 45 are dominated."
-        },
-        {
-          "text": "33, because that is the most common experimental choice",
-          "isCorrect": false,
-          "rationale": "33 is an empirical peak in experiments, not the theoretical second-round upper bound under full rationality."
-        },
-        {
-          "text": "0, because IDSDS completes in one step",
-          "isCorrect": false,
-          "rationale": "Iterated reasoning continues through many rounds; 0 is the limit, not the first update."
+          "rationale": "If no one chooses above $67$, the average is at most $67$, so $2/3$ of the average is at most about $44.67$. Numbers above $45$ are then dominated."
         }
       ],
-      "hint": "If the max guess is 67, what is $2/3$ of the max average?"
+      "hint": "If the maximum guess is $67$, what is $2/3$ of the maximum possible average?"
     },
     {
-      "question": "Experimental beauty-contest data show clustered choices around 33 and 22, with very few zeros. What is the best interpretation in terms of the lecture's solution concepts?",
+      "question": "Beauty-contest experiments show clustered choices around $33$ and $22$, with very few zeros. What is the best interpretation in terms of the lecture's solution concepts?",
       "answerOptions": [
         {
-          "text": "The experiments prove that players maximize expected utility incorrectly.",
+          "text": "The data reject expected-utility maximisation, so best-response analysis does not apply.",
           "isCorrect": false,
-          "rationale": "The lecture does not reject expected utility maximization; it questions infinite levels of mutual rationality."
+          "rationale": "The lecture does not drop expected-utility maximisation. The issue is the assumption of infinitely iterated mutual rationality, not the payoff criterion."
         },
         {
-          "text": "IDSDS is invalid because the order of elimination matters in the beauty contest.",
+          "text": "IDSDS is invalid in the beauty contest because the order of elimination affects the surviving set.",
           "isCorrect": false,
-          "rationale": "Order independence is a property of IDSDS in normal form games; the issue is the CKR assumption, not elimination order."
+          "rationale": "For strict dominance the surviving set is independent of order. The gap is the common-knowledge-of-rationality assumption, not a failure of order independence."
         },
         {
-          "text": "Common knowledge of rationality (and hence IDSDS to 0) is a strong assumption; people seem to perform only a few rounds of strategic reasoning.",
+          "text": "Common knowledge of rationality (and hence IDSDS all the way to $0$) is a strong assumption; people appear to iterate only a few rounds, and even a rational player may not choose $0$ if others will not.",
           "isCorrect": true,
-          "rationale": "The theory with full CKR predicts 0; dispersed choices suggest limited iteration and doubt that others are fully rational."
+          "rationale": "Full CKR predicts $0$. Dispersed choices with peaks at modest depths of reasoning suggest limited iteration. Rationality alone does not imply playing as if everyone else is infinitely rational."
         },
         {
-          "text": "Dominant strategy equilibrium predicts the experimental peaks at 33 and 22.",
+          "text": "Dominant strategy equilibrium predicts the experimental peaks at $33$ and $22$.",
           "isCorrect": false,
-          "rationale": "There is no simple dominant strategy in the beauty contest; the theoretical benchmark under CKR is 0."
+          "rationale": "There is no simple dominant strategy in the beauty contest. The theoretical benchmark under CKR is $0$, not the experimental modes."
         }
       ],
-      "hint": "Contrast theoretical prediction under CKR with what subjects actually do."
+      "hint": "Contrast the CKR prediction with finite depths of reasoning, including what you should do if others are not fully rational."
     }
   ],
   "topics": {
     "covered": [
       "Strategic Interaction and Game Theory Motivation",
       "Normal Form Games",
+      "Payoffs, Rationality, and Common Knowledge",
       "Mixed Strategies and Beliefs",
       "Best Responses",
-      "Strict Dominance and DSE",
+      "Strict and Weak Dominance",
+      "Dominant Strategy Equilibrium",
       "IDSDS and Rationalizability",
-      "Beauty Contest and Common Knowledge of Rationality"
+      "Beauty Contest and CKR"
     ],
     "followUp": [
       "Nash Equilibrium",
