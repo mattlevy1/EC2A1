@@ -1,1 +1,281 @@
-{"quiz": []}
+{
+  "quiz": [
+    {
+      "question": "Two firms set prices. In industry $A$, each firm's cost is common knowledge; in industry $B$, each firm knows only its own cost. Which statement correctly describes the difference?",
+      "answerOptions": [
+        {
+          "text": "Industry $A$ is not a game, because with common knowledge of costs there is nothing to anticipate.",
+          "isCorrect": false,
+          "rationale": "Complete information is still a game: each firm must anticipate the other's price. Uncertainty remains about actions (and any randomisation)."
+        },
+        {
+          "text": "Industry $B$ cannot be analysed until costs are publicly revealed, because Bayesian games require commonly known payoffs after signals are observed.",
+          "isCorrect": false,
+          "rationale": "Bayesian games are designed precisely for private information. The distribution $f$ and payoff functions are common knowledge; realised costs need not be."
+        },
+        {
+          "text": "The industries are strategically equivalent, because mixed strategies already capture all payoff uncertainty.",
+          "isCorrect": false,
+          "rationale": "Mixing captures randomisation over own actions, not private information about payoffs. Incomplete information requires signals and interim beliefs."
+        },
+        {
+          "text": "In $A$, residual uncertainty is only about what the other will do; in $B$, each firm is also uncertain about what the other knows.",
+          "isCorrect": true,
+          "rationale": "Complete information: game structure and payoffs are common knowledge. Incomplete information: players have private information, so there is uncertainty about what others know."
+        }
+      ],
+      "hint": "What is the residual uncertainty in each industry?"
+    },
+    {
+      "question": "In a Bayesian game, which objects are common knowledge, and what does player $i$ observe?",
+      "answerOptions": [
+        {
+          "text": "The joint distribution $f$ and payoff functions $u_i$ are common knowledge; player $i$ observes only $x_i$.",
+          "isCorrect": true,
+          "rationale": "Everyone knows the information structure and payoffs. Private information is the realised signal $x_i$, not the rules of the game."
+        },
+        {
+          "text": "The entire signal profile $x$ is common knowledge after Nature draws it; $f$ may be private.",
+          "isCorrect": false,
+          "rationale": "That would be complete information about realised types. The point of Bayesian games is that $x$ is not commonly observed."
+        },
+        {
+          "text": "Player $i$ observes $x_{-i}$ but not $x_i$, so as to form beliefs about own payoffs.",
+          "isCorrect": false,
+          "rationale": "Player $i$ observes own signal $x_i$ and is uncertain about $x_{-i}$."
+        },
+        {
+          "text": "Only the action sets $A_i$ are common knowledge; payoffs and $f$ are each player's private information.",
+          "isCorrect": false,
+          "rationale": "Distributions and payoffs are common knowledge. What is private is the realised signal, not the payoff function itself."
+        }
+      ],
+      "hint": "Who sees the realisation, and who knows the rules?"
+    },
+    {
+      "question": "In the incomplete-information Battle of the Sexes, Player 2's pure strategy $OF$ specifies",
+      "answerOptions": [
+        {
+          "text": "playing $O$ in the $M$-matrix game and then, if that game ends, playing $F$ in a second game.",
+          "isCorrect": false,
+          "rationale": "This is a static Bayesian game, not a sequence of two games. $OF$ is a contingent plan across signals, not across time."
+        },
+        {
+          "text": "the mixed action that puts probability $1/2$ on $O$ and $1/2$ on $F$ after every signal.",
+          "isCorrect": false,
+          "rationale": "$OF$ is a pure strategy: a deterministic action after each signal, not a mixture."
+        },
+        {
+          "text": "playing $O$ after signal $M$ and $F$ after signal $N$.",
+          "isCorrect": true,
+          "rationale": "A strategy maps each signal to an action. The lecture's notation $OF$ means $O$ when wanting to meet and $F$ when not."
+        },
+        {
+          "text": "playing $O$ if Player 1 plays $O$ and $F$ if Player 1 plays $F$.",
+          "isCorrect": false,
+          "rationale": "Strategies cannot condition on the opponent's simultaneous action; they condition on own private signal."
+        }
+      ],
+      "hint": "A strategy maps signals to actions."
+    },
+    {
+      "question": "Suppose signals are independent, so $f(x) = f_1(x_1)\\cdots f_n(x_n)$. After observing $x_i$, player $i$'s interim belief about $x_{-i}$ is",
+      "answerOptions": [
+        {
+          "text": "$f(x_{-i}|x_i) = f(x_i)$, because independence makes others' signals irrelevant to expected payoffs.",
+          "isCorrect": false,
+          "rationale": "Independence makes others' signals independent of $x_i$, but $i$ still needs the marginal $f_{-i}(x_{-i})$ to take expectations."
+        },
+        {
+          "text": "$f(x_{-i}|x_i) = f_{-i}(x_{-i})$: own signal does not update beliefs about others' signals.",
+          "isCorrect": true,
+          "rationale": "Bayes' rule with a product distribution yields $f(x_{-i}|x_i) = f_{-i}(x_{-i})$. Correlation would make $x_i$ informative about $x_{-i}$."
+        },
+        {
+          "text": "$f(x_{-i}|x_i) = 1/|X_{-i}|$, because independence forces a uniform posterior.",
+          "isCorrect": false,
+          "rationale": "Independence preserves the marginal of $x_{-i}$; it does not flatten it into a uniform distribution."
+        },
+        {
+          "text": "The posterior is undefined until player $i$ also observes opponents' actions.",
+          "isCorrect": false,
+          "rationale": "Interim beliefs are formed after observing $x_i$ and before actions; independence is enough to write them down."
+        }
+      ],
+      "hint": "Does $x_i$ contain information about $x_{-i}$?"
+    },
+    {
+      "question": "Why must a Bayes Nash equilibrium strategy be optimal after every signal $x_i \\in X_i$, rather than only on average across signals?",
+      "answerOptions": [
+        {
+          "text": "Because only mixed strategies must be optimal at every signal; pure strategies need only be optimal for the most likely signal.",
+          "isCorrect": false,
+          "rationale": "The definition applies to all strategies, pure or mixed: no profitable deviation at any signal realisation."
+        },
+        {
+          "text": "Because Nature's draw of $x$ is observed by all players before they choose actions, so each $x_i$ is commonly known.",
+          "isCorrect": false,
+          "rationale": "Players observe only their own signal at the interim stage, not the full profile $x$."
+        },
+        {
+          "text": "Because a strategy that is suboptimal after a low-probability signal can still be a BNE provided it is a best response after all other signals.",
+          "isCorrect": false,
+          "rationale": "BNE requires a best response at every $x_i \\in X_i$, including low-probability signals (with $f(x_i) > 0$)."
+        },
+        {
+          "text": "Because a player who has observed $x_i$ can deviate at that signal alone; with $f(x_i) > 0$ this raises interim payoff and therefore also ex-ante payoff.",
+          "isCorrect": true,
+          "rationale": "Strategies must be optimal at the interim stage. A one-signal deviation is feasible and, if it raises $U_i(\\cdot|x_i)$, it raises $V_i$ as well."
+        }
+      ],
+      "hint": "Think about a deviation at a single realised signal."
+    },
+    {
+      "question": "The transformation of a Bayesian game into a complete-information game uses ex-ante payoffs $V_i(s) = \\sum_{x_i} f(x_i)\\, U_i(\\sigma(x)|x_i)$. Why are Nash equilibria of the transformed game exactly the BNEs?",
+      "answerOptions": [
+        {
+          "text": "Because $\\sigma_i(x_i)$ enters only the $x_i$ term of $V_i$ and $f(x_i) > 0$, so maximising the sum is equivalent to maximising each interim payoff.",
+          "isCorrect": true,
+          "rationale": "A deviation at a single signal changes only that term. With positive probability weight, the ex-ante ranking matches the interim ranking at every $x_i$."
+        },
+        {
+          "text": "Because the transformation is valid only when signals are independent, which is assumed throughout the lecture.",
+          "isCorrect": false,
+          "rationale": "The argument never uses independence. It uses only that $\\sigma_i(x_i)$ does not enter other signals' interim utilities, and $f(x_i) > 0$."
+        },
+        {
+          "text": "Because ex-ante and interim payoffs coincide if and only if players have private values.",
+          "isCorrect": false,
+          "rationale": "The decomposition $V_i = \\sum_{x_i} f(x_i) U_i(\\cdot|x_i)$ holds whether or not payoffs depend on the full profile $x$."
+        },
+        {
+          "text": "Because the transformed game has the same action sets $A_i$, so every Nash equilibrium is a dominant-strategy equilibrium.",
+          "isCorrect": false,
+          "rationale": "The transformed game's strategies are maps from signals to actions, not the original $A_i$. And DSE is stronger than NE/BNE."
+        }
+      ],
+      "hint": "Which term of the sum does $\\sigma_i(x_i)$ enter?"
+    },
+    {
+      "question": "In the transformed Battle of the Sexes, Player 2's best response is $OF$ against $O$ and $FO$ against $F$. If $p = 1/2$, which statement is correct?",
+      "answerOptions": [
+        {
+          "text": "$(F, FO)$ is a pure-strategy BNE, because Player 1 prefers $F$ against $FO$ whenever $p > 1/3$.",
+          "isCorrect": false,
+          "rationale": "Player 1 prefers $F$ against $FO$ only if $p > 2/3$. At $p = 1/2$ that inequality fails."
+        },
+        {
+          "text": "There is no pure-strategy BNE, because $p = 1/2$ lies below both $1/3$ and $2/3$.",
+          "isCorrect": false,
+          "rationale": "No pure BNE occurs for $p < 1/3$. For $1/3 < p < 2/3$ there is a unique pure BNE."
+        },
+        {
+          "text": "$(O, OF)$ is the unique pure-strategy BNE.",
+          "isCorrect": true,
+          "rationale": "Against $OF$, Player 1 prefers $O$ iff $p > 1/3$. Against $FO$, Player 1 prefers $F$ iff $p > 2/3$. At $p = 1/2$ only $(O, OF)$ survives."
+        },
+        {
+          "text": "$(O, OO)$ is a BNE, because $OO$ is a best response to $O$ when $p = 1/2$.",
+          "isCorrect": false,
+          "rationale": "Player 2's best response to $O$ is $OF$, independent of $p$. Always playing $O$ fails to mismatch after $N$."
+        }
+      ],
+      "hint": "Compare $p = 1/2$ with the cutoffs $1/3$ and $2/3$."
+    },
+    {
+      "question": "In the entry game, $(Out, IN)$ is a BNE when $p > 2/3$. Relative to complete information, why does the high-cost incumbent earn more in this equilibrium?",
+      "answerOptions": [
+        {
+          "text": "Type $H$ invests more cheaply than type $L$, so investing is $H$'s dominant strategy.",
+          "isCorrect": false,
+          "rationale": "Investment costs 2 for $H$ and 0 for $L$. In this BNE it is $L$ who invests; $H$ does not."
+        },
+        {
+          "text": "The entrant cannot condition on type, so stays out against both; type $H$ free-rides on the chance that the incumbent is $L$.",
+          "isCorrect": true,
+          "rationale": "Under complete information the entrant would enter against $H$ (payoff 3 if $H$ does not invest). Under incomplete information the entrant stays out against both, so $H$ earns 8 instead of 3."
+        },
+        {
+          "text": "The entrant observes type $H$ and still stays out, because $H$'s payoff from Invest is higher.",
+          "isCorrect": false,
+          "rationale": "The entrant does not observe type. If type were observed, the entrant would enter against $H$."
+        },
+        {
+          "text": "Incomplete information converts the game into a Prisoner's Dilemma in which staying out is dominant for the entrant.",
+          "isCorrect": false,
+          "rationale": "Staying out is a best response to $IN$ only when $p > 2/3$, not a dominant strategy. The other BNE has the entrant coming in."
+        }
+      ],
+      "hint": "What would the entrant do if type $H$ were observed?"
+    },
+    {
+      "question": "In the Cournot BNE $(q_1^*, q_2^{L*}, q_2^{H*}) = (4, 3, 1)$, the low-cost type of Firm 2 produces less than in the complete-information game where both costs are zero ($(10/3, 10/3)$). Why?",
+      "answerOptions": [
+        {
+          "text": "Low-cost Firm 2's marginal cost is higher under incomplete information, which shifts $BR_2^L$ inward.",
+          "isCorrect": false,
+          "rationale": "Type $L$'s cost is still zero. The best-response function $BR_2^L(q_1) = 5 - q_1/2$ is unchanged; what changes is the $q_1$ it faces."
+        },
+        {
+          "text": "The two types of Firm 2 collude, transferring output from $L$ to $H$ to hide costs from Firm 1.",
+          "isCorrect": false,
+          "rationale": "Types of the same firm do not choose jointly. Each type best-responds separately to Firm 1's output."
+        },
+        {
+          "text": "Firm 1 produces less than $10/3$, so strategic substitutes would lead type $L$ to produce more, not less.",
+          "isCorrect": false,
+          "rationale": "Firm 1 produces $4 > 10/3$, not less. The direction of the comparison is the opposite."
+        },
+        {
+          "text": "Firm 1 produces $4 > 10/3$, shading toward the chance that Firm 2 is high-cost; type $L$ then faces a more aggressive rival and cuts output.",
+          "isCorrect": true,
+          "rationale": "Firm 1 averages over $L$ and $H$, so output lies between the two complete-information levels. The extra output by Firm 1 induces the low-cost rival to produce $3 < 10/3$. Incomplete information changes behaviour even when costs are in fact low."
+        }
+      ],
+      "hint": "Compare Firm 1's output with the both-zero-cost Cournot quantity."
+    },
+    {
+      "question": "Under unanimity, suppose both jurors vote sincerely. A juror who received signal $i$ may still prefer to vote $C$. Which explanation is correct?",
+      "answerOptions": [
+        {
+          "text": "Own vote is pivotal only if the other voted $C$; under sincere voting that means the other saw $g$, so the signals cancel and the posterior equals $\\pi$. If $d < \\pi/(1-\\pi)$, convicting maximises expected payoff. The cutoff does not depend on $q$.",
+          "isCorrect": true,
+          "rationale": "Pivotality reveals the other's $g$ signal. Symmetric likelihoods $q(1-q)$ cancel, leaving posterior $\\pi$. Then $U(C) > 0$ iff $d < \\pi/(1-\\pi)$, independently of precision."
+        },
+        {
+          "text": "Sincere voting fails only when signals are imprecise ($q$ close to $1/2$), because then own signal $i$ is not evidence of innocence.",
+          "isCorrect": false,
+          "rationale": "The lecture's cutoff is independent of $q$. Even a precise $i$ signal is cancelled by the pivotal $g$ signal from the other juror."
+        },
+        {
+          "text": "Jurors have conflicting preferences over conviction, so each votes $C$ to impose a negative externality on the other.",
+          "isCorrect": false,
+          "rationale": "Conditional on the state, jurors have aligned preferences. The distortion is informational (conditioning on pivotality), not a conflict of interest."
+        },
+        {
+          "text": "Unanimity makes own vote always pivotal, so the juror ignores the other signal and uses only the prior $\\pi$.",
+          "isCorrect": false,
+          "rationale": "Own vote is pivotal only when the other votes $C$, not always. That event is informative about the other's signal."
+        }
+      ],
+      "hint": "Condition on being pivotal, then apply Bayes' rule."
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Complete versus Incomplete Information",
+      "Bayesian Games: Signals, Types, and Private Values",
+      "Strategies as Maps from Signals to Actions",
+      "Interim Beliefs, Expected Utility, and Best Response",
+      "Bayes Nash Equilibrium",
+      "Transformation of Incomplete to Complete Information",
+      "Battle of the Sexes with Incomplete Information",
+      "Entry Deterrence under Incomplete Information",
+      "Cournot Duopoly with Private Cost Information",
+      "Strategic Voting, Pivotality, and Jury Design"
+    ],
+    "followUp": [
+      "BNE in Auctions"
+    ]
+  }
+}

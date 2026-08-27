@@ -1,0 +1,280 @@
+
+{
+  "quiz": [
+    {
+      "question": "In neoclassical economics, what is the primary distinction between a 'normative' theory and a 'positive' theory?",
+      "answerOptions": [
+        {
+          "text": "Normative theory describes how people should behave, while positive theory predicts how they actually behave.",
+          "isCorrect": true,
+          "rationale": "Neoclassical economics serves as both a benchmark for optimal behavior and a framework for empirical prediction."
+        },
+        {
+          "text": "Normative theory uses mathematical models, while positive theory relies on experimental data.",
+          "isCorrect": false,
+          "rationale": "Both normative and positive approaches in neoclassical economics typically utilize mathematical modeling and assumptions."
+        },
+        {
+          "text": "Normative theory is focused on individuals, while positive theory is focused on firms and governments.",
+          "isCorrect": false,
+          "rationale": "The neoclassical framework applies both normative and positive analyses across all economic agents, including individuals and firms."
+        },
+        {
+          "text": "Normative theory prioritizes psychological realism, while positive theory prioritizes technical solvability.",
+          "isCorrect": false,
+          "rationale": "Neoclassical models generally prioritize solvability over psychological realism in both normative and positive contexts."
+        }
+      ],
+      "hint": "Consider the difference between a prescription for behavior and a description of behavior."
+    },
+    {
+      "question": "Which of the following best describes the relationship between behavioural economics and mainstream (neoclassical) economics?",
+      "answerOptions": [
+        {
+          "text": "Behavioural economics is an alternative to mainstream economics that rejects mathematical formalism.",
+          "isCorrect": false,
+          "rationale": "Behavioural economics aims to maintain the mathematical rigor and formalism of mainstream economics while changing the underlying assumptions."
+        },
+        {
+          "text": "Behavioural economics attempts to improve predictions by replacing technical assumptions with psychologically realistic ones.",
+          "isCorrect": true,
+          "rationale": "The core goal is to refine the accuracy of standard models by incorporating more realistic human psychology while keeping the existing rigorous framework."
+        },
+        {
+          "text": "Behavioural economics focuses exclusively on neuroeconomics and physiological processes.",
+          "isCorrect": false,
+          "rationale": "While neuroeconomics is a related field, behavioural economics seeks a higher level of abstraction than just physiological processes."
+        },
+        {
+          "text": "Behavioural economics assumes that individuals are mechanical and always maximize a narrowly defined utility function.",
+          "isCorrect": false,
+          "rationale": "This is a characteristic of 'standard' or neoclassical economics, which behavioural economics seeks to expand upon."
+        }
+      ],
+      "hint": "Think about whether the field seeks to destroy the existing economic paradigm or build upon its methods with better 'ingredients'."
+    },
+    {
+      "question": "In the context of anticipatory utility, what is the definition of 'savouring'?",
+      "text": "Savouring",
+      "answerOptions": [
+        {
+          "text": "The utility derived from the recollection of past positive experiences.",
+          "isCorrect": false,
+          "rationale": "Recollection refers to utility from the past, whereas savouring specifically concerns the future."
+        },
+        {
+          "text": "The negative utility derived from the contemplation of a future unpleasant event.",
+          "isCorrect": false,
+          "rationale": "Negative utility from future contemplation is defined as 'dread,' not savouring."
+        },
+        {
+          "text": "Positive utility derived from the anticipation of future consumption.",
+          "isCorrect": true,
+          "rationale": "Savouring represents the immediate enjoyment one feels while looking forward to a future pleasure."
+        },
+        {
+          "text": "The immediate consumption utility received at the moment of an event.",
+          "isCorrect": false,
+          "rationale": "Savouring is a flow of utility experienced before the actual consumption occurs."
+        }
+      ],
+      "hint": "Focus on the direction of time and the valence (positive or negative) of the emotion."
+    },
+    {
+      "question": "In the experiment comparing a kiss from a favorite movie star and a non-lethal electric shock, what did the results imply about standard discounting models?",
+      "answerOptions": [
+        {
+          "text": "The preference to delay the kiss implies a negative discount rate, while the shock implies a positive one.",
+          "isCorrect": false,
+          "rationale": "Actually, the preference to delay the kiss implies non-monotonic discounting, while wanting the shock 'now' to avoid dread contradicts standard positive discounting."
+        },
+        {
+          "text": "The desire to delay the kiss to 'savour' it and the desire to have the shock 'now' to avoid 'dread' both contradict typical exponential discounting.",
+          "isCorrect": true,
+          "rationale": "Standard models suggest we should always want rewards now and delay pain, so these timing preferences challenge the standard assumptions."
+        },
+        {
+          "text": "Subjects were indifferent to the timing of both events, supporting the fungibility of time.",
+          "isCorrect": false,
+          "rationale": "The results showed significant timing preferences that varied based on the nature (valence) of the event."
+        },
+        {
+          "text": "The results for the kiss were consistent with standard models, but the results for the electric shock were not.",
+          "isCorrect": false,
+          "rationale": "Standard models predict we should want the kiss immediately (no delay), so the preference for delay is also a contradiction."
+        }
+      ],
+      "hint": "Consider if a person who wants a painful shock 'immediately' is acting like a standard agent who discounts the future."
+    },
+    {
+      "question": "Using the Loewenstein (1987) model, if $u$ is the utility of a future event, $a$ is the salience of anticipation, and $\\delta$ is the discount factor, what is the total anticipatory utility from an event delayed by $T$ periods as valued by Self-0?",
+      "answerOptions": [
+        {
+          "text": "$U(u, T) = \\delta^T u$",
+          "isCorrect": false,
+          "rationale": "This is the classical model where utility is only derived from the consumption in period $T$ itself."
+        },
+        {
+          "text": "$U(u, T) = aT \\delta^T u$",
+          "isCorrect": true,
+          "rationale": "The total value is the sum of $s$ periods of anticipatory utility, each valued at $a\\delta^s u$ from the perspective of period 0."
+        },
+        {
+          "text": "$U(u, T) = (1 + a)^T u$",
+          "isCorrect": false,
+          "rationale": "This does not account for the standard discount factor $\\delta$ or the linear accumulation of anticipatory periods."
+        },
+        {
+          "text": "$U(u, T) = \\frac{a}{\\delta^T} u$",
+          "isCorrect": false,
+          "rationale": "Anticipatory utility should be discounted, not inflated, by the distance to the future event."
+        }
+      ],
+      "hint": "Recall that in each period leading up to the event, the agent experiences a flow of anticipation."
+    },
+    {
+      "question": "Why does the model of anticipatory utility predict that people will delay a kiss from a movie star but will not delay receiving a small sum of money (e.g., $4)?",
+      "answerOptions": [
+        {
+          "text": "Money is more valuable, so the opportunity cost of delay is higher.",
+          "isCorrect": false,
+          "rationale": "The model focuses on the psychological experience of anticipation rather than the relative market value of the goods."
+        },
+        {
+          "text": "Money is not considered 'salient' in terms of anticipation ($a = 0$), so there is no utility gained from waiting.",
+          "isCorrect": true,
+          "rationale": "Items like money do not trigger 'savouring' or 'daydreaming' in the same way sensory or emotional experiences do, leading to standard immediate consumption preferences."
+        },
+        {
+          "text": "The interest rate on $4 is higher than the utility of a kiss.",
+          "isCorrect": false,
+          "rationale": "Economic interest rates are usually too small over short delays (like 3 days) to explain these differences in behavior."
+        },
+        {
+          "text": "People prefer to invest money immediately, whereas a kiss cannot be invested.",
+          "isCorrect": false,
+          "rationale": "The model is about the internal utility flow of anticipation, not external investment opportunities."
+        }
+      ],
+      "hint": "Think about which of these items is easier or more pleasurable to 'daydream' about."
+    },
+    {
+      "question": "The function for total utility in the Loewenstein model often appears 'hump-shaped' with respect to time delay ($s$). What causes the eventual decline in utility for very long delays?",
+      "answerOptions": [
+        {
+          "text": "The ability to imagine the future increases too much, causing anxiety.",
+          "isCorrect": false,
+          "rationale": "The model assumes imaginability is scaled by the discount factor, which reduces the impact of very distant events."
+        },
+        {
+          "text": "The agent forgets about the event over time.",
+          "isCorrect": false,
+          "rationale": "While true in reality, the model specifically uses the discount factor $\\delta$ to represent the diminishing value of the future."
+        },
+        {
+          "text": "Although more periods of savouring are added, the value of those periods and the final consumption are heavily discounted by $\\delta^s$.",
+          "isCorrect": true,
+          "rationale": "As $s$ grows, the term $\\delta^s$ eventually dominates, making the distant savouring and consumption worth nearly zero today."
+        },
+        {
+          "text": "The salience of anticipation ($a$) decreases as the event gets closer.",
+          "isCorrect": false,
+          "rationale": "Salience $a$ is typically treated as a constant parameter for the type of event, not a variable of time."
+        }
+      ],
+      "hint": "Consider the mathematical effect of a discount factor less than 1 as the exponent increases."
+    },
+    {
+      "question": "In the Loewenstein model, what is the optimal timing for a negative utility shock (such as a painful event)?",
+      "answerOptions": [
+        {
+          "text": "Always delay it as long as possible to maximize discounting.",
+          "isCorrect": false,
+          "rationale": "This ignores the 'dread' experienced in every period leading up to the event, which might outweigh the discount."
+        },
+        {
+          "text": "It is always optimal to have the shock immediately to avoid any periods of dread.",
+          "isCorrect": false,
+          "rationale": "This is only true if the available delay is not long enough; if the delay is long enough, discounting might eventually make the event's impact negligible."
+        },
+        {
+          "text": "The agent will choose either immediate consumption (to avoid dread) or a very long delay (to maximize discounting), depending on the timeframe.",
+          "isCorrect": true,
+          "rationale": "Because of the interaction between dread and discounting, agents face 'corner solutions': get it over with now, or push it so far away that it 'disappears' via discounting."
+        },
+        {
+          "text": "The agent will always choose a moderate delay to balance dread and discounting.",
+          "isCorrect": false,
+          "rationale": "A moderate delay is the worst option because it subjects the agent to many periods of dread without the benefit of significant discounting."
+        }
+      ],
+      "hint": "Think about why people either 'rip the band-aid off' or procrastinate indefinitely."
+    },
+    {
+      "question": "According to the lecture, why might a patient avoid a genetic test for Huntington's Disease even if the test is highly accurate?",
+      "answerOptions": [
+        {
+          "text": "The test is too expensive for most patients to afford.",
+          "isCorrect": false,
+          "rationale": "The study focuses on the psychological and informational preferences rather than the monetary cost of the test."
+        },
+        {
+          "text": "The patient wants to maintain 'optimistic beliefs' and avoid the dread associated with a positive diagnosis.",
+          "isCorrect": true,
+          "rationale": "Anticipatory utility suggests that the negative utility from 'knowing' (dread) can outweigh the instrumental value of the information."
+        },
+        {
+          "text": "The standard economic model predicts that information has no value if it doesn't change behavior.",
+          "isCorrect": false,
+          "rationale": "The standard model predicts people should be indifferent or positive toward information, but never strictly avoid it if it has potential value."
+        },
+        {
+          "text": "Patients only avoid information if they believe the test results will be inaccurate.",
+          "isCorrect": false,
+          "rationale": "The lecture notes that the test has $>99\\%$ specificity, yet refusal rates remain high, suggesting inaccuracy is not the primary driver."
+        }
+      ],
+      "hint": "Consider the intrinsic utility of holding a hopeful belief versus the dread of a certain negative future."
+    },
+    {
+      "question": "What is the 'standard' assumption about money that behavioural economics often challenges in examples like the concert ticket case?",
+      "answerOptions": [
+        {
+          "text": "Money is scarce.",
+          "isCorrect": false,
+          "rationale": "Scarcity is a fundamental assumption that both neoclassical and behavioural economics accept."
+        },
+        {
+          "text": "Money is fungible.",
+          "isCorrect": true,
+          "rationale": "Standard theory assumes all money is interchangeable, but behavioural examples show people often treat 'lost money' differently than 'money spent on a ticket'."
+        },
+        {
+          "text": "Money has a diminishing marginal utility.",
+          "isCorrect": false,
+          "rationale": "Standard microeconomics explicitly assumes diminishing marginal utility; this is not the unique challenge here."
+        },
+        {
+          "text": "Money can only be used for consumption.",
+          "isCorrect": false,
+          "rationale": "Both models allow money to be saved or used in various ways; the issue is how it is categorized mentally."
+        }
+      ],
+      "hint": "Think about whether a pound found on the street is treated the same as a pound earned at work."
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Neoclassical vs. Behavioural Economics",
+      "Anticipatory Utility",
+      "Savouring and Dread",
+      "Information Avoidance"
+    ],
+    "followUp": [
+      "Prospect Theory",
+      "Time Discounting and Present Bias",
+      "Heuristics and Biases",
+      "Social Preferences"
+    ]
+  }
+}

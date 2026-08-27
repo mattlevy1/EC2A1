@@ -1,1 +1,223 @@
-{"flashcards": []}
+{
+  "flashcards": [
+    {
+      "f": "How does Nash equilibrium differ from last lecture's dominance-based solution concepts?",
+      "b": "DSE and IDSDS rest on dominance and common knowledge of rationality. NE is a stability notion: each player best-responds to a conjecture about others, and if those conjectures are correct, play is an equilibrium.",
+      "c": 1
+    },
+    {
+      "f": "State the two-part (beliefs) definition of Nash equilibrium.",
+      "b": "A strategy profile $\\sigma = (\\sigma_1, \\ldots, \\sigma_n)$ and belief profile $(\\theta_{-1}, \\ldots, \\theta_{-n})$ form a Nash equilibrium if (1) $\\sigma_i \\in BR_i(\\theta_{-i})$ for all $i$ and (2) beliefs are correct: $\\theta_{-i} = \\sigma_{-i}$ for all $i$.",
+      "c": 4
+    },
+    {
+      "f": "What do the two parts of the Nash definition capture?",
+      "b": "Part (1) is optimisation given beliefs. Part (2) is a consistency condition: beliefs must match actual play.",
+      "c": 1
+    },
+    {
+      "f": "State the standard (exam) definition of Nash equilibrium.",
+      "b": "A strategy profile $\\sigma = (\\sigma_1, \\ldots, \\sigma_n)$ is a Nash equilibrium if for all $i$, $u_i(\\sigma_i, \\sigma_{-i}) \\geq u_i(\\sigma'_i, \\sigma_{-i})$ for all $\\sigma'_i \\in \\Delta S_i$. No player can improve by unilaterally deviating against opponents' actual play.",
+      "c": 4
+    },
+    {
+      "f": "Define a pure strategy Nash equilibrium (PSNE).",
+      "b": "A profile $s = (s_1, \\ldots, s_n) \\in S$ is a PSNE if for all $i$, $u_i(s_i, s_{-i}) \\geq u_i(s'_i, s_{-i})$ for all $s'_i \\in S_i$. Equivalently, $s_i \\in BR^P_i(s_{-i})$ for all $i$.",
+      "c": 4
+    },
+    {
+      "f": "What is Nash equilibrium, interpretively?",
+      "b": "A stability notion (no unilateral incentive to deviate), a consistency condition (if players expect this profile, their expectations are correct), and a prediction of play under common knowledge of rationality plus correct beliefs.",
+      "c": 1
+    },
+    {
+      "f": "What is Nash equilibrium not?",
+      "b": "It is not necessarily efficient (Prisoner's Dilemma), not necessarily unique, and not necessarily descriptive of actual play — it requires strong assumptions.",
+      "c": 1
+    },
+    {
+      "f": "What is the unique Nash equilibrium of the Prisoner's Dilemma on the slides?",
+      "b": "$(Defect, Defect)$. Defect is strictly dominant for both players, so the game is also dominance-solvable. The NE is inefficient relative to $(Cooperate, Cooperate)$.",
+      "c": 2
+    },
+    {
+      "f": "In a payoff matrix, what practical method finds pure Nash equilibria?",
+      "b": "Highlight each player's best responses. A cell that is a best response for every player is a pure NE.",
+      "c": 1
+    },
+    {
+      "f": "Prove that any dominant strategy equilibrium is a Nash equilibrium.",
+      "b": "If $s$ is a DSE, then $s_i \\in BR_i(s'_{-i})$ for all $s'_{-i}$ and all $i$. In particular $s_i \\in BR_i(s_{-i})$ for all $i$, so $s$ is a Nash equilibrium.",
+      "c": 3
+    },
+    {
+      "f": "Why is DSE a more demanding solution concept than NE?",
+      "b": "A dominant strategy is a best response to every opponent profile, hence also to equilibrium play. NE only requires a best response to the particular strategies others actually use.",
+      "c": 2
+    },
+    {
+      "f": "In the $3 \\times 3$ example (payoffs $T$: $(5,5),(0,5),(5,0)$; $M$: $(5,0),(2,2),(0,5)$; $B$: $(0,5),(5,0),(1,1)$), why does IDSDS fail?",
+      "b": "No strategy is strictly dominated for either player, so iterated dominance has no bite: all strategies remain undominated.",
+      "c": 2
+    },
+    {
+      "f": "Why is $(T, L)$ a Nash equilibrium in that $3 \\times 3$ game?",
+      "b": "Given $L$, Player 1's best responses are $T$ or $M$ (payoff $5$ vs $0$ from $B$). Given $T$, Player 2's best responses are $L$ or $M$. Mutual best responses suffice; uniqueness of the best response is not required.",
+      "c": 2
+    },
+    {
+      "f": "What does the $3 \\times 3$ example illustrate about NE versus dominance?",
+      "b": "Nash equilibrium can still deliver a prediction when dominance arguments fail.",
+      "c": 1
+    },
+    {
+      "f": "In the $3 \\times 2$ example, when is $a$ a nonstrategic best response in the full game versus after removing $b$?",
+      "b": "Holding beliefs fixed, $a$ is optimal iff the belief on $L$ exceeds $2/3$ in the full game, but only $1/3$ once $b$ is removed. Removing $b$ cannot make $a$ less attractive for a fixed belief.",
+      "c": 4
+    },
+    {
+      "f": "How can removing Player 1's unused strategy $b$ change the Nash set?",
+      "b": "The full game has unique NE $(a, L)$. After removing $b$, $(c, R)$ becomes an additional NE because Player 2's best response to $c$ is $R$, and $c$ is then a best response to $R$. Strategic interaction means the opponent's behaviour can change.",
+      "c": 2
+    },
+    {
+      "f": "What do firms choose in Cournot oligopoly, and how is price determined?",
+      "b": "Two firms simultaneously choose quantities $q_i$ of a homogeneous good. Total output is $Q = q_1 + q_2$; inverse demand $P(Q)$ gives the price at which $Q$ units sell.",
+      "c": 3
+    },
+    {
+      "f": "Write firm $i$'s Cournot profit.",
+      "b": "$u_i(q_1, q_2) = P(q_1 + q_2)\\, q_i - C_i(q_i)$. Own output raises revenue but, through $Q$, also lowers the market price.",
+      "c": 4
+    },
+    {
+      "f": "In the Cournot example, what are inverse demand and costs?",
+      "b": "$D(p) = 100 - 2p$, so $P(Q) = 50 - Q/2$. Both firms have $C_i(q) = 14q$.",
+      "c": 4
+    },
+    {
+      "f": "Derive Firm 1's Cournot best response in the example.",
+      "b": "Maximise $u_1 = \\bigl(50 - (q_1+q_2)/2\\bigr)q_1 - 14q_1$. The FOC is $50 - (q_1^*+q_2)/2 - q_1^*/2 - 14 = 0$, hence $BR_1(q_2) = (72 - q_2)/2$. By symmetry $BR_2(q_1) = (72 - q_1)/2$.",
+      "c": 4
+    },
+    {
+      "f": "Why are Cournot quantities strategic substitutes in the example?",
+      "b": "Best-response functions slope downward: a higher rival quantity lowers residual demand, so the firm's optimal own quantity falls.",
+      "c": 3
+    },
+    {
+      "f": "What is the Cournot-Nash outcome in the example?",
+      "b": "$(q_1^*, q_2^*) = (24, 24)$, price $p^* = 50 - (24+24)/2 = 26$, and each firm's profit is $(26-14)\\cdot 24 = 288$.",
+      "c": 4
+    },
+    {
+      "f": "What quantities and profits would colluding Cournot firms achieve in the example?",
+      "b": "Joint-profit maximisation yields monopoly $Q^M = 36$, $p^M = 32$, total profit $648$. If they split output ($18$ each), each earns $324 > 288$.",
+      "c": 4
+    },
+    {
+      "f": "Why is Cournot collusion unstable?",
+      "b": "If firm 2 produces the collusive $18$, firm 1's best response is $BR_1(18) = 27$. Unilateral expansion raises the reneging firm's profit above $324$, so collusion is not a NE. Stability requires some enforcement mechanism.",
+      "c": 2
+    },
+    {
+      "f": "How does Bertrand competition differ from Cournot?",
+      "b": "Firms simultaneously choose prices rather than quantities. The good is homogeneous; consumers buy from the cheaper firm; equal prices split the market equally.",
+      "c": 3
+    },
+    {
+      "f": "Write homogeneous-Bertrand profits when $p_1 > p_2$, $p_1 < p_2$, and $p_1 = p_2$.",
+      "b": "If $p_1 > p_2$: firm 1 earns $0$ and firm 2 earns $(p_2-c)D(p_2)$. If $p_1 < p_2$: the reverse. If $p_1 = p_2$: each earns $\\frac{1}{2}(p_i-c)D(p_i)$.",
+      "c": 4
+    },
+    {
+      "f": "Describe firm $i$'s Bertrand best response (for small $\\varepsilon$).",
+      "b": "If $p_j > p^m$, set $p_i = p^m$. If $p^m \\geq p_j > c$, undercut: $p_i = p_j - \\varepsilon$. If $c \\geq p_j$, set $p_i > p_j$ (no gain from pricing below marginal cost).",
+      "c": 4
+    },
+    {
+      "f": "What is the Bertrand paradox?",
+      "b": "The unique NE is $p_1^* = p_2^* = c$: duopoly prices at marginal cost and firms earn zero profit, as in perfect competition.",
+      "c": 3
+    },
+    {
+      "f": "Why is pricing at marginal cost a Bertrand equilibrium, and why is any higher common price not?",
+      "b": "At $p = c$, raising price loses all demand and cutting price means selling below cost. At any common $p > c$, either firm can undercut slightly, steal the market, and earn a strictly positive profit.",
+      "c": 2
+    },
+    {
+      "f": "When is Cournot versus homogeneous Bertrand a better description of oligopoly?",
+      "b": "Neither is intrinsically better. Bertrand fits better when capacity is easy to adjust; Cournot when capacity is hard to adjust. Both generate incentives to form a cartel and charge the monopoly price.",
+      "c": 2
+    },
+    {
+      "f": "How does horizontal differentiation differ from vertical differentiation?",
+      "b": "Horizontal: consumers disagree over similar products even at similar prices (toothpaste, detergents). Vertical: products differ in perceived quality, so if prices were equal everyone would buy the highest quality.",
+      "c": 1
+    },
+    {
+      "f": "In the two-store (differentiated Bertrand) example, why does a price cut not steal the whole market?",
+      "b": "Demand is $D_1 = 10 - 2p_1 + p_2$ (and symmetrically for firm 2). Customers closest to the cheaper store switch first; those far from it still buy from the nearer store. Demand is less reactive to price gaps than in homogeneous Bertrand.",
+      "c": 2
+    },
+    {
+      "f": "What are the two-store best responses, and why are prices strategic complements?",
+      "b": "With $MC = 1$, $BR_1(p_2) = (12+p_2)/4$ and $BR_2(p_1) = (12+p_1)/4$. Best responses slope upward: a rival's price increase makes it optimal to raise your own price.",
+      "c": 4
+    },
+    {
+      "f": "What is the two-store Nash outcome, and how does differentiation benefit producers?",
+      "b": "$p_1^* = p_2^* = 4 > 1$, so both firms earn positive markups. Differentiation lessens competitive pressure because consumers have diverse preferences and are less responsive to price differences.",
+      "c": 2
+    },
+    {
+      "f": "If location is also chosen, why might firms differentiate excessively?",
+      "b": "Firms may locate far apart to soften price competition. Consumers could prefer less differentiation: more similar products would intensify competition and lower prices, which on balance can benefit consumers. Efficiency effects of differentiation are otherwise unclear.",
+      "c": 1
+    },
+    {
+      "f": "Specify the two-candidate electoral competition game.",
+      "b": "Candidates simultaneously choose positions $x_i \\in [0,1]$. A continuum of citizens with ideal points distributed as $F$ vote for the closer candidate (ties split equally). Each candidate maximises vote share.",
+      "c": 3
+    },
+    {
+      "f": "State the median voter theorem.",
+      "b": "Let $m$ be the median of $F$, so $F(m) = 1/2$. The unique Nash equilibrium is $x_1^* = x_2^* = m$: both candidates converge to the median voter's ideal point.",
+      "c": 3
+    },
+    {
+      "f": "Why is $(m, m)$ a Nash equilibrium of electoral competition?",
+      "b": "Each candidate then gets half the votes. Any deviation $x_1 < m$ yields vote share $F((x_1+m)/2) < 1/2$; a deviation above $m$ likewise yields less than half. So neither candidate can gain by moving.",
+      "c": 2
+    },
+    {
+      "f": "What does the median voter theorem predict, and what is it silent on?",
+      "b": "In two-candidate, one-dimensional competition, platforms converge and only the median (swing) voter matters; extreme voters are taken for granted. The theorem predicts equilibrium policy, not whether that policy is socially optimal.",
+      "c": 1
+    },
+    {
+      "f": "In the Dal Bó, Dal Bó and Eyster voting experiment, why did many subjects choose the Prisoner's Dilemma over the Harmony Game?",
+      "b": "Harmony has dominant-strategy NE $(C,C)$ with payoffs $(8,8)$; the PD has $(D,D)$ with $(5,5)$. Subjects saw higher cell-by-cell payoffs in the PD but failed to anticipate that everyone would switch to $D$.",
+      "c": 2
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Nash Equilibrium Definitions",
+      "Pure Strategy Nash Equilibrium",
+      "DSE Implies NE",
+      "NE when IDSDS Fails",
+      "Strategic versus Nonstrategic Reasoning",
+      "Cournot Quantity Competition",
+      "Collusion and Cartel Instability",
+      "Bertrand Price Competition",
+      "Product Differentiation",
+      "Median Voter Theorem",
+      "Equilibrium Effects and Voting"
+    ],
+    "followUp": [
+      "Mixed Strategy Nash Equilibrium",
+      "Cartel Stability"
+    ]
+  }
+}

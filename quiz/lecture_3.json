@@ -1,1 +1,205 @@
-{"flashcards": []}
+{
+  "flashcards": [
+    {
+      "f": "What is a mixed strategy Nash equilibrium?",
+      "b": "A Nash equilibrium $\\sigma^*$ in which at least one player randomises: some $\\sigma_i^*$ puts positive probability on more than one pure strategy. Each $\\sigma_i^*$ is a best response to $\\sigma_{-i}^*$.",
+      "c": 3
+    },
+    {
+      "f": "Does Matching Pennies have a pure strategy Nash equilibrium?",
+      "b": "No. Player 1 wins if pennies match and Player 2 wins if they differ, so each player's best response is to undo the opponent's pure choice. There is no mutual pure best response.",
+      "c": 2
+    },
+    {
+      "f": "In Matching Pennies, how are mixed strategies parameterised?",
+      "b": "Player 1 plays $H$ with probability $p$ (and $T$ with $1-p$). Player 2 plays $H$ with probability $q$ (and $T$ with $1-q$).",
+      "c": 4
+    },
+    {
+      "f": "Given Player 2 plays $H$ with probability $q$, what are Player 1's expected payoffs from $H$ and $T$ in Matching Pennies?",
+      "b": "$u_1(H,\\sigma_2)=2q-1$ and $u_1(T,\\sigma_2)=1-2q$.",
+      "c": 4
+    },
+    {
+      "f": "What is Player 1's best response in Matching Pennies?",
+      "b": "$p^*=1$ (play $H$) if $q>1/2$; $p^*=0$ (play $T$) if $q<1/2$; any $p\\in[0,1]$ if $q=1/2$.",
+      "c": 4
+    },
+    {
+      "f": "What is Player 2's best response in Matching Pennies?",
+      "b": "Player 2 wants to mismatch: $q^*=1$ if $p<1/2$; $q^*=0$ if $p>1/2$; any $q\\in[0,1]$ if $p=1/2$.",
+      "c": 4
+    },
+    {
+      "f": "What is the unique Nash equilibrium of Matching Pennies?",
+      "b": "Both mix fifty-fifty: $(p^*,q^*)=(1/2,1/2)$. This is the unique intersection of the two best-response correspondences.",
+      "c": 3
+    },
+    {
+      "f": "State the indifference principle for mixed-strategy Nash equilibrium.",
+      "b": "If a player mixes over multiple pure strategies in equilibrium, they must be indifferent between all strategies played with positive probability.",
+      "c": 3
+    },
+    {
+      "f": "In Matching Pennies, why must $q=1/2$ for Player 1 to mix?",
+      "b": "If Player 1 strictly preferred $H$ to $T$, they would play $H$ rather than mix. Indifference requires $2q-1=1-2q$, hence $q=1/2$.",
+      "c": 2
+    },
+    {
+      "f": "Whose mixing probabilities enter a player's indifference condition?",
+      "b": "The opponent's. Your mixture is chosen to make the opponent indifferent; theirs is chosen to make you indifferent.",
+      "c": 1
+    },
+    {
+      "f": "In Battle of the Sexes, what are the two pure strategy Nash equilibria?",
+      "b": "$(O,O)$ with payoffs $(2,3)$ and $(F,F)$ with payoffs $(3,2)$.",
+      "c": 2
+    },
+    {
+      "f": "With Player 2 playing $O$ with probability $q$, when is Player 1 indifferent in Battle of the Sexes?",
+      "b": "When $u_1(O,\\sigma_2)=2q$ equals $u_1(F,\\sigma_2)=3-2q$, i.e. $q=3/4$. Then any $p\\in[0,1]$ is a best response.",
+      "c": 4
+    },
+    {
+      "f": "With Player 1 playing $O$ with probability $p$, when is Player 2 indifferent in Battle of the Sexes?",
+      "b": "When $u_2(O,\\sigma_1)=1+2p$ equals $u_2(F,\\sigma_1)=2-2p$, i.e. $p=1/4$. Then any $q\\in[0,1]$ is a best response.",
+      "c": 4
+    },
+    {
+      "f": "List all Nash equilibria of Battle of the Sexes in $(p,q)$ space.",
+      "b": "Two pure equilibria: $(0,0)=(F,F)$ and $(1,1)=(O,O)$; plus the mixed equilibrium $(p,q)=(1/4,3/4)$.",
+      "c": 4
+    },
+    {
+      "f": "How many Nash equilibria do generic finite games have?",
+      "b": "An odd number. Battle of the Sexes illustrates this with three equilibria.",
+      "c": 1
+    },
+    {
+      "f": "Does every game have a Nash equilibrium?",
+      "b": "Yes for finite games: Nash's theorem (1950) states that every finite game has a mixed strategy Nash equilibrium. Some games have no PSNE, but they still have an MSNE.",
+      "c": 3
+    },
+    {
+      "f": "What is a finite game?",
+      "b": "A game in which each player has finitely many pure strategies.",
+      "c": 3
+    },
+    {
+      "f": "When is $\\sigma^*$ a Nash equilibrium in terms of the best-response correspondence?",
+      "b": "If and only if $\\sigma_i^*\\in BR_i(\\sigma_{-i}^*)$ for all $i$, i.e. $\\sigma^*$ is a fixed point: $\\sigma^*\\in BR(\\sigma^*)$, where $BR(\\sigma)=(BR_1(\\sigma_{-1}),\\ldots,BR_n(\\sigma_{-n}))$.",
+      "c": 4
+    },
+    {
+      "f": "What is a fixed point of a function $f$?",
+      "b": "A point $x^*$ such that $f(x^*)=x^*$ — the function maps $x^*$ to itself. Graphically, where $y=f(x)$ crosses the 45-degree line.",
+      "c": 3
+    },
+    {
+      "f": "Why are mixed strategies vital for Nash existence?",
+      "b": "With only pure strategies, $BR_i$ consists of isolated points and need not be convex-valued. Mixing makes any convex combination of best responses a best response, which Kakutani's theorem requires.",
+      "c": 2
+    },
+    {
+      "f": "Why is a convex combination of two best responses itself a best response?",
+      "b": "Payoffs are linear in own mixed strategies. If $\\sigma_i$ and $\\sigma_i'$ both maximise expected payoff (hence yield the same payoff by indifference), any mixture $\\sigma_i''$ does too.",
+      "c": 2
+    },
+    {
+      "f": "What conditions on $BR$ does Kakutani's fixed-point theorem use in the existence argument?",
+      "b": "The space of mixed strategy profiles is non-empty, compact, and convex; $BR(\\sigma)$ is non-empty and convex-valued for all $\\sigma$; and $BR$ has a closed graph. Then some $\\sigma^*\\in BR(\\sigma^*)$ exists.",
+      "c": 3
+    },
+    {
+      "f": "In the penalty-kick game, what do the payoffs represent?",
+      "b": "The probability that the kicker scores. If the keeper guesses correctly the scoring chance is $0.6$; if the keeper guesses wrong it is $0.9$.",
+      "c": 1
+    },
+    {
+      "f": "What is the mixed-strategy Nash equilibrium of the (symmetric) penalty-kick game?",
+      "b": "The kicker plays $L$ with probability $1/2$ and the keeper dives $L$ with probability $1/2$. The expected scoring rate is $0.75$.",
+      "c": 4
+    },
+    {
+      "f": "In that MSNE, can either player gain by changing their mix even if the opponent knows the mixing probabilities?",
+      "b": "No. By indifference, every action in the support yields the same expected payoff ($0.75$ for the kicker), so a unilateral change of mixture cannot raise payoff.",
+      "c": 2
+    },
+    {
+      "f": "If the keeper becomes better at blocking shots to the right, should they dive right more often in equilibrium?",
+      "b": "No — they dive right less often. To keep the kicker indifferent they must compensate for being better at right by diving there less; otherwise the kicker would exploit by going left too much.",
+      "c": 2
+    },
+    {
+      "f": "After the keeper's right-side improvement (block rate $40\\%$ to $80\\%$), what happens to equilibrium mixing?",
+      "b": "$q^*=\\Pr(\\text{dive }L)$ rises from $1/2$ to $0.7$ (dive right falls to $30\\%$), and $p^*=\\Pr(\\text{kick }L)$ rises to $0.7$. The kicker's expected scoring rate falls to $0.69$.",
+      "c": 4
+    },
+    {
+      "f": "What empirical prediction does indifference make for penalty kicks?",
+      "b": "Average scoring rates when kicking left and when kicking right must be equal in equilibrium. Data cannot reject equal scoring rates across directions, nor serial independence of choices.",
+      "c": 2
+    },
+    {
+      "f": "In hide-and-seek (asymmetric matching pennies), did professional poker players play closer to MSNE than students?",
+      "b": "No. Theory predicts choosing Black about $1/3$ of the time; both students (near $48\\%$) and poker professionals (near $50\\%$) chose Black too often. Field expertise did not transfer to an unfamiliar setting.",
+      "c": 2
+    },
+    {
+      "f": "What is a zero-sum game, and which lecture examples are zero-sum?",
+      "b": "A game with $u_1+u_2=0$. Matching Pennies and penalty kicks are zero-sum; Battle of the Sexes is not.",
+      "c": 3
+    },
+    {
+      "f": "State von Neumann's minimax theorem.",
+      "b": "In any finite zero-sum game, $\\max_{\\sigma_1}\\min_{\\sigma_2}u_1(\\sigma_1,\\sigma_2)=\\min_{\\sigma_2}\\max_{\\sigma_1}u_1(\\sigma_1,\\sigma_2)$. It does not matter who announces their mix first.",
+      "c": 4
+    },
+    {
+      "f": "How does minimax relate to Nash equilibrium in zero-sum games?",
+      "b": "They coincide: any NE $(\\sigma_1^*,\\sigma_2^*)$ yields $u_1(\\sigma_1^*,\\sigma_2^*)$ equal to the maxmin/minmax value. Revealing your minimax strategy does not hurt you.",
+      "c": 3
+    },
+    {
+      "f": "In penalty kicks, why does playing $50$-$50$ guarantee a $75\\%$ scoring rate even if the keeper knows this mix?",
+      "b": "Fifty-fifty is the minimax (and NE) strategy. Deviating, e.g. to $60$-$40$, would let a keeper who knew the mix exploit the bias and cut the scoring rate.",
+      "c": 2
+    },
+    {
+      "f": "In capacity-constrained Bertrand, when does a firm undercut rather than price at $1$?",
+      "b": "Undercut if $8p_j>2$, i.e. $p_j>1/4$ (sell capacity $8$ at just below $p_j$). Otherwise price at $1$ and serve the residual $2$ customers for profit $2$.",
+      "c": 4
+    },
+    {
+      "f": "Why is there no pure strategy equilibrium in capacity-constrained Bertrand?",
+      "b": "Best responses never intersect: above $1/4$ both want to undercut; below $1/4$ both want to jump to $1$. There is no mutual pure best response.",
+      "c": 2
+    },
+    {
+      "f": "Over what prices do firms mix in capacity-constrained Bertrand, and what equalises expected profit?",
+      "b": "They mix over $[1/4,1]$. By indifference, expected profit at every $p$ in the support equals $2$, the sure profit from pricing at $1$.",
+      "c": 4
+    },
+    {
+      "f": "What is the equilibrium price CDF in capacity-constrained Bertrand?",
+      "b": "From $F(p)\\cdot 2p+(1-F(p))\\cdot 8p=2$ one obtains $F(p)=(4p-1)/(3p)$ on $[1/4,1]$. Boundary checks: $F(1/4)=0$ and $F(1)=1$.",
+      "c": 4
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Computing Mixed Strategy Nash Equilibria",
+      "Matching Pennies and Best-Response Diagrams",
+      "The Indifference Principle",
+      "Battle of the Sexes Mixed Equilibrium",
+      "Nash's Existence Theorem and Fixed Points",
+      "Penalty Kicks and Strategic Randomisation",
+      "Comparative Statics of Mixing",
+      "Minimax in Zero-Sum Games",
+      "Capacity-Constrained Bertrand"
+    ],
+    "followUp": [
+      "Games of Incomplete Information"
+    ]
+  }
+}

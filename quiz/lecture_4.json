@@ -1,1 +1,221 @@
-{"flashcards": []}
+{
+  "flashcards": [
+    {
+      "f": "How does incomplete information differ from complete information?",
+      "b": "Under complete information, all players know the game structure and payoffs are common knowledge; residual uncertainty is only about what others will do. Under incomplete information, players have private information, so some aspect of the game is known only to specific players and there is uncertainty about what others know.",
+      "c": 1
+    },
+    {
+      "f": "What five objects define a Bayesian game?",
+      "b": "Players $i \\in \\{1, \\ldots, n\\}$; action sets $A_i$; signal sets $X_i$; a joint distribution $f(x)$ over signal profiles $x = (x_1, \\ldots, x_n) \\in X$; and payoff functions $u_i : A \\times X \\to \\mathbb{R}$.",
+      "c": 3
+    },
+    {
+      "f": "What does player $i$ observe in a Bayesian game, and what is common knowledge?",
+      "b": "Player $i$ observes only the realisation $x_i \\in X_i$. The signal distribution $f$ and the payoff functions are common knowledge.",
+      "c": 3
+    },
+    {
+      "f": "How does player $i$ form beliefs about $x_{-i}$ after observing $x_i$?",
+      "b": "By Bayes' rule: $f(x_{-i}|x_i) = f(x_i, x_{-i}) / \\sum_{y_{-i} \\in X_{-i}} f(x_i, y_{-i})$. These interim (conditional) beliefs are used to compute expected payoffs.",
+      "c": 4
+    },
+    {
+      "f": "If signals are independent, what is $f(x_{-i}|x_i)$?",
+      "b": "Independence means $f(x) = f_1(x_1) \\cdots f_n(x_n)$, which implies $f(x_{-i}|x_i) = f_{-i}(x_{-i})$. Observing own signal does not update beliefs about others' signals.",
+      "c": 4
+    },
+    {
+      "f": "Why can payoffs depend on the full signal profile $x$, not only on $x_i$?",
+      "b": "Because there may be an underlying state affecting all players, so $u_i(a|x)$ depends on the entire $x = (x_1, \\ldots, x_n)$. Jury payoffs depending on guilt or innocence are an example.",
+      "c": 2
+    },
+    {
+      "f": "When does player $i$ have private values, and what is then called $i$'s type?",
+      "b": "When $u_i(a|x) = u_i(a|x_i)$ — payoffs depend on own signal only. Then $x_i$ is called player $i$'s type. (Watson mostly considers this case.)",
+      "c": 3
+    },
+    {
+      "f": "In the Battle of the Sexes with incomplete information, what does each player observe?",
+      "b": "Player 1 always wants to coordinate and has $X_1 = \\{K\\}$. Player 2 observes $x_2 \\in \\{M, N\\}$: $M$ wants to meet, $N$ does not. The joint distribution is $f(K,M)=p$ and $f(K,N)=1-p$.",
+      "c": 2
+    },
+    {
+      "f": "Why is the incomplete-information Battle of the Sexes one game rather than two separate games?",
+      "b": "Player 1 does not observe $x_2$, so Player 1's action must be optimal against the distribution over both of Player 2's possible payoffs. The two matrices are linked through Player 1's information.",
+      "c": 2
+    },
+    {
+      "f": "How does a strategy differ from an action in a Bayesian game?",
+      "b": "Actions $A_i$ are the choices available at the moment of play. A strategy $s_i : X_i \\to A_i$ is a complete contingent plan specifying which action to take for each possible signal. In complete-information static games the two coincided because there were no contingencies.",
+      "c": 3
+    },
+    {
+      "f": "What is a (possibly mixed) strategy for player $i$ in a Bayesian game?",
+      "b": "A map $\\sigma_i : X_i \\to \\Delta A_i$ from signals to (possibly mixed) actions. It specifies what to do after each possible signal and can condition play on private information.",
+      "c": 4
+    },
+    {
+      "f": "What is a pure strategy in a Bayesian game?",
+      "b": "A map $s_i : X_i \\to A_i$ that specifies a deterministic action after every signal (no mixing at any signal).",
+      "c": 3
+    },
+    {
+      "f": "In the Battle of the Sexes example, what are Player 2's pure strategies, and what does $OF$ mean?",
+      "b": "Player 2's pure strategy set is $S_2 = \\{OO, OF, FO, FF\\}$. Notation $OF$ means play $O$ when the signal is $M$ and play $F$ when the signal is $N$. Player 1, observing only $K$, has $S_1 = \\{O, F\\}$.",
+      "c": 4
+    },
+    {
+      "f": "What are the ex ante, interim, and ex post stages?",
+      "b": "Ex ante: Nature draws the signal profile $x$ from $f$. Interim: each player observes own $x_i$. Then players choose actions simultaneously. Ex post: payoffs are realised.",
+      "c": 3
+    },
+    {
+      "f": "At which stage must Bayesian strategies be optimal?",
+      "b": "At the interim stage: after observing own signal, but before observing opponents' signals or actions.",
+      "c": 3
+    },
+    {
+      "f": "Write player $i$'s interim expected utility given signal $x_i$ and opponents' strategies $\\sigma_{-i}$.",
+      "b": "$U_i(\\sigma_i, \\sigma_{-i}|x_i) = \\sum_{x_{-i} \\in X_{-i}} u_i(\\sigma_i(x_i), \\sigma_{-i}(x_{-i})|x) \\, f(x_{-i}|x_i)$. Average over unknown $x_{-i}$ using the posterior, with others playing $\\sigma_{-i}(x_{-i})$.",
+      "c": 4
+    },
+    {
+      "f": "Define player $i$'s interim best response given signal $x_i$.",
+      "b": "$BR_i(\\theta_{-i}|x_i) = \\arg\\max_{\\sigma_i(x_i) \\in \\Delta A_i} U_i(\\sigma_i(x_i), \\theta_{-i}|x_i)$. For each signal, choose a (possibly mixed) action that maximises expected utility given posterior beliefs about $x_{-i}$ and beliefs $\\theta_{-i}$ about opponents' strategies.",
+      "c": 4
+    },
+    {
+      "f": "When is a strategy profile $\\sigma$ a Bayes Nash equilibrium?",
+      "b": "If for all $i$ and all $x_i \\in X_i$, $U_i(\\sigma_i, \\sigma_{-i}|x_i) \\geq U_i(\\sigma'_i(x_i), \\sigma_{-i}|x_i)$ for all $\\sigma'_i(x_i) \\in \\Delta A_i$. No profitable deviation at any signal realisation.",
+      "c": 4
+    },
+    {
+      "f": "Give the equivalent two-part characterisation of Bayes Nash equilibrium.",
+      "b": "Best response: $\\sigma_i(x_i) \\in BR_i(\\theta_{-i}|x_i)$ for all $i$ and all $x_i$. Correct beliefs: $\\theta_{-i} = \\sigma_{-i}$ for all $i$.",
+      "c": 3
+    },
+    {
+      "f": "When is $\\sigma_i$ a dominant strategy in a Bayesian game?",
+      "b": "If for all $x \\in X$ and all $a_{-i} \\in A_{-i}$, $U_i(\\sigma_i(x_i), a_{-i}|x) > U_i(a'_i, a_{-i}|x)$ for all $a'_i \\neq \\sigma_i(x_i)$. It is optimal regardless of what opponents know, what they do, and what the signal profile is.",
+      "c": 4
+    },
+    {
+      "f": "How does dominant-strategy equilibrium relate to Bayes Nash equilibrium?",
+      "b": "A dominant-strategy equilibrium is always a BNE, but the converse is false: BNE requires only best replies to equilibrium beliefs, not optimality against every possible opponent action and signal profile.",
+      "c": 2
+    },
+    {
+      "f": "How can any Bayesian game be rewritten as a complete-information game?",
+      "b": "Take strategy sets $S_i = \\{\\sigma_i : X_i \\to \\Delta A_i\\}$ and ex-ante payoffs $V_i(s) = \\sum_{x_i} f(x_i) \\sum_{x_{-i}} u_i(\\sigma(x)|x) \\, f(x_{-i}|x_i)$. Nash equilibria of this complete-information game are the BNEs of the original Bayesian game.",
+      "c": 3
+    },
+    {
+      "f": "Why is maximising ex-ante payoff $V_i$ equivalent to maximising each interim payoff?",
+      "b": "Write $V_i(s) = \\sum_{x_i} f(x_i) \\, U_i(\\sigma(x)|x_i)$. The choice $\\sigma_i(x_i)$ enters only the $x_i$ term, and $f(x_i) > 0$, so maximising the weighted sum is equivalent to maximising each interim utility separately.",
+      "c": 4
+    },
+    {
+      "f": "In the transformed Battle of the Sexes, what is Player 2's best response (independent of $p$)?",
+      "b": "Play $OF$ against $O$, and play $FO$ against $F$. That is, match Player 1 when wanting to meet ($M$) and mismatch when not wanting to meet ($N$).",
+      "c": 2
+    },
+    {
+      "f": "In the incomplete-information Battle of the Sexes, what are the pure-strategy BNEs as $p$ varies?",
+      "b": "If $p > 2/3$: $(O, OF)$ and $(F, FO)$. If $1/3 < p < 2/3$: only $(O, OF)$. If $p < 1/3$: no pure-strategy BNE. Player 1 prefers $O$ against $OF$ iff $p > 1/3$, and prefers $F$ against $FO$ iff $p > 2/3$.",
+      "c": 4
+    },
+    {
+      "f": "In the entry game, what is the incumbent's private information?",
+      "b": "Type $X_I \\in \\{L, H\\}$ with $f(L) = p$. Investment costs 2 if type $H$ and 0 if type $L$. The entrant does not observe the type. Actions: incumbent Invest or Not; entrant In or Out.",
+      "c": 2
+    },
+    {
+      "f": "What is BNE 1 of the entry game, and for which $p$ does it exist?",
+      "b": "$(In, NN)$ for any $p$: neither incumbent type invests, and the entrant enters. With no investment, entering is better for the entrant against both types.",
+      "c": 2
+    },
+    {
+      "f": "What is BNE 2 of the entry game, and why does type $H$ benefit from incomplete information?",
+      "b": "$(Out, IN)$ for $p > 2/3$: type $L$ invests to deter entry; the entrant stays out. Under complete information the entrant would enter against $H$. Under incomplete information the entrant stays out against both types, so type $H$ earns 8 instead of 3 — free-riding on uncertainty.",
+      "c": 2
+    },
+    {
+      "f": "Why does deterrence in the entry game require $p > 2/3$?",
+      "b": "Given strategy $IN$, the entrant's expected payoff from In is $3(1-p)$ and from Out is $1$. Staying out requires $3(1-p) \\leq 1$, i.e. a high enough probability that the incumbent is the low-cost type who invests.",
+      "c": 4
+    },
+    {
+      "f": "In the Cournot example, what is the information structure and why is it a private-values game?",
+      "b": "Inverse demand $P(Q) = 10 - Q$. Firm 1 has known zero cost. Firm 2's marginal cost is 0 (type $L$) or 4 (type $H$), each with probability $1/2$. Firm 2's payoff depends only on own cost, so $x_2 \\in \\{L,H\\}$ is Firm 2's type.",
+      "c": 2
+    },
+    {
+      "f": "What are the three best-response functions in the incomplete-information Cournot game?",
+      "b": "$BR_2^L(q_1) = 5 - q_1/2$, $BR_2^H(q_1) = 3 - q_1/2$, and $BR_1(q_2^L, q_2^H) = 5 - q_2^L/4 - q_2^H/4$. Firm 1 averages over the two equally likely types of Firm 2.",
+      "c": 4
+    },
+    {
+      "f": "What is the BNE quantity profile in the Cournot example?",
+      "b": "$(q_1^*, q_2^{L*}, q_2^{H*}) = (4, 3, 1)$. Solving the three best-response equations simultaneously yields this unique profile.",
+      "c": 4
+    },
+    {
+      "f": "How do Cournot quantities under incomplete information compare with complete-information benchmarks?",
+      "b": "Complete information, both zero cost: $(10/3, 10/3)$. One zero and one cost 4: $(14/3, 2/3)$. Incomplete information: Firm 1 produces 4 (between the two cases); low-cost Firm 2 produces 3 (less than $10/3$); high-cost Firm 2 produces 1 (more than $2/3$). Incomplete information affects output even when costs are in fact low.",
+      "c": 2
+    },
+    {
+      "f": "In the two-juror model, what are states, signals, actions, and the voting rule?",
+      "b": "State $\\omega \\in \\{G, I\\}$ with prior $\\Pr(G) = \\pi$. Each juror gets a private signal $x_i \\in \\{g, i\\}$ with precision $q \\in (1/2, 1)$, conditionally independent given $\\omega$. Votes are $C$ or $A$. Unanimity: convict if and only if both vote $C$.",
+      "c": 3
+    },
+    {
+      "f": "What are jurors' payoffs, and do they have private values?",
+      "b": "Convict yields $1$ if guilty and $-d$ if innocent; acquit yields $0$ in both states. Payoffs depend on the state $\\omega$, not only on own signal, so this is not a private-values game. Conditional on $\\omega$, jurors have aligned preferences.",
+      "c": 3
+    },
+    {
+      "f": "Why is a juror's vote only informative about the right action when it is pivotal?",
+      "b": "Under unanimity, if the other juror voted $A$ then own vote cannot convict. Own vote matters if and only if the other voted $C$. Rational voting therefore conditions on the information revealed by pivotality.",
+      "c": 2
+    },
+    {
+      "f": "If both jurors vote sincerely, what does pivotality reveal, and what is $\\Pr(G \\mid g, i)$?",
+      "b": "Pivotality is equivalent to the other juror having received $g$. Combined with own signal $i$, Bayes' rule gives $\\Pr(G \\mid g, i) = \\pi$: the symmetric signals cancel, so the posterior equals the prior.",
+      "c": 4
+    },
+    {
+      "f": "When is sincere voting not a BNE, and does the condition depend on signal precision $q$?",
+      "b": "If $d < \\pi/(1-\\pi)$ (low cost of wrongful conviction, or high prior of guilt), a juror with signal $i$ strictly prefers to convict, so sincere voting is not a BNE. The condition is independent of $q$.",
+      "c": 4
+    },
+    {
+      "f": "How does mixing by $i$-signal jurors restore the informativeness of own signal $i$?",
+      "b": "Let $\\sigma(i)$ be the probability an $i$-signal juror votes $C$. If $\\sigma(i) > 0$, pivotality no longer implies the other saw $g$: they may have seen $i$ and randomised to $C$. Then both having seen $i$ has positive probability, the defendant is more likely innocent, and own $i$ is informative again. Equilibrium $\\sigma(i)$ is pinned down by indifference and falls as $d$ rises.",
+      "c": 2
+    },
+    {
+      "f": "Why can two jurors under unanimity convict innocents more often than a single juror?",
+      "b": "Unanimity makes pivotality highly informative, which strategically distorts votes towards convicting (ignoring an $i$ signal). The extra juror therefore need not improve accuracy. Relatedly, with many jurors unanimity can convict innocents with higher probability than some non-unanimous rules.",
+      "c": 2
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Complete versus Incomplete Information",
+      "Bayesian Games: Signals, Types, and Private Values",
+      "Strategies as Maps from Signals to Actions",
+      "Interim Beliefs, Expected Utility, and Best Response",
+      "Bayes Nash Equilibrium",
+      "Transformation of Incomplete to Complete Information",
+      "Battle of the Sexes with Incomplete Information",
+      "Entry Deterrence under Incomplete Information",
+      "Cournot Duopoly with Private Cost Information",
+      "Strategic Voting, Pivotality, and Jury Design"
+    ],
+    "followUp": [
+      "BNE in Auctions"
+    ]
+  }
+}

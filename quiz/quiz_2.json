@@ -1,1 +1,283 @@
-{"quiz": []}
+{
+  "quiz": [
+    {
+      "question": "A strategy profile $\\sigma$ satisfies $u_i(\\sigma_i, \\sigma_{-i}) \\geq u_i(\\sigma'_i, \\sigma_{-i})$ for every player $i$ and every alternative $\\sigma'_i$. Which statement is correct?",
+      "answerOptions": [
+        {
+          "text": "This is a dominant strategy equilibrium, because each $\\sigma_i$ is a best response to every possible $\\sigma_{-i}$.",
+          "isCorrect": false,
+          "rationale": "The inequality only compares $\\sigma_i$ with deviations given the actual $\\sigma_{-i}$, not given every conceivable opponent profile."
+        },
+        {
+          "text": "Beliefs $\\theta_{-i}$ may still be wrong, because the standard definition never constrains beliefs.",
+          "isCorrect": false,
+          "rationale": "The standard definition is equivalent to best responses to correct beliefs: playing against $\\sigma_{-i}$ is the consistency condition in reduced form."
+        },
+        {
+          "text": "The profile cannot be a Nash equilibrium unless best responses are unique.",
+          "isCorrect": false,
+          "rationale": "Nash equilibrium uses a weak inequality. A strategy can be one of several best responses."
+        },
+        {
+          "text": "The profile is a Nash equilibrium: no player has a profitable unilateral deviation, which is equivalent to best-responding to correct beliefs.",
+          "isCorrect": true,
+          "rationale": "This is the standard definition used on problem sets and exams. It matches the two-part definition in which $\\sigma_i \\in BR_i(\\theta_{-i})$ and $\\theta_{-i} = \\sigma_{-i}$."
+        }
+      ],
+      "hint": "Unilateral deviation versus best response to every possible belief."
+    },
+    {
+      "question": "In the lecture's $3 \\times 3$ game, no strategy is strictly dominated, yet $(T, L)$ (payoffs $(5,5)$) is a Nash equilibrium. Given $L$, Player 1 gets $5$ from $T$ or $M$ and $0$ from $B$. Why is $(T, L)$ still an equilibrium?",
+      "answerOptions": [
+        {
+          "text": "Iterated dominance must have eliminated $B$ and $R$ before $(T, L)$ can be selected.",
+          "isCorrect": false,
+          "rationale": "The point of the example is that IDSDS has no bite; Nash equilibrium can still select $(T, L)$."
+        },
+        {
+          "text": "Nash equilibrium requires only that $T$ is a best response to $L$ and $L$ is a best response to $T$, not that those best responses are unique.",
+          "isCorrect": true,
+          "rationale": "Given $T$, Player 2 is willing to play $L$ or $M$. Mutual (possibly weak) best responses are enough for NE."
+        },
+        {
+          "text": "$(T, L)$ is a dominant strategy equilibrium, which is why it survives even without IDSDS.",
+          "isCorrect": false,
+          "rationale": "$T$ is not a best response to every column (against $M$, $B$ is better). DSE is more demanding than NE."
+        },
+        {
+          "text": "$(M, M)$ must also be a Nash equilibrium because those payoffs are interior.",
+          "isCorrect": false,
+          "rationale": "Against $M$, Player 1's best response is $B$ (payoff $5$), so $(M, M)$ is not mutually consistent."
+        }
+      ],
+      "hint": "Check mutual best responses, not uniqueness or dominance."
+    },
+    {
+      "question": "In the $3 \\times 2$ example, the full game has unique NE $(a, L)$. After Player 1's strategy $b$ is removed, $(c, R)$ also becomes an equilibrium. Holding Player 1's belief on $L$ fixed, $a$ does not become a worse choice. What does the new equilibrium illustrate?",
+      "answerOptions": [
+        {
+          "text": "$b$ was strictly dominated, so removing it is just IDSDS and cannot create equilibria.",
+          "isCorrect": false,
+          "rationale": "The lecture's point is strategic: $b$ need not be dominated. Removing it changes Player 2's incentives."
+        },
+        {
+          "text": "Individual choice satisfies independence of irrelevant alternatives, so the Nash set cannot expand when an option is deleted.",
+          "isCorrect": false,
+          "rationale": "That IIA-style logic is the nonstrategic claim. In a game, the opponent's best response can change."
+        },
+        {
+          "text": "Player 2's best response depends on which strategies Player 1 still has; without $b$, $R$ can be a best response to $c$, making $(c, R)$ mutually consistent.",
+          "isCorrect": true,
+          "rationale": "In the full game, Player 1's best response to $R$ is $b$, so $(c, R)$ is not an equilibrium. Delete $b$ and $c$ becomes a best response to $R$."
+        },
+        {
+          "text": "Nash equilibrium must be unique, so $(c, R)$ cannot be an equilibrium after the deletion.",
+          "isCorrect": false,
+          "rationale": "The reduced game has two Nash equilibria. Uniqueness is not a property of NE in general."
+        }
+      ],
+      "hint": "Fixed beliefs versus the opponent changing behaviour."
+    },
+    {
+      "question": "Cournot best responses are $BR_1(q_2) = (72 - q_2)/2$ and $BR_2(q_1) = (72 - q_1)/2$. Why is $(24, 24)$ the Nash equilibrium rather than the collusive split $(18, 18)$?",
+      "answerOptions": [
+        {
+          "text": "Each firm's quantity is a best response to the other at $(24, 24)$; at $(18, 18)$ each would strictly prefer to expand output.",
+          "isCorrect": true,
+          "rationale": "$24 = (72-24)/2$, so the NE mutual-best-response conditions hold. $BR_1(18) = 27 \\neq 18$, so collusion is not a NE."
+        },
+        {
+          "text": "$(18, 18)$ is the NE because it maximises joint profit, and Nash equilibrium selects efficient profiles.",
+          "isCorrect": false,
+          "rationale": "Joint-profit maximisation is the cartel/monopoly problem. NE need not be efficient; here it is not."
+        },
+        {
+          "text": "$(24, 24)$ is perfect competition, because price then equals marginal cost.",
+          "isCorrect": false,
+          "rationale": "At $(24, 24)$, $p^* = 26 > 14 = MC$. The slides mark competitive quantities at $(36, 36)$."
+        },
+        {
+          "text": "Downward-sloping best responses mean quantities are strategic complements, which forces output up to $24$.",
+          "isCorrect": false,
+          "rationale": "Downward-sloping BRs mean strategic substitutes. That shape does not by itself pick $24$ rather than $18$."
+        }
+      ],
+      "hint": "Plug each candidate profile into the best-response functions."
+    },
+    {
+      "question": "Two Cournot firms would each earn $324$ by producing the monopoly split of $18$, versus $288$ in Nash equilibrium. If firm 2 produces $18$, firm 1's best response is $27$. What is the game-theoretic implication for a cartel?",
+      "answerOptions": [
+        {
+          "text": "The cartel is a Nash equilibrium because both firms prefer $324$ to $288$.",
+          "isCorrect": false,
+          "rationale": "Preferring the collusive payoff to NE is not the same as having no profitable unilateral deviation from collusion."
+        },
+        {
+          "text": "Producing $27$ cannot raise profit, because expanding output always lowers price enough to reduce revenue.",
+          "isCorrect": false,
+          "rationale": "The best-response calculation already maximises profit given $q_2 = 18$; the slides note that reneging yields more than collusive profit."
+        },
+        {
+          "text": "Strategic substitutes make cartels self-enforcing: each firm wants to cut output when the other produces $18$.",
+          "isCorrect": false,
+          "rationale": "Strategic substitutes mean you produce less when the rival produces more — the opposite of the incentive to expand against a restrained cartel partner."
+        },
+        {
+          "text": "Collusion is not stable as a simultaneous-move Nash equilibrium; some extra enforcement mechanism is required.",
+          "isCorrect": true,
+          "rationale": "Each firm has a unilateral incentive to raise output above $18$. Higher joint profits do not make the cartel a NE of the one-shot quantity game."
+        }
+      ],
+      "hint": "Stability means no profitable unilateral deviation, not higher joint profit."
+    },
+    {
+      "question": "In homogeneous Bertrand competition with common constant marginal cost $c$, why is a common price $p_1 = p_2 = p$ with $c < p \\leq p^m$ not a Nash equilibrium?",
+      "answerOptions": [
+        {
+          "text": "Demand is zero at any price above $c$, so profits are already zero and firms would rather shut down.",
+          "isCorrect": false,
+          "rationale": "At a common $p > c$ the firms split $D(p)$ and earn positive profit; the problem is undercutting, not zero demand."
+        },
+        {
+          "text": "Either firm can set a price slightly below $p$, capture the whole market, and earn a strictly higher profit.",
+          "isCorrect": true,
+          "rationale": "Consumers buy only from the cheaper firm. An $\\varepsilon$-undercut steals all demand at a still-positive markup, which is a profitable deviation."
+        },
+        {
+          "text": "The unique best response is always the monopoly price $p^m$, so any $p < p^m$ is dominated.",
+          "isCorrect": false,
+          "rationale": "The monopoly price is a best response only when the rival prices above $p^m$. Otherwise the incentive is to undercut the rival."
+        },
+        {
+          "text": "Firms would deviate by pricing below $c$ to guarantee they serve the market.",
+          "isCorrect": false,
+          "rationale": "Pricing below marginal cost loses money on every unit. The profitable deviation is a small undercut still above $c$."
+        }
+      ],
+      "hint": "Who gets demand if one firm is a penny cheaper?"
+    },
+    {
+      "question": "Bertrand predicts duopoly prices equal to marginal cost; Cournot predicts markups remain. When does the lecture say Cournot is the more accurate modelling choice?",
+      "answerOptions": [
+        {
+          "text": "Always, because Cournot equilibria are efficient and Bertrand equilibria are not.",
+          "isCorrect": false,
+          "rationale": "Neither model is intrinsically better, and Cournot markups are not an efficiency argument for using Cournot."
+        },
+        {
+          "text": "When capacity is easy to adjust, because then quantity is the natural strategic variable.",
+          "isCorrect": false,
+          "rationale": "That is the Bertrand case on the slides: easy capacity adjustment makes price competition more relevant."
+        },
+        {
+          "text": "When capacity is hard to adjust, so the strategic variable is effectively quantity (capacity) rather than price.",
+          "isCorrect": true,
+          "rationale": "Accuracy depends on fundamentals. Hard-to-adjust capacity fits Cournot; easy adjustment fits homogeneous Bertrand."
+        },
+        {
+          "text": "Never in the same industry as cartel incentives, because only one of the two models generates a motive to collude.",
+          "isCorrect": false,
+          "rationale": "Both models generate incentives to form a cartel and charge the monopoly price."
+        }
+      ],
+      "hint": "Think about whether firms can cheaply change how much they can sell."
+    },
+    {
+      "question": "In the two-store model, $D_1 = 10 - 2p_1 + p_2$ and $BR_1(p_2) = (12 + p_2)/4$, with Nash prices $p_1^* = p_2^* = 4 > MC = 1$. What mechanism allows markups that homogeneous Bertrand destroys?",
+      "answerOptions": [
+        {
+          "text": "Horizontal differentiation: a rival's price cut peels off nearby customers gradually, so you need not match all the way down to cost.",
+          "isCorrect": true,
+          "rationale": "Some customers still buy from the closer store even if it is more expensive. Softened price sensitivity yields an interior NE above marginal cost."
+        },
+        {
+          "text": "Vertical differentiation: everyone agrees which store is higher quality, so the better store can charge any markup.",
+          "isCorrect": false,
+          "rationale": "The lecture treats this example as horizontal (location) differentiation, not a common quality ranking."
+        },
+        {
+          "text": "Prices are strategic substitutes, so a rival's price cut leads you to raise your price and keep a markup.",
+          "isCorrect": false,
+          "rationale": "The best responses slope upward: prices are strategic complements. Substitutes were the Cournot quantity case."
+        },
+        {
+          "text": "The Nash price of $4$ is the monopoly price, so the stores are colluding in the one-shot game.",
+          "isCorrect": false,
+          "rationale": "Each price is a non-cooperative best response to the other. Positive profits come from differentiation, not from joint-profit maximisation."
+        }
+      ],
+      "hint": "Does the cheaper store win every customer?"
+    },
+    {
+      "question": "Two vote-maximising candidates choose $x_1 = 0.2$ and $x_2 = 0.7$. Citizens vote for the closer platform, so the split is at $0.45$. If the median $m$ satisfies $0.45 < m$, which conclusion follows?",
+      "answerOptions": [
+        {
+          "text": "The profile is a Nash equilibrium because each candidate has differentiated to capture their wing of the electorate.",
+          "isCorrect": false,
+          "rationale": "Differentiation is not an equilibrium here: the candidate on the short side of the median can gain votes by moving inward."
+        },
+        {
+          "text": "Candidate 1 wins, because $0.2$ is closer to $0$ and extreme voters determine the outcome.",
+          "isCorrect": false,
+          "rationale": "Voters to the right of $0.45$ — including the median — vote for candidate 2, who therefore gets more than half."
+        },
+        {
+          "text": "The median voter theorem does not apply, because $F$ need not satisfy $F(m) = 1/2$ when positions differ.",
+          "isCorrect": false,
+          "rationale": "The median is a property of $F$, not of the platforms. The theorem's unique NE is still both locating at $m$."
+        },
+        {
+          "text": "Candidate 2 wins, and the profile is not a Nash equilibrium: candidate 1 can move closer to $m$ and raise vote share above one half.",
+          "isCorrect": true,
+          "rationale": "The midpoint lies left of $m$, so candidate 2 has a majority. Any equilibrium must have both at $m$; otherwise the disadvantaged candidate can close the gap."
+        }
+      ],
+      "hint": "Who gets the voters around the median, and can the loser move?"
+    },
+    {
+      "question": "Voters choose whether to play a Harmony Game (dominant-strategy NE payoffs $(8,8)$) or a Prisoner's Dilemma whose every cell is higher but whose NE is $(D,D)$ with payoffs $(5,5)$. Many vote for the PD. What failure does this illustrate?",
+      "answerOptions": [
+        {
+          "text": "The Prisoner's Dilemma has no Nash equilibrium, so voting for it cannot be evaluated by equilibrium payoffs.",
+          "isCorrect": false,
+          "rationale": "Both games have a unique dominant-strategy Nash equilibrium; the PD equilibrium is simply worse."
+        },
+        {
+          "text": "Voters see higher cell-by-cell payoffs in the PD but fail to anticipate that equilibrium play will switch to mutual defection.",
+          "isCorrect": true,
+          "rationale": "Focusing on $(C,C)$ in the PD ignores that $D$ dominates. Underappreciating equilibrium effects can create a demand for worse policy."
+        },
+        {
+          "text": "The Harmony Game is not dominance-solvable, so the $(8,8)$ prediction is theoretically invalid.",
+          "isCorrect": false,
+          "rationale": "Cooperation strictly dominates in the Harmony Game, so $(C,C)$ is the unique dominant-strategy NE."
+        },
+        {
+          "text": "The result contradicts the median voter theorem, which requires that voters always select the socially optimal game.",
+          "isCorrect": false,
+          "rationale": "The MVT is silent on welfare and is not the mechanism here. The issue is failing to forecast equilibrium play in the chosen game."
+        }
+      ],
+      "hint": "Compare cell-by-cell temptation with what Nash play actually delivers."
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Nash Equilibrium Definitions",
+      "Pure Strategy Nash Equilibrium",
+      "DSE Implies NE",
+      "NE when IDSDS Fails",
+      "Strategic versus Nonstrategic Reasoning",
+      "Cournot Quantity Competition",
+      "Collusion and Cartel Instability",
+      "Bertrand Price Competition",
+      "Product Differentiation",
+      "Median Voter Theorem",
+      "Equilibrium Effects and Voting"
+    ],
+    "followUp": [
+      "Mixed Strategy Nash Equilibrium",
+      "Cartel Stability"
+    ]
+  }
+}

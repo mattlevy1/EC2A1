@@ -1,1 +1,216 @@
-{"flashcards": []}
+{
+  "flashcards": [
+    {
+      "f": "How are auctions modelled as Bayesian games?",
+      "b": "Each bidder $i$ observes a private signal $x_i$ about the object's value and chooses an action $a_i(x_i)$ (a bid). Payoffs then depend on the allocation and payment rules.",
+      "c": 3
+    },
+    {
+      "f": "What is an independent private values (IPV) auction?",
+      "b": "Bidder $i$'s signal is their own valuation: $x_i = v_i$. If $i$ wins and pays $p$, payoff is $u_i = v_i - p$. Rivals' valuations $v_{-i}$ do not enter $i$'s payoff.",
+      "c": 3
+    },
+    {
+      "f": "What is a common-values auction?",
+      "b": "The object has a single unknown value $V$ shared by all bidders. If $i$ wins and pays $p$, payoff is $u_i = V - p$ (or $E[V\\mid x] - p$). Signal $x_i$ is noisy information about $V$.",
+      "c": 3
+    },
+    {
+      "f": "How do IPV and common values differ for information and payoffs?",
+      "b": "Under IPV, $v_{-i}$ does not affect $i$'s payoff. Under common values, others' signals $x_{-i}$ are informative about $V$, so observing them would change $i$'s estimate of the object's value.",
+      "c": 3
+    },
+    {
+      "f": "What are the four standard auction formats?",
+      "b": "Sequential: ascending (English) — price rises until one bidder remains; descending (Dutch) — price falls until a bidder accepts. Simultaneous: first-price sealed-bid — highest bidder pays their own bid; second-price sealed-bid (Vickrey) — highest bidder pays the second-highest bid.",
+      "c": 1
+    },
+    {
+      "f": "Bids are $\\pounds 100$, $\\pounds 50$, and $\\pounds 25$. What does the winner pay in a first-price versus a second-price auction?",
+      "b": "The $\\pounds 100$ bidder wins both. In a first-price auction they pay $\\pounds 100$ (their own bid). In a second-price auction they pay $\\pounds 50$ (the second-highest bid).",
+      "c": 2
+    },
+    {
+      "f": "What is the baseline IPV model used throughout the lecture?",
+      "b": "One seller who values the object at $0$; two bidders $i \\in \\{1,2\\}$; valuations $v_i \\in [0, \\bar{v}]$ drawn independently and uniformly. If $i$ wins and pays $b$, $u_i = v_i - b$; otherwise $u_i = 0$. Running example: $\\bar{v} = 900$.",
+      "c": 4
+    },
+    {
+      "f": "For $v_i \\sim U[0, 900]$, what are $\\Pr(v_i \\leq y)$ and $E(v_i \\mid v_i \\geq y)$?",
+      "b": "$\\Pr(v_i \\leq y) = y/900$. The conditional expectation given that $v_i$ exceeds $y$ is $E(v_i \\mid v_i \\geq y) = (y + 900)/2$.",
+      "c": 4
+    },
+    {
+      "f": "What is a strategy in this auction, and what is a BNE?",
+      "b": "A strategy is a bidding function $b_i(v_i)$ assigning a bid to each valuation. A BNE is a pair of bidding functions such that each is a best response given beliefs about the opponent. It is without loss to consider pure strategies.",
+      "c": 3
+    },
+    {
+      "f": "What is the dominant-strategy equilibrium of a second-price auction?",
+      "b": "Bidding your valuation, $b_i(v_i) = v_i$, is a weakly dominant strategy. This holds for any distribution of valuations.",
+      "c": 3
+    },
+    {
+      "f": "In a second-price auction, what does your bid determine?",
+      "b": "Your bid affects whether you win, not what you pay. The winner pays the second-highest bid (here, the rival's bid $b_2$).",
+      "c": 2
+    },
+    {
+      "f": "When does overbidding $w > v_1$ strictly hurt in a second-price auction?",
+      "b": "When $w > b_2 > v_1$: bidding $w$ wins and pays $b_2$, yielding $v_1 - b_2 < 0$, whereas bidding $v_1$ loses and yields $0$. If $b_2 > w$ both lose; if $b_2 < v_1$ both win and pay $b_2$.",
+      "c": 2
+    },
+    {
+      "f": "Why does underbidding never help in a second-price auction?",
+      "b": "Underbidding ($w < v_1$) never raises your payoff and sometimes loses when you would have won at a price below your valuation. It is symmetric to the overbidding argument.",
+      "c": 2
+    },
+    {
+      "f": "What two approaches compute expected revenue when second-price bidders bid their valuations?",
+      "b": "Order statistics: expected second-highest bid (works for any distribution and any number of bidders). Interim expectation: fix $v_1$, compute expected payment given who wins, then integrate over $v_1$.",
+      "c": 2
+    },
+    {
+      "f": "In the two-bidder $U[0,900]$ second-price auction, what is interim expected revenue given $v_1$?",
+      "b": "If $v_2 > v_1$, bidder 2 wins and pays $v_1$. If $v_2 \\leq v_1$, bidder 1 wins and pays $E[b_2 \\mid v_2 \\leq v_1] = v_1/2$. So $E[\\mathrm{Rev}\\mid v_1] = (v_1/900)\\cdot(v_1/2) + ((900-v_1)/900)\\cdot v_1$.",
+      "c": 4
+    },
+    {
+      "f": "What is expected revenue in the two-bidder $U[0,900]$ second-price auction?",
+      "b": "Integrating the interim expression over $v_1 \\sim U[0,900]$ yields $E[\\mathrm{Rev}] = 300$.",
+      "c": 4
+    },
+    {
+      "f": "Why is bidding your valuation a bad idea in a first-price auction?",
+      "b": "If $b_i = v_i$, then $u_i = v_i - v_i = 0$ whenever you win (and $0$ when you lose). Bidding your own valuation guarantees zero surplus.",
+      "c": 2
+    },
+    {
+      "f": "What trade-off does a first-price bidder face when shading their bid?",
+      "b": "A higher bid raises the chance of winning but lowers surplus $v_i - b_i$ if you win. Optimal bidding balances these two effects.",
+      "c": 1
+    },
+    {
+      "f": "What bidding form is conjectured for first-price equilibrium with uniform valuations?",
+      "b": "Bids proportional to valuations: $b_i(v_i) = a \\cdot v_i$ for some $a < 1$. The method is to assume the opponent uses this rule, find the best response, and check that it has the same linear form.",
+      "c": 4
+    },
+    {
+      "f": "If bidder 2 uses $b_2(v_2) = a v_2$, when does bidder 1 win and what is $\\Pr(\\mathrm{win})$?",
+      "b": "Bidder 1 wins when $b_1 > a v_2$, i.e. $v_2 < b_1/a$. With $v_2 \\sim U[0,900]$, $\\Pr(\\mathrm{win}) = b_1/(900a)$. Interim expected payoff is $(v_1 - b_1)\\cdot b_1/(900a)$.",
+      "c": 4
+    },
+    {
+      "f": "What is bidder 1's best-response bid, and how does it depend on $a$?",
+      "b": "The first-order condition $v_1 - 2b_1^* = 0$ yields $b_1^* = v_1/2$, independent of $a$. The opponent's bid is independent of $v_1$, so the problem is strategically equivalent to facing a random threshold.",
+      "c": 4
+    },
+    {
+      "f": "What is the symmetric BNE of a first-price auction with two bidders and $v_i \\sim U[0, \\bar{v}]$?",
+      "b": "$b_i(v_i) = v_i/2$. Bidders shade bids below valuations, in contrast to second-price auctions.",
+      "c": 3
+    },
+    {
+      "f": "In the first-price $U[0,900]$ example, what does the winner pay in the two cases, and what is $E[\\mathrm{Rev}]$?",
+      "b": "If $v_2 \\leq v_1$, bidder 1 wins and pays $v_1/2$. If $v_2 > v_1$, bidder 2 wins and pays $E[b_2 \\mid v_2 > v_1] = (900+v_1)/4$. Integrating interim revenue over $v_1$ again yields $E[\\mathrm{Rev}] = 300$.",
+      "c": 4
+    },
+    {
+      "f": "State the Revenue Equivalence Theorem (RET).",
+      "b": "If $n$ bidders have IPV drawn from the same distribution, any two auctions that (1) give the object to the highest-valuation bidder and (2) charge a bidder with valuation $0$ an expected payment of $0$ yield the same expected revenue.",
+      "c": 3
+    },
+    {
+      "f": "Which standard formats satisfy revenue equivalence in their symmetric BNE?",
+      "b": "First-price, second-price, ascending, and descending auctions all allocate to the highest valuation and charge a zero type nothing in expectation, so they yield the same expected revenue under IPV.",
+      "c": 2
+    },
+    {
+      "f": "What does efficiency mean for these IPV auctions?",
+      "b": "In equilibrium, higher valuations lead to higher bids, so the object goes to the highest-valuation bidder. No gains from trade remain after the auction.",
+      "c": 2
+    },
+    {
+      "f": "Why, under IPV, does auction format not reveal extra information to bidders?",
+      "b": "Values are private and independent, so observing rivals' behaviour does not change your own valuation. Equilibrium strategies fully adjust to the format; the information environment is unchanged.",
+      "c": 2
+    },
+    {
+      "f": "Why is revenue equivalence a benchmark rather than an optimality result?",
+      "b": "RET only compares efficient auctions. Design still matters: a seller may raise revenue by introducing inefficiency, for example via a reserve price.",
+      "c": 1
+    },
+    {
+      "f": "What is a reserve price, and what trade-off does it create?",
+      "b": "A minimum acceptable bid: if no bid exceeds the reserve, the object is not sold. A higher reserve raises the payment when a sale occurs, but sometimes the object goes unsold.",
+      "c": 1
+    },
+    {
+      "f": "In the $U[0,900]$ example, why can a reserve $r = 450$ raise expected revenue above $300$?",
+      "b": "The probability that at least one bidder has $v_i > 450$ is $1 - (1/2)^2 = 3/4$. Conditional on a sale, revenue is at least $450$, so expected revenue is at least $(3/4)\\cdot 450 = 337.5 > 300$. A positive reserve can increase expected revenue even though the seller values the object at $0$.",
+      "c": 2
+    },
+    {
+      "f": "What does Myerson's (1981) theorem say about the revenue-maximising auction?",
+      "b": "With IPV from $F$ on $[0, \\bar{v}]$, the optimum is a standard auction (first-price, second-price, ascending, or descending) with an optimally chosen reserve $r^*$. The optimal reserve is independent of the number of bidders, and $r^* > 0$ whenever $F(0) = 0$.",
+      "c": 3
+    },
+    {
+      "f": "Why does the seller benefit from committing not to sell sometimes?",
+      "b": "Even when a buyer values the object above the seller's valuation of $0$, refusing to sell at low prices extracts more from high-value bidders. Commitment to a reserve is part of revenue maximisation, not merely a quality filter.",
+      "c": 2
+    },
+    {
+      "f": "Why is a common-values auction not a private-values game?",
+      "b": "Payoff $u_i = V - p$ depends on the unknown common value $V$, not only on own signal $x_i$. Others' signals $x_{-i}$ are informative about $V$; if you could observe them, you would update $E[V]$.",
+      "c": 3
+    },
+    {
+      "f": "What is the winner's curse?",
+      "b": "In a common-values auction, winning means you likely had the highest signal. That is bad news: rivals' signals were probably lower, so your estimate of $V$ was probably too high. The winner tends to be the bidder who most overestimated the object's value.",
+      "c": 3
+    },
+    {
+      "f": "Formally, how does winning change your estimate of $V$?",
+      "b": "Winning reveals $x_{-i} < x_i$ for all rivals, so $E[V \\mid x_i,\\, i\\text{ wins}] = E[V \\mid x_i,\\, x_{-i} < x_i] < E[V \\mid x_i]$. Bidding as if $E[V \\mid x_i]$ were the relevant value ignores this updating.",
+      "c": 4
+    },
+    {
+      "f": "How does auction format affect bid shading under common values?",
+      "b": "In an ascending auction, dropouts reveal information and mitigate the winner's curse, so there is less shading. In sealed-bid auctions no information is revealed during bidding, so the curse is more severe and shading is greater. Sophisticated bidders anticipate the curse in either case.",
+      "c": 2
+    },
+    {
+      "f": "What is the revenue ranking under common values, and what happens to revenue equivalence?",
+      "b": "Ascending $>$ second-price $>$ first-price. With common values, format matters because it changes how much information is revealed; revenue equivalence fails.",
+      "c": 3
+    },
+    {
+      "f": "Why can a second-price (or GSP) format be attractive when values have a common-value component?",
+      "b": "Second-price mechanisms encourage bidding close to true value, simplifying the bidder's problem and reducing fear of overpaying. They also encourage participation when values are uncertain (e.g. unknown click-through rates). A reserve remains revenue-optimal, not merely a quality screen.",
+      "c": 2
+    },
+    {
+      "f": "Why is 'last look' more valuable under a first-price auction than under GSP?",
+      "b": "Last look lets a platform DSP observe sealed bids and win by paying one cent above the highest rival. Under GSP, bidding is approximately truthful, so last look adds little. Under first-price everyone shades, so seeing rivals' bids is very valuable. That is a commitment problem: the auctioneer may be tempted to peek.",
+      "c": 2
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Auctions as Bayesian Games",
+      "Independent Private Values vs Common Values",
+      "Standard Auction Formats",
+      "Second-Price Dominant Strategy Equilibrium",
+      "First-Price Equilibrium Bidding",
+      "Revenue Equivalence",
+      "Reserve Prices and Optimal Auctions",
+      "Winner's Curse",
+      "Auction Design in Practice"
+    ],
+    "followUp": [
+      "Extensive Form Games",
+      "Subgame Perfect Nash Equilibrium"
+    ]
+  }
+}
