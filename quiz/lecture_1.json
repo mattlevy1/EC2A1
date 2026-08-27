@@ -1,1 +1,217 @@
-{"flashcards": []}
+{
+  "flashcards": [
+    {
+      "f": "What is strategic interaction in economics?",
+      "b": "A setting where your choices affect others' payoffs and their choices affect yours, so you must anticipate how they will respond.",
+      "c": 1
+    },
+    {
+      "f": "Why did the Hanoi rat bounty illustrate a failure of policy design?",
+      "b": "Authorities optimized from their own perspective without asking how residents would strategically respond — breeding rats, cutting tails, importing rats — which increased the rat population.",
+      "c": 2
+    },
+    {
+      "f": "What is strategic thinking?",
+      "b": "When outcomes depend on others' choices, reasoning about the situation from their point of view and anticipating their responses to your actions.",
+      "c": 1
+    },
+    {
+      "f": "How does game theory differ from perfect competition or monopoly in this course's framing?",
+      "b": "In perfect competition you are a price-taker; in monopoly you face a passive demand curve. In strategic settings, other agents actively respond to your choices.",
+      "c": 2
+    },
+    {
+      "f": "What are the three components of a normal form game $G$?",
+      "b": "A set of players $i \\in \\{1, \\ldots, n\\}$, a strategy set $S_i$ for each player, and a payoff function $u_i : S \\to \\mathbb{R}$ for each player, where $S = S_1 \\times \\cdots \\times S_n$.",
+      "c": 4
+    },
+    {
+      "f": "What is a strategy profile?",
+      "b": "A vector $s = (s_1, \\ldots, s_n)$ specifying one strategy for each player.",
+      "c": 3
+    },
+    {
+      "f": "What does $s_{-i}$ denote?",
+      "b": "The strategies of all players except player $i$: $(s_1, \\ldots, s_{i-1}, s_{i+1}, \\ldots, s_n)$.",
+      "c": 3
+    },
+    {
+      "f": "What assumption does the course make about payoffs and risk?",
+      "b": "Payoffs represent utility; any risk aversion is already built into the payoff numbers, and players maximize expected utility (linear in probabilities).",
+      "c": 1
+    },
+    {
+      "f": "What is common knowledge of rationality?",
+      "b": "Everyone is rational; everyone knows everyone is rational; everyone knows everyone knows everyone is rational; and so on, ad infinitum.",
+      "c": 1
+    },
+    {
+      "f": "In a two-player payoff matrix, which player chooses rows and which chooses columns?",
+      "b": "Player 1 chooses rows; Player 2 chooses columns. Each cell shows $(u_1, u_2)$.",
+      "c": 1
+    },
+    {
+      "f": "In the EV charging coordination example, what is the strategic tension?",
+      "b": "Both sides prefer coordination to fragmentation, but Tesla prefers NACS while other automakers prefer CCS — a coordination problem with conflicting preferences over which standard wins.",
+      "c": 2
+    },
+    {
+      "f": "What is the Pareto frontier of feasible payoffs?",
+      "b": "The set of outcomes where you cannot make one player better off without making another worse off.",
+      "c": 3
+    },
+    {
+      "f": "When is a simultaneous-move normal form game strategically equivalent to an extensive form with unobserved first move?",
+      "b": "When the second mover cannot observe the first mover's choice (same information set), so the strategic situation matches simultaneous play.",
+      "c": 3
+    },
+    {
+      "f": "What is a mixed strategy for player $i$?",
+      "b": "A probability distribution $\\sigma_i \\in \\Delta S_i$ over pure strategies, with $\\sigma_i(s_i) \\geq 0$ and $\\sum_{s_i \\in S_i} \\sigma_i(s_i) = 1$.",
+      "c": 4
+    },
+    {
+      "f": "What is a pure strategy in the mixed-strategy framework?",
+      "b": "A degenerate mixed strategy that puts probability 1 on a single pure strategy.",
+      "c": 3
+    },
+    {
+      "f": "Can a mixed strategy depend on what the opponent plays?",
+      "b": "No. A mixed strategy $\\sigma_i$ is a randomization over your own pure strategies, chosen before observing opponents' actions (in the normal form).",
+      "c": 4
+    },
+    {
+      "f": "What is a belief $\\theta_{-i}$?",
+      "b": "Player $i$'s probability distribution over opponents' strategy profiles $s_{-i} \\in S_{-i}$, representing uncertainty about what others will do.",
+      "c": 4
+    },
+    {
+      "f": "How does a mixed strategy $\\sigma_i$ differ from a belief $\\theta_{-i}$?",
+      "b": "$\\sigma_i$ is player $i$'s own randomization over their strategies; $\\theta_{-i}$ is player $i$'s uncertainty about opponents' strategy profiles.",
+      "c": 4
+    },
+    {
+      "f": "What is player $i$'s expected payoff from pure strategy $s_i$ given belief $\\theta_{-i}$?",
+      "b": "$u_i(s_i, \\theta_{-i}) = \\sum_{s_{-i} \\in S_{-i}} \\theta_{-i}(s_{-i}) \\, u_i(s_i, s_{-i})$.",
+      "c": 4
+    },
+    {
+      "f": "What is player $i$'s expected payoff from mixed strategy $\\sigma_i$ given belief $\\theta_{-i}$?",
+      "b": "$u_i(\\sigma_i, \\theta_{-i}) = \\sum_{s_i \\in S_i} \\sigma_i(s_i) \\, u_i(s_i, \\theta_{-i})$.",
+      "c": 4
+    },
+    {
+      "f": "When is pure strategy $s_i$ a best response to belief $\\theta_{-i}$?",
+      "b": "When $u_i(s_i, \\theta_{-i}) \\geq u_i(s'_i, \\theta_{-i})$ for all alternative pure strategies $s'_i \\in S_i$.",
+      "c": 4
+    },
+    {
+      "f": "When is player 1 willing to mix between two pure strategies?",
+      "b": "When indifferent between them: the expected payoffs from each pure strategy are equal given the belief about opponents.",
+      "c": 3
+    },
+    {
+      "f": "When is mixed strategy $\\sigma_i$ a best response to $\\theta_{-i}$?",
+      "b": "When $u_i(\\sigma_i, \\theta_{-i}) \\geq u_i(\\sigma'_i, \\theta_{-i})$ for all $\\sigma'_i \\in \\Delta S_i$.",
+      "c": 4
+    },
+    {
+      "f": "If $\\sigma_i$ is a best response, what must be true of every pure strategy in its support?",
+      "b": "Every pure strategy played with positive probability must itself be a best response to $\\theta_{-i}$.",
+      "c": 4
+    },
+    {
+      "f": "When is strategy $s_i$ strictly dominated?",
+      "b": "When there exists some (possibly mixed) strategy $\\sigma_i$ such that $u_i(\\sigma_i, s_{-i}) > u_i(s_i, s_{-i})$ for all $s_{-i}$.",
+      "c": 4
+    },
+    {
+      "f": "Give an equivalent characterization: when is $s_i$ strictly dominated?",
+      "b": "$s_i$ is strictly dominated if and only if it is not a best response to any belief $\\theta_{-i}$.",
+      "c": 4
+    },
+    {
+      "f": "Can a strategy be strictly dominated by a mixed strategy but not by any pure strategy?",
+      "b": "Yes. A pure strategy can be beaten by a mixture even when no single pure strategy dominates it against every opponent action.",
+      "c": 2
+    },
+    {
+      "f": "In the Prisoner's Dilemma, why is $(D, D)$ a dominant strategy equilibrium?",
+      "b": "Defect strictly dominates Cooperate for each player regardless of the opponent's action, so $D$ is a dominant strategy for both.",
+      "c": 2
+    },
+    {
+      "f": "What is a (strict) dominant strategy equilibrium?",
+      "b": "A strategy profile where each player's strategy strictly dominates every alternative strategy, regardless of what others play.",
+      "c": 3
+    },
+    {
+      "f": "When is $s_i$ weakly dominated?",
+      "b": "When some $\\sigma_i$ yields at least as high a payoff against every $s_{-i}$, and strictly higher payoff against at least one $s_{-i}$.",
+      "c": 4
+    },
+    {
+      "f": "Why does this course focus on strict rather than weak dominance?",
+      "b": "Weak dominance can rely on indifference that matters for mixing; strict dominance gives cleaner elimination and is the benchmark used for IDSDS.",
+      "c": 2
+    },
+    {
+      "f": "Why would a rational player never play a strictly dominated strategy?",
+      "b": "A dominated strategy is never a best response to any belief about opponents, so it cannot maximize expected payoff.",
+      "c": 2
+    },
+    {
+      "f": "What is iterated deletion of strictly dominated strategies (IDSDS)?",
+      "b": "Repeatedly eliminate all strictly dominated strategies for all players in the remaining game until no more can be removed.",
+      "c": 1
+    },
+    {
+      "f": "What set of strategies does IDSDS identify in two-player games?",
+      "b": "The rationalizable strategies — those surviving under common knowledge of rationality.",
+      "c": 1
+    },
+    {
+      "f": "Does the order of elimination in IDSDS matter for the final surviving set?",
+      "b": "No. The surviving strategy set is independent of the order in which dominated strategies are deleted.",
+      "c": 1
+    },
+    {
+      "f": "What are two limitations of dominance-based solution concepts?",
+      "b": "Often there is no dominant strategy even after iteration, and dominance can predict inefficient outcomes (e.g. Prisoner's Dilemma).",
+      "c": 1
+    },
+    {
+      "f": "In the beauty contest ($2/3$ of the average), why is choosing above 67 dominated in the first round of reasoning?",
+      "b": "The average cannot exceed 100, so $2/3$ of the average is at most about 66.67; 67 always beats any higher number.",
+      "c": 4
+    },
+    {
+      "f": "What does IDSDS predict in the beauty contest under common knowledge of rationality?",
+      "b": "Everyone chooses 0 — iterated elimination of dominated numbers drives the upper bound to zero.",
+      "c": 3
+    },
+    {
+      "f": "What does experimental evidence from beauty-contest games suggest about common knowledge of rationality?",
+      "b": "Choices are dispersed with peaks at modest levels of reasoning; very few choose 0, suggesting people do not assume infinitely iterated rationality.",
+      "c": 3
+    }
+  ],
+  "topics": {
+    "covered": [
+      "Strategic Interaction and Game Theory Motivation",
+      "Normal Form Games",
+      "Payoffs, Rationality, and Common Knowledge",
+      "Mixed Strategies and Beliefs",
+      "Best Responses",
+      "Strict and Weak Dominance",
+      "Dominant Strategy Equilibrium",
+      "IDSDS and Rationalizability",
+      "Beauty Contest and CKR"
+    ],
+    "followUp": [
+      "Nash Equilibrium",
+      "Extensive Form Games",
+      "Mixed Strategy Equilibrium"
+    ]
+  }
+}
