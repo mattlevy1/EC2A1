@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<!-- Serve from repo root: python3 -m http.server  (then open /bid-simulator/) -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bid simulator — EC2A1</title>
+<script>
+MathJax = {
+  tex: { inlineMath: [['$','$'], ['\\(','\\)']] },
+  startup: { typeset: false }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MK64M26S1R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MK64M26S1R');
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f6f5f1;
+    --surface: #ffffff;
+    --text: #1d1d1f;
+    --text-muted: #6e7a87;
+    --accent: #4a6fa5;
+    --accent-light: #e4ecf5;
+    --border: #ddd9d1;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
+    --radius: 16px;
+    --flag: #c4880b;
+    --correct: #3a7d5c;
+    --correct-light: #e6f3ed;
+    --wrong: #a04040;
+    --wrong-light: #fbeaea;
+  }
+
+  .dark {
+    --bg: #1a1a1e;
+    --surface: #26262b;
+    --text: #e2e2e6;
+    --text-muted: #8a8f98;
+    --accent: #6b9fd4;
+    --accent-light: #2a3545;
+    --border: #3a3a40;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.2);
+    --flag: #d4a94e;
+    --correct: #5ab882;
+    --correct-light: #1e3328;
+    --wrong: #d46a6a;
+    --wrong-light: #3a2020;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 3rem;
+  }
+
+  .page { width: 100%; max-width: 760px; }
+
+  .course-code {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.35rem;
+    text-align: center;
+  }
+
+  .intro {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    text-align: center;
+    margin: 0 auto 0.85rem;
+    max-width: 620px;
+  }
+
+  .how-to {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin: 0 auto 1.25rem;
+    max-width: 620px;
+    padding-left: 1.15rem;
+  }
+
+  .how-to li { margin-bottom: 0.3rem; }
+
+  .nav-links {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.82rem;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-underline-offset: 2px;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links span { color: var(--border); margin: 0 0.55rem; }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.15rem 1.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin: 0 0 0.7rem;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem 0.85rem;
+    align-items: center;
+  }
+
+  .row + .row { margin-top: 0.85rem; }
+
+  .field-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    min-width: 5.5rem;
+  }
+
+  .seg {
+    display: inline-flex;
+    flex-wrap: wrap;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .seg button {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    border-right: 1px solid var(--border);
+    padding: 0.4rem 0.7rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .seg button:last-child { border-right: none; }
+  .seg button:hover { background: var(--accent-light); }
+  .seg button.active {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .btn, input[type="number"], input[type="text"] {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.4rem 0.7rem;
+    color: var(--text);
+  }
+
+  .btn { cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+  .btn:hover { border-color: var(--accent); background: var(--accent-light); }
+  .btn.primary {
+    background: var(--accent-light);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .value-display {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  input[type="number"] {
+    width: 6.2rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  input[type="range"] {
+    flex: 1;
+    min-width: 140px;
+    accent-color: var(--accent);
+  }
+
+  .hint {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+    margin-top: 0.55rem;
+  }
+
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    margin: 0.25rem 0 0.4rem;
+  }
+
+  .chart-wrap canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 1rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-bottom: 0.15rem;
+  }
+
+  .legend i {
+    display: inline-block;
+    width: 1.1rem;
+    height: 0;
+    border-top: 2px solid currentColor;
+    vertical-align: 0.15em;
+    margin-right: 0.3rem;
+  }
+
+  .legend .you { color: var(--accent); }
+  .legend .bne { color: var(--flag); }
+  .legend .bne i { border-top-style: dashed; }
+  .legend .val { color: var(--text-muted); }
+  .legend .val i { border-top-style: dotted; }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.55rem;
+    margin: 0.85rem 0 0.5rem;
+  }
+
+  .metric {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.65rem 0.75rem;
+  }
+
+  .metric .k {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+  }
+
+  .metric .v {
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .metric .s {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .caption {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+    font-style: italic;
+  }
+
+  .hist-wrap {
+    width: 100%;
+    height: 110px;
+    margin: 0.55rem 0 0.35rem;
+  }
+
+  .hist-wrap canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .sample {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.7rem 0.85rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sample .outcome {
+    margin-top: 0.35rem;
+    font-weight: 500;
+  }
+
+  .sample .win { color: var(--correct); }
+  .sample .lose { color: var(--text-muted); }
+  .sample .hurt { color: var(--wrong); }
+
+  .debrief {
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.5;
+    margin-top: 0.65rem;
+    padding: 0.7rem 0.85rem;
+    background: var(--accent-light);
+    border-radius: 10px;
+  }
+
+  .seed-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    align-items: center;
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  #seed-input {
+    width: 8.5rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .footer {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.4rem 0.55rem;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    transition: background 0.15s, border-color 0.15s;
+    z-index: 100;
+  }
+
+  .theme-toggle:hover { border-color: var(--accent); }
+
+  @media (max-width: 560px) {
+    .metrics { grid-template-columns: 1fr; }
+    .field-label { min-width: 100%; }
+    .chart-wrap { height: 220px; }
+  }
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" id="theme-toggle" title="Toggle dark mode">☀️</button>
+
+<main class="page">
+  <p class="course-code">LSE EC2A1</p>
+  <h1>Bid simulator</h1>
+  <p class="intro">
+    A sealed-bid practice lab for Lecture&nbsp;5. You draw <strong>one</strong> private value
+    \(v\) and choose <strong>one</strong> bid \(b\). A bot rival uses a linear rule
+    \(b_2 = a v_2\). The chart and simulation hold your \(v\) and \(b\) fixed and redraw
+    the rival’s valuation. Values here are \(U[0,1000]\) (the lecture’s running example used 900).
+  </p>
+  <ol class="how-to">
+    <li>Pick <strong>first-price</strong> or <strong>second-price</strong>, and an opponent type (start with BNE).</li>
+    <li>Your value stays fixed until you draw a new one. Try the shortcuts \(v/2\) (BNE shade) and \(v\) (truthful).</li>
+    <li>The curve is interim expected surplus as a function of your bid. The histogram is 10,000 rival draws at the bid you have chosen.</li>
+  </ol>
+  <p class="nav-links">
+    <a href="../">Course home</a><span>·</span><a href="../quiz/">Lecture 5 flashcards</a>
+  </p>
+
+  <div class="panel">
+    <h2>Setup</h2>
+    <div class="row">
+      <span class="field-label">Format</span>
+      <div class="seg" id="fmt-seg" role="group" aria-label="Auction format">
+        <button type="button" data-fmt="fp" class="active" aria-pressed="true">First-price</button>
+        <button type="button" data-fmt="sp" aria-pressed="false">Second-price</button>
+      </div>
+    </div>
+    <div class="row">
+      <span class="field-label">Opponent</span>
+      <div class="seg" id="bot-seg" role="group" aria-label="Opponent type">
+        <button type="button" data-bot="cautious" aria-pressed="false">Cautious ⅓v</button>
+        <button type="button" data-bot="bne" class="active" aria-pressed="true">BNE ½v</button>
+        <button type="button" data-bot="aggressive" aria-pressed="false">Aggressive ⅔v</button>
+        <button type="button" data-bot="naive" aria-pressed="false">Naive v</button>
+      </div>
+    </div>
+    <div class="row">
+      <span class="field-label">Your value</span>
+      <span class="value-display" id="v-display">£—</span>
+      <button type="button" class="btn primary" id="btn-new-v">New value</button>
+    </div>
+    <p class="hint" id="bot-hint"></p>
+  </div>
+
+  <div class="panel">
+    <h2>Your bid</h2>
+    <div class="row">
+      <span class="field-label">Bid \(b\)</span>
+      <input type="number" id="bid-input" min="0" max="1000" step="1" inputmode="numeric" aria-label="Your bid">
+      <button type="button" class="btn" id="btn-half">Use v/2</button>
+      <button type="button" class="btn" id="btn-truth">Use v</button>
+    </div>
+    <div class="row">
+      <input type="range" id="bid-slider" min="0" max="1000" step="1" aria-label="Bid slider">
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Interim E[surplus | v, b]</h2>
+    <div class="legend">
+      <span class="you"><i></i>Expected surplus</span>
+      <span class="you"><i></i>Your bid</span>
+      <span class="bne"><i></i>\(v/2\)</span>
+      <span class="val"><i></i>\(v\)</span>
+    </div>
+    <div class="chart-wrap"><canvas id="ev-chart" aria-label="Interim expected surplus versus bid"></canvas></div>
+    <p class="caption" id="chart-caption"></p>
+
+    <div class="metrics">
+      <div class="metric">
+        <div class="k">Win rate</div>
+        <div class="v" id="mc-win">—</div>
+        <div class="s">Theory <span id="th-win">—</span></div>
+      </div>
+      <div class="metric">
+        <div class="k">MC mean surplus</div>
+        <div class="v" id="mc-ev">—</div>
+        <div class="s">10,000 rival draws</div>
+      </div>
+      <div class="metric">
+        <div class="k">Theory E[u | v, b]</div>
+        <div class="v" id="th-ev">—</div>
+        <div class="s">Closed form at this bid</div>
+      </div>
+    </div>
+    <p class="caption">Each draw is a new rival valuation; your \(v\) and \(b\) stay fixed.</p>
+
+    <h2 style="margin-top:1rem">Surplus across rival draws</h2>
+    <div class="hist-wrap"><canvas id="hist-chart" aria-label="Histogram of surplus"></canvas></div>
+    <p class="caption" id="hist-caption"></p>
+  </div>
+
+  <div class="panel">
+    <h2>One sample rival</h2>
+    <div class="sample" id="sample"></div>
+    <div class="row" style="margin-top:0.7rem">
+      <button type="button" class="btn" id="btn-sample">Another rival draw</button>
+    </div>
+    <p class="debrief" id="debrief"></p>
+    <div class="seed-row">
+      <label>Seed
+        <input type="text" id="seed-input" inputmode="numeric" pattern="[0-9]*" placeholder="e.g. 48291" autocomplete="off" aria-label="Random seed">
+      </label>
+      <button type="button" class="btn" id="btn-load-seed">Load seed</button>
+      <button type="button" class="btn" id="btn-copy-seed">Copy seed</button>
+    </div>
+  </div>
+
+  <p class="footer">LSE EC2A1 · Matthew Levy</p>
+</main>
+
+<script>
+(function () {
+  // Two-bidder IPV, v_i ~ U[0, 1000]. Student v is shown as an integer;
+  // Monte Carlo rival draws are continuous so MC matches the closed form.
+  // Ties: awarded to the student (documented choice; either rule is fine in v1).
+  const VBAR = 1000;
+  const N_MC = 10000;
+  const BOTS = {
+    cautious:   { a: 1 / 3, name: 'Cautious',   rule: '⅓ v' },
+    bne:        { a: 1 / 2, name: 'BNE',        rule: '½ v' },
+    aggressive: { a: 2 / 3, name: 'Aggressive', rule: '⅔ v' },
+    naive:      { a: 1,     name: 'Naive',      rule: 'v' }
+  };
+
+  const $ = (id) => document.getElementById(id);
+
+  let format = 'fp';
+  let botKey = 'bne';
+  let seed = 0;
+  let v = 0;
+  let b = 0;
+  let rivals = [];
+  let sampleV2 = 0;
+  let sampleRng = null;
+
+  function mulberry32(a) {
+    return function () {
+      a |= 0;
+      a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function botA() { return BOTS[botKey].a; }
+
+  function botBid(v2, a) { return a * v2; }
+
+  // Student wins ties.
+  function studentWins(b1, b2) { return b1 >= b2; }
+
+  function resolveAuction(fmt, b1, b2, v1) {
+    const win = studentWins(b1, b2);
+    if (!win) return { win: false, payment: 0, surplus: 0 };
+    const payment = fmt === 'fp' ? b1 : b2;
+    return { win: true, payment: payment, surplus: v1 - payment };
+  }
+
+  function prWin(b1, a) {
+    if (a <= 0) return b1 >= 0 ? 1 : 0;
+    return Math.min(Math.max(b1, 0) / (a * VBAR), 1);
+  }
+
+  function interimEV(fmt, v1, b1, a) {
+    if (fmt === 'fp') return (v1 - b1) * prWin(b1, a);
+    // SP: ∫_0^t (v − a x) (1/V) dx  with t = min(b/a, V)
+    if (a <= 0) return v1;
+    const t = Math.min(Math.max(b1, 0) / a, VBAR);
+    return (v1 * t - (a / 2) * t * t) / VBAR;
+  }
+
+  function gbp(x, d) {
+    const n = Number(x);
+    const abs = Math.abs(n).toFixed(d);
+    return (n < 0 ? '−£' : '£') + abs;
+  }
+
+  function cssVar(name) {
+    return getComputedStyle(document.body).getPropertyValue(name).trim();
+  }
+
+  function sizeCanvas(canvas) {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    const w = Math.max(1, Math.round(rect.width));
+    const h = Math.max(1, Math.round(rect.height));
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { ctx: ctx, w: w, h: h };
+  }
+
+  function simulateRivals(fmt, v1, b1, a, draws) {
+    let wins = 0;
+    let sum = 0;
+    const surplus = new Array(draws.length);
+    for (let i = 0; i < draws.length; i++) {
+      const b2 = botBid(draws[i], a);
+      const r = resolveAuction(fmt, b1, b2, v1);
+      if (r.win) wins++;
+      sum += r.surplus;
+      surplus[i] = r.surplus;
+    }
+    return {
+      winRate: wins / draws.length,
+      mean: sum / draws.length,
+      surplus: surplus
+    };
+  }
+
+  function setupFromSeed(s) {
+    seed = s >>> 0;
+    const rng = mulberry32(seed);
+    v = Math.floor(rng() * (VBAR + 1));
+    rivals = new Array(N_MC);
+    for (let i = 0; i < N_MC; i++) rivals[i] = rng() * VBAR;
+    sampleRng = mulberry32(seed ^ 0x9E3779B9);
+    sampleV2 = sampleRng() * VBAR;
+    b = Math.round(v / 2);
+    $('seed-input').value = String(seed);
+    const url = new URL(location.href);
+    url.searchParams.set('seed', String(seed));
+    history.replaceState(null, '', url);
+  }
+
+  function setBid(next, fromSlider) {
+    let x = Number(next);
+    if (!Number.isFinite(x)) x = 0;
+    x = Math.round(x);
+    if (x < 0) x = 0;
+    if (x > VBAR) x = VBAR;
+    b = x;
+    if (!fromSlider) $('bid-slider').value = String(b);
+    if (document.activeElement !== $('bid-input')) $('bid-input').value = String(b);
+    else if (fromSlider) $('bid-input').value = String(b);
+    render();
+  }
+
+  function typeset(el) {
+    const attempt = (n) => {
+      if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([el]);
+      else if (n < 25) setTimeout(() => attempt(n + 1), 100);
+    };
+    attempt(0);
+  }
+
+  const A_LABEL = { cautious: '1/3', bne: '1/2', aggressive: '2/3', naive: '1' };
+
+  function botHintHtml() {
+    const bot = BOTS[botKey];
+    const aV = bot.a * VBAR;
+    let msg = 'The ' + bot.name + ' bot bids <em>b</em><sub>2</sub> = ' + bot.rule.replace('v', '<em>v</em><sub>2</sub>') +
+      ' (so <em>a</em> = ' + A_LABEL[botKey] + '). Highest rival bid is <em>a</em> × 1000 = ' + aV.toFixed(0) + '.';
+    if (format === 'sp' && bot.a < 1) {
+      msg += ' In a second-price auction, <em>b</em><sub>2</sub> = <em>v</em><sub>2</sub> is weakly dominant for the bot too — this opponent is playing a dominated strategy on purpose.';
+    }
+    return msg;
+  }
+
+  function debriefText() {
+    const near = (x, y) => Math.abs(x - y) <= 1;
+    if (format === 'fp') {
+      if (near(b, v) && v > 0) {
+        return 'First-price: bidding your value yields <strong>zero surplus if you win</strong>. Shade so that <em>v</em> − <em>b</em> stays positive.';
+      }
+      if (b > v) {
+        return 'First-price overbid: if you win you pay more than the object is worth to you, so expected surplus is negative.';
+      }
+      if (near(b, v / 2)) {
+        if (botKey === 'bne') {
+          return 'First-price vs a BNE rival: <em>b</em> = <em>v</em>/2 is equilibrium shading under <em>U</em>[0, 1000]. Your best response to any linear rule <em>b</em><sub>2</sub> = <em>a v</em><sub>2</sub> is still <em>v</em>/2, provided that bid can still lose (<em>v</em>/2 ≤ <em>a</em> × 1000).';
+        }
+        if (botKey === 'cautious') {
+          return 'You are shading at the BNE amount. The cautious rival bids only (1/3)<em>v</em>, so your <em>win rate</em> is higher than in equilibrium — that is opponent timidity, not a reason to shade less.';
+        }
+        if (botKey === 'aggressive') {
+          return 'You are bidding the BNE shade <em>v</em>/2. An aggressive rival (<em>a</em> = 2/3) bids closer to value, so you win less often than against a BNE bot. The peak of the curve is still at <em>v</em>/2.';
+        }
+        return 'You are using the BNE shade <em>v</em>/2. Against a naive rival who bids value, you win only when their value is below <em>v</em>/2.';
+      }
+      if (b < v / 2) {
+        return 'You are shading more than <em>v</em>/2. When you win, <em>v</em> − <em>b</em> is larger, but you win less often. Against a linear rival the first-price trade-off is maximised at <em>v</em>/2.';
+      }
+      return 'You are shading less than <em>v</em>/2. You win more often, but each win is worth less (and can be worth nothing if <em>b</em> reaches <em>v</em>).';
+    }
+    if (near(b, v)) {
+      return 'Second-price: bidding your value is <strong>weakly dominant</strong> — your bid decides whether you win, not what you pay (you pay the rival’s bid). This holds for any distribution, and regardless of <em>a</em>.';
+    }
+    if (b > v) {
+      return 'Second-price overbid: if the rival’s bid lands in (<em>v</em>, <em>b</em>), you win and pay more than your value. Elsewhere overbidding does not help. Try a sample until you hit that region.';
+    }
+    return 'Second-price underbid: you never pay less by bidding below <em>v</em>, and you sometimes lose when the price would have been below your value.';
+  }
+
+  function drawChart() {
+    const canvas = $('ev-chart');
+    const { ctx, w, h } = sizeCanvas(canvas);
+    const pad = { l: 46, r: 12, t: 14, b: 32 };
+    const iw = w - pad.l - pad.r;
+    const ih = h - pad.t - pad.b;
+    const a = botA();
+    const xs = 120;
+    const ys = [];
+    let yMin = 0;
+    let yMax = 1;
+    for (let i = 0; i <= xs; i++) {
+      const bi = (i / xs) * VBAR;
+      const yi = interimEV(format, v, bi, a);
+      ys.push(yi);
+      if (yi < yMin) yMin = yi;
+      if (yi > yMax) yMax = yi;
+    }
+    const padY = Math.max(8, (yMax - yMin) * 0.08);
+    yMin -= padY;
+    yMax += padY;
+    const xOf = (bi) => pad.l + (bi / VBAR) * iw;
+    const yOf = (yi) => pad.t + (1 - (yi - yMin) / (yMax - yMin)) * ih;
+
+    ctx.clearRect(0, 0, w, h);
+    const muted = cssVar('--text-muted');
+    const border = cssVar('--border');
+    const accent = cssVar('--accent');
+    const flag = cssVar('--flag');
+    const text = cssVar('--text');
+
+    ctx.strokeStyle = border;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(pad.l, pad.t);
+    ctx.lineTo(pad.l, pad.t + ih);
+    ctx.lineTo(pad.l + iw, pad.t + ih);
+    ctx.stroke();
+
+    const zeroY = yOf(0);
+    if (zeroY > pad.t && zeroY < pad.t + ih) {
+      ctx.strokeStyle = border;
+      ctx.setLineDash([3, 4]);
+      ctx.beginPath();
+      ctx.moveTo(pad.l, zeroY);
+      ctx.lineTo(pad.l + iw, zeroY);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    function vline(xVal, color, dash) {
+      const x = xOf(xVal);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.25;
+      ctx.setLineDash(dash || []);
+      ctx.beginPath();
+      ctx.moveTo(x, pad.t);
+      ctx.lineTo(x, pad.t + ih);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+    vline(v, muted, [2, 3]);
+    vline(v / 2, flag, [5, 4]);
+    vline(b, accent, []);
+
+    ctx.beginPath();
+    ctx.strokeStyle = accent;
+    ctx.lineWidth = 2.2;
+    for (let i = 0; i <= xs; i++) {
+      const x = xOf((i / xs) * VBAR);
+      const y = yOf(ys[i]);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    const py = yOf(interimEV(format, v, b, a));
+    ctx.fillStyle = accent;
+    ctx.beginPath();
+    ctx.arc(xOf(b), py, 4.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = muted;
+    ctx.font = '11px Inter, system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('0', pad.l, h - 8);
+    ctx.fillText('500', xOf(500), h - 8);
+    ctx.fillText('1000', xOf(1000), h - 8);
+
+    ctx.textAlign = 'right';
+    ctx.fillText(gbp(yMax, 0), pad.l - 6, pad.t + 10);
+    ctx.fillText(gbp(yMin, 0), pad.l - 6, pad.t + ih);
+    ctx.save();
+    ctx.translate(12, pad.t + ih / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center';
+    ctx.fillText('E[u | v, b]', 0, 0);
+    ctx.restore();
+
+    ctx.fillStyle = text;
+    ctx.font = '10px Inter, system-ui, sans-serif';
+    ctx.textAlign = 'left';
+    const labels = [
+      { x: v / 2, t: 'v/2', c: flag },
+      { x: v, t: 'v', c: muted }
+    ];
+    labels.forEach(function (lab, i) {
+      ctx.fillStyle = lab.c;
+      ctx.fillText(lab.t, xOf(lab.x) + 4, pad.t + 12 + i * 12);
+    });
+  }
+
+  function drawHist(surplus) {
+    const canvas = $('hist-chart');
+    const { ctx, w, h } = sizeCanvas(canvas);
+    ctx.clearRect(0, 0, w, h);
+    const accent = cssVar('--accent');
+    const muted = cssVar('--text-muted');
+    const border = cssVar('--border');
+    const nBins = 24;
+    let lo = 0;
+    let hi = 1;
+    for (let i = 0; i < surplus.length; i++) {
+      if (surplus[i] < lo) lo = surplus[i];
+      if (surplus[i] > hi) hi = surplus[i];
+    }
+    if (hi === lo) hi = lo + 1;
+    const counts = new Array(nBins).fill(0);
+    for (let i = 0; i < surplus.length; i++) {
+      let k = Math.floor(((surplus[i] - lo) / (hi - lo)) * nBins);
+      if (k >= nBins) k = nBins - 1;
+      if (k < 0) k = 0;
+      counts[k]++;
+    }
+    const maxC = Math.max.apply(null, counts) || 1;
+    const pad = { l: 8, r: 8, t: 8, b: 22 };
+    const iw = w - pad.l - pad.r;
+    const ih = h - pad.t - pad.b;
+    const bw = iw / nBins;
+    for (let i = 0; i < nBins; i++) {
+      const bh = (counts[i] / maxC) * ih;
+      ctx.fillStyle = accent;
+      ctx.globalAlpha = 0.85;
+      ctx.fillRect(pad.l + i * bw + 0.5, pad.t + ih - bh, Math.max(1, bw - 1), bh);
+    }
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = border;
+    ctx.beginPath();
+    ctx.moveTo(pad.l, pad.t + ih);
+    ctx.lineTo(pad.l + iw, pad.t + ih);
+    ctx.stroke();
+    ctx.fillStyle = muted;
+    ctx.font = '11px Inter, system-ui, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText(gbp(lo, 0), pad.l, h - 6);
+    ctx.textAlign = 'right';
+    ctx.fillText(gbp(hi, 0), pad.l + iw, h - 6);
+  }
+
+  function renderSample() {
+    const a = botA();
+    const b2 = botBid(sampleV2, a);
+    const r = resolveAuction(format, b, b2, v);
+    const payLabel = format === 'fp' ? 'your bid' : 'the rival’s bid';
+    let cls = r.win ? 'win' : 'lose';
+    if (r.win && r.surplus < 0) cls = 'hurt';
+    let outcome;
+    if (!r.win) outcome = 'You lose · surplus £0';
+    else outcome = 'You win · pay ' + gbp(r.payment, 1) + ' (' + payLabel + ') · surplus ' + gbp(r.surplus, 1);
+    $('sample').innerHTML =
+      'Rival value <em>v</em><sub>2</sub> = ' + sampleV2.toFixed(0) +
+      ' · bot bid <em>b</em><sub>2</sub> = ' + b2.toFixed(1) +
+      '<div class="outcome ' + cls + '">' + outcome + '</div>';
+  }
+
+  function render() {
+    $('v-display').textContent = gbp(v, 0);
+    $('bot-hint').innerHTML = botHintHtml();
+    const a = botA();
+    const theory = interimEV(format, v, b, a);
+    const mc = simulateRivals(format, v, b, a, rivals);
+    $('mc-win').textContent = (100 * mc.winRate).toFixed(1) + '%';
+    $('th-win').textContent = (100 * prWin(b, a)).toFixed(1) + '%';
+    $('mc-ev').textContent = gbp(mc.mean, 1);
+    $('th-ev').textContent = gbp(theory, 1);
+    const cap = format === 'fp'
+      ? 'Against a linear rival, the first-price best response is <em>v</em>/2 whenever that bid is below the rival’s maximum bid <em>a</em> × 1000.'
+      : (botKey === 'naive'
+        ? 'Against a naive (truthful) rival, second-price expected surplus is maximised at <em>b</em> = <em>v</em>.'
+        : 'In a second-price auction your bid does not set the price. Once <em>b</em> exceeds the highest rival bid <em>a</em> × 1000, the curve is flat.');
+    $('chart-caption').innerHTML = cap;
+    $('hist-caption').textContent = format === 'fp'
+      ? 'In a first-price auction surplus is either 0 (lose) or v − b (win) — two spikes.'
+      : 'In a second-price auction, when you win you pay the rival’s bid, so surplus varies with v₂.';
+    $('debrief').innerHTML = debriefText();
+    drawChart();
+    drawHist(mc.surplus);
+    renderSample();
+  }
+
+  function setThemeIcon() {
+    $('theme-toggle').textContent = document.body.classList.contains('dark') ? '🌙' : '☀️';
+  }
+
+  if (localStorage.getItem('ec2a1-theme') === 'dark') document.body.classList.add('dark');
+  setThemeIcon();
+  $('theme-toggle').addEventListener('click', function () {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    localStorage.setItem('ec2a1-theme', isDark ? 'dark' : 'light');
+    setThemeIcon();
+    render();
+  });
+
+  function activateSeg(root, btn) {
+    root.querySelectorAll('button').forEach((el) => {
+      const on = el === btn;
+      el.classList.toggle('active', on);
+      el.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+
+  $('fmt-seg').addEventListener('click', function (e) {
+    const btn = e.target.closest('button[data-fmt]');
+    if (!btn) return;
+    format = btn.getAttribute('data-fmt');
+    activateSeg($('fmt-seg'), btn);
+    render();
+  });
+
+  $('bot-seg').addEventListener('click', function (e) {
+    const btn = e.target.closest('button[data-bot]');
+    if (!btn) return;
+    botKey = btn.getAttribute('data-bot');
+    activateSeg($('bot-seg'), btn);
+    render();
+  });
+
+  $('btn-new-v').addEventListener('click', function () {
+    setupFromSeed((Math.random() * 0xFFFFFFFF) >>> 0);
+    $('bid-input').value = String(b);
+    $('bid-slider').value = String(b);
+    render();
+  });
+
+  $('btn-half').addEventListener('click', function () { setBid(Math.round(v / 2)); });
+  $('btn-truth').addEventListener('click', function () { setBid(v); });
+
+  $('bid-slider').addEventListener('input', function () { setBid(this.value, true); });
+  $('bid-input').addEventListener('change', function () { setBid(this.value); });
+  $('bid-input').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); setBid(this.value); }
+  });
+
+  $('btn-sample').addEventListener('click', function () {
+    sampleV2 = sampleRng() * VBAR;
+    renderSample();
+  });
+
+  function loadSeedField() {
+    const raw = $('seed-input').value.trim();
+    if (raw === '' || !/^\d+$/.test(raw)) {
+      $('seed-input').focus();
+      return;
+    }
+    setupFromSeed(Number(raw) >>> 0);
+    $('bid-input').value = String(b);
+    $('bid-slider').value = String(b);
+    render();
+  }
+
+  $('btn-load-seed').addEventListener('click', loadSeedField);
+  $('seed-input').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); loadSeedField(); }
+  });
+  $('btn-copy-seed').addEventListener('click', async function () {
+    const val = $('seed-input').value.trim() || String(seed);
+    if (!val) return;
+    try {
+      await navigator.clipboard.writeText(val);
+      this.textContent = 'Copied';
+      setTimeout(() => { this.textContent = 'Copy seed'; }, 1200);
+    } catch (err) {
+      this.textContent = 'Copy failed';
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.target.matches('input, textarea, select')) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); setBid(b + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); setBid(b - 1); }
+  });
+
+  window.addEventListener('resize', function () { render(); });
+
+  const params = new URLSearchParams(location.search);
+  const q = params.get('seed');
+  if (q != null && /^\d+$/.test(q)) setupFromSeed(Number(q) >>> 0);
+  else setupFromSeed((Math.random() * 0xFFFFFFFF) >>> 0);
+  $('bid-input').value = String(b);
+  $('bid-slider').value = String(b);
+  typeset(document.querySelector('.page'));
+  render();
+})();
+</script>
+</body>
+</html>
