@@ -177,6 +177,7 @@ MathJax = {
   }
 
   .seg button:last-child { border-right: none; }
+  .seg button[hidden] { display: none; }
   .seg button:hover { background: var(--accent-light); }
   .seg button.active {
     background: var(--accent-light);
@@ -497,7 +498,7 @@ MathJax = {
   </div>
 
   <div class="panel">
-    <h2>One sample rival</h2>
+    <h2>Example: One sample rival</h2>
     <div class="sample" id="sample"></div>
     <div class="row" style="margin-top:0.7rem">
       <button type="button" class="btn" id="btn-sample">Another rival draw</button>
@@ -522,11 +523,33 @@ MathJax = {
   // Ties: awarded to the student (documented choice; either rule is fine in v1).
   const VBAR = 1000;
   const N_MC = 10000;
+  // FP: BNE shade is v/2. SP: truthful b=v is weakly dominant, so the
+  // personality labels keep the same ranking around that benchmark.
   const BOTS = {
-    cautious:   { a: 1 / 3, name: 'Cautious',   rule: '⅓ v' },
-    bne:        { a: 1 / 2, name: 'BNE',        rule: '½ v' },
-    aggressive: { a: 2 / 3, name: 'Aggressive', rule: '⅔ v' },
-    naive:      { a: 1,     name: 'Naive',      rule: 'v' }
+    fp: {
+      cautious:   { a: 1 / 3, name: 'Cautious',   rule: '⅓ v',  aLabel: '1/3' },
+      bne:        { a: 1 / 2, name: 'BNE',        rule: '½ v',  aLabel: '1/2' },
+      aggressive: { a: 2 / 3, name: 'Aggressive', rule: '⅔ v',  aLabel: '2/3' },
+      naive:      { a: 1,     name: 'Naive',      rule: 'v',    aLabel: '1' }
+    },
+    sp: {
+      cautious:   { a: 2 / 3, name: 'Cautious',   rule: '⅔ v',  aLabel: '2/3' },
+      bne:        { a: 1,     name: 'BNE',        rule: 'v',    aLabel: '1' },
+      aggressive: { a: 4 / 3, name: 'Aggressive', rule: '4/3 v', aLabel: '4/3' }
+    }
+  };
+  const BOT_LABELS = {
+    fp: {
+      cautious: 'Cautious ⅓v',
+      bne: 'BNE ½v',
+      aggressive: 'Aggressive ⅔v',
+      naive: 'Naive v'
+    },
+    sp: {
+      cautious: 'Cautious ⅔v',
+      bne: 'BNE v',
+      aggressive: 'Aggressive 4/3v'
+    }
   };
 
   const $ = (id) => document.getElementById(id);
@@ -550,7 +573,8 @@ MathJax = {
     };
   }
 
-  function botA() { return BOTS[botKey].a; }
+  function currentBot() { return BOTS[format][botKey]; }
+  function botA() { return currentBot().a; }
 
   function botBid(v2, a) { return a * v2; }
 
@@ -653,22 +677,32 @@ MathJax = {
     attempt(0);
   }
 
-  const A_LABEL = { cautious: '1/3', bne: '1/2', aggressive: '2/3', naive: '1' };
+  function fpCap(a) { return a * VBAR; }
+  function fpBestBid(v1, a) { return Math.min(v1 / 2, fpCap(a)); }
+  function fpPeakIsHalf(v1, a) { return v1 / 2 <= fpCap(a) + 1e-9; }
 
   function botHintHtml() {
-    const bot = BOTS[botKey];
+    const bot = currentBot();
     const aV = bot.a * VBAR;
     let msg = 'The ' + bot.name + ' bot bids <em>b</em><sub>2</sub> = ' + bot.rule.replace('v', '<em>v</em><sub>2</sub>') +
-      ' (so <em>a</em> = ' + A_LABEL[botKey] + '). Highest rival bid is <em>a</em> × 1000 = ' + aV.toFixed(0) + '.';
+      ' (so <em>a</em> = ' + bot.aLabel + '). Highest rival bid is <em>a</em> × 1000 = ' + aV.toFixed(0) + '.';
     if (format === 'sp' && bot.a < 1) {
-      msg += ' In a second-price auction, <em>b</em><sub>2</sub> = <em>v</em><sub>2</sub> is weakly dominant for the bot too — this opponent is playing a dominated strategy on purpose.';
+      msg += ' Truthful bidding is weakly dominant in a second-price auction — this opponent is shading on purpose.';
+    } else if (format === 'sp' && bot.a > 1) {
+      msg += ' Truthful bidding is weakly dominant in a second-price auction — this opponent is overbidding on purpose (and may bid above 1000).';
+    } else if (format === 'sp') {
+      msg += ' This is the weakly dominant strategy, so it is the second-price BNE.';
     }
     return msg;
   }
 
   function debriefText() {
     const near = (x, y) => Math.abs(x - y) <= 1;
+    const a = botA();
     if (format === 'fp') {
+      const cap = fpCap(a);
+      const best = Math.round(fpBestBid(v, a));
+      const peakAtHalf = fpPeakIsHalf(v, a);
       if (near(b, v) && v > 0) {
         return 'First-price: bidding your value yields <strong>zero surplus if you win</strong>. Shade so that <em>v</em> − <em>b</em> stays positive.';
       }
@@ -676,24 +710,33 @@ MathJax = {
         return 'First-price overbid: if you win you pay more than the object is worth to you, so expected surplus is negative.';
       }
       if (near(b, v / 2)) {
+        if (!peakAtHalf) {
+          return 'You bid <em>v</em>/2, but that already beats every Cautious bid (their max is ' + cap.toFixed(0) +
+            '). Any bid at or above that cap always wins, so you should bid ' + best +
+            ' and pay less. <em>v</em>/2 is optimal only while it can still lose.';
+        }
         if (botKey === 'bne') {
-          return 'First-price vs a BNE rival: <em>b</em> = <em>v</em>/2 is equilibrium shading under <em>U</em>[0, 1000]. Your best response to any linear rule <em>b</em><sub>2</sub> = <em>a v</em><sub>2</sub> is still <em>v</em>/2, provided that bid can still lose (<em>v</em>/2 ≤ <em>a</em> × 1000).';
+          return 'First-price vs a BNE rival: <em>b</em> = <em>v</em>/2 is equilibrium shading. Against any linear rule, Pr(win) = <em>b</em>/(<em>a</em> × 1000) until you always win, so expected surplus is (<em>v</em> − <em>b</em>)<em>b</em>/(<em>a</em> × 1000). The <em>a</em> scales the height of the curve, not the peak — hence <em>v</em>/2 against BNE, Aggressive, and Naive alike.';
         }
         if (botKey === 'cautious') {
-          return 'You are shading at the BNE amount. The cautious rival bids only (1/3)<em>v</em>, so your <em>win rate</em> is higher than in equilibrium — that is opponent timidity, not a reason to shade less.';
+          return 'You are shading at <em>v</em>/2. The Cautious rival’s max bid is 333, which is above <em>v</em>/2 for this value, so the peak stays at <em>v</em>/2. You win more often than against a BNE bot — that is opponent timidity, not a reason to shade less.';
         }
         if (botKey === 'aggressive') {
-          return 'You are bidding the BNE shade <em>v</em>/2. An aggressive rival (<em>a</em> = 2/3) bids closer to value, so you win less often than against a BNE bot. The peak of the curve is still at <em>v</em>/2.';
+          return 'You are bidding <em>v</em>/2. An Aggressive rival (<em>a</em> = 2/3) bids closer to value, so you win less often than against a BNE bot. Their highest bid is still 667 ≥ <em>v</em>/2, so the peak does not move.';
         }
-        return 'You are using the BNE shade <em>v</em>/2. Against a naive rival who bids value, you win only when their value is below <em>v</em>/2.';
+        return 'You are using the BNE shade <em>v</em>/2. The Naive rival bids value, so you win only when their value is below <em>v</em>/2. Same peak: <em>a</em> scales win probabilities, not the first-price trade-off.';
+      }
+      if (!peakAtHalf && near(b, cap)) {
+        return 'This is the first-price best response against Cautious when <em>v</em> is high: bid just enough to always win (' + cap.toFixed(0) +
+          ') rather than <em>v</em>/2, which would also always win but cost more.';
       }
       if (b < v / 2) {
-        return 'You are shading more than <em>v</em>/2. When you win, <em>v</em> − <em>b</em> is larger, but you win less often. Against a linear rival the first-price trade-off is maximised at <em>v</em>/2.';
+        return 'You are shading more than <em>v</em>/2. When you win, <em>v</em> − <em>b</em> is larger, but you win less often. Against a linear rival that trade-off is maximised at <em>v</em>/2 (unless <em>v</em>/2 already exceeds the rival’s highest bid).';
       }
       return 'You are shading less than <em>v</em>/2. You win more often, but each win is worth less (and can be worth nothing if <em>b</em> reaches <em>v</em>).';
     }
     if (near(b, v)) {
-      return 'Second-price: bidding your value is <strong>weakly dominant</strong> — your bid decides whether you win, not what you pay (you pay the rival’s bid). This holds for any distribution, and regardless of <em>a</em>.';
+      return 'Second-price: bidding your value is <strong>weakly dominant</strong> — your bid decides whether you win, not what you pay. That is true against Cautious (who shades), BNE (who is truthful), and Aggressive (who overbids).';
     }
     if (b > v) {
       return 'Second-price overbid: if the rival’s bid lands in (<em>v</em>, <em>b</em>), you win and pay more than your value. Elsewhere overbidding does not help. Try a sample until you hit that region.';
@@ -887,10 +930,12 @@ MathJax = {
     $('mc-ev').textContent = gbp(mc.mean, 1);
     $('th-ev').textContent = gbp(theory, 1);
     const cap = format === 'fp'
-      ? 'Against a linear rival, the first-price best response is <em>v</em>/2 whenever that bid is below the rival’s maximum bid <em>a</em> × 1000.'
-      : (botKey === 'naive'
-        ? 'Against a naive (truthful) rival, second-price expected surplus is maximised at <em>b</em> = <em>v</em>.'
-        : 'In a second-price auction your bid does not set the price. Once <em>b</em> exceeds the highest rival bid <em>a</em> × 1000, the curve is flat.');
+      ? (fpPeakIsHalf(v, a)
+        ? 'First-price surplus is (<em>v</em> − <em>b</em>) × Pr(win), and Pr(win) = <em>b</em>/(<em>a</em> × 1000) until you always win. The <em>a</em> scales the curve’s height, so the peak stays at <em>v</em>/2 against BNE, Aggressive, and Naive. Cautious is the exception only when <em>v</em>/2 already exceeds their highest bid (333).'
+        : 'Cautious bids at most 333, which is below <em>v</em>/2 for this value. Any bid of 333 or more always wins, so the best response is ' + Math.round(fpBestBid(v, a)) + ', not <em>v</em>/2.')
+      : (botKey === 'bne'
+        ? 'Against a truthful rival, second-price expected surplus is maximised at <em>b</em> = <em>v</em>.'
+        : 'Your bid does not set the price. Bidding <em>v</em> is still weakly dominant; once <em>b</em> exceeds the highest rival bid <em>a</em> × 1000, the curve is flat.');
     $('chart-caption').innerHTML = cap;
     $('hist-caption').textContent = format === 'fp'
       ? 'In a first-price auction surplus is either 0 (lose) or v − b (win) — two spikes.'
@@ -923,11 +968,29 @@ MathJax = {
     });
   }
 
+  function syncOpponentUI() {
+    const labels = BOT_LABELS[format];
+    $('bot-seg').querySelectorAll('button[data-bot]').forEach((btn) => {
+      const key = btn.getAttribute('data-bot');
+      if (!labels[key]) {
+        btn.hidden = true;
+        return;
+      }
+      btn.hidden = false;
+      btn.textContent = labels[key];
+    });
+    if (!labels[botKey]) {
+      botKey = 'bne';
+      activateSeg($('bot-seg'), $('bot-seg').querySelector('[data-bot="bne"]'));
+    }
+  }
+
   $('fmt-seg').addEventListener('click', function (e) {
     const btn = e.target.closest('button[data-fmt]');
     if (!btn) return;
     format = btn.getAttribute('data-fmt');
     activateSeg($('fmt-seg'), btn);
+    syncOpponentUI();
     render();
   });
 
@@ -1002,6 +1065,7 @@ MathJax = {
   else setupFromSeed((Math.random() * 0xFFFFFFFF) >>> 0);
   $('bid-input').value = String(b);
   $('bid-slider').value = String(b);
+  syncOpponentUI();
   typeset(document.querySelector('.page'));
   render();
 })();
