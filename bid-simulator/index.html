@@ -310,6 +310,13 @@ MathJax = {
     font-style: italic;
   }
 
+  .explain {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin: 0.15rem 0 0.75rem;
+  }
+
   .hist-wrap {
     width: 100%;
     height: 110px;
@@ -411,13 +418,14 @@ MathJax = {
   <p class="intro">
     A sealed-bid practice lab for Lecture&nbsp;5. You draw <strong>one</strong> private value
     \(v\) and choose <strong>one</strong> bid \(b\). A bot rival uses a linear rule
-    \(b_2 = a v_2\). The chart and simulation hold your \(v\) and \(b\) fixed and redraw
-    the rival’s valuation. Values here are \(U[0,1000]\) (the lecture’s running example used 900).
+    \(b_2 = a v_2\). The chart is expected surplus as a function of your bid. The
+    histogram is a Monte Carlo of 10,000 opponents at that bid. Values here are
+    \(U[0,1000]\).
   </p>
   <ol class="how-to">
     <li>Pick <strong>first-price</strong> or <strong>second-price</strong>, and an opponent type (start with BNE).</li>
     <li>Your value stays fixed until you draw a new one. Try the shortcuts \(v/2\) (BNE shade) and \(v\) (truthful).</li>
-    <li>The curve is interim expected surplus as a function of your bid. The histogram is 10,000 rival draws at the bid you have chosen.</li>
+    <li>The curve is expected surplus at each bid. The <strong>Monte Carlo</strong> then simulates 10,000 opponents at your chosen bid; the histogram is the empirical distribution of those outcomes.</li>
   </ol>
   <p class="nav-links">
     <a href="../">Course home</a><span>·</span><a href="../quiz/">Lecture 5 flashcards</a>
@@ -473,32 +481,39 @@ MathJax = {
     <div class="chart-wrap"><canvas id="ev-chart" aria-label="Interim expected surplus versus bid"></canvas></div>
     <p class="caption" id="chart-caption"></p>
 
+    <h2 style="margin-top:1.15rem">Monte Carlo: 10,000 opponents</h2>
+    <p class="explain">
+      Hold your \(v\) and \(b\) fixed, then draw 10,000 rival valuations. Each opponent
+      bids by the bot’s rule; we record whether you win and your surplus. The histogram
+      is that <strong>empirical distribution</strong> of outcomes. Win rate and mean surplus
+      summarise it; \(\mathbb{E}[u \mid v, b]\) is the same expectation written as a formula.
+    </p>
+
     <div class="metrics">
       <div class="metric">
         <div class="k">Win rate</div>
         <div class="v" id="mc-win">—</div>
-        <div class="s">Theory <span id="th-win">—</span></div>
+        <div class="s">Share of 10,000 opponents you beat</div>
       </div>
       <div class="metric">
-        <div class="k">MC mean surplus</div>
+        <div class="k">Mean surplus</div>
         <div class="v" id="mc-ev">—</div>
-        <div class="s">10,000 rival draws</div>
+        <div class="s">Average of the histogram</div>
       </div>
       <div class="metric">
-        <div class="k">Theory E[u | v, b]</div>
+        <div class="k">E[u | v, b]</div>
         <div class="v" id="th-ev">—</div>
-        <div class="s">Closed form at this bid</div>
+        <div class="s">Formula for that average</div>
       </div>
     </div>
-    <p class="caption">Each draw is a new rival valuation; your \(v\) and \(b\) stay fixed.</p>
 
-    <h2 style="margin-top:1rem">Surplus across rival draws</h2>
+    <h2 style="margin-top:1rem">Empirical distribution of surplus</h2>
     <div class="hist-wrap"><canvas id="hist-chart" aria-label="Histogram of surplus"></canvas></div>
     <p class="caption" id="hist-caption"></p>
   </div>
 
   <div class="panel">
-    <h2>Example: One sample rival</h2>
+    <h2>Example: one of those rival draws</h2>
     <div class="sample" id="sample"></div>
     <div class="row" style="margin-top:0.7rem">
       <button type="button" class="btn" id="btn-sample">Another rival draw</button>
@@ -926,7 +941,6 @@ MathJax = {
     const theory = interimEV(format, v, b, a);
     const mc = simulateRivals(format, v, b, a, rivals);
     $('mc-win').textContent = (100 * mc.winRate).toFixed(1) + '%';
-    $('th-win').textContent = (100 * prWin(b, a)).toFixed(1) + '%';
     $('mc-ev').textContent = gbp(mc.mean, 1);
     $('th-ev').textContent = gbp(theory, 1);
     const cap = format === 'fp'
@@ -938,8 +952,8 @@ MathJax = {
         : 'Your bid does not set the price. Bidding <em>v</em> is still weakly dominant; once <em>b</em> exceeds the highest rival bid <em>a</em> × 1000, the curve is flat.');
     $('chart-caption').innerHTML = cap;
     $('hist-caption').textContent = format === 'fp'
-      ? 'In a first-price auction surplus is either 0 (lose) or v − b (win) — two spikes.'
-      : 'In a second-price auction, when you win you pay the rival’s bid, so surplus varies with v₂.';
+      ? 'Each bar is surplus against one of the 10,000 opponents. In a first-price auction that is 0 (lose) or v − b (win) — two spikes.'
+      : 'Each bar is surplus against one of the 10,000 opponents. In a second-price auction, when you win you pay the rival’s bid, so surplus varies with v₂.';
     $('debrief').innerHTML = debriefText();
     drawChart();
     drawHist(mc.surplus);
